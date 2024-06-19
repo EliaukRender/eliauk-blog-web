@@ -1,0 +1,14 @@
+/*
+   项目中使用的样式常量
+*/
+
+@border-radius: 6px;
+@bgc-hover: red;
+
+.flexRow(@justify: space-between, @align: center, @flex-wrap: wrap) {
+  display: flex;
+  flex-direction: row;
+  justify-content: @justify;
+  align-items: @align;
+  flex-wrap: @flex-wrap;
+}

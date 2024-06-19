@@ -1,0 +1,10 @@
+# 文件夹
+public
+node_modules
+build
+src/assets
+
+# 文件
+*.json
+craco.config.js
+deploy.js

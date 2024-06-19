@@ -1,0 +1,13 @@
+/* FirstSection组件 */
+.first-section-modal {
+  .qr-code {
+    width: 100%;
+  }
+
+  .tip {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+/* FirstSection组件 */
