@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import { primaryColor, secondaryColor } from '@/assets/css/variables';
 
 export const NavigationBarWrapper = styled.div`
 	position: fixed;
-	right: 30px;
+	right: 50px;
 	top: 50%;
 	transform: translateY(-50%);
-	color: #000000;
 	font-size: 20px;
 	font-weight: 600;
 	z-index: 999;
@@ -14,12 +14,24 @@ export const NavigationBarWrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 
+	.anticon {
+		color: #333333;
+	}
+
+	.anticon-up,
+	.anticon-down {
+		padding: 10px;
+		font-size: 20px;
+		cursor: pointer;
+	}
+
 	.bar-box {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		margin: 5px 0;
+		${(props) => props.theme.color.firstColor};
 
 		.item {
 			display: flex;
@@ -27,7 +39,7 @@ export const NavigationBarWrapper = styled.div`
 			align-items: center;
 			margin-top: -1px;
 			padding: 15px;
-			border: 1px solid #000000;
+			border: 1px solid ${secondaryColor};
 			cursor: pointer;
 			box-sizing: border-box;
 
@@ -41,16 +53,12 @@ export const NavigationBarWrapper = styled.div`
 
 			&-active {
 				font-weight: 600;
-				background-color: rgba(0, 0, 0, 0.3);
-				color: #ffffff;
+				background-color: ${primaryColor};
+
+				.anticon {
+					color: #ffffff;
+				}
 			}
 		}
-	}
-
-	.anticon-up,
-	.anticon-down {
-		padding: 10px;
-		font-size: 20px;
-		cursor: pointer;
 	}
 `;

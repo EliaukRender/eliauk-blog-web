@@ -1,18 +1,28 @@
 import React, { memo, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from '@/router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setScrollY } from '@/store/modules/globalReducer';
-import { setCurSectionId } from '@/store/modules/homeReducer';
+import { setCurSectionId } from '@/store/modules/globalReducer';
+import { AppWrapper } from '@/AppStyles';
 
 const App = () => {
 	const dispatch = useDispatch();
 	let oldScrollY = 0;
+	const { scrollY } = useSelector((state) => ({
+		scrollY: state.global.scrollY
+	}));
 
 	useEffect(() => {
-		// 监听网页的滚动scroll事件
+		/**
+		 * @description: 页面刷新时恢复页面的scrollY值
+		 */
+		window.scrollTo({ top: scrollY });
+
+		/**
+		 * @description: 监听网页的滚动scroll事件
+		 */
 		function handleScroll() {
-			console.log(window.scrollY);
 			dispatch(setScrollY(window.scrollY)); // 保存scrollY值到redux
 			handleCurSectionIdByScrollY(); // 更新curSectionId值
 		}
@@ -25,7 +35,7 @@ const App = () => {
 	}, [dispatch]);
 
 	/**
-	 * @description: 基于ScrollY的值实时更新导航条组件的current sectionId
+	 * @description: 监听ScrollY，更新导航条组件的current sectionId
 	 */
 	const handleCurSectionIdByScrollY = () => {
 		// 页面往下滚动
@@ -48,7 +58,7 @@ const App = () => {
 		}
 	};
 
-	return <div className='page'>{useRoutes(routes)}</div>;
+	return <AppWrapper className='page'>{useRoutes(routes)}</AppWrapper>;
 };
 
 export default memo(App);

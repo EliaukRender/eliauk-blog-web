@@ -5,7 +5,8 @@
 const appTheme = {
   // 主题颜色
   color: {
-    firstColor: 'red'
+    firstColor: '#d1d6ec',
+    secondColor: '#6b96cd'
   },
   // css样式
   mixins: {
@@ -13,7 +14,7 @@ const appTheme = {
     boxShadowHover: `
       transition: box-shadow 300ms ease;
       &:hover {
-        box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 5px 2px rgba(107, 150, 205, 0.6);
       }
     `
   },

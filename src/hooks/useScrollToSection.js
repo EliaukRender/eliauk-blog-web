@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
  */
 const useScrollToSection = (sectionId) => {
 	const sectionRef = useRef(null);
-	const currentSectionId = useSelector((state) => state.home.currentSectionId);
+	const currentSectionId = useSelector((state) => state.global.currentSectionId);
 
 	useEffect(() => {
 		// 基于currentSectionId的值的变化，来移动不同的section到可视区域
