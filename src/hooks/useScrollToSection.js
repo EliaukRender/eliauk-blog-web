@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 /**
  * @description: 组件滚动到页面可视区域的钩子
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
  */
 const useScrollToSection = (sectionId) => {
 	const sectionRef = useRef(null);
-	const currentSectionId = useSelector((state) => state.global.currentSectionId);
+	const currentSectionId = useSelector((state) => state.global.currentSectionId, shallowEqual);
 
 	useEffect(() => {
 		// 基于currentSectionId的值的变化，来移动不同的section到可视区域

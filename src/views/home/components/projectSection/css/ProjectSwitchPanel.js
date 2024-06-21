@@ -4,7 +4,7 @@ import { primaryColor, secondaryColor } from '@/assets/css/variables';
 export const ProjectSwitchPanelWrapper = styled.div`
 	.project-switch {
 		position: absolute;
-		top: 50px;
+		top: 30px;
 		left: 50%;
 		transform: translateX(-50%);
 		display: flex;

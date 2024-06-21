@@ -19,8 +19,6 @@ H
 src/index.js,f\9\f900edc44cb929c2267a16100a32851f6d5b477d
 B
 src/store/index.js,8\9\89922cab3a870ea7fc32984014e74ed044f89469
-P
- src/store/modules/homeReducer.js,0\4\04377d67a883943be491a37d0073196bbf61b4cc
 I
 src/assets/theme/index.js,0\6\0605879973828b0fd9e6231b559f0650eb689a74
 H
@@ -36,10 +34,6 @@ V
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 M
 src/utils/handleScrollPage.js,2\8\28ca4e37a4a4a27ed1c9f6224a2871d97cd76637
-`
-0src/views/home/components/firstSection/index.jsx,3\f\3f68ba74ce53c9b1310a5b28f2096965b2453ed7
-`
-0src/views/home/components/firstSection/styles.js,a\5\a533630edc5405d26f8cc66446567b116a734f6c
 a
 1src/views/home/components/navigationBar/index.jsx,d\3\d3bac6036216b02ccc61d84f226bb4525b9f4ce8
 a
@@ -50,28 +44,14 @@ b
 2src/views/home/components/projectSection/styles.js,9\3\93d2809268ad04aa404b3e3a445d897d65d98ee3
 R
 "src/store/modules/globalReducer.js,7\c\7c25c19ec6dcb0ff3db82dba5bfaf5a7107b2022
-j
-:src/views/home/components/personalProfileSection/index.jsx,3\c\3cbaf9f7e705da2ea3862f049c6a75688ca47ef2
 O
 src/hooks/useScrollToSection.js,c\f\cfa0ab94b49f424e466e85c3e164a93d64e520fe
 Z
 *src/components/Animation/moveAnimation.jsx,3\c\3c5bd7f67c1f442b7e763c0dd01a5c09827b63f3
-j
-:src/views/home/components/personalProfileSection/styles.js,e\7\e73c41e8731bb131468ff57efdbcb917940fcf48
 z
 Jsrc/views/home/components/projectSection/components/ProjectSwitchPanel.jsx,e\5\e59e8b2ad88f4b7ddafb5fe2b338cd317864d223
 r
 Bsrc/views/home/components/projectSection/css/ProjectSwitchPanel.js,f\1\f1c8d83718606dcf91e242f22c7ddecbe751bc18
-u
-Esrc/views/home/components/projectSection/components/ProjectDetail.jsx,9\e\9ed852918baaaec074272dbc88fce7794c7520e1
-c
-3src/views/home/components/projectSection/css/321.js,e\6\e6403aba231a5dd52ef24e689fc38a5b18d19460
-m
-=src/views/home/components/projectSection/css/ProjectDetail.js,4\2\4215beda35094974dfef0fdff6ba962398185329
-J
-src/assets/css/mixins.less,c\c\cc7036064d12e094961ccd3d962ddd44d6991d74
-M
-src/assets/css/variables.less,8\8\883b4c38867cd4724fa38788791fae14ea68a8d1
 K
 src/assets/css/variables.js,b\e\be8d86a2fa6c5fc8a29674c6fc8d15e1db5465e0
 b

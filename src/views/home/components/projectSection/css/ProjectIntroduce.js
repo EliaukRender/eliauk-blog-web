@@ -10,6 +10,7 @@ export const ProjectIntroduceWrapper = styled.div`
     font-size: 36px;
     font-weight: 600;
     margin-bottom: 40px;
+    cursor: pointer;
   }
 
   .project-web,

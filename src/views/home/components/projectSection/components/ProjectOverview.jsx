@@ -7,7 +7,7 @@ import ProjectIntroduce from '@/views/home/components/projectSection/components/
 /**
  * @description: 项目细节介绍
  */
-const ProjectOverview = () => {
+const ProjectOverview = ({ goToProject }) => {
 	return (
 		<ProjectOverviewWrapper>
 			<div className='project-box'>
@@ -17,7 +17,7 @@ const ProjectOverview = () => {
 				</div>
 				<div className='right'>
 					{/* 项目文字介绍 */}
-					<ProjectIntroduce></ProjectIntroduce>
+					<ProjectIntroduce goToProject={goToProject}></ProjectIntroduce>
 				</div>
 			</div>
 		</ProjectOverviewWrapper>

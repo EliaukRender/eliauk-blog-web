@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { primaryColor, secondaryColor } from '@/assets/css/variables';
+import { primaryColor } from '@/assets/css/variables';
 
 export const NavigationBarWrapper = styled.div`
 	position: fixed;
@@ -39,7 +39,7 @@ export const NavigationBarWrapper = styled.div`
 			align-items: center;
 			margin-top: -1px;
 			padding: 15px;
-			border: 1px solid ${secondaryColor};
+			border: 1px solid #2f4f4f;
 			cursor: pointer;
 			box-sizing: border-box;
 

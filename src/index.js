@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components'; // 样式共享组件
 import store, { persistor } from '@/store/index'; // redux数据
 import { Provider } from 'react-redux'; // redux数据共享组件
 import { PersistGate } from 'redux-persist/integration/react'; // redux持久化组件
+import GlobalLoading from '@/components/Loading/globalLoading';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -19,7 +20,7 @@ root.render(
 				{/* css样式共享，通过props.theme就可以拿到自定义的样式 */}
 				<ThemeProvider theme={appTheme}>
 					{/* 异步加载 */}
-					<Suspense fallback={'加载中'}>
+					<Suspense fallback={<GlobalLoading />}>
 						{/* Hash路由 */}
 						<HashRouter>
 							<App />

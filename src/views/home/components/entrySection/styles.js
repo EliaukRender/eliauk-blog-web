@@ -87,10 +87,7 @@ export const FirstSectionWrapper = styled.div`
 		font-size: 20px;
 		color: #ffffff;
 		cursor: pointer;
-
-		&:hover {
-			box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3); /* hover时的阴影效果 */
-		}
+		${(props) => props.theme.mixins.boxShadowHover};
 
 		.divider {
 			width: 1px;

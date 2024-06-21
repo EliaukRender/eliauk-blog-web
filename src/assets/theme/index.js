@@ -3,10 +3,11 @@
  */
 
 const appTheme = {
-  // 主题颜色
+  // 常用颜色
   color: {
-    firstColor: '#d1d6ec',
-    secondColor: '#6b96cd'
+    firstColor: '#d1d6ec',  // 主题色
+    secondColor: '#6b96cd',  // 主题色
+    darkGrayColor: '#2F4F4F' // 暗灰色
   },
   // css样式
   mixins: {
@@ -14,7 +15,7 @@ const appTheme = {
     boxShadowHover: `
       transition: box-shadow 300ms ease;
       &:hover {
-        box-shadow: 0 0 5px 2px rgba(107, 150, 205, 0.6);
+        box-shadow: 0 2px 4px rgba(107, 150, 205, 0.6);
       }
     `
   },

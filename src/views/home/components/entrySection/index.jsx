@@ -4,6 +4,7 @@ import { GithubOutlined, WechatOutlined, QqOutlined } from '@ant-design/icons';
 import BaseModal from 'src/components/BaseModal';
 import MoveAnimation from '@/components/Animation/moveAnimation';
 import PropTypes from 'prop-types';
+import NextPageBtn from '@/views/home/components/nextPageBtn';
 
 /**
  * @description: 个人信息
@@ -52,7 +53,7 @@ const MainSection = memo(({ goToGitHub, showDialog }) => {
 				</div>
 			</MoveAnimation>
 			{/* 联系方式 */}
-			<MoveAnimation start={'40px'} duration={'2s'}>
+			<MoveAnimation start={'35px'} duration={'1.8s'}>
 				<div className='personal-info'>
 					<span>EliaukRender</span>
 					<div className='divider'></div>
@@ -73,6 +74,8 @@ const MainSection = memo(({ goToGitHub, showDialog }) => {
 					/>
 				</div>
 			</MoveAnimation>
+			{/* 下一页按钮 */}
+			<NextPageBtn></NextPageBtn>
 		</Fragment>
 	);
 });

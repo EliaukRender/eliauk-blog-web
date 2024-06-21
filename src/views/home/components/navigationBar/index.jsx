@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { NavigationBarWrapper } from '@/views/home/components/navigationBar/styles';
 import { HomeOutlined, FundProjectionScreenOutlined, UpOutlined, DownOutlined, UserOutlined, CommentOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setCurSectionId } from '@/store/modules/globalReducer';
 import classNames from 'classnames';
 import { handleScrollTo } from '@/utils/handleScrollPage';
@@ -14,9 +14,12 @@ const NavigationBar = () => {
 		{ id: 2, name: '博主简介' },
 		{ id: 3, name: '留言板' }
 	];
-	const { currentSectionId } = useSelector((state) => ({
-		currentSectionId: state.global.currentSectionId
-	}));
+	const { currentSectionId } = useSelector(
+		(state) => ({
+			currentSectionId: state.global.currentSectionId
+		}),
+		shallowEqual
+	);
 	const dispatch = useDispatch();
 
 	// 向下翻页

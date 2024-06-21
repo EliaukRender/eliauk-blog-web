@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from '@/router';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setScrollY } from '@/store/modules/globalReducer';
 import { setCurSectionId } from '@/store/modules/globalReducer';
 import { AppWrapper } from '@/AppStyles';
@@ -9,9 +9,12 @@ import { AppWrapper } from '@/AppStyles';
 const App = () => {
 	const dispatch = useDispatch();
 	let oldScrollY = 0;
-	const { scrollY } = useSelector((state) => ({
-		scrollY: state.global.scrollY
-	}));
+	const { scrollY } = useSelector(
+		(state) => ({
+			scrollY: state.global.scrollY
+		}),
+		shallowEqual
+	);
 
 	useEffect(() => {
 		/**
