@@ -84,3 +84,27 @@ v
 Fsrc/views/home/components/projectSection/css/ProjectOverviewWrapper.js,2\6\26ad09171985c111312718e3f261ce67d267b0e0
 @
 src/AppStyles.js,a\4\a4648b2ca7a67992da73033ed91977b4ab9c5a86
+Y
+)src/assets/svgIcons/icons/elementPlus.svg,8\d\8d072ee6886135dc38908464fc94de9ef157e2ae
+Q
+!src/assets/svgIcons/icons/vue.svg,6\1\6115265d2e114e0f21379883e0f0aef10f9fe6ba
+U
+%src/assets/svgIcons/icons/element.svg,a\a\aa5e69865a58a3436fb1f65d45410438d318b074
+T
+$src/assets/svgIcons/icons/nodejs.svg,1\1\112fc412ce5080a1a909f937b67e862911bab54f
+Q
+!src/assets/svgIcons/icons/koa.svg,0\e\0e24c4a8e7b266615d75ef1ca21d4494482b7a9b
+R
+"src/assets/svgIcons/icons/vite.svg,1\7\178cf04850b610d5cb9827887bddca1bab474161
+X
+(src/assets/svgIcons/icons/typescript.svg,c\b\cbc68f61aa06db9703307f7c82cdf8f4c7ca31da
+S
+#src/assets/svgIcons/icons/pinia.svg,5\a\5af35c4c8917bce859a04fe284c033c8895756cd
+S
+#src/assets/svgIcons/icons/mysql.svg,a\4\a441d1d8d33e8c9988be142560b87365cc2d4e27
+P
+ src/components/SvgIcon/index.jsx,9\e\9ef361717ebfbaded98df028c7367431db0e6988
+T
+$src/assets/svgIcons/icons/system.svg,0\7\07c383d4ab717a87e8d9dc0f9f4a63ef46bc4946
+t
+Dsrc/components/Animation/FadeInViewAnimation/FadeInAnimationComp.jsx,7\c\7c70aa359855254fdcf5b49480fc1e1284a83a76

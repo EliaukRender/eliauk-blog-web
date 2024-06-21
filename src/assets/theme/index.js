@@ -17,7 +17,22 @@ const appTheme = {
       &:hover {
         box-shadow: 0 2px 4px rgba(107, 150, 205, 0.6);
       }
-    `
+    `,
+    // 文本颜色线性渐变
+    textGradient: `
+    	background: linear-gradient(45deg, #64b5f6, #9575cd);
+		  -webkit-background-clip: text;
+		  -webkit-text-fill-color: transparent;
+		`,
+    // 图标hover时的放大效果
+    hoverCustomScale: function (scale) {
+      return `
+        transition: transform 0.3s ease;
+			  &:hover {
+				  transform: scale(${scale});
+			  }
+      `
+    }
   },
   // 动画
   animation: {

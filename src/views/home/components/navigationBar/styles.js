@@ -3,7 +3,7 @@ import { primaryColor } from '@/assets/css/variables';
 
 export const NavigationBarWrapper = styled.div`
 	position: fixed;
-	right: 50px;
+	right: 35px;
 	top: 50%;
 	transform: translateY(-50%);
 	font-size: 20px;

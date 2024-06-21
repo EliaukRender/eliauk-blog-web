@@ -41,6 +41,7 @@ export const FirstSectionWrapper = styled.div`
 		align-items: center;
 		margin-bottom: 50px;
 		cursor: pointer;
+		${(props) => props.theme.mixins.hoverCustomScale(1.05)};
 
 		&:after {
 			content: '';
@@ -98,6 +99,7 @@ export const FirstSectionWrapper = styled.div`
 
 		.anticon {
 			margin: 0 10px;
+			${(props) => props.theme.mixins.hoverCustomScale(1.3)};
 		}
 	}
 `;
