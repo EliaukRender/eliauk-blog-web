@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 import { HomeWrapper } from '@/views/home/styles';
-import NavigationBar from 'src/views/home/components/navigationBar';
-import ProjectSection from '@/views/home/components/projectSection';
-import EntrySection from 'src/views/home/components/entrySection';
-import PersonalProfileSection from 'src/views/home/components/profileSection';
+import NavigationBar from 'src/views/home/components/NavigationBar';
+import ProjectSection from '@/views/projectSection';
+import EntrySection from '@/views/entrySection';
+import PersonalProfileSection from '@/views/profileSection';
 import { shallowEqual, useSelector } from 'react-redux';
-import MessageSection from '@/views/home/components/messageSection';
+import MessageSection from '@/views/messageSection';
 
 const Home = () => {
 	const { currentSectionId } = useSelector(

@@ -20,6 +20,7 @@ module.exports = {
 		process: 'readonly'
 	},
 	rules: {
+		'react/react-in-jsx-scope': 'off', // 在这里关闭这个规则
 		quotes: ['error', 'single'], // 强制使用单引号
 		'comma-dangle': ['warn', 'never'] // 结尾有逗号时提示警告
 	}
