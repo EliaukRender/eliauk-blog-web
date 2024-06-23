@@ -4,7 +4,6 @@ export const HomeImageWrapper = styled.div`
 	.img-box {
 		width: 180px;
 		height: 180px;
-		border-radius: 50%;
 		position: relative;
 		display: flex;
 		justify-content: center;
@@ -39,8 +38,8 @@ export const HomeImageWrapper = styled.div`
 		.person-pic {
 			width: 160px;
 			height: 160px;
-			border-radius: 50%; /* 将图片设置为圆形 */
-			z-index: 9999;
+			z-index: 10;
+			border-radius: 50%;
 		}
 	}
 `;

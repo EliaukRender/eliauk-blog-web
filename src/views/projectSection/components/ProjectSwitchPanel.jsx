@@ -2,8 +2,9 @@ import React, { memo, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ProjectSwitchPanelWrapper } from '@/views/projectSection/css/ProjectSwitchPanel';
 import FadeInAnimationComp from '@/components/Animation/FadeInViewAnimation/FadeInAnimationComp';
-import MessageToast from '@/components/MessageToast';
+// import MessageToast from '@/components/MessageToast';
 import PropTypes from 'prop-types';
+import { motion, LayoutGroup } from 'framer-motion';
 
 /**
  * @description: 项目切换面板
@@ -12,15 +13,12 @@ const ProjectSwitchPanel = ({ onChangeProjectName }) => {
 	const projectList = [
 		{ id: 1, name: 'EliaukManage' },
 		{ id: 2, name: 'EliaukBlog' },
-		{ id: 3, name: 'EliaukCloudMusic' }
+		{ id: 3, name: 'EliaukMusic' }
 	];
 	const [curProjectId, setCurProjectId] = useState(1);
 
 	// 切换显示的项目
 	const changeProject = (id) => {
-		if (id === 3) {
-			return MessageToast.warning('正在开发中~');
-		}
 		setCurProjectId(id);
 	};
 
@@ -31,20 +29,25 @@ const ProjectSwitchPanel = ({ onChangeProjectName }) => {
 	return (
 		<FadeInAnimationComp>
 			<ProjectSwitchPanelWrapper>
-				<div className='project-switch'>
-					{projectList.map((item) => {
-						return (
-							<div
-								key={item.id}
-								className={classNames('item', curProjectId === item.id ? 'item-active' : '')}
-								onClick={() => {
-									changeProject(item.id);
-								}}>
-								{item.name}
-							</div>
-						);
-					})}
-				</div>
+				<motion.div className='project-switch' layout>
+					<LayoutGroup>
+						{projectList.map((item) => {
+							return (
+								<motion.div
+									layout={'position'}
+									style={{ width: curProjectId === item.id ? '220px' : '150px' }}
+									transition={{ duration: 0.8, ease: 'linear' }}
+									key={item.id}
+									className={classNames('item', curProjectId === item.id ? 'item-active' : '')}
+									onTap={() => {
+										changeProject(item.id);
+									}}>
+									<motion.span layout> {item.name}</motion.span>
+								</motion.div>
+							);
+						})}
+					</LayoutGroup>
+				</motion.div>
 			</ProjectSwitchPanelWrapper>
 		</FadeInAnimationComp>
 	);

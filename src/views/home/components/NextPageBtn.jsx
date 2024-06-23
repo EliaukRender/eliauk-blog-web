@@ -28,7 +28,7 @@ const NextPageBtn = () => {
 				onClick={() => {
 					clickNext();
 				}}>
-				<motion.div animate={{ translateY: 8 }} transition={{ delay: 2, duration: 1, repeat: 999, repeatType: 'mirror' }}>
+				<motion.div animate={{ translateY: 8 }} transition={{ delay: 2, duration: 0.7, repeat: 999, repeatType: 'mirror' }}>
 					<ArrowDownOutlined />
 				</motion.div>
 			</div>

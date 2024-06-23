@@ -5,6 +5,7 @@ import ProjectImages from '@/views/projectSection/components/ProjectImages';
 import ProjectIntroduce from '@/views/projectSection/components/ProjectIntroduce';
 import ProjectSwitchPanel from '@/views/projectSection/components/ProjectSwitchPanel';
 import MessageToast from '@/components/MessageToast';
+import FadeInAnimationComp from '@/components/Animation/FadeInViewAnimation/FadeInAnimationComp';
 
 /**
  * @description: 项目细节介绍
@@ -36,11 +37,15 @@ const ProjectSection = () => {
 			<div className='project-box'>
 				<div className='left'>
 					{/* 项目轮播图 */}
-					<ProjectImages projectName={curProjectName}></ProjectImages>
+					<FadeInAnimationComp>
+						<ProjectImages projectName={curProjectName}></ProjectImages>
+					</FadeInAnimationComp>
 				</div>
 				<div className='right'>
 					{/* 项目文字介绍 */}
-					<ProjectIntroduce goToProject={goToProject} projectName={curProjectName}></ProjectIntroduce>
+					<FadeInAnimationComp>
+						<ProjectIntroduce goToProject={goToProject} projectName={curProjectName}></ProjectIntroduce>
+					</FadeInAnimationComp>
 				</div>
 			</div>
 		</ProjectSectionWrapper>

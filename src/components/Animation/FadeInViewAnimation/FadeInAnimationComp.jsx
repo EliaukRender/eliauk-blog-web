@@ -1,27 +1,28 @@
 import React, { memo } from 'react';
 import { useInView } from 'react-intersection-observer';
-import './styles.css'; // 样式文件
+import PropTypes from 'prop-types';
+import { FadeInAnimateWrapper } from '@/components/Animation/FadeInViewAnimation/styles'; // 样式文件
 
 /**
- * @description: 动画懒加载组件
+ * @description: 动画懒加载组件(元素进入到屏幕视口的时候自动播放动画)
  */
-const FadeInAnimationComp = (props) => {
+const FadeInAnimationComp = ({ children }) => {
 	const { ref, inView } = useInView({
 		threshold: 0.4, // 设置阈值，当40%以上的元素进入视口时触发
 		triggerOnce: true // 动画仅触发一次
 	});
 
 	return (
-		<div className={`${inView ? 'animate' : ''}`} ref={ref}>
-			{inView && props.children}
-		</div>
+		<FadeInAnimateWrapper>
+			<div className={`${inView ? 'animate' : ''}`} ref={ref}>
+				{inView && children}
+			</div>
+		</FadeInAnimateWrapper>
 	);
 };
 
-import PropTypes from 'prop-types';
-
 FadeInAnimationComp.propTypes = {
-	children: PropTypes.element
+	children: PropTypes.node
 };
 
 export default memo(FadeInAnimationComp);

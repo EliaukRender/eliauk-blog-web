@@ -1,7 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ProjectIntroduceWrapper } from '@/views/projectSection/css/ProjectIntroduce';
-import FadeInAnimationComp from '@/components/Animation/FadeInViewAnimation/FadeInAnimationComp';
 import { Divider, Descriptions } from 'antd';
 import SvgIcon from '@/components/SvgIcon';
 import { projectInfo } from '@/views/projectSection/constant';
@@ -35,39 +34,36 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 	};
 
 	return (
-		<FadeInAnimationComp>
-			<ProjectIntroduceWrapper>
-				<div
-					className='title'
-					onClick={() => {
-						goToProject(projectName);
-					}}>
-					<SvgIcon name='backendSystem' width={50} height={50}></SvgIcon>
-					<span>{projectName}</span>
-				</div>
-				<Divider />
-				<div className='sub-title'>技术栈</div>
-				<div className='svg-list'>
-					{technologyStack?.map((item) => {
-						return (
-							<div
-								key={item.name}
-								onClick={() => {
-									openUrl(item.url);
-								}}>
-								<SvgIcon name={item.name} width={item.name === 'redux' ? 50 : 60} height={60}></SvgIcon>
-							</div>
-						);
-					})}
-				</div>
-				<div className='sub-title'>简介</div>
-				{/*{!!descriptionItems?.length && <Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />}*/}
-				<Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />
-			</ProjectIntroduceWrapper>
-		</FadeInAnimationComp>
+		<ProjectIntroduceWrapper>
+			<div
+				className='title'
+				onClick={() => {
+					goToProject(projectName);
+				}}>
+				<SvgIcon name='backendSystem' width={50} height={50}></SvgIcon>
+				<span>{projectName}</span>
+			</div>
+			<Divider />
+			<div className='sub-title'>技术栈</div>
+			<div className='svg-list'>
+				{technologyStack?.map((item) => {
+					return (
+						<div
+							key={item.name}
+							onClick={() => {
+								openUrl(item.url);
+							}}>
+							<SvgIcon name={item.name} width={item.name === 'redux' ? 50 : 60} height={60}></SvgIcon>
+						</div>
+					);
+				})}
+			</div>
+			<div className='sub-title'>简介</div>
+			{/*{!!descriptionItems?.length && <Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />}*/}
+			<Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />
+		</ProjectIntroduceWrapper>
 	);
 };
-
 ProjectIntroduce.propTypes = {
 	goToProject: PropTypes.func,
 	projectName: PropTypes.string

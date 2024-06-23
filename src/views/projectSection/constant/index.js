@@ -4,7 +4,8 @@ const EliaukManage_descriptionItems = [
 		key: '1',
 		label: '概述',
 		span: 3,
-		children: '该系统的应用场景是后台管理业务，使用当下较热门的前端技术栈组合vue3+ts+pinia+vite+elementUI，封装了部分常用的组件、指令、axios网络请求。'
+		children:
+			'该系统的应用场景是后台管理业务，使用当下较热门的前端技术栈组合vue3+ts+pinia+vite+elementUI，封装了部分常用的组件、指令、axios网络请求。'
 	},
 	{
 		key: '2',
@@ -44,7 +45,8 @@ const EliaukBlog_descriptionItems = [
 		key: '1',
 		label: '概述',
 		span: 3,
-		children: '该系统是个人博客系统（本系统），使用的技术栈主要是react与koa。页面均通过函数式组件实现，通过redux进行全局状态管理，引入framer-motion动画库实现动画效果。'
+		children:
+			'该系统是个人博客系统（本系统），使用的技术栈主要是react与koa。页面均通过函数式组件实现，通过redux进行全局状态管理，引入framer-motion动画库实现动画效果。'
 	},
 	{
 		key: '2',
@@ -82,5 +84,6 @@ const EliaukBlog_technologyStack = [
  */
 export const projectInfo = {
 	EliaukManage: { descriptionItems: EliaukManage_descriptionItems, technologyStack: EliaukManage_technologyStack },
-	EliaukBlog: { descriptionItems: EliaukBlog_descriptionItems, technologyStack: EliaukBlog_technologyStack }
+	EliaukBlog: { descriptionItems: EliaukBlog_descriptionItems, technologyStack: EliaukBlog_technologyStack },
+	EliaukMusic: { descriptionItems: EliaukBlog_descriptionItems, technologyStack: EliaukBlog_technologyStack }
 };

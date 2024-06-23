@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { primaryColor, secondaryColor } from '@/assets/css/variables';
+import { primaryColor, primaryColorRgba } from '@/assets/css/variables';
 
 export const ProjectSwitchPanelWrapper = styled.div`
 	.project-switch {
@@ -8,28 +8,25 @@ export const ProjectSwitchPanelWrapper = styled.div`
 		left: 50%;
 		transform: translateX(-50%);
 		display: flex;
+		align-items: center;
+		justify-content: center;
 		cursor: pointer;
+		background-color: rgba(107, 150, 205, 0.2);
+		padding: 10px;
+		gap: 10px;
+		border-radius: 35px;
 
 		.item {
-			width: 180px;
 			height: 50px;
 			line-height: 50px;
 			text-align: center;
-			border: 1px solid ${secondaryColor};
-			margin-right: -1px;
 			font-size: 16px;
-			box-sizing: border-box;
-
-			&:first-child {
-				border-radius: 25px 0 0 25px;
-			}
-
-			&:last-child {
-				border-radius: 0 25px 25px 0;
-			}
+			background-color: #fff;
+			border-radius: 25px;
+			color: ${primaryColor};
 
 			&-active {
-				background-color: ${primaryColor};
+				background-color: ${primaryColorRgba};
 				color: #ffffff;
 				font-weight: 600;
 			}

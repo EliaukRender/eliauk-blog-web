@@ -10,7 +10,7 @@ const HomeImage = () => {
 	return (
 		<HomeImageWrapper>
 			<MoveAnimation>
-				<motion.div className='img-box' whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }} transition={{ ease: 'linear' }}>
+				<motion.div className='img-box' whileHover={{ scale: 1.1 }}>
 					<img className='person-pic' src={require('@/assets/image/personal-pic.jpg')} alt='' />
 				</motion.div>
 			</MoveAnimation>
