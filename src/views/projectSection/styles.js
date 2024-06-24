@@ -13,6 +13,7 @@ export const ProjectSectionWrapper = styled.div`
 
 		.left {
 			width: 60%;
+			height: 600px;
 		}
 
 		.right {

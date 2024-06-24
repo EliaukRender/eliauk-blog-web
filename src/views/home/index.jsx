@@ -6,6 +6,7 @@ import EntrySection from '@/views/entrySection';
 import PersonalProfileSection from '@/views/profileSection';
 import { shallowEqual, useSelector } from 'react-redux';
 import MessageSection from '@/views/messageSection';
+import TopHomeBar from '@/views/home/components/TopHomeBar';
 
 const Home = () => {
 	const { currentSectionId } = useSelector(
@@ -18,6 +19,9 @@ const Home = () => {
 		<HomeWrapper>
 			{/* 定位导航栏 */}
 			{currentSectionId !== 0 && <NavigationBar></NavigationBar>}
+			{/* 首页菜单栏 */}
+			<TopHomeBar></TopHomeBar>
+
 			{/* 首页 */}
 			<EntrySection />
 			{/* 项目 */}

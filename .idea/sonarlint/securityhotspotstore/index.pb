@@ -72,8 +72,6 @@ Z
 *src/components/ProgressIndicator/styles.js,4\9\4936d132546875d871aecdcee75c7dcace2dab09
 J
 src/hooks/useAppScrollY.js,f\b\fb97fd72d659ba0d5aa6617005687d5643b4abd2
-g
-7src/components/Animation/FadeInViewAnimation/styles.css,2\0\20a6ad17fddcb3954085771f3aeeb50d8a200062
 P
  src/views/entrySection/index.jsx,0\6\06afc276538177ba542929df5b442f3e4263be66
 \
@@ -140,3 +138,11 @@ R
 "src/assets/svgIcons/icons/antd.svg,b\4\b4da825a4e629d8e5852d8e9bd9a50944fa4bd5a
 f
 6src/components/Animation/FadeInViewAnimation/styles.js,7\7\77c03fb111895a101e8d62c0da4c6c6676b4c461
+=
+other/todo.md,f\6\f6c0546cc744fdbf4c0ac604db4abc118cf9fe40
+X
+(src/views/home/components/TopHomeBar.jsx,b\8\b8654e85cae0b8609d18ba042fbdf10b73180d40
+V
+&src/views/home/css/TopHomeBarStyles.js,1\d\1d2a39c159d0780640154eeb0c84a28fd88d1841
+J
+src/hooks/useTopHomeBar.js,0\e\0e584e0ca69036e3638b2555e96dddbe47bc5f1a

@@ -13,6 +13,7 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 	const [technologyStack, setTechnologyStack] = useState([]);
 
 	useEffect(() => {
+		console.log('projectName');
 		// 需要先判断projectName是否为有效值
 		if (projectName) {
 			let { descriptionItems, technologyStack } = projectInfo[projectName];
@@ -32,6 +33,8 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 	const openUrl = (url) => {
 		window.open(url, '_blank');
 	};
+
+	console.log('projectName1');
 
 	return (
 		<ProjectIntroduceWrapper>

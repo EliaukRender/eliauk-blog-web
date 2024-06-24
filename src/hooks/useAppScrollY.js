@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { setCurSectionId, setScrollY } from '@/store/modules/globalReducer';
+import { setCurSectionId, setScrollDirection, setScrollY } from '@/store/modules/globalReducer';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 /**
@@ -25,6 +25,7 @@ const useAppScrollY = () => {
 		// 页面往下滚动
 		if (window.scrollY > oldScrollY) {
 			oldScrollY = window.scrollY;
+			dispatch(setScrollDirection('down'));
 			if (window.scrollY % window.innerHeight > 0.9 * window.innerHeight) {
 				dispatch(setCurSectionId(Math.ceil(window.scrollY / window.innerHeight)));
 			}
@@ -36,6 +37,7 @@ const useAppScrollY = () => {
 		// 页面往上滚动
 		if (window.scrollY < oldScrollY) {
 			oldScrollY = window.scrollY;
+			dispatch(setScrollDirection('up'));
 			if (window.scrollY % window.innerHeight < 0.1 * window.innerHeight) {
 				dispatch(setCurSectionId(Math.floor(window.scrollY / window.innerHeight)));
 			}

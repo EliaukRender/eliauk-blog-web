@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { primaryColor } from '@/assets/css/variables';
 
 export const ProjectImagesWrapper = styled.div`
-	overflow: hidden;
-
 	.ant-carousel {
 		.slick-slider {
 			.slick-arrow {

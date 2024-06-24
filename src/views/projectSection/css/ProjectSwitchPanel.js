@@ -20,7 +20,7 @@ export const ProjectSwitchPanelWrapper = styled.div`
 			height: 50px;
 			line-height: 50px;
 			text-align: center;
-			font-size: 16px;
+			font-size: 20px;
 			background-color: #fff;
 			border-radius: 25px;
 			color: ${primaryColor};

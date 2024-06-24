@@ -35,7 +35,7 @@ const ProjectSwitchPanel = ({ onChangeProjectName }) => {
 							return (
 								<motion.div
 									layout={'position'}
-									style={{ width: curProjectId === item.id ? '220px' : '150px' }}
+									style={{ width: curProjectId === item.id ? '250px' : '200px' }}
 									transition={{ duration: 0.8, ease: 'linear' }}
 									key={item.id}
 									className={classNames('item', curProjectId === item.id ? 'item-active' : '')}
