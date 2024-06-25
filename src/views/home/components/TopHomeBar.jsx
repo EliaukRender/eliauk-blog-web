@@ -1,11 +1,12 @@
-import React, { memo } from 'react';
-import { TopHomeBarWrapper } from '@/views/home/css/TopHomeBarStyles';
+import React, {memo} from 'react';
+import {TopHomeBarWrapper} from '@/views/home/css/TopHomeBarStyles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { motion } from 'framer-motion';
-import { useTopHomeBar } from '@/hooks/useTopHomeBar';
-import { useSelector } from 'react-redux';
-import { handleScrollTo } from '@/utils/handleScrollPage';
+import {motion} from 'framer-motion';
+import {useTopHomeBar} from '@/hooks/useTopHomeBar';
+import {useSelector} from 'react-redux';
+import {handleScrollTo} from '@/utils/handleScrollPage';
+import LoginRegister from '@/views/home/components/LoginRegister';
 
 /**
  * @description: 首页菜单导航栏
@@ -36,18 +37,16 @@ const TopHomeBar = () => {
 								key={item.id}
 								className={classNames('item', currentSectionId === item.id ? 'active' : '')}
 								onClick={() => {
-									console.log('点击', item.id);
 									handleScrollTo(window.innerHeight * item.id);
 								}}>
-								{item.name}
+								<div className={currentSectionId === item.id ? 'active-bar' : ''}></div>
+								<span>{item.name}</span>
 							</div>
 						);
 					})}
 				</div>
-				<div className='login-box'>
-					<div className='item'>注册</div>
-					<div className='item'>登录</div>
-				</div>
+				{/*  登录注册 */}
+				<LoginRegister></LoginRegister>
 			</motion.div>
 		</TopHomeBarWrapper>
 	);

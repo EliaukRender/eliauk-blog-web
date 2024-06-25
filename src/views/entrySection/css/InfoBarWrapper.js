@@ -1,19 +1,20 @@
 import styled from 'styled-components';
-import { primaryColorRgba } from '@/assets/css/variables';
+import { hexToRgba } from '@/utils/hexToRgba';
+import { french_Cool_light_gray, mld_blue_one } from '@/assets/css/variables';
 
 export const InfoBarWrapper = styled.div`
 	.personal-info {
-		width: 400px;
-		height: 70px;
+		max-width: 400px;
+		padding: 0 40px;
+		height: 60px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border-radius: 35px;
-		background-color: ${primaryColorRgba};
-		margin-bottom: 30px;
+		border-radius: 30px;
+		background-color: ${hexToRgba(mld_blue_one, 0.6)};
 		font-weight: 600;
-		font-size: 20px;
-		color: #ffffff;
+		font-size: 22px;
+		color: ${french_Cool_light_gray};
 		cursor: pointer;
 		${(props) => props.theme.mixins.boxShadowHover};
 

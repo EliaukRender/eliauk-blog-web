@@ -1,32 +1,34 @@
 import styled from 'styled-components';
-import { primaryColor, primaryColorRgba } from '@/assets/css/variables';
+import { mld_blue_two, primaryColor } from '@/assets/css/variables';
+import { hexToRgba } from '@/utils/hexToRgba';
 
 export const ProjectSwitchPanelWrapper = styled.div`
 	.project-switch {
 		position: absolute;
-		top: 30px;
+		top: 20px;
 		left: 50%;
 		transform: translateX(-50%);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
-		background-color: rgba(107, 150, 205, 0.2);
+		background-color: ${hexToRgba(mld_blue_two, 0.5)};
 		padding: 10px;
 		gap: 10px;
 		border-radius: 35px;
+		font-size: 18px;
 
+		${(props) => props.theme.mixins.boxShadowHover}
 		.item {
-			height: 50px;
-			line-height: 50px;
+			height: 40px;
+			line-height: 40px;
 			text-align: center;
-			font-size: 20px;
-			background-color: #fff;
-			border-radius: 25px;
+			background-color: #ffffff;
+			border-radius: 20px;
 			color: ${primaryColor};
 
 			&-active {
-				background-color: ${primaryColorRgba};
+				background-color: ${mld_blue_two};
 				color: #ffffff;
 				font-weight: 600;
 			}

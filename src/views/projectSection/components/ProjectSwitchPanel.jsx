@@ -1,10 +1,9 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import classNames from 'classnames';
-import { ProjectSwitchPanelWrapper } from '@/views/projectSection/css/ProjectSwitchPanel';
+import {ProjectSwitchPanelWrapper} from '@/views/projectSection/css/ProjectSwitchPanel';
 import FadeInAnimationComp from '@/components/Animation/FadeInViewAnimation/FadeInAnimationComp';
-// import MessageToast from '@/components/MessageToast';
 import PropTypes from 'prop-types';
-import { motion, LayoutGroup } from 'framer-motion';
+import {LayoutGroup, motion} from 'framer-motion';
 
 /**
  * @description: 项目切换面板

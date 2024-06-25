@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { hexToRgba } from '@/utils/hexToRgba';
+import { french_Cool_blue, french_Cool_gray } from '@/assets/css/variables';
 
 export const HomeImageWrapper = styled.div`
 	.img-box {
@@ -19,7 +21,7 @@ export const HomeImageWrapper = styled.div`
 			width: 100%;
 			height: 100%;
 			border-radius: 50%;
-			background: linear-gradient(rgba(107, 150, 205, 0), rgba(107, 150, 205, 0.5));
+			background: linear-gradient(${hexToRgba(french_Cool_blue, 0.3)}, ${hexToRgba(french_Cool_gray, 0.3)});
 			animation: wave 3s infinite ease-in-out;
 		}
 
@@ -41,5 +43,11 @@ export const HomeImageWrapper = styled.div`
 			z-index: 10;
 			border-radius: 50%;
 		}
+	}
+
+	.duola {
+		width: 200px;
+		margin-bottom: 50px;
+		cursor: pointer;
 	}
 `;

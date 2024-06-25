@@ -4,21 +4,14 @@ import NavigationBar from 'src/views/home/components/NavigationBar';
 import ProjectSection from '@/views/projectSection';
 import EntrySection from '@/views/entrySection';
 import PersonalProfileSection from '@/views/profileSection';
-import { shallowEqual, useSelector } from 'react-redux';
 import MessageSection from '@/views/messageSection';
 import TopHomeBar from '@/views/home/components/TopHomeBar';
 
 const Home = () => {
-	const { currentSectionId } = useSelector(
-		(state) => ({
-			currentSectionId: state.global.currentSectionId
-		}),
-		shallowEqual
-	);
 	return (
 		<HomeWrapper>
 			{/* 定位导航栏 */}
-			{currentSectionId !== 0 && <NavigationBar></NavigationBar>}
+			<NavigationBar></NavigationBar>
 			{/* 首页菜单栏 */}
 			<TopHomeBar></TopHomeBar>
 

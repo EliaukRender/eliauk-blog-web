@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import homeBg from '@/assets/image/home-bg.jpg';
+import { hexToRgba } from '@/utils/hexToRgba';
+import { french_Cool_blue } from '@/assets/css/variables';
 
 export const FirstSectionWrapper = styled.div`
 	position: relative;
@@ -24,7 +26,7 @@ export const FirstSectionWrapper = styled.div`
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(107, 150, 205, 0.08);
+		background-color: ${hexToRgba(french_Cool_blue, 0.05)};
 		z-index: -1;
 	}
 `;

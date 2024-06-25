@@ -6,6 +6,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setCurSectionId } from '@/store/modules/globalReducer';
 import classNames from 'classnames';
 import { handleScrollTo } from '@/utils/handleScrollPage';
+import { useNavigationAnimation } from '@/hooks/useNavigationAnimation';
 
 const NavigationBar = () => {
 	const menuList = [
@@ -21,6 +22,7 @@ const NavigationBar = () => {
 		shallowEqual
 	);
 	const dispatch = useDispatch();
+	const scope = useNavigationAnimation(currentSectionId); // 动画
 
 	// 向下翻页
 	const handleNextPage = () => {
@@ -42,12 +44,14 @@ const NavigationBar = () => {
 
 	return (
 		<NavigationBarWrapper>
-			<UpOutlined
-				onClick={() => {
-					handleForwardPage();
-				}}
-			/>
-			<div className='bar-box'>
+			<div className='bar-box' ref={scope}>
+				<div>
+					<UpOutlined
+						onClick={() => {
+							handleForwardPage();
+						}}
+					/>
+				</div>
 				{menuList.map((item) => {
 					return (
 						<div
@@ -65,8 +69,10 @@ const NavigationBar = () => {
 						</div>
 					);
 				})}
+				<div>
+					<DownOutlined onClick={handleNextPage} />
+				</div>
 			</div>
-			<DownOutlined onClick={handleNextPage} />
 		</NavigationBarWrapper>
 	);
 };

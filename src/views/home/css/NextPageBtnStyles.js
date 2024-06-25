@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { primaryColorRgba } from '@/assets/css/variables';
+import { hexToRgba } from '@/utils/hexToRgba';
+import { mld_blue_one } from '@/assets/css/variables';
 
 export const NextPageBtnWrapper = styled.div`
 	position: absolute;
@@ -13,7 +14,7 @@ export const NextPageBtnWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: ${primaryColorRgba};
+	background-color: ${hexToRgba(mld_blue_one, 0.6)};
 	cursor: pointer;
 	color: #eaeaea;
 	font-size: 24px;
