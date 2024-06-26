@@ -2,11 +2,11 @@ import { stagger, useAnimate } from 'framer-motion';
 import { useEffect } from 'react';
 
 /**
- * @description: list类型的列表的动画效果
+ * @description: 登录注册popover的动画效果
  */
-export const useLoginBoxAnimation = (isOpen) => {
+export const useLoginOptionsAnimation = (isOpen) => {
 	const [scope, animate] = useAnimate();
-	const staggerMenuItems = stagger(0.2, { startDelay: 0.1 }); // 延迟时间
+	const staggerMenuItems = stagger(0.1, { startDelay: 0.1 }); // 延迟时间
 
 	useEffect(() => {
 		// scope是播放动画的元素的父级元素
@@ -22,7 +22,7 @@ export const useLoginBoxAnimation = (isOpen) => {
 				duration: 0.5
 			}
 		);
-		animate('li', isOpen ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : { opacity: 0, scale: 0.3, filter: 'blur(20px)' }, {
+		animate('div', isOpen ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : { opacity: 0, scale: 0.3, filter: 'blur(20px)' }, {
 			duration: 0.2,
 			delay: isOpen ? staggerMenuItems : 0
 		});

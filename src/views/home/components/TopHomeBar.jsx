@@ -1,12 +1,12 @@
-import React, {memo} from 'react';
-import {TopHomeBarWrapper} from '@/views/home/css/TopHomeBarStyles';
+import React, { memo } from 'react';
+import { TopHomeBarWrapper } from '@/views/home/css/TopHomeBarStyles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {motion} from 'framer-motion';
-import {useTopHomeBar} from '@/hooks/useTopHomeBar';
-import {useSelector} from 'react-redux';
-import {handleScrollTo} from '@/utils/handleScrollPage';
-import LoginRegister from '@/views/home/components/LoginRegister';
+import { motion } from 'framer-motion';
+import { useTopHomeBar } from '@/hooks/useTopHomeBar';
+import { useSelector } from 'react-redux';
+import { handleScrollTo } from '@/utils/handleScrollPage';
+import UserLoginRegister from '@/views/home/components/UserLoginRegister';
 
 /**
  * @description: 首页菜单导航栏
@@ -45,8 +45,8 @@ const TopHomeBar = () => {
 						);
 					})}
 				</div>
-				{/*  登录注册 */}
-				<LoginRegister></LoginRegister>
+				{/*  登录注册入口 */}
+				<UserLoginRegister></UserLoginRegister>
 			</motion.div>
 		</TopHomeBarWrapper>
 	);

@@ -3,11 +3,17 @@
   .qr-code {
     width: 100%;
   }
-
+  
   .tip {
     text-align: center;
     margin-top: 10px;
   }
 }
 
-/* FirstSection组件 */
+/* 登录注册弹窗 */
+.login-register-modal {
+  .ant-modal-content {
+    padding: 0;
+    border-radius: 15px;
+  }
+}

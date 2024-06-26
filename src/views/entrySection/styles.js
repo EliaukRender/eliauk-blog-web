@@ -27,6 +27,6 @@ export const FirstSectionWrapper = styled.div`
 		width: 100%;
 		height: 100%;
 		background-color: ${hexToRgba(french_Cool_blue, 0.05)};
-		z-index: -1;
+		z-index: 1;
 	}
 `;

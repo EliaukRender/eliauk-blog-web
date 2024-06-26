@@ -27,7 +27,6 @@ export const TopHomeBarWrapper = styled.div`
 			justify-content: flex-start;
 			align-items: center;
 			width: 260px;
-			cursor: pointer;
 
 			.logo {
 				width: 55px;
@@ -55,6 +54,7 @@ export const TopHomeBarWrapper = styled.div`
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				cursor: pointer;
 
 				&:hover {
 					background-color: ${mld_blue_one};

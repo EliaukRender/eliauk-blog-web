@@ -11,7 +11,7 @@ const Home = () => {
 	return (
 		<HomeWrapper>
 			{/* 定位导航栏 */}
-			<NavigationBar></NavigationBar>
+			{false && <NavigationBar></NavigationBar>}
 			{/* 首页菜单栏 */}
 			<TopHomeBar></TopHomeBar>
 

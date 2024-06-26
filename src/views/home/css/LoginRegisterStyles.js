@@ -8,9 +8,10 @@ export const LoginRegisterWrapper = styled.div`
 	justify-content: flex-end;
 	align-items: center;
 	font-size: 14px;
+	z-index: 99;
+	position: relative;
 
 	.login-box {
-		position: relative;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -31,30 +32,32 @@ export const LoginRegisterWrapper = styled.div`
 		img {
 			width: 45px;
 		}
+	}
 
-		.popover {
-			position: absolute;
-			top: 70px;
-			right: 0;
-			padding: 10px;
-			border-radius: 8px;
-			background-color: #ffffff;
-			color: ${french_Cool_blue};
-			font-size: 16px;
+	.popover {
+		position: absolute;
+		top: 70px;
+		right: 0;
+		padding: 10px;
+		border-radius: 8px;
+		background-color: #ffffff;
+		color: ${french_Cool_blue};
+		font-size: 16px;
+		z-index: 99;
 
-			.item {
-				width: 100px;
-				padding: 0 15px;
-				height: 35px;
-				line-height: 35px;
-				text-align: left;
+		.item {
+			width: 100px;
+			padding: 0 15px;
+			height: 35px;
+			line-height: 35px;
+			text-align: left;
+			cursor: pointer;
 
-				&:hover {
-					background-color: ${hexToRgba(mld_blue_one, 0.6)};
-					border-radius: 8px;
-					color: #ffffff;
-					font-weight: 600;
-				}
+			&:hover {
+				background-color: ${hexToRgba(mld_blue_one, 0.6)};
+				border-radius: 8px;
+				color: #ffffff;
+				font-weight: 600;
 			}
 		}
 	}
