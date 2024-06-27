@@ -3,6 +3,8 @@ import { hexToRgba } from '@/utils/hexToRgba';
 import { french_Cool_blue, french_Cool_gray } from '@/assets/css/variables';
 
 export const HomeImageWrapper = styled.div`
+	z-index: 10;
+
 	.img-box {
 		width: 180px;
 		height: 180px;
@@ -40,7 +42,6 @@ export const HomeImageWrapper = styled.div`
 		.person-pic {
 			width: 160px;
 			height: 160px;
-			z-index: 10;
 			border-radius: 50%;
 		}
 	}

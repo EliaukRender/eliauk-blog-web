@@ -16,7 +16,6 @@ export const LoginRegisterWrapper = styled.div`
 		justify-content: center;
 		align-items: center;
 		padding: 0 15px;
-		width: 115px;
 		height: 54px;
 		border-radius: 27px;
 		border: 1px solid ${mld_blue_one};

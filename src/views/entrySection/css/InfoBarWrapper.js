@@ -3,6 +3,8 @@ import { hexToRgba } from '@/utils/hexToRgba';
 import { french_Cool_light_gray, mld_blue_one } from '@/assets/css/variables';
 
 export const InfoBarWrapper = styled.div`
+	z-index: 10;
+
 	.personal-info {
 		max-width: 400px;
 		padding: 0 40px;

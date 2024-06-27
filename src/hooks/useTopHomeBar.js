@@ -1,11 +1,14 @@
-import { useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 import { useAnimationControls } from 'framer-motion';
 import { useEffect } from 'react';
 
 export const useTopHomeBar = () => {
-	const { scrollDirection } = useSelector((state) => ({
-		scrollDirection: state.global.scrollDirection
-	}));
+	const { scrollDirection } = useSelector(
+		(state) => ({
+			scrollDirection: state.global.scrollDirection
+		}),
+		shallowEqual
+	);
 
 	const controls = useAnimationControls();
 	const variants = {

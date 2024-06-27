@@ -6,8 +6,8 @@ export const NextPageBtnWrapper = styled.div`
 	position: absolute;
 	bottom: 30px;
 	left: 50%;
+	z-index: 10;
 	transform: translate(-50%);
-	z-index: 999;
 	width: 50px;
 	height: 50px;
 	border-radius: 50%;

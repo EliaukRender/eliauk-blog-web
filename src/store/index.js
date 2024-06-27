@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import globalReducer from '@/store/modules/globalReducer';
+import userReducer from '@/store/modules/userReducer';
 
 // reducer持久化配置
 const globalReducerPersisCfg = {
@@ -12,7 +13,8 @@ const globalReducerPersisCfg = {
 
 const store = configureStore({
 	reducer: {
-		global: persistReducer(globalReducerPersisCfg, globalReducer) // persistReducer对reducer持久化
+		global: persistReducer(globalReducerPersisCfg, globalReducer), // persistReducer对reducer持久化
+		user: userReducer
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

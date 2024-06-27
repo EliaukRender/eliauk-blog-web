@@ -16,17 +16,18 @@ export const TopHomeBarWrapper = styled.div`
 		left: 0;
 		right: 0;
 		bottom: 0;
-		z-index: 99;
 		background: linear-gradient(45deg, ${hexToRgba(mld_blue_one, 0.9)}, ${hexToRgba(french_Cool_blue, 0.9)});
 		padding: 0 50px;
 		color: ${french_Cool_light_gray};
 		box-sizing: border-box;
+		z-index: 10;
 
 		.logo-box {
 			display: flex;
 			justify-content: flex-start;
 			align-items: center;
 			width: 260px;
+			cursor: pointer;
 
 			.logo {
 				width: 55px;

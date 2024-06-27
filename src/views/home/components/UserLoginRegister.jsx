@@ -1,17 +1,24 @@
-import React, { forwardRef, memo, useState } from 'react';
-import { LoginRegisterWrapper } from '@/views/home/css/LoginRegisterStyles';
-import { MenuOutlined } from '@ant-design/icons';
-import { motion } from 'framer-motion';
-import { useLoginOptionsAnimation } from '@/hooks/useLoginOptionsAnimation.js';
-import LoginDialog from '@/views/LoginRegisterDialog/LoginDialog.jsx';
+import React, {forwardRef, memo, useState} from 'react';
+import {LoginRegisterWrapper} from '@/views/home/css/LoginRegisterStyles';
+import {MenuOutlined} from '@ant-design/icons';
+import {motion} from 'framer-motion';
+import {useLoginOptionsAnimation} from '@/hooks/useLoginOptionsAnimation.js';
+import LoginRegisterDialog from '@/views/LoginRegisterDialog';
+import SvgIcon from '@/components/SvgIcon';
+import {useSelector} from 'react-redux';
 
 /**
  * @description: 用户登录注册的入口
  */
 const UserLoginRegister = () => {
 	const [isOpen, setIsOpen] = useState(false); // popover显示隐藏
+	const [showDialog, setShowDialog] = useState(false); // 显示隐藏登录注册弹窗
+	const [mode, setMode] = useState(null); // 1-打开登录；3-打开注册
 	const scope = useLoginOptionsAnimation(isOpen); // 动画
-	const [showDialog, setShowModal] = useState(false); // 显示隐藏登录弹窗
+
+	const { token } = useSelector((state) => ({
+		token: state.user.token
+	}));
 
 	// 点击空白位置关闭浮窗
 	window.addEventListener('click', () => {
@@ -19,14 +26,15 @@ const UserLoginRegister = () => {
 	});
 
 	// 打开弹窗
-	const openLoginBox = () => {
-		setShowModal(true);
+	const openLoginRegisterDialog = (modeValue) => {
+		setMode(modeValue);
+		setShowDialog(true);
 		setIsOpen(false);
 	};
 
 	// 关闭弹窗
 	const closeDialog = () => {
-		setShowModal(false);
+		setShowDialog(false);
 	};
 
 	return (
@@ -39,7 +47,7 @@ const UserLoginRegister = () => {
 					setIsOpen(!isOpen);
 					event.stopPropagation(); // 阻止冒泡到全局监听的点击事件中
 				}}>
-				<img src={require('@/assets/image/duola.png')} alt='' />
+				<SvgIcon name={token ? 'expression-2' : 'expression-4'}></SvgIcon>
 				<MenuOutlined></MenuOutlined>
 			</motion.div>
 			{/* 登录注册选项的浮窗 */}
@@ -52,21 +60,21 @@ const UserLoginRegister = () => {
 					<div
 						className='item'
 						onClick={() => {
-							openLoginBox();
+							openLoginRegisterDialog(1);
 						}}>
 						登录
 					</div>
 					<div
 						className='item'
 						onClick={() => {
-							openLoginBox();
+							openLoginRegisterDialog(3);
 						}}>
 						注册
 					</div>
 				</motion.ul>
 			</div>
 			{/* 登录注册弹窗 */}
-			{showDialog && <LoginDialog closeDialog={closeDialog} showModal={showDialog}></LoginDialog>}
+			{showDialog && <LoginRegisterDialog closeDialog={closeDialog} showDialog={showDialog} mode={mode}></LoginRegisterDialog>}
 		</LoginRegisterWrapper>
 	);
 };
