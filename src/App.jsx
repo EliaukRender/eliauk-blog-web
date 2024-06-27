@@ -2,11 +2,11 @@ import React, { memo } from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from '@/router';
 import { AppWrapper } from '@/AppStyles';
-import useAppScrollY from '@/hooks/useAppScrollY';
+import { useAppScrollDirection } from '@/hooks/useAppScrollDirection';
 import PageProgressIndicator from '@/components/ProgressIndicator';
 
 const App = () => {
-	useAppScrollY(); // 监听网页的scrollY滚动事件
+	useAppScrollDirection();
 
 	return (
 		<AppWrapper className='page'>

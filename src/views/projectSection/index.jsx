@@ -1,19 +1,28 @@
-import React, { memo, useState } from 'react';
-import { ProjectSectionWrapper } from '@/views/projectSection/styles';
+import React, { memo, useEffect, useState } from 'react';
+import { ProjectSectionStyles } from '@/views/projectSection/styles';
 import PropTypes from 'prop-types';
 import ProjectImages from '@/views/projectSection/components/ProjectImages';
 import ProjectIntroduce from '@/views/projectSection/components/ProjectIntroduce';
 import ProjectSwitchPanel from '@/views/projectSection/components/ProjectSwitchPanel';
 import MessageToast from '@/components/MessageToast';
-import FadeInAnimationComp from '@/components/Animation/FadeInViewAnimation/FadeInAnimationComp';
-import MoveAnimation from '@/components/Animation/moveAnimation';
+import { useInView } from 'react-intersection-observer';
+import { useDispatch } from 'react-redux';
+import { setCurSectionId } from '@/store/modules/globalReducer';
 
 /**
- * @description: 项目细节介绍
+ * @description: 板块---介绍项目
  */
 const ProjectSection = () => {
 	const [curProjectName, setCurProjectName] = useState();
+	const { ref, inView } = useInView({ threshold: 0.4 });
+	const dispatch = useDispatch();
 
+	useEffect(() => {
+		if (!inView) return;
+		dispatch(setCurSectionId(1));
+	}, [inView]);
+
+	// 打开项目网址
 	const goToProject = (projectName) => {
 		switch (projectName) {
 			case 'EliaukManage':
@@ -31,29 +40,19 @@ const ProjectSection = () => {
 	};
 
 	return (
-		<ProjectSectionWrapper>
+		<ProjectSectionStyles ref={ref}>
 			{/* 项目切换板 */}
 			<ProjectSwitchPanel onChangeProjectName={onChangeProjectName}></ProjectSwitchPanel>
 			{/* 项目信息 */}
 			<div className='project-box'>
 				<div className='left'>
-					{/* 项目轮播图：FadeInAnimationComp是进入视口时触发一次；MoveAnimation是切换项目时触发  */}
-					<FadeInAnimationComp>
-						<MoveAnimation>
-							<ProjectImages projectName={curProjectName}></ProjectImages>
-						</MoveAnimation>
-					</FadeInAnimationComp>
+					<ProjectImages projectName={curProjectName}></ProjectImages>
 				</div>
 				<div className='right'>
-					{/* 项目文字介绍: FadeInAnimationComp是进入视口时触发一次；MoveAnimation是切换项目时触发 */}
-					<FadeInAnimationComp>
-						<MoveAnimation>
-							<ProjectIntroduce goToProject={goToProject} projectName={curProjectName}></ProjectIntroduce>
-						</MoveAnimation>
-					</FadeInAnimationComp>
+					<ProjectIntroduce goToProject={goToProject} projectName={curProjectName}></ProjectIntroduce>
 				</div>
 			</div>
-		</ProjectSectionWrapper>
+		</ProjectSectionStyles>
 	);
 };
 

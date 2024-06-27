@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { MaskLayerWrapper } from '@/components/MaskLayer/styles';
+import { MaskLayerStyles } from '@/components/MaskLayer/styles';
 
 /**
  * @description: 遮罩层组件
@@ -21,7 +21,7 @@ const MaskLayer = ({ showMask, children }) => {
 		};
 	}, [showMask]);
 
-	return <MaskLayerWrapper>{children}</MaskLayerWrapper>;
+	return <MaskLayerStyles>{children}</MaskLayerStyles>;
 };
 
 MaskLayer.propTypes = {

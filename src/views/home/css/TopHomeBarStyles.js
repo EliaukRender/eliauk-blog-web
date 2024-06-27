@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { hexToRgba } from '@/utils/hexToRgba';
 import { french_Cool_blue, french_Cool_light_gray, mld_blue_one } from '@/assets/css/variables';
 
-export const TopHomeBarWrapper = styled.div`
+export const TopHomeBarStyles = styled.div`
 	width: 100%;
 
 	.top-home-bar {

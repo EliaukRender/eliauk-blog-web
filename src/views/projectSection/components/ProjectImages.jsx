@@ -1,15 +1,15 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { ProjectImagesWrapper } from '@/views/projectSection/css/ProjectImagesWrapper';
+import { ProjectImagesStyles } from '@/views/projectSection/css/ProjectImagesStyles';
 
 /**
  * @description: 项目展示的轮播图
  */
 const ProjectImages = ({ projectName }) => {
 	return (
-		<ProjectImagesWrapper>
+		<ProjectImagesStyles>
 			{projectName && <img className='img' src={require(`@/assets/image/project/${projectName}-1.png`)} alt='' />}
-		</ProjectImagesWrapper>
+		</ProjectImagesStyles>
 	);
 };
 

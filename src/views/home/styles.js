@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeWrapper = styled.div`
+export const HomeStyles = styled.div`
 	position: relative;
 	width: 100%;
 `;

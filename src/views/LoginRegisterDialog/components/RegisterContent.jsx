@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { RegisterContentWrapper } from '@/views/LoginRegisterDialog/styles/RegisterContentStyles';
+import { RegisterContentStyles } from '@/views/LoginRegisterDialog/styles/RegisterContentStyles';
 import { Button, Form, Input } from 'antd';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
@@ -12,7 +12,7 @@ const RegisterContent = ({ setAnimateMode }) => {
 	};
 
 	return (
-		<RegisterContentWrapper>
+		<RegisterContentStyles>
 			<motion.div className='register-box'>
 				<div className='title'>
 					<img src={require('@/assets/image/logo.jpg')} alt='' />
@@ -51,7 +51,7 @@ const RegisterContent = ({ setAnimateMode }) => {
 					</span>
 				</div>
 			</motion.div>
-		</RegisterContentWrapper>
+		</RegisterContentStyles>
 	);
 };
 

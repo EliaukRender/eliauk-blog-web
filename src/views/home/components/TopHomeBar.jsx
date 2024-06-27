@@ -1,11 +1,11 @@
-import React, {memo} from 'react';
-import {TopHomeBarWrapper} from '@/views/home/css/TopHomeBarStyles';
+import React, { memo } from 'react';
+import { TopHomeBarStyles } from '@/views/home/css/TopHomeBarStyles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {motion} from 'framer-motion';
-import {useTopHomeBar} from '@/hooks/useTopHomeBar';
-import {shallowEqual, useSelector} from 'react-redux';
-import {handleScrollTo} from '@/utils/handleScrollPage';
+import { motion } from 'framer-motion';
+import { useTopBarAnimation } from '@/hooks/useTopBarAnimation';
+import { shallowEqual, useSelector } from 'react-redux';
+import { handleScrollTo } from '@/utils/handleScrollPage';
 import UserLoginRegister from '@/views/home/components/UserLoginRegister';
 
 /**
@@ -18,7 +18,7 @@ const TopHomeBar = () => {
 		{ id: 2, name: '博主简介' },
 		{ id: 3, name: '留言板' }
 	];
-	const { variants, controls } = useTopHomeBar(); // 动态控制TopHomeBar的显示隐藏
+	const { variants, controls } = useTopBarAnimation(); // 动态控制TopHomeBar的显示隐藏
 	const { currentSectionId } = useSelector(
 		(state) => ({
 			currentSectionId: state.global.currentSectionId
@@ -27,12 +27,14 @@ const TopHomeBar = () => {
 	);
 
 	return (
-		<TopHomeBarWrapper>
+		<TopHomeBarStyles>
 			<motion.div className={classNames('top-home-bar')} initial={{ opacity: 0, translateY: -80 }} variants={variants} animate={controls}>
+				{/* logo区域 */}
 				<div className='logo-box'>
 					<img className='logo' src={require('@/assets/image/logo.jpg')} alt='' />
 					<div className='name'>EliaukBlog</div>
 				</div>
+				{/* 菜单区域 */}
 				<div className='bar-box'>
 					{menuList.map((item) => {
 						return (
@@ -51,7 +53,7 @@ const TopHomeBar = () => {
 				{/*  登录注册入口 */}
 				<UserLoginRegister></UserLoginRegister>
 			</motion.div>
-		</TopHomeBarWrapper>
+		</TopHomeBarStyles>
 	);
 };
 

@@ -1,8 +1,8 @@
-import {useAnimate} from 'framer-motion';
-import {useEffect} from 'react';
+import { useAnimate } from 'framer-motion';
+import { useEffect } from 'react';
 
 /**
- * @description: 登录弹窗 的动画效果
+ * @description: 登录、注册弹窗 的动画效果
  */
 export const useLoginDialogAnimation = (animateMode) => {
 	const [scope, animate] = useAnimate();

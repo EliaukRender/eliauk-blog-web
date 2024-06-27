@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "dotenv -e .env.development craco start",
-    "build": "dotenv -e .env.production craco build && node ./deploy.js",
+    "build": "dotenv -e .env.production craco build && node",
     "test": "craco test",
     "eject": "react-scripts eject"
   },

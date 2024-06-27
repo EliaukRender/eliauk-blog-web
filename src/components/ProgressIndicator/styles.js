@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { french_Cool_blue } from '@/assets/css/variables';
 import { hexToRgba } from '@/utils/hexToRgba';
 
-export const PageProgressIndicatorWrapper = styled.div`
+export const PageProgressIndicatorStyles = styled.div`
 	.bar {
 		position: fixed;
 		height: 4px;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Bg from '@/assets/image/bg-4.jpg';
 
-export const MessageSectionWrapper = styled.div`
+export const MessageSectionStyles = styled.div`
 	width: 100%;
 	height: 100vh;
 	position: relative;

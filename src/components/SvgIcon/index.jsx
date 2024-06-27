@@ -7,18 +7,16 @@ import PropTypes from 'prop-types';
  * @description: SVG组件
  */
 
-const SvgIcon = (props) => {
-	const {
-		name, // svg名称
-		iconColor, // 颜色
-		width = 32, // 宽度
-		height = 32, // 高度
-		hasHover, // hover效果
-		hoverColor, // hover时的颜色
-		needPointer, // 鼠标
-		toolTipValue // 文字提示
-	} = props;
-
+const SvgIcon = ({
+	name, // svg名称
+	iconColor, // 颜色
+	width = 32, // 宽度
+	height = 32, // 高度
+	hasHover, // hover效果
+	hoverColor, // hover时的颜色
+	needPointer, // 鼠标
+	toolTipValue // 文字提示
+}) => {
 	const [svgColor, setSvgColor] = useState(iconColor);
 
 	// 鼠标进入

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Button, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
-import { LoginContentWrapper } from '@/views/LoginRegisterDialog/styles/LoginContentStyles';
+import { LoginContentStyles } from '@/views/LoginRegisterDialog/styles/LoginContentStyles';
 import SvgIcon from '@/components/SvgIcon';
 import { useDispatch } from 'react-redux';
 import { setToken } from '@/store/modules/userReducer';
@@ -16,7 +16,7 @@ const LoginContent = ({ setAnimateMode }) => {
 	};
 
 	return (
-		<LoginContentWrapper>
+		<LoginContentStyles>
 			<div className='left'>
 				<img src={require('@/assets/image/login/login-bg.png')} alt='' />
 			</div>
@@ -54,7 +54,7 @@ const LoginContent = ({ setAnimateMode }) => {
 					</span>
 				</div>
 			</div>
-		</LoginContentWrapper>
+		</LoginContentStyles>
 	);
 };
 

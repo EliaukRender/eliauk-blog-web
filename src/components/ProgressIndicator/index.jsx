@@ -1,6 +1,6 @@
 import { useScroll, motion } from 'framer-motion';
 import React from 'react';
-import { PageProgressIndicatorWrapper } from '@/components/ProgressIndicator/styles';
+import { PageProgressIndicatorStyles } from '@/components/ProgressIndicator/styles';
 import PropTypes from 'prop-types';
 
 /**
@@ -10,11 +10,11 @@ const PageProgressIndicator = (props) => {
 	const { scrollYProgress } = useScroll();
 
 	return (
-		<PageProgressIndicatorWrapper>
+		<PageProgressIndicatorStyles>
 			<motion.div className={'bar'} style={{ scaleX: scrollYProgress }}>
 				{props.children}
 			</motion.div>
-		</PageProgressIndicatorWrapper>
+		</PageProgressIndicatorStyles>
 	);
 };
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MaskLayerWrapper = styled.div`
+export const MaskLayerStyles = styled.div`
 	position: fixed;
 	top: 0;
 	left: 0;

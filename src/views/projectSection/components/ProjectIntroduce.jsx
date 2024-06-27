@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ProjectIntroduceWrapper } from '@/views/projectSection/css/ProjectIntroduce';
+import { ProjectIntroduceStyles } from '@/views/projectSection/css/ProjectIntroduceStyles';
 import { Divider, Descriptions } from 'antd';
 import SvgIcon from '@/components/SvgIcon';
 import { projectInfo } from '@/views/projectSection/constant';
@@ -34,7 +34,7 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 	};
 
 	return (
-		<ProjectIntroduceWrapper>
+		<ProjectIntroduceStyles>
 			<div
 				className='title'
 				onClick={() => {
@@ -61,7 +61,7 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 			<div className='sub-title'>简介</div>
 			{/*{!!descriptionItems?.length && <Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />}*/}
 			<Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />
-		</ProjectIntroduceWrapper>
+		</ProjectIntroduceStyles>
 	);
 };
 ProjectIntroduce.propTypes = {

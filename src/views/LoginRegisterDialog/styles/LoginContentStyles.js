@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginContentWrapper = styled.div`
+export const LoginContentStyles = styled.div`
 	display: flex;
 	height: 500px;
 

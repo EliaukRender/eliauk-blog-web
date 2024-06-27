@@ -1,9 +1,8 @@
 import React, { memo, useCallback, useState } from 'react';
 import { GithubOutlined, QqOutlined, WechatOutlined } from '@ant-design/icons';
-// import MoveAnimation from '@/components/Animation/moveAnimation';
 import PropTypes from 'prop-types';
 import QrCodeModal from '@/views/entrySection/components/QrCodeModal';
-import { InfoBarWrapper } from '@/views/entrySection/css/InfoBarWrapper';
+import { InfoBarStyles } from '@/views/entrySection/css/InfoBarStyles';
 import { motion } from 'framer-motion';
 
 /**
@@ -30,9 +29,8 @@ const InfoBar = () => {
 	}, []);
 
 	return (
-		<InfoBarWrapper>
-			{/*<MoveAnimation start={'35px'} duration={'1.8s'}>*/}
-			<motion.div className='personal-info' initial={{ y: '25px' }} animate={{ y: '0px', transition: { duration: 1, ease: 'linear' } }}>
+		<InfoBarStyles>
+			<motion.div className='personal-info' initial={{ y: 25 }} animate={{ y: 0, transition: { duration: 1, ease: 'linear' } }}>
 				<span className='name'>EliaukRender</span>
 				<div className='divider'></div>
 				<GithubOutlined
@@ -51,10 +49,9 @@ const InfoBar = () => {
 					}}
 				/>
 			</motion.div>
-			{/*</MoveAnimation>*/}
 			{/* 扫码弹窗	*/}
 			<QrCodeModal qrCode={qrCode} showModal={showModal} hiddenModal={hiddenModal}></QrCodeModal>
-		</InfoBarWrapper>
+		</InfoBarStyles>
 	);
 };
 

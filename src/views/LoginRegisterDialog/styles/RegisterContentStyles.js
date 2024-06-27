@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RegisterContentWrapper = styled.div`
+export const RegisterContentStyles = styled.div`
 	flex: 1;
 
 	.register-box {

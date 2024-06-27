@@ -1,14 +1,14 @@
-import React, {forwardRef, memo, useState} from 'react';
-import {LoginRegisterWrapper} from '@/views/home/css/LoginRegisterStyles';
-import {MenuOutlined} from '@ant-design/icons';
-import {motion} from 'framer-motion';
-import {useLoginOptionsAnimation} from '@/hooks/useLoginOptionsAnimation.js';
+import React, { forwardRef, memo, useState } from 'react';
+import { UserLoginRegisterStyles } from '@/views/home/css/UserLoginRegisterStyles';
+import { MenuOutlined } from '@ant-design/icons';
+import { motion } from 'framer-motion';
+import { useLoginOptionsAnimation } from '@/hooks/useLoginOptionsAnimation.js';
 import LoginRegisterDialog from '@/views/LoginRegisterDialog';
 import SvgIcon from '@/components/SvgIcon';
-import {useSelector} from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 
 /**
- * @description: 用户登录注册的入口
+ * @description: 用户登录、注册的入口
  */
 const UserLoginRegister = () => {
 	const [isOpen, setIsOpen] = useState(false); // popover显示隐藏
@@ -16,9 +16,12 @@ const UserLoginRegister = () => {
 	const [mode, setMode] = useState(null); // 1-打开登录；3-打开注册
 	const scope = useLoginOptionsAnimation(isOpen); // 动画
 
-	const { token } = useSelector((state) => ({
-		token: state.user.token
-	}));
+	const { token } = useSelector(
+		(state) => ({
+			token: state.user.token
+		}),
+		shallowEqual
+	);
 
 	// 点击空白位置关闭浮窗
 	window.addEventListener('click', () => {
@@ -38,7 +41,7 @@ const UserLoginRegister = () => {
 	};
 
 	return (
-		<LoginRegisterWrapper>
+		<UserLoginRegisterStyles>
 			{/* 用户头像 */}
 			<motion.div
 				className='login-box'
@@ -75,7 +78,7 @@ const UserLoginRegister = () => {
 			</div>
 			{/* 登录注册弹窗 */}
 			{showDialog && <LoginRegisterDialog closeDialog={closeDialog} showDialog={showDialog} mode={mode}></LoginRegisterDialog>}
-		</LoginRegisterWrapper>
+		</UserLoginRegisterStyles>
 	);
 };
 

@@ -1,9 +1,7 @@
-import React, {memo, useEffect, useState} from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import {ProjectSwitchPanelWrapper} from '@/views/projectSection/css/ProjectSwitchPanel';
-import FadeInAnimationComp from '@/components/Animation/FadeInViewAnimation/FadeInAnimationComp';
+import { SwitchPanelStyles } from '@/views/projectSection/css/SwitchPanelStyles';
 import PropTypes from 'prop-types';
-import {LayoutGroup, motion} from 'framer-motion';
 
 /**
  * @description: 项目切换面板
@@ -14,41 +12,29 @@ const ProjectSwitchPanel = ({ onChangeProjectName }) => {
 		{ id: 2, name: 'EliaukBlog' },
 		{ id: 3, name: 'EliaukMusic' }
 	];
-	const [curProjectId, setCurProjectId] = useState(1);
-
-	// 切换显示的项目
-	const changeProject = (id) => {
-		setCurProjectId(id);
-	};
+	const [curProjectName, setCurProjectName] = useState('EliaukManage');
 
 	useEffect(() => {
-		onChangeProjectName(projectList.find((item) => item.id === curProjectId).name); // 通知父组件curProjectId变化
-	}, [curProjectId]);
+		onChangeProjectName(curProjectName); // 通知父组件curProjectId变化
+	}, [curProjectName]);
 
 	return (
-		<FadeInAnimationComp>
-			<ProjectSwitchPanelWrapper>
-				<motion.div className='project-switch' layout>
-					<LayoutGroup>
-						{projectList.map((item) => {
-							return (
-								<motion.div
-									layout={'position'}
-									style={{ width: curProjectId === item.id ? '250px' : '200px' }}
-									transition={{ duration: 0.8, ease: 'linear' }}
-									key={item.id}
-									className={classNames('item', curProjectId === item.id ? 'item-active' : '')}
-									onTap={() => {
-										changeProject(item.id);
-									}}>
-									<motion.span layout> {item.name}</motion.span>
-								</motion.div>
-							);
-						})}
-					</LayoutGroup>
-				</motion.div>
-			</ProjectSwitchPanelWrapper>
-		</FadeInAnimationComp>
+		<SwitchPanelStyles>
+			<div className='project-switch'>
+				{projectList.map((item) => {
+					return (
+						<div
+							key={item.id}
+							className={classNames('item', curProjectName === item.name ? 'item-active' : '')}
+							onClick={() => {
+								setCurProjectName(item.name);
+							}}>
+							<span> {item.name}</span>
+						</div>
+					);
+				})}
+			</div>
+		</SwitchPanelStyles>
 	);
 };
 
