@@ -13,19 +13,19 @@ export const ProjectSectionStyles = styled.div`
 
 		.left {
 			width: 60%;
-			height: 600px;
 		}
 
 		.right {
 			width: 40%;
 			height: 80%;
 			margin-left: 50px;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: flex-start;
+			padding: 0 80px;
 			background-color: #f8f9fa;
 			font-size: 16px;
+			border-radius: 20px 0 0 20px;
+			display: flex;
+			align-items: center;
+			box-sizing: border-box;
 		}
 	}
 `;

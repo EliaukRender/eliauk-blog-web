@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { primaryColor, secondaryColor } from '@/assets/css/variables';
 
 export const ProjectIntroduceStyles = styled.div`
-	width: 85%;
-	padding-left: 50px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	.title {
 		display: flex;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const HomeStyles = styled.div`
-	position: relative;
 	width: 100%;
+	position: relative;
+	overflow: hidden;
 `;

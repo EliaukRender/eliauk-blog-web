@@ -3,7 +3,7 @@ import { TopHomeBarStyles } from '@/views/home/css/TopHomeBarStyles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
-import { useTopBarAnimation } from '@/hooks/useTopBarAnimation';
+import { useTopBarAnimation } from '@/hooks/animation/useTopBarAnimation';
 import { shallowEqual, useSelector } from 'react-redux';
 import { handleScrollTo } from '@/utils/handleScrollPage';
 import UserLoginRegister from '@/views/home/components/UserLoginRegister';
@@ -28,7 +28,7 @@ const TopHomeBar = () => {
 
 	return (
 		<TopHomeBarStyles>
-			<motion.div className={classNames('top-home-bar')} initial={{ opacity: 0, translateY: -80 }} variants={variants} animate={controls}>
+			<motion.div className='top-home-bar' initial={{ opacity: 0, translateY: -80 }} variants={variants} animate={controls}>
 				{/* logo区域 */}
 				<div className='logo-box'>
 					<img className='logo' src={require('@/assets/image/logo.jpg')} alt='' />

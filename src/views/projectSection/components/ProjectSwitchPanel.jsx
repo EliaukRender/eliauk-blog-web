@@ -2,6 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { SwitchPanelStyles } from '@/views/projectSection/css/SwitchPanelStyles';
 import PropTypes from 'prop-types';
+import FadeInViewAnimation from '@/components/Animation/FadeInViewAnimation';
 
 /**
  * @description: 项目切换面板
@@ -20,20 +21,22 @@ const ProjectSwitchPanel = ({ onChangeProjectName }) => {
 
 	return (
 		<SwitchPanelStyles>
-			<div className='project-switch'>
-				{projectList.map((item) => {
-					return (
-						<div
-							key={item.id}
-							className={classNames('item', curProjectName === item.name ? 'item-active' : '')}
-							onClick={() => {
-								setCurProjectName(item.name);
-							}}>
-							<span> {item.name}</span>
-						</div>
-					);
-				})}
-			</div>
+			<FadeInViewAnimation>
+				<div className='project-switch'>
+					{projectList.map((item) => {
+						return (
+							<div
+								key={item.id}
+								className={classNames('item', curProjectName === item.name ? 'item-active' : '')}
+								onClick={() => {
+									setCurProjectName(item.name);
+								}}>
+								<span> {item.name}</span>
+							</div>
+						);
+					})}
+				</div>
+			</FadeInViewAnimation>
 		</SwitchPanelStyles>
 	);
 };

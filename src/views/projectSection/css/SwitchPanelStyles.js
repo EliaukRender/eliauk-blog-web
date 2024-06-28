@@ -3,11 +3,12 @@ import { mld_blue_two, primaryColor } from '@/assets/css/variables';
 import { hexToRgba } from '@/utils/hexToRgba';
 
 export const SwitchPanelStyles = styled.div`
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+
 	.project-switch {
-		position: absolute;
-		top: 20px;
-		left: 50%;
-		transform: translateX(-50%);
 		display: flex;
 		align-items: center;
 		justify-content: center;

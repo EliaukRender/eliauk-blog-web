@@ -2,7 +2,7 @@ import React, { forwardRef, memo, useState } from 'react';
 import { UserLoginRegisterStyles } from '@/views/home/css/UserLoginRegisterStyles';
 import { MenuOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
-import { useLoginOptionsAnimation } from '@/hooks/useLoginOptionsAnimation.js';
+import { useLoginOptionsAnimation } from '@/hooks/animation/useLoginOptionsAnimation.js';
 import LoginRegisterDialog from '@/views/LoginRegisterDialog';
 import SvgIcon from '@/components/SvgIcon';
 import { shallowEqual, useSelector } from 'react-redux';

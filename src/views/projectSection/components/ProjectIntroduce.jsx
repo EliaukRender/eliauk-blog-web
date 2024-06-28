@@ -4,6 +4,7 @@ import { ProjectIntroduceStyles } from '@/views/projectSection/css/ProjectIntrod
 import { Divider, Descriptions } from 'antd';
 import SvgIcon from '@/components/SvgIcon';
 import { projectInfo } from '@/views/projectSection/constant';
+import FadeInViewAnimation from '@/components/Animation/FadeInViewAnimation';
 
 /**
  * @description: 项目信息描述
@@ -35,32 +36,34 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 
 	return (
 		<ProjectIntroduceStyles>
-			<div
-				className='title'
-				onClick={() => {
-					goToProject(projectName);
-				}}>
-				<SvgIcon name='backendSystem' width={50} height={50}></SvgIcon>
-				<span>{projectName}</span>
-			</div>
-			<Divider />
-			<div className='sub-title'>技术栈</div>
-			<div className='svg-list'>
-				{technologyStack?.map((item) => {
-					return (
-						<div
-							key={item.name}
-							onClick={() => {
-								openUrl(item.url);
-							}}>
-							<SvgIcon name={item.name} width={item.name === 'redux' ? 50 : 60} height={60}></SvgIcon>
-						</div>
-					);
-				})}
-			</div>
-			<div className='sub-title'>简介</div>
-			{/*{!!descriptionItems?.length && <Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />}*/}
-			<Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />
+			<FadeInViewAnimation>
+				<div
+					className='title'
+					onClick={() => {
+						goToProject(projectName);
+					}}>
+					<SvgIcon name='backendSystem' width={50} height={50}></SvgIcon>
+					<span>{projectName}</span>
+				</div>
+				<Divider />
+				<div className='sub-title'>技术栈</div>
+				<div className='svg-list'>
+					{technologyStack?.map((item) => {
+						return (
+							<div
+								key={item.name}
+								onClick={() => {
+									openUrl(item.url);
+								}}>
+								<SvgIcon name={item.name} width={item.name === 'redux' ? 50 : 60} height={60}></SvgIcon>
+							</div>
+						);
+					})}
+				</div>
+				<div className='sub-title'>简介</div>
+				{/*{!!descriptionItems?.length && <Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />}*/}
+				<Descriptions bordered items={descriptionItems} labelStyle={labelStyle} />
+			</FadeInViewAnimation>
 		</ProjectIntroduceStyles>
 	);
 };
