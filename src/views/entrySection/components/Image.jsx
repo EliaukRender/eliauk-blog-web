@@ -15,11 +15,11 @@ const Image = () => {
 					scale: 1.2,
 					transition: {
 						y: { duration: 1 },
-						scale: { duration: 2, repeat: 99999, repeatType: 'reverse', ease: 'linear' }
+						scale: { duration: 2, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }
 					}
 				}}
 				className='duola-box'>
-				<img className='duola' src={require('@/assets/image/duola-big.png')} alt='' />
+				<img className='duola' src={require('@/assets/image/fullImgs/duola-big.png')} alt='' />
 			</motion.div>
 		</ImageStyles>
 	);

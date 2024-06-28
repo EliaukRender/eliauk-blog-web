@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { setScrollDirection } from '@/store/modules/globalReducer';
+import { setScrollDirection, setScrollY } from '@/store/modules/globalReducer';
 import { useDispatch } from 'react-redux';
 import throttle from 'lodash/throttle';
 
@@ -28,6 +28,8 @@ export const useAppScrollDirection = () => {
 				dispatch(setScrollDirection('up'));
 			}, 200);
 		}
+
+		dispatch(setScrollY(window.scrollY));
 	};
 
 	useEffect(() => {

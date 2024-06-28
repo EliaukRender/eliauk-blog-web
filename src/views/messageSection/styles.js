@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Bg from '@/assets/image/bg-4.jpg';
+import Bg from '@/assets/image/fullImgs/bg-5.png';
 
 export const MessageSectionStyles = styled.div`
 	width: 100%;

@@ -7,27 +7,25 @@ import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 
 // 动画组
 const variants = {
+	// 进入时
 	enter: (direction) => {
 		return {
 			x: direction > 0 ? 1000 : -1000,
 			opacity: 1
 		};
 	},
+	// 静止时
 	center: {
 		zIndex: 1,
 		x: 0,
 		opacity: 1
 	},
+	// 退出时
 	exit: (direction) => {
 		return {
 			zIndex: 0,
 			x: direction < 0 ? 1000 : -1000,
 			opacity: 0
-		};
-	},
-	icon: () => {
-		return {
-			opacity: 1
 		};
 	}
 };

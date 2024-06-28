@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import homeBg from '@/assets/image/home-bg.jpg';
+import homeBg from '@/assets/image/fullImgs/bg-6.png';
 import { hexToRgba } from '@/utils/hexToRgba';
 import { french_Cool_blue } from '@/assets/css/variables';
 

@@ -10,7 +10,7 @@ function FadeInViewAnimation({ children, onceFlag = true, duration = 1.2 }) {
 	const isInView = useInView(ref, { once: onceFlag });
 
 	return (
-		<motion.div ref={ref} initial={{ y: 40 }} animate={isInView ? { y: 0, transition: { duration: duration, ease: 'easeInOut' } } : {}}>
+		<motion.div ref={ref} initial={{ y: 60 }} animate={isInView ? { y: 0, transition: { duration: duration, ease: 'easeInOut' } } : {}}>
 			{children}
 		</motion.div>
 	);

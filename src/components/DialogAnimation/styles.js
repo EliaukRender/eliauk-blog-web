@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const DialogStyles = styled.div`
 	.body {
-		min-width: 200px;
-		min-height: 200px;
+		min-width: 100px;
+		min-height: 100px;
 
 		position: fixed;
 		top: 50%;
