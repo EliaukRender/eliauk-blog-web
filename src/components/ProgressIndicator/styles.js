@@ -11,6 +11,6 @@ export const PageProgressIndicatorStyles = styled.div`
 		right: 0;
 		background: ${hexToRgba(french_Cool_blue, 0.7)};
 		transform-origin: 0;
-		z-index: 999;
+		z-index: 99;
 	}
 `;

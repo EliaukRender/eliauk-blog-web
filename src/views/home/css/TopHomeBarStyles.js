@@ -20,7 +20,7 @@ export const TopHomeBarStyles = styled.div`
 		padding: 0 50px;
 		color: ${french_Cool_light_gray};
 		box-sizing: border-box;
-		z-index: 10;
+		z-index: 99;
 
 		.logo-box {
 			display: flex;

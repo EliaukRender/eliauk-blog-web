@@ -12,7 +12,6 @@ export const DialogStyles = styled.div`
 		z-index: 1100;
 		background-color: #fff;
 		border-radius: 20px;
-		display: flex;
 
 		.close {
 			position: absolute;

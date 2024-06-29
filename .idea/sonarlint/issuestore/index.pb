@@ -171,8 +171,6 @@ _
 Y
 )src/hooks/animation/useTopBarAnimation.js,c\a\ca2885702154241f935d16244bdabab4146d550d
 Y
-)src/hooks/animation/useFadeInAnimation.js,e\e\eefe85740f44aa51c0f803d8c45934588709215c
-Y
 )src/components/CarouselPictures/index.jsx,b\9\b959490271bf3138d9439784e5d1f9b28b27572c
 Y
 )src/components/CarouselPictures/styles.js,a\0\a0771355ef9c8ddc837d25ad71f40c3a9cdf24f1

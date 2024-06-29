@@ -6,7 +6,6 @@ export const NextPageBtnStyles = styled.div`
 	position: absolute;
 	bottom: 30px;
 	left: 50%;
-	z-index: 10;
 	transform: translate(-50%);
 	width: 50px;
 	height: 50px;

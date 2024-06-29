@@ -3,8 +3,6 @@ import { hexToRgba } from '@/utils/hexToRgba';
 import { french_Cool_blue, french_Cool_gray } from '@/assets/css/variables';
 
 export const ImageStyles = styled.div`
-	z-index: 10;
-
 	.img-box {
 		width: 180px;
 		height: 180px;

@@ -17,3 +17,11 @@
     border-radius: 15px;
   }
 }
+
+/* 视频播放弹窗 */
+.video-dialog {
+  .ant-modal-content {
+    padding: 0;
+    border-radius: 15px;
+  }
+}

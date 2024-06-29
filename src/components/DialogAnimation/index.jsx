@@ -41,7 +41,7 @@ Dialog.propTypes = {
 	scope: PropTypes.any, // 动画对象
 	style: PropTypes.object, // css样式
 	closeDialog: PropTypes.func, // 关闭对话框
-	children: PropTypes.node // 自定义内容
+	children: PropTypes.node, // 自定义内容
 };
 
 export default memo(Dialog);

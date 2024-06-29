@@ -1,5 +1,5 @@
-import React, {memo} from 'react';
-import {Modal} from 'antd';
+import React, { memo } from 'react';
+import { Modal } from 'antd';
 import './styles.css';
 import PropTypes from 'prop-types';
 
@@ -10,15 +10,15 @@ const BaseModal = memo((props) => {
 	const {
 		showModal = false, // Modal的显示与隐藏
 		title = '', // 标题
-		width = 400, // 自定义宽度
 		okText = '确定', // 确定按钮文本
+		width = 800,
+		wrapClassName = 'my-modal', // 为对话框设置类名，用来修改modal样式
 		cancelText = '取消', // 取消按钮文本
 		closeIcon = true, // 默认显示右上角关闭按钮
 		footer = '', // 不显示底部按钮区域时，设置footer = null
 		handleConfirm = () => {}, // 确定事件
 		handleCancel = () => {}, // 取消事件
-		wrapClassName = 'my-modal', //为对话框设置类名，用来修改modal样式
-		children // body中的自定义内容
+		children, // body中的自定义内容
 	} = props;
 
 	return (
@@ -54,7 +54,7 @@ BaseModal.propTypes = {
 	handleConfirm: PropTypes.func,
 	handleCancel: PropTypes.func,
 	wrapClassName: PropTypes.string,
-	children: PropTypes.node
+	children: PropTypes.node,
 };
 
 BaseModal.displayName = 'BaseModal';
