@@ -9,6 +9,7 @@ import store, { persistor } from '@/store/index'; // redux数据
 import { Provider } from 'react-redux'; // redux数据共享组件
 import { PersistGate } from 'redux-persist/integration/react'; // redux持久化组件
 import GlobalLoading from '@/components/Loading/GlobalLoading';
+import 'lib-flexible';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,5 +30,5 @@ root.render(
 				</ThemeProvider>
 			</PersistGate>
 		</Provider>
-	</React.StrictMode>
+	</React.StrictMode>,
 );
