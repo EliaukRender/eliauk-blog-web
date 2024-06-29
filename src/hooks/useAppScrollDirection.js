@@ -17,9 +17,8 @@ export const useAppScrollDirection = () => {
 		// 页面往下滚动
 		if (window.scrollY > oldScrollY) {
 			oldScrollY = window.scrollY;
-			setTimeout(() => {
-				dispatch(setScrollDirection('down'));
-			}, 200);
+
+			dispatch(setScrollDirection('down'));
 		}
 		// 页面往上滚动
 		if (window.scrollY < oldScrollY) {
@@ -28,16 +27,11 @@ export const useAppScrollDirection = () => {
 				dispatch(setScrollDirection('up'));
 			}, 200);
 		}
-
 		dispatch(setScrollY(window.scrollY));
 	};
 
 	useEffect(() => {
-		function handleScroll() {
-			watchScrollDirection();
-		}
-
-		const throttledScrollHandler = throttle(handleScroll, 50); // 节流
+		const throttledScrollHandler = throttle(watchScrollDirection, 400); // 节流
 		window.addEventListener('scroll', throttledScrollHandler, true);
 
 		return () => {

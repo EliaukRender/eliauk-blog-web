@@ -110,10 +110,6 @@ V
 &src/views/home/css/TopHomeBarStyles.js,1\d\1d2a39c159d0780640154eeb0c84a28fd88d1841
 W
 'src/views/LoginRegisterDialog/index.jsx,5\1\5182f3e52bb5385a7e9b2e1a71fe56e83936c327
-T
-$src/hooks/useLoginDialogAnimation.js,8\7\8780ce9f8f813a79505d04812ca50d409119122b
-U
-%src/hooks/useLoginOptionsAnimation.js,6\1\616280dc9a399c5e9bfc424c4bac20d292c8a4b5
 _
 /src/views/home/components/UserLoginRegister.jsx,4\a\4ab572cc5d567b886e1a472696f57bc43e20cb40
 P
@@ -134,8 +130,6 @@ S
 #src/components/BaseModal/styles.css,c\7\c72865915e58d2c0fb57769ef8b72f48efc5598f
 R
 "src/components/BaseModal/index.jsx,2\2\2216d50b8fb2ca277f59ff91022c88178ada06ed
-O
-src/hooks/useTopBarAnimation.js,7\a\7aed83a7ccc0033749d987aacb0b53daf902c89e
 a
 1src/views/entrySection/components/NextPageBtn.jsx,e\c\ec6bf43e212079580ca19f0c23c68dee1e7b3500
 a
@@ -168,8 +162,6 @@ X
 (src/components/Loading/globalLoading.jsx,5\0\50ee659f2b36641356e19fcb6129e8f0a536cb92
 R
 "src/hooks/useAppScrollDirection.js,8\e\8e58cc24670af9bfd6b64297252a944d7bdcaa89
-S
-#src/hooks/useFadeInViewAnimation.js,3\b\3b92472543fd70d0251ae2e02d6e34da21b6be41
 `
 0src/components/Animation/FadeInViewAnimation.jsx,5\c\5c8ceec92efd7703e7168e7542066c260509cbcd
 ^
@@ -178,8 +170,6 @@ _
 /src/hooks/animation/useLoginOptionsAnimation.js,9\c\9cfd4dbfefec6fcd2b25efc5e777b0836b16f078
 Y
 )src/hooks/animation/useTopBarAnimation.js,c\a\ca2885702154241f935d16244bdabab4146d550d
-V
-&src/hooks/animation/useFadeInAnimation,4\b\4b49ab8a10e9460d118fd7557eac476a0662ed1a
 Y
 )src/hooks/animation/useFadeInAnimation.js,e\e\eefe85740f44aa51c0f803d8c45934588709215c
 Y
@@ -190,26 +180,12 @@ Y
 ,src/views/profileSection/components/Card.jsx,e\8\e841fc7d630b4a3f02a1b14163622fc4a70d7120
 ]
 -src/views/profileSection/styles/CardStyles.js,6\a\6a7f3874978e03e3c7508db8cc8857384e6cd425
-]
--src/views/profileSection/components/Image.jsx,6\6\669d59ce7dec3fd4d22104f4b4670d68c295d4f8
-^
-.src/views/profileSection/styles/ImageStyles.js,7\5\75b65af5d0d5c875315149c17ed470b8e1e2f0e1
 _
 /src/views/profileSection/components/CardImg.jsx,7\e\7ec5c0bbb6acb1fe27830a02cae7b918c515d944
 `
 0src/views/profileSection/styles/CardImgStyles.js,a\3\a3df9304ac8da4c96ef7c34a1c3eec3ca2f9e091
-f
-6src/views/profileSection/hooks/useScrollConstraints.js,b\c\bc33b67c3a2194802aeb7754ce5becf1328f2d06
-^
-.src/views/profileSection/hooks/useScaleCard.js,f\1\f11e2162c5555733f09295c516e5bdc2484684e6
-_
-/src/views/profileSection/components/01-Info.jsx,b\0\b0e5437e7ad85223cd56b21f86f6f75feb9ee1c3
-^
-.src/views/profileSection/components/Dialog.jsx,e\e\ee48ab7d6ffbe8b5cee337f4f29cfc8fc53f3972
 e
 5src/views/profileSection/components/ProfileDialog.jsx,6\2\62399cc0efa9bde71fe89cd520341577d76911f3
-k
-;src/views/profileSection/hooks/useProfileDialogAnimation.js,7\4\74a625b21858a1b6fa010cdced763bca257a1215
 e
 5src/views/profileSection/hooks/useProfileAnimation.js,1\2\12ab6aaf734faa10e38c21d4df85b4cf4b9d6173
 f
