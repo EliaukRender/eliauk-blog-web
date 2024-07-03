@@ -41,29 +41,38 @@ const cracoConfig = ({ env }) => {
 			},
 			// 可以在这里添加其它插件配置
 		],
-		style: {
-			postcss: {
-				mode: 'extends',
-				loaderOptions: () => {
-					return {
-						postcssOptions: {
-							ident: 'postcss',
-							config: false,
-							plugins: [
-								postcssPx2Rem({
-									rootValue: 37.5, // 设计稿尺寸/10
-									propList: ['*'], // 需要转换的属性，默认为 ['*']
-									exclude: /node_modules/i, // 哪些文件不需要转换
-								}),
-							],
-						},
-						sourceMap: false,
-					};
-				},
-			},
-		},
+		// style: {
+		// 	postcss: {
+		// 		mode: 'extends',
+		// 		loaderOptions: () => {
+		// 			return {
+		// 				postcssOptions: {
+		// 					ident: 'postcss',
+		// 					config: false,
+		// 					plugins: [
+		// 						postcssPx2Rem({
+		// 							rootValue: 192, // 设计稿尺寸/10
+		// 							propList: ['*'], // 需要转换的属性，默认为 ['*']
+		// 							exclude: /node_modules/i, // 哪些文件不需要转换
+		// 						}),
+		// 					],
+		// 				},
+		// 				sourceMap: false,
+		// 			};
+		// 		},
+		// 	},
+		// },
 		babel: {
 			plugins: [['babel-plugin-transform-remove-console', { exclude: isEnvProduction ? ['error', 'warn'] : ['error', 'warn', 'log'] }]],
+		},
+		devServer: {
+			proxy: {
+				'/blog': {
+					// target: 'http://localhost:50000',
+					target: 'http://47.113.177.51',
+					pathRewrite: { '^/blog': '/blog' },
+				},
+			},
 		},
 	};
 };

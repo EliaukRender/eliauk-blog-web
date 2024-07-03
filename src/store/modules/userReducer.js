@@ -3,14 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 const userReducer = createSlice({
 	name: 'user',
 	initialState: {
-		token: 0
+		token: '',
 	},
 	reducers: {
 		setToken(state, { payload }) {
 			state.token = payload;
-		}
+		},
 	},
-	extraReducers: () => {}
+	extraReducers: () => {},
 });
 
 export const { setToken } = userReducer.actions;

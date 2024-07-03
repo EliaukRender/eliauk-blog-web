@@ -7,6 +7,7 @@
     "@reduxjs/toolkit": "^2.2.5",
     "antd": "^5.18.3",
     "antd-style": "^3.6.2",
+    "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.2.11",
@@ -14,6 +15,7 @@
     "path": "^0.12.7",
     "popmotion": "^11.0.5",
     "prop-types": "^15.8.1",
+    "qs": "^6.12.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-intersection-observer": "^9.10.3",
@@ -28,8 +30,8 @@
   },
   "scripts": {
     "start": "dotenv -e .env.development craco start",
-    "build": "dotenv -e .env.production craco build ",
-    "deploy": "node ./deploy.js"
+    "build": "dotenv -e .env.production craco build",
+    "deploy": "npm run build && node ./deploy.js"
   },
   "eslintConfig": {
     "extends": [

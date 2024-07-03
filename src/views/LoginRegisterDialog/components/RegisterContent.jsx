@@ -1,14 +1,26 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { RegisterContentStyles } from '@/views/LoginRegisterDialog/styles/RegisterContentStyles';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, Select } from 'antd';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import SvgIcon from '@/components/SvgIcon';
+import { genderOptions, occupationOptions } from '@/constant';
+import { register } from '@/api/modules/userService';
 
 const RegisterContent = ({ setAnimateMode }) => {
 	// 提交注册
 	const onFinish = (value) => {
 		console.log('value', value);
+		handleRegister(value);
+	};
+
+	// 用户注册
+	const handleRegister = async (params) => {
+		try {
+			await register(params);
+		} catch (e) {
+			console.log('', e);
+		}
 	};
 
 	return (
@@ -30,6 +42,12 @@ const RegisterContent = ({ setAnimateMode }) => {
 					</Form.Item>
 					<Form.Item label='确认密码：' name='passwordAgain' rules={[{ required: true, message: '请输入密码' }]}>
 						<Input.Password />
+					</Form.Item>
+					<Form.Item label='性别：' name='gender' rules={[{ required: true, message: '请选择' }]}>
+						<Select options={genderOptions} />
+					</Form.Item>
+					<Form.Item label='职业方向：' name='occupation' rules={[{ required: true, message: '请选择' }]}>
+						<Select options={occupationOptions} />
 					</Form.Item>
 					<Form.Item label='邮箱：' name='mail' rules={[{ required: true, message: '请输入邮箱' }]}>
 						<Input allowClear />
@@ -56,6 +74,6 @@ const RegisterContent = ({ setAnimateMode }) => {
 };
 
 RegisterContent.propTypes = {
-	setAnimateMode: PropTypes.func
+	setAnimateMode: PropTypes.func,
 };
 export default memo(RegisterContent);

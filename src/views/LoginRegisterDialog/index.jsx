@@ -22,7 +22,7 @@ const LoginRegisterDialog = ({ showDialog, closeDialog, mode }) => {
 		return [1, 2].includes(animateMode);
 	}, [animateMode]);
 
-	const scope = useLoginDialogAnimation(animateMode); // 弹窗的动画
+	const scope = useLoginDialogAnimation(animateMode); // 弹窗的动画（内容的宽度高度在动画中设置）
 
 	return (
 		<LoginRegisterDialogStyles>
@@ -39,7 +39,7 @@ const LoginRegisterDialog = ({ showDialog, closeDialog, mode }) => {
 LoginRegisterDialog.propTypes = {
 	closeDialog: PropTypes.func,
 	showDialog: PropTypes.bool,
-	mode: PropTypes.number
+	mode: PropTypes.number,
 };
 
 export default memo(LoginRegisterDialog);

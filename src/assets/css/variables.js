@@ -23,3 +23,7 @@ export const mld_orange_five = '#F2F1ED';
 export const french_Cool_blue = '#21558c';
 export const french_Cool_gray = '#a3a5a4';
 export const french_Cool_light_gray = '#efefef';
+
+export const deep_green = '#217367'
+export const middle_green = '#53a57e'
+export const light_green = '#82ba77'

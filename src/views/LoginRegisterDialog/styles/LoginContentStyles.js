@@ -55,30 +55,6 @@ export const LoginContentStyles = styled.div`
 
 		.input-box {
 			margin: 20px 0;
-
-			.ant-form-item {
-				margin-bottom: 30px;
-			}
-
-			.anticon {
-				font-size: 18px;
-				color: #53a57e;
-			}
-
-			.ant-input-prefix {
-				margin-right: 10px;
-			}
-
-			.ant-input-affix-wrapper {
-				height: 40px;
-				border-color: #53a57e;
-				border-radius: 20px;
-				color: #217367;
-
-				.ant-input::placeholder {
-					color: #53a57e;
-				}
-			}
 		}
 
 		.ant-btn-primary {

@@ -15,13 +15,13 @@ export const useLoginDialogAnimation = (animateMode) => {
 				{
 					width: '950px',
 					height: '500px',
-					clipPath: 'inset(0% 0% 0% 0% round 10px)'
+					clipPath: 'inset(0% 0% 0% 0% round 10px)',
 				},
 				{
 					type: 'tween',
 					duration: 0.7,
-					ease: 'easeInOut'
-				}
+					ease: 'easeInOut',
+				},
 			);
 		}
 		// 注册转登录 的动画
@@ -33,8 +33,8 @@ export const useLoginDialogAnimation = (animateMode) => {
 					type: 'tween',
 					duration: 0.7,
 					ease: 'easeInOut',
-					width: { duration: 0.5 } // 宽度较大，让速度快一点
-				}
+					width: { duration: 0.5 }, // 宽度较大，让速度快一点
+				},
 			);
 		}
 		// 打开注册 的动画
@@ -42,28 +42,28 @@ export const useLoginDialogAnimation = (animateMode) => {
 			animate(
 				'ul',
 				{
-					width: '500px',
-					height: '600px',
-					clipPath: 'inset(0% 0% 0% 0% round 10px)'
+					width: '550px',
+					height: '700px',
+					clipPath: 'inset(0% 0% 0% 0% round 10px)',
 				},
 				{
 					type: 'tween',
 					duration: 0.7,
-					ease: 'easeInOut'
-				}
+					ease: 'easeInOut',
+				},
 			);
 		}
 		// 登录转注册 的动画
 		if (animateMode === 4) {
 			animate(
 				'ul',
-				{ width: '500px', height: '600px' },
+				{ width: '550px', height: '700px' },
 				{
 					type: 'tween',
 					duration: 0.7,
 					ease: 'easeInOut',
-					width: { duration: 0.5 }
-				}
+					width: { duration: 0.5 },
+				},
 			);
 		}
 	}, [animateMode]);

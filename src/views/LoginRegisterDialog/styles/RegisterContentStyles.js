@@ -48,32 +48,6 @@ export const RegisterContentStyles = styled.div`
 			width: 100%;
 			margin-top: 20px;
 
-			.ant-form-item {
-				margin-bottom: 30px;
-			}
-
-			.ant-input,
-			.ant-input-affix-wrapper {
-				border-color: #53a57e;
-				border-radius: 20px;
-				color: #217367;
-				padding-left: 0;
-
-				&::placeholder {
-					color: #53a57e;
-				}
-			}
-
-			.ant-input {
-				padding-left: 15px;
-				height: 29px;
-			}
-
-			.anticon {
-				font-size: 18px;
-				color: #53a57e;
-			}
-
 			.ant-btn-primary {
 				width: 100%;
 				height: 40px;

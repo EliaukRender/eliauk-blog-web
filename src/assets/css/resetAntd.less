@@ -2,6 +2,9 @@
  * @description: 全局重置antd组件样式
 */
 
+/**
+ * @description: 分割线
+*/
 .ant-divider-vertical {
   margin: 0 !important;
 }
@@ -9,3 +12,74 @@
 .ant-divider {
   margin: 0 !important;
 }
+
+/**
+ * @description: Form表单
+*/
+.ant-form-item {
+  margin-bottom: 25px;
+}
+
+
+/**
+ * @description: Input组件
+*/
+
+.ant-input-affix-wrapper {
+  height: 38px;
+  padding: 0 15px 0 15px;
+  border-radius: 20px;
+  border-color: #53a57e;
+
+  .ant-input {
+    height: 100% !important;
+    color: #53a57e !important;
+
+    &::placeholder {
+      color: #217367;
+    }
+  }
+
+
+  .ant-input-prefix {
+    margin-right: 8px;
+
+    .anticon {
+      font-size: 14px;
+      color: #217367 !important;
+    }
+  }
+
+  .ant-input-suffix .anticon {
+    color: #217367 !important;
+  }
+}
+
+/**
+ * @description: Select组件
+ * @param:
+ * @return:
+*/
+
+.ant-select {
+  height: 38px;
+  border-radius: 20px;
+
+  .ant-select-selector {
+    border-radius: 20px;
+    border-color: #53a57e !important;
+    padding: 0 15px !important;
+
+    .ant-select-selection-search-input {
+      height: 100%;
+    }
+  }
+
+  .ant-select-arrow {
+    margin-right: 5px;
+    color: #53a57e;
+  }
+}
+
+
+
