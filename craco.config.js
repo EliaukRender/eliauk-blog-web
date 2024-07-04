@@ -68,11 +68,16 @@ const cracoConfig = ({ env }) => {
 		devServer: {
 			proxy: {
 				'/blog': {
-					// target: 'http://localhost:50000',
-					target: 'http://47.113.177.51',
-					pathRewrite: { '^/blog': '/blog' },
+					target: 'http://localhost:50000',
+					pathRewrite: { '^/blog': '' },
 				},
 			},
+			// proxy: {
+			// 	'/blog': {
+			// 		target: 'http://47.113.177.51',
+			// 		pathRewrite: { '^/blog': '/blog' },
+			// 	},
+			// },
 		},
 	};
 };

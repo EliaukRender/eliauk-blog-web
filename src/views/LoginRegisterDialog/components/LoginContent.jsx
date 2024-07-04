@@ -6,13 +6,21 @@ import { LoginContentStyles } from '@/views/LoginRegisterDialog/styles/LoginCont
 import SvgIcon from '@/components/SvgIcon';
 import { useDispatch } from 'react-redux';
 import { setToken } from '@/store/modules/userReducer';
+import { login } from '@/api/modules/userService';
+import MessageToast from '@/components/MessageToast';
 
 const LoginContent = ({ setAnimateMode }) => {
 	const dispatch = useDispatch();
+
 	// 提交登录数据
-	const onFinish = (value) => {
-		console.log('onFinish', value);
-		dispatch(setToken('888'));
+	const onFinish = async (value) => {
+		try {
+			const { token } = await login(value);
+			dispatch(setToken(token));
+			MessageToast.success('登录成功');
+		} catch (e) {
+			console.log('e', e);
+		}
 	};
 
 	return (
@@ -59,7 +67,7 @@ const LoginContent = ({ setAnimateMode }) => {
 };
 
 LoginContent.propTypes = {
-	setAnimateMode: PropTypes.func
+	setAnimateMode: PropTypes.func,
 };
 
 export default memo(LoginContent);
