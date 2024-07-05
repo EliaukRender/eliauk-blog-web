@@ -1,10 +1,11 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useLoginDialogAnimation } from '@/hooks/animation/useLoginDialogAnimation';
+import { useLoginRegisterDialogAnimation } from '@/hooks/animation/useLoginRegisterDialogAnimation';
 import LoginContent from '@/views/LoginRegisterDialog/components/LoginContent';
 import RegisterContent from '@/views/LoginRegisterDialog/components/RegisterContent';
 import { LoginRegisterDialogStyles } from '@/views/LoginRegisterDialog/styles';
 import Dialog from '@/components/DialogAnimation';
+import { loginRegisterAnimateEnum } from '@/constant';
 
 /**
  * @description: 登录、注册弹窗
@@ -19,16 +20,16 @@ const LoginRegisterDialog = ({ showDialog, closeDialog, mode }) => {
 
 	// 返回值：true-显示登录、false-显示注册
 	const showLoginFlag = useCallback(() => {
-		return [1, 2].includes(animateMode);
+		return [loginRegisterAnimateEnum.OPEN_LOGIN, loginRegisterAnimateEnum.REGISTER_TO_LOGIN].includes(animateMode);
 	}, [animateMode]);
 
-	const scope = useLoginDialogAnimation(animateMode); // 弹窗的动画（内容的宽度高度在动画中设置）
+	const scope = useLoginRegisterDialogAnimation(animateMode); // 弹窗的动画（内容的宽度高度在动画中设置）
 
 	return (
 		<LoginRegisterDialogStyles>
 			<Dialog showDialog={showDialog} closeDialog={closeDialog} scope={scope} style={{ clipPath: 'inset(30% 50% 70% 50% round 10px)' }}>
 				{/* 登录时显示的内容 */}
-				{showLoginFlag() && <LoginContent setAnimateMode={setAnimateMode}></LoginContent>}
+				{showLoginFlag() && <LoginContent setAnimateMode={setAnimateMode} closeDialog={closeDialog}></LoginContent>}
 				{/* 注册时显示的内容 */}
 				{!showLoginFlag() && <RegisterContent setAnimateMode={setAnimateMode}></RegisterContent>}
 			</Dialog>

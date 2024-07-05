@@ -4,7 +4,7 @@ import { Button, Form, Input, Select } from 'antd';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import SvgIcon from '@/components/SvgIcon';
-import { genderOptions, occupationOptions } from '@/constant';
+import { genderOptions, loginRegisterAnimateEnum, occupationOptions } from '@/constant';
 import { register } from '@/api/modules/userService';
 import MessageToast from '@/components/MessageToast';
 
@@ -20,6 +20,7 @@ const RegisterContent = ({ setAnimateMode }) => {
 		try {
 			await register(params);
 			MessageToast.success('注册成功');
+			setAnimateMode(loginRegisterAnimateEnum.REGISTER_TO_LOGIN);
 		} catch (e) {
 			console.log('error-handleRegister', e);
 		}
@@ -65,7 +66,7 @@ const RegisterContent = ({ setAnimateMode }) => {
 					<span
 						className='text'
 						onClick={() => {
-							setAnimateMode(2);
+							setAnimateMode(loginRegisterAnimateEnum.REGISTER_TO_LOGIN);
 						}}>
 						前往登录
 					</span>

@@ -6,6 +6,7 @@ import { useLoginOptionsAnimation } from '@/hooks/animation/useLoginOptionsAnima
 import LoginRegisterDialog from '@/views/LoginRegisterDialog';
 import SvgIcon from '@/components/SvgIcon';
 import { shallowEqual, useSelector } from 'react-redux';
+import { loginRegisterAnimateEnum } from '@/constant';
 
 /**
  * @description: 用户登录、注册的入口
@@ -18,9 +19,9 @@ const UserLoginRegister = () => {
 
 	const { token } = useSelector(
 		(state) => ({
-			token: state.user.token
+			token: state.user.token,
 		}),
-		shallowEqual
+		shallowEqual,
 	);
 
 	// 点击空白位置关闭浮窗
@@ -58,19 +59,19 @@ const UserLoginRegister = () => {
 				<motion.ul
 					className='popover'
 					style={{
-						clipPath: 'inset(10% 50% 90% 50% round 10px)'
+						clipPath: 'inset(10% 50% 90% 50% round 10px)',
 					}}>
 					<div
 						className='item'
 						onClick={() => {
-							openLoginRegisterDialog(1);
+							openLoginRegisterDialog(loginRegisterAnimateEnum.OPEN_LOGIN);
 						}}>
 						登录
 					</div>
 					<div
 						className='item'
 						onClick={() => {
-							openLoginRegisterDialog(3);
+							openLoginRegisterDialog(loginRegisterAnimateEnum.OPEN_REGISTER);
 						}}>
 						注册
 					</div>

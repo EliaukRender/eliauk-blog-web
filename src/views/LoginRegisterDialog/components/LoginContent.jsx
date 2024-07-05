@@ -8,8 +8,9 @@ import { useDispatch } from 'react-redux';
 import { setToken } from '@/store/modules/userReducer';
 import { login } from '@/api/modules/userService';
 import MessageToast from '@/components/MessageToast';
+import { loginRegisterAnimateEnum } from '@/constant';
 
-const LoginContent = ({ setAnimateMode }) => {
+const LoginContent = ({ setAnimateMode, closeDialog }) => {
 	const dispatch = useDispatch();
 
 	// 提交登录数据
@@ -18,6 +19,7 @@ const LoginContent = ({ setAnimateMode }) => {
 			const { token } = await login(value);
 			dispatch(setToken(token));
 			MessageToast.success('登录成功');
+			closeDialog();
 		} catch (e) {
 			console.log('e', e);
 		}
@@ -56,7 +58,7 @@ const LoginContent = ({ setAnimateMode }) => {
 					<span
 						className='text'
 						onClick={() => {
-							setAnimateMode(4);
+							setAnimateMode(loginRegisterAnimateEnum.LOGIN_TO_REGISTER);
 						}}>
 						前往注册
 					</span>

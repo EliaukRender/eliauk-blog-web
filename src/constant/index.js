@@ -8,7 +8,15 @@ export const genderOptions = [
 export const occupationOptions = [
 	{ label: '后端开发', value: 0 },
 	{ label: '前端开发', value: 1 },
-	{ label: '全栈开发', value: 1 },
-	{ label: '学生', value: 1 },
-	{ label: '其他工作', value: 1 },
+	{ label: '全栈开发', value: 2 },
+	{ label: '学生', value: 3 },
+	{ label: '其他工作', value: 4 },
 ];
+
+// 注册登录弹窗动画
+export const loginRegisterAnimateEnum = {
+	OPEN_LOGIN: 1, // 打开登录弹窗
+	REGISTER_TO_LOGIN: 2, // 注册转登录
+	OPEN_REGISTER: 3, // 打开注册
+	LOGIN_TO_REGISTER: 4, // 登录转注册
+};

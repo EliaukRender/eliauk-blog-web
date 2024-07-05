@@ -1,15 +1,16 @@
 import { useAnimate } from 'framer-motion';
 import { useEffect } from 'react';
+import { loginRegisterAnimateEnum } from '@/constant';
 
 /**
  * @description: 登录、注册弹窗 的动画效果
  */
-export const useLoginDialogAnimation = (animateMode) => {
+export const useLoginRegisterDialogAnimation = (animateMode) => {
 	const [scope, animate] = useAnimate();
 
 	useEffect(() => {
 		// 打开登录 的动画 (定义宽高是为了第一次转注册时宽度也有动画效果)
-		if (animateMode === 1) {
+		if (animateMode === loginRegisterAnimateEnum.OPEN_LOGIN) {
 			animate(
 				'ul',
 				{
@@ -25,7 +26,7 @@ export const useLoginDialogAnimation = (animateMode) => {
 			);
 		}
 		// 注册转登录 的动画
-		if (animateMode === 2) {
+		if (animateMode === loginRegisterAnimateEnum.REGISTER_TO_LOGIN) {
 			animate(
 				'ul',
 				{ width: '950px', height: '500px' },
@@ -38,7 +39,7 @@ export const useLoginDialogAnimation = (animateMode) => {
 			);
 		}
 		// 打开注册 的动画
-		if (animateMode === 3) {
+		if (animateMode === loginRegisterAnimateEnum.OPEN_REGISTER) {
 			animate(
 				'ul',
 				{
@@ -54,7 +55,7 @@ export const useLoginDialogAnimation = (animateMode) => {
 			);
 		}
 		// 登录转注册 的动画
-		if (animateMode === 4) {
+		if (animateMode === loginRegisterAnimateEnum.LOGIN_TO_REGISTER) {
 			animate(
 				'ul',
 				{ width: '550px', height: '700px' },
