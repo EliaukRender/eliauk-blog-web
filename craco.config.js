@@ -66,18 +66,14 @@ const cracoConfig = ({ env }) => {
 			plugins: [['babel-plugin-transform-remove-console', { exclude: isEnvProduction ? ['error', 'warn'] : ['error', 'warn', 'log'] }]],
 		},
 		devServer: {
+			hot: true,
 			proxy: {
 				'/blog': {
+					// target: 'http://47.113.177.51',
 					target: 'http://localhost:50000',
-					pathRewrite: { '^/blog': '' },
+					pathRewrite: { '^/blog': '/blog' },
 				},
 			},
-			// proxy: {
-			// 	'/blog': {
-			// 		target: 'http://47.113.177.51',
-			// 		pathRewrite: { '^/blog': '/blog' },
-			// 	},
-			// },
 		},
 	};
 };

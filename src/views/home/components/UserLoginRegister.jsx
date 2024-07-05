@@ -1,12 +1,14 @@
-import React, { forwardRef, memo, useState } from 'react';
+import React, { forwardRef, Fragment, memo, useState } from 'react';
 import { UserLoginRegisterStyles } from '@/views/home/css/UserLoginRegisterStyles';
 import { MenuOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { useLoginOptionsAnimation } from '@/hooks/animation/useLoginOptionsAnimation.js';
 import LoginRegisterDialog from '@/views/LoginRegisterDialog';
 import SvgIcon from '@/components/SvgIcon';
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { loginRegisterAnimateEnum } from '@/constant';
+import { setToken } from '@/store/modules/userReducer';
+import MessageToast from '@/components/MessageToast';
 
 /**
  * @description: 用户登录、注册的入口
@@ -16,6 +18,7 @@ const UserLoginRegister = () => {
 	const [showDialog, setShowDialog] = useState(false); // 显示隐藏登录注册弹窗
 	const [mode, setMode] = useState(null); // 1-打开登录；3-打开注册
 	const scope = useLoginOptionsAnimation(isOpen); // 动画
+	const dispatch = useDispatch();
 
 	const { token } = useSelector(
 		(state) => ({
@@ -41,6 +44,12 @@ const UserLoginRegister = () => {
 		setShowDialog(false);
 	};
 
+	// 退出登录
+	const loginOut = () => {
+		dispatch(setToken(''));
+		MessageToast.success('退出登录');
+	};
+
 	return (
 		<UserLoginRegisterStyles>
 			{/* 用户头像 */}
@@ -61,20 +70,29 @@ const UserLoginRegister = () => {
 					style={{
 						clipPath: 'inset(10% 50% 90% 50% round 10px)',
 					}}>
-					<div
-						className='item'
-						onClick={() => {
-							openLoginRegisterDialog(loginRegisterAnimateEnum.OPEN_LOGIN);
-						}}>
-						登录
-					</div>
-					<div
-						className='item'
-						onClick={() => {
-							openLoginRegisterDialog(loginRegisterAnimateEnum.OPEN_REGISTER);
-						}}>
-						注册
-					</div>
+					{!token && (
+						<Fragment>
+							<div
+								className='item'
+								onClick={() => {
+									openLoginRegisterDialog(loginRegisterAnimateEnum.OPEN_LOGIN);
+								}}>
+								登录
+							</div>
+							<div
+								className='item'
+								onClick={() => {
+									openLoginRegisterDialog(loginRegisterAnimateEnum.OPEN_REGISTER);
+								}}>
+								注册
+							</div>
+						</Fragment>
+					)}
+					{token && (
+						<div className='item' onClick={loginOut}>
+							退出登录
+						</div>
+					)}
 				</motion.ul>
 			</div>
 			{/* 登录注册弹窗 */}

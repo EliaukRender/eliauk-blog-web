@@ -51,7 +51,7 @@ class RequestHttp {
 				if (data.code === ResultEnum.INVALID) {
 					const dispatch = useDispatch();
 					dispatch(setToken(''));
-					MessageToast.error('登录失效，请重新登录');
+					MessageToast.error('登录过期，请重新登录');
 					return Promise.reject(data);
 				}
 				// 全局错误信息拦截（这个位置可以根据项目情况补充或修改）

@@ -5,23 +5,23 @@ import globalReducer from '@/store/modules/globalReducer';
 import userReducer from '@/store/modules/userReducer';
 
 // reducer持久化配置
-const globalReducerPersisCfg = {
-	key: 'global',
+const userReducerPersisCfg = {
+	key: 'user',
 	storage,
-	whitelist: ['currentSectionId', 'scrollY'] // whitelist指定持久化的数据
+	whitelist: ['token'],
 };
 
 const store = configureStore({
 	reducer: {
-		global: persistReducer(globalReducerPersisCfg, globalReducer), // persistReducer对reducer持久化
-		user: userReducer
+		global: globalReducer, // persistReducer对reducer持久化
+		user: persistReducer(userReducerPersisCfg, userReducer),
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
 			serializableCheck: {
-				ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'] // Redux Toolkit忽略特定的非序列化值从而兼容redux-persist
-			}
-		})
+				ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'], // Redux Toolkit忽略特定的非序列化值从而兼容redux-persist
+			},
+		}),
 });
 
 export const persistor = persistStore(store); // 持久化后的store
