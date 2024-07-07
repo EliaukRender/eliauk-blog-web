@@ -9,7 +9,7 @@ import { setToken } from '@/store/modules/userReducer';
 import { login } from '@/api/modules/userService';
 import MessageToast from '@/components/MessageToast';
 import { loginRegisterAnimateEnum } from '@/constant';
-import { useMessage } from '@/components/MessageToast/Message.js';
+// import { useMessage } from '@/components/MessageToast/Message.js';
 
 const LoginContent = ({ setAnimateMode, closeDialog }) => {
 	const dispatch = useDispatch();
@@ -19,8 +19,8 @@ const LoginContent = ({ setAnimateMode, closeDialog }) => {
 		try {
 			const { data } = await login(value);
 			dispatch(setToken(data.token));
-			// MessageToast.success('登录成功');
-			useMessage('success', '登录成功');
+			MessageToast.success('登录成功');
+			// useMessage('success', '登录成功');
 			closeDialog();
 		} catch (e) {
 			console.log('e', e);

@@ -33,12 +33,13 @@ const Image = () => {
 				<img className='duola' src={require('@/assets/image/fullImgs/duola-big.png')} alt='' onClick={openVideo} />
 			</motion.div>
 			{/* 播放视频 */}
+			{/* 生产地址：  http://47.113.177.51/video/video-1.mp4   */}
+			{/* 本地地址：  http://localhost:50000/video/video-1.mp4   */}
 			{videoDialogVisible && (
 				<VideoDialog
 					videoDialogVisible={videoDialogVisible}
 					handleCloseVideo={handleCloseVideo}
-					url='http://localhost:53000/飞驰人生-片尾曲.mp4'
-					poster='http://localhost:53000/飞驰人生-封面.png'></VideoDialog>
+					url='http://47.113.177.51/video/video-1.mp4'></VideoDialog>
 			)}
 		</ImageStyles>
 	);

@@ -31,7 +31,7 @@
   "scripts": {
     "start": "dotenv -e .env.development craco start",
     "build": "dotenv -e .env.production craco build",
-    "deploy": "npm run build && node ./deploy.js"
+    "deploy": "node ./deploy.js"
   },
   "eslintConfig": {
     "extends": [
