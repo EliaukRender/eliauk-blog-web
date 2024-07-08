@@ -3,8 +3,9 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import globalReducer from '@/store/modules/globalReducer';
 import userReducer from '@/store/modules/userReducer';
+import musicPlayerReducer from '@/store/modules/musicPlayerReducer';
 
-// reducer持久化配置
+// userReducer持久化配置
 const userReducerPersisCfg = {
 	key: 'user',
 	storage,
@@ -14,6 +15,7 @@ const userReducerPersisCfg = {
 const store = configureStore({
 	reducer: {
 		global: globalReducer, // persistReducer对reducer持久化
+		musicPlayer: musicPlayerReducer,
 		user: persistReducer(userReducerPersisCfg, userReducer),
 	},
 	middleware: (getDefaultMiddleware) =>

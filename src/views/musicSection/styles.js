@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Bg from '@/assets/image/fullImgs/bg-5.png';
 
 export const MusicSectionStyles = styled.div`
 	width: 100%;
@@ -9,7 +8,8 @@ export const MusicSectionStyles = styled.div`
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	//background-image: url(${Bg});
 	background-size: cover;
 	background-position: center;
+	padding: 30px;
+	box-sizing: border-box;
 `;

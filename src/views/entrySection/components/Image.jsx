@@ -35,6 +35,7 @@ const Image = () => {
 			{/* 播放视频 */}
 			{/* 生产地址：  http://47.113.177.51/media/video/video-1.mp4   */}
 			{/* 本地地址：  http://localhost:50000/media/video/video-1.mp4   */}
+			{/* http://localhost:50000/media/audio/起风了.mp3  */}
 			{videoDialogVisible && (
 				<VideoDialog
 					videoDialogVisible={videoDialogVisible}
