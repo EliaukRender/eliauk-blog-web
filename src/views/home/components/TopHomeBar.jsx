@@ -16,14 +16,15 @@ const TopHomeBar = () => {
 		{ id: 0, name: '首页' },
 		{ id: 1, name: '学习项目' },
 		{ id: 2, name: '博主简介' },
-		{ id: 3, name: '留言板' }
+		{ id: 3, name: '音乐角' },
+		{ id: 4, name: '留言板' },
 	];
 	const { variants, controls } = useTopBarAnimation(); // 动态控制TopHomeBar的显示隐藏
 	const { currentSectionId } = useSelector(
 		(state) => ({
-			currentSectionId: state.global.currentSectionId
+			currentSectionId: state.global.currentSectionId,
 		}),
-		shallowEqual
+		shallowEqual,
 	);
 
 	return (
@@ -58,7 +59,7 @@ const TopHomeBar = () => {
 };
 
 TopHomeBar.propTypes = {
-	abc: PropTypes.string
+	abc: PropTypes.string,
 };
 
 export default memo(TopHomeBar);

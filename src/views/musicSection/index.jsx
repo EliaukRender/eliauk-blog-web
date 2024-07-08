@@ -1,22 +1,27 @@
 import React, { memo, useEffect } from 'react';
-import { MessageSectionStyles } from '@/views/messageSection/styles';
+import { MusicSectionStyles } from '@/views/musicSection/styles';
 import { useInView } from 'react-intersection-observer';
 import { useDispatch } from 'react-redux';
 import { setCurSectionId } from '@/store/modules/globalReducer';
+import AudioPlayer from '@/components/AudioPlayer';
 
 /**
- * @description: 板块---留言板
+ * @description：音乐
  */
-const MessageSection = () => {
+const MusicSection = () => {
 	const { ref, inView } = useInView({ threshold: 0.4 });
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (!inView) return;
-		dispatch(setCurSectionId(4));
+		dispatch(setCurSectionId(3));
 	}, [inView]);
 
-	return <MessageSectionStyles ref={ref}></MessageSectionStyles>;
+	return (
+		<MusicSectionStyles ref={ref}>
+			<AudioPlayer></AudioPlayer>
+		</MusicSectionStyles>
+	);
 };
 
-export default memo(MessageSection);
+export default memo(MusicSection);
