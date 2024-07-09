@@ -14,21 +14,20 @@ import 'lib-flexible';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-	<React.StrictMode>
-		{/* redux数据共享 */}
-		<Provider store={store}>
-			<PersistGate loading={null} persistor={persistor}>
-				{/* css样式共享，通过props.theme就可以拿到自定义的样式 */}
-				<ThemeProvider theme={appTheme}>
-					{/* 异步加载 */}
-					<Suspense fallback={<GlobalLoading />}>
-						{/* Hash路由 */}
-						<HashRouter>
-							<App />
-						</HashRouter>
-					</Suspense>
-				</ThemeProvider>
-			</PersistGate>
-		</Provider>
-	</React.StrictMode>,
+	// <React.StrictMode>
+	<Provider store={store}>
+		<PersistGate loading={null} persistor={persistor}>
+			{/* css样式共享，通过props.theme就可以拿到自定义的样式 */}
+			<ThemeProvider theme={appTheme}>
+				{/* 异步加载 */}
+				<Suspense fallback={<GlobalLoading />}>
+					{/* Hash路由 */}
+					<HashRouter>
+						<App />
+					</HashRouter>
+				</Suspense>
+			</ThemeProvider>
+		</PersistGate>
+	</Provider>,
+	// </React.StrictMode>
 );

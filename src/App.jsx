@@ -1,22 +1,12 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from '@/router';
 import { AppWrapper } from '@/AppStyles';
 import { useAppScrollDirection } from '@/hooks/useAppScrollDirection';
 import PageProgressIndicator from '@/components/ProgressIndicator';
-import { useSelector } from 'react-redux';
-import { handleScrollTo } from '@/utils/handleScrollPage';
 
 const App = () => {
 	useAppScrollDirection();
-
-	const { currentSectionId } = useSelector((state) => ({
-		currentSectionId: state.global.currentSectionId,
-	}));
-
-	useEffect(() => {
-		handleScrollTo(window.innerHeight * currentSectionId);
-	}, []);
 
 	return (
 		<AppWrapper className='page'>
