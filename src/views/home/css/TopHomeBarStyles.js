@@ -21,6 +21,7 @@ export const TopHomeBarStyles = styled.div`
 		color: ${french_Cool_light_gray};
 		box-sizing: border-box;
 		z-index: 99;
+		font-family: Alimama;
 
 		.logo-box {
 			display: flex;
@@ -35,18 +36,18 @@ export const TopHomeBarStyles = styled.div`
 			}
 
 			.name {
-				font-size: 28px;
-				font-weight: 600;
+				font-size: 30px;
 				background: linear-gradient(90deg, ${mld_blue_five}, ${mld_blue_four});
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
+				font-weight: 800;
 			}
 		}
 
 		.bar-box {
 			display: flex;
 			align-items: center;
-			font-size: 18px;
+			font-size: 20px;
 			cursor: pointer;
 			height: 100%;
 

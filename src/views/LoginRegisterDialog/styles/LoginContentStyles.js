@@ -38,6 +38,7 @@ export const LoginContentStyles = styled.div`
 				background: linear-gradient(45deg, #217166, #fdda6f);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
+				font-family: Alimama;
 			}
 		}
 
