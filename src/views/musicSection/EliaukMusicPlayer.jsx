@@ -1,10 +1,10 @@
 import React, { memo } from 'react';
 import { EliaukMusicPlayerStyles } from '@/views/musicSection/styles/EliaukMusicPlayerStyles';
-import PlayerLeft from '@/views/musicSection/views/PlayerLeft';
-import PlayerRight from '@/views/musicSection/views/PlayerRight';
-import PlayerController from '@/views/musicSection/components/PlayerController';
+import PlayerLeft from '@/views/musicSection/layout/PlayerLeft';
+import PlayerRight from '@/views/musicSection/layout/PlayerRight';
+import PlayerBottom from '@/views/musicSection/layout/PlayerBottom';
 
-const EliaukMusicPlayer = (props) => {
+const EliaukMusicPlayer = () => {
 	return (
 		<EliaukMusicPlayerStyles>
 			<div className='main-area'>
@@ -13,8 +13,9 @@ const EliaukMusicPlayer = (props) => {
 				{/* 右侧主体区域 */}
 				<PlayerRight></PlayerRight>
 			</div>
+			{/* 底部区域 */}
 			<div className='bottom-area'>
-				<PlayerController></PlayerController>
+				<PlayerBottom></PlayerBottom>
 			</div>
 		</EliaukMusicPlayerStyles>
 	);

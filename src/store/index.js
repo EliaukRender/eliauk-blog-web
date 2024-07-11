@@ -16,9 +16,9 @@ const userReducerPersisCfg = {
 const store = configureStore({
 	reducer: {
 		global: globalReducer, // persistReducer对reducer持久化
-		musicPlayer: audioReducer,
-		musicApp: musicAppReducer,
 		user: persistReducer(userReducerPersisCfg, userReducer),
+		audio: audioReducer,
+		musicApp: musicAppReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

@@ -6,6 +6,7 @@
 @import "./reset.less";
 @import "./common.less";
 @import "./resetAntd.less";
+@import "src/views/musicSection/styles/index.less";
 
 /**
  * @description: 字体
@@ -15,4 +16,8 @@
   font-family: 'Alimama';
   src: local('Alimama'), url(../font/AlimamaFangYuanTiVF-Thin.ttf) format('truetype');
   /* 可以根据需要添加更多的字体格式，如 woff、woff2 */
+}
+
+body {
+  cursor: default;
 }

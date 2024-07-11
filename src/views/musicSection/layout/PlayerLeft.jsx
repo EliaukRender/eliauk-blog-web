@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { PlayerLeftStyles } from '@/views/musicSection/styles/PlayerLeftStyles';
 import { myMusicMenuList, onlineMusicMenuList } from '@/views/musicSection/constant';
-import LeftMenuList from '@/views/musicSection/components/LeftMenuList';
+import LeftMenuList from '@/views/musicSection/components/LeftMenu/LeftMenuList';
 import { useNavigate } from 'react-router-dom';
 
 const PlayerLeft = () => {

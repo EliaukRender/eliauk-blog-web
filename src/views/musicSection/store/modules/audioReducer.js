@@ -5,16 +5,20 @@ const audioReducer = createSlice({
 	name: 'musicPlayer',
 	initialState: {
 		songList: [], // 当前歌曲播放列表
+
+		/*  最重要的7个字段  */
 		songId: 0, // 歌曲id
 		songUrl: '', // 歌曲url
-		volume: 10, //音量
 		isPlaying: false, // 是否播放中
 		isPause: false, // 是否暂停
-		sliderInput: false, // 是否正在拖动进度条
 		isEnded: false, // 是否播放结束
-		muted: false, // 是否静音
 		currentTime: 0, // 当前播放时间
 		duration: 0, // 总播放时长
+		/*  最重要的7个字段  */
+
+		sliderInput: false, // 是否正在拖动进度条
+		muted: false, // 是否静音
+		volume: 20, // 音量
 	},
 	reducers: {
 		// 保存音量值
@@ -37,6 +41,11 @@ const audioReducer = createSlice({
 			state.isPlaying = payload;
 		},
 
+		// 保存暂停状态
+		setIsPause(state, { payload }) {
+			state.isPause = payload;
+		},
+
 		// 保存当前播放时间
 		setCurrentTime(state, { payload }) {
 			state.currentTime = payload;
@@ -44,7 +53,7 @@ const audioReducer = createSlice({
 
 		// 保存当前歌曲总时长
 		setDuration(state, { payload }) {
-			state.currentTime = payload;
+			state.duration = payload;
 		},
 
 		// 当前歌曲播放完毕
@@ -65,7 +74,7 @@ const audioReducer = createSlice({
 	},
 });
 
-export const { setVolume, setCurrentTime, setIsPlaying, setSongUrl, setSongId, setDuration, setIsEnded } = audioReducer.actions;
+export const { setVolume, setCurrentTime, setIsPause, setIsPlaying, setSongUrl, setSongId, setDuration, setIsEnded } = audioReducer.actions;
 export default audioReducer.reducer;
 
 /**
