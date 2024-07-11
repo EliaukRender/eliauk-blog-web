@@ -12,10 +12,10 @@ export const EliaukMusicPlayerStyles = styled.div`
 	border-radius: 6px 6px 0 0;
 
 	/* 背景图 */
-	background-image: url(${bg});
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	// background-image: url(${bg});
+	// background-size: cover;
+	// background-position: center;
+	// background-repeat: no-repeat;
 
 	.main-area {
 		display: flex;
