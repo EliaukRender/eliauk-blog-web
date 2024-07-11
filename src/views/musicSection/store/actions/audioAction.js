@@ -81,7 +81,7 @@ export const playAudio = async () => {
 	}
 	/* 2、歌曲列表中没有任何歌曲信息，无法播放歌曲 */
 	if (!songUrl && !songList?.length) {
-		MessageToast.warning('暂无歌曲音频，请刷新页面后重新');
+		MessageToast.warning('暂无歌曲音频，请刷新页面后重试');
 		return;
 	}
 	/* 3、有歌曲列表，但是没有待播放的歌曲信息 */

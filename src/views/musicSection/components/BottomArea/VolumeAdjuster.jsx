@@ -9,7 +9,6 @@ import { changeVolume } from '@/views/musicSection/store/actions/audioAction';
  */
 const VolumeAdjuster = () => {
 	const [open, setOpen] = useState(false);
-	const dispatch = useDispatch();
 
 	const { volume } = useSelector(
 		(state) => ({
@@ -59,9 +58,7 @@ const VolumeAdjuster = () => {
 				placement='top'
 				trigger='click'
 				open={open}
-				onOpenChange={() => {
-					handleOpenChange();
-				}}>
+				onOpenChange={handleOpenChange}>
 				<SoundOutlined />
 			</Popover>
 		</div>

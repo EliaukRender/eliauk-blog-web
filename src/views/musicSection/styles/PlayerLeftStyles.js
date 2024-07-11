@@ -7,7 +7,8 @@ export const PlayerLeftStyles = styled.div`
 	flex-direction: column;
 	box-sizing: border-box;
 	padding: 20px 16px;
-	background-color: #f6f6f6;
+	//background-color: #f6f6f6;
+	//background-color: rgba(0, 0, 0, 0.05);
 	color: #515151;
 
 	.logo-area {
