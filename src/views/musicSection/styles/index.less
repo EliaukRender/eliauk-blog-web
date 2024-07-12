@@ -1,4 +1,11 @@
+/**
+ * @description: 音量控制器的popover中的样式
+*/
 .volume-adjuster-popover {
+  .ant-popover-inner {
+    padding: 0;
+  }
+
   .ant-popover-inner-content {
     width: 74px;
     height: 250px;
@@ -10,20 +17,76 @@
     box-sizing: border-box;
   }
 
+  .ant-slider {
+    flex: 1;
+    margin: 0;
+
+    .ant-slider-handle::after {
+      background-color: #00cc65;
+    }
+
+    .ant-slider-handle:focus::after {
+      box-shadow: 0 0 0 4px #00cc65;
+    }
+  }
+
+  .ant-slider:hover .ant-slider-handle::after {
+    box-shadow: 0 0 0 2px #00cc65;
+  }
+
+  .anticon-sound {
+    font-size: 18px;
+    margin-top: 15px;
+  }
+
+  .volume-value {
+    margin: 10px 0;
+  }
+}
+
+
+/**
+ * @description: 音乐播放模式控制器中的popover的样式
+*/
+.music-mode-popover {
+  cursor: pointer;
+
   .ant-popover-inner {
     padding: 0;
+  }
 
-    .ant-slider {
+  .ant-popover-inner-content {
+    width: 120px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 5px;
+
+    .mode-item {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex: 1;
-    }
+      text-align: center;
+      border-bottom: 1px solid #eeeeee;
 
-    .anticon-sound {
-      font-size: 18px;
-      margin-top: 15px;
-    }
+      .iconfont {
+        font-size: 22px;
+        margin-right: 8px;
+      }
 
-    .volume-value {
-      margin: 10px 0;
+      &:hover {
+        background-color: #dddddd;
+        border-radius: 5px;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
     }
   }
 }

@@ -11,6 +11,7 @@ import {
 import { ControllerBtnsStyles } from '@/views/musicSection/styles/ControllerBtnsStyles';
 import { shallowEqual, useSelector } from 'react-redux';
 import VolumeAdjuster from '@/views/musicSection/components/BottomArea/VolumeAdjuster';
+import MusicMode from '@/views/musicSection/components/BottomArea/MusicMode';
 
 const ControllerBtns = () => {
 	const { isPlaying } = useSelector(
@@ -23,6 +24,8 @@ const ControllerBtns = () => {
 
 	return (
 		<ControllerBtnsStyles>
+			{/* 音乐播放模式控制器 */}
+			<MusicMode></MusicMode>
 			{/* 后退 */}
 			<BackwardOutlined
 				onClick={() => {
@@ -55,7 +58,7 @@ const ControllerBtns = () => {
 			{/* 下一首 */}
 			<StepForwardOutlined
 				onClick={() => {
-					playNextSong();
+					playNextSong(true);
 				}}
 			/>
 			{/* 快进 */}

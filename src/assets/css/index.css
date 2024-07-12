@@ -7,9 +7,10 @@
 @import "./common.less";
 @import "./resetAntd.less";
 @import "src/views/musicSection/styles/index.less";
+@import "../iconfont/iconfont.css";
 
 /**
- * @description: 字体
+ * @description: 自定义字体
 */
 
 @font-face {
@@ -20,4 +21,13 @@
 
 body {
   cursor: default;
+}
+
+/**
+ * @description: iconfont默认字体大小24px
+*/
+.iconfont {
+  font-size: 24px;
+  color: #666666;
+  line-height: 24px;
 }

@@ -5,6 +5,7 @@ import {
 	setIsEnded,
 	setIsPause,
 	setIsPlaying,
+	setMusicMode,
 	setSongId,
 	setSongUrl,
 	setVolume,
@@ -16,15 +17,26 @@ const audio = new Audio(); // 初始化audio
 
 /**
  * @description: 下一首
+ * @param manualFlag ：true-手动点击下一首时，直接下一首； false-自然结束下一首时，要考虑musicMode
  */
-export const playNextSong = async () => {
-	console.log('playNextSong');
-	let { songList, songId } = store.getState().audio;
-	let index = songList?.findIndex((item) => item.songId === songId);
-	// 是否最后一首
-	index = index === songList?.length - 1 ? 0 : index + 1;
-	// 找到下一首
-	const nextSong = songList[index];
+export const playNextSong = async (manualFlag) => {
+	let { songList, songId, musicMode } = store.getState().audio;
+	console.log('playNextSong', musicMode);
+	let nextSong;
+	/* 顺序播放、 单曲循环时主动下一首 */
+	if (musicMode === 1 || (musicMode === 3 && manualFlag)) {
+		let index = songList?.findIndex((item) => item.songId === songId);
+		index = index === songList?.length - 1 ? 0 : index + 1; // 是否最后一首
+		nextSong = songList[index]; // 找到下一首
+	}
+	/* 随机播放 */
+	if (musicMode === 2) {
+		nextSong = getRandomSong(songList, songId);
+	}
+	/* 单曲循环且不是主动切换 */
+	if (musicMode === 3 && !manualFlag) {
+		nextSong = songList?.find((item) => item.songId === songId);
+	}
 	// 重置状态
 	dispatch(setSongId(nextSong.songId));
 	dispatch(setSongUrl(nextSong.songUrl));
@@ -38,16 +50,42 @@ export const playNextSong = async () => {
 };
 
 /**
+ * @description: 实现随机效果
+ * @param songList  当前歌曲列表
+ * @param songId 当前歌曲的id
+ * @return songList[randomIndex] 随机歌曲信息
+ */
+const getRandomSong = (songList, songId) => {
+	if (songList.length === 1) {
+		return 0; // 如果只有一首歌，直接返回索引0
+	}
+	let randomIndex = Math.floor(Math.random() * songList.length);
+	// 如果随机到的索引与上次播放的索引相同，重新生成，直到不同为止
+	const curSongIndex = songList.findIndex((item) => item.songId === songId);
+	if (randomIndex === curSongIndex) {
+		randomIndex = Math.floor(Math.random() * songList.length);
+		console.log('randomIndex', randomIndex);
+	}
+	return songList[randomIndex];
+};
+
+/**
  * @description: 上一首
  */
 export const playPreSong = async () => {
 	console.log('playPreSong');
-	let { songList, songId } = store.getState().audio;
-	let index = songList?.findIndex((item) => item.songId === songId);
-	// 是否第一首
-	index = index === 0 ? songList?.length - 1 : index - 1;
-	// 找到下一首
-	const preSong = songList[index];
+	let { songList, songId, musicMode } = store.getState().audio;
+	let preSong;
+	/* 顺序播放模式 或者 单曲循环模式 */
+	if (musicMode === 1 || musicMode === 3) {
+		let index = songList?.findIndex((item) => item.songId === songId);
+		index = index === 0 ? songList?.length - 1 : index - 1; // 是否第一首
+		preSong = songList[index]; // 找到上一首
+	}
+	/* 随机播放模式  */
+	if (musicMode === 2) {
+		preSong = getRandomSong(songList, songId);
+	}
 	// 重置状态
 	dispatch(setSongId(preSong.songId));
 	dispatch(setSongUrl(preSong.songUrl));
@@ -129,7 +167,7 @@ export const pauseAudio = () => {
  * @description: 歌曲当前播放时间，实时保存
  */
 audio.addEventListener('timeupdate', function () {
-	console.log('当前时间', audio.currentTime);
+	// console.log('当前时间', audio.currentTime);
 	dispatch(setCurrentTime(audio.currentTime));
 });
 
@@ -141,7 +179,7 @@ audio.addEventListener('ended', function () {
 	console.log('歌曲播放完毕');
 	resetAudioStatus();
 	// 	自动下一首
-	playNextSong();
+	playNextSong(false);
 });
 
 /**
@@ -179,7 +217,7 @@ export const addCurrentTime = () => {
 	// 歌曲直接结束，开始下一首
 	if (lastTime >= duration) {
 		resetAudioStatus();
-		playNextSong();
+		playNextSong(false);
 		return;
 	}
 	audio.currentTime = lastTime;
@@ -198,4 +236,18 @@ export const decreaseCurrentTime = () => {
 		return;
 	}
 	audio.currentTime = lastTime;
+};
+
+/**
+ * @description: 调节播放时间
+ */
+export const changeCurrentTime = (curTime) => {
+	audio.currentTime = curTime;
+};
+
+/**
+ * @description: 调节音乐播放模式: 1-顺序播放、2-随机播放、3-单曲循环
+ */
+export const changeMusicMode = (mode) => {
+	dispatch(setMusicMode(mode));
 };

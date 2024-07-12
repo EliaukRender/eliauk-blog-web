@@ -1,0 +1,44 @@
+{
+  "id": "4619235",
+  "name": "eliauk-blog",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "16576819",
+      "name": "volume-x",
+      "font_class": "volume-x",
+      "unicode": "e87f",
+      "unicode_decimal": 59519
+    },
+    {
+      "icon_id": "18361090",
+      "name": "volume-1",
+      "font_class": "volume-1",
+      "unicode": "e778",
+      "unicode_decimal": 59256
+    },
+    {
+      "icon_id": "197805",
+      "name": "随机播放",
+      "font_class": "suijibofang",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "160117",
+      "name": "顺序播放",
+      "font_class": "shunxubofang",
+      "unicode": "e690",
+      "unicode_decimal": 59024
+    },
+    {
+      "icon_id": "2154283",
+      "name": "单曲循环_32",
+      "font_class": "danquxunhuan",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    }
+  ]
+}

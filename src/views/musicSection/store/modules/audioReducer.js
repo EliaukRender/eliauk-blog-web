@@ -16,6 +16,7 @@ const audioReducer = createSlice({
 		duration: 0, // 总播放时长
 		/*  最重要的7个字段  */
 
+		musicMode: 1, // 1-顺序播放、2-随机播放、3-单曲循环
 		sliderInput: false, // 是否正在拖动进度条
 		muted: false, // 是否静音
 		volume: 20, // 音量
@@ -60,6 +61,11 @@ const audioReducer = createSlice({
 		setIsEnded(state, { payload }) {
 			state.isEnded = payload;
 		},
+
+		// 保存音乐播放模式
+		setMusicMode(state, { payload }) {
+			state.musicMode = payload;
+		},
 	},
 	// 异步reducers
 	extraReducers: (builder) => {
@@ -74,7 +80,8 @@ const audioReducer = createSlice({
 	},
 });
 
-export const { setVolume, setCurrentTime, setIsPause, setIsPlaying, setSongUrl, setSongId, setDuration, setIsEnded } = audioReducer.actions;
+export const { setMusicMode, setVolume, setCurrentTime, setIsPause, setIsPlaying, setSongUrl, setSongId, setDuration, setIsEnded } =
+	audioReducer.actions;
 export default audioReducer.reducer;
 
 /**

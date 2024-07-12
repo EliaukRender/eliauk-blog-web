@@ -27,3 +27,6 @@ export const french_Cool_light_gray = '#efefef';
 export const deep_green = '#217367'
 export const middle_green = '#53a57e'
 export const light_green = '#82ba77'
+
+
+export const text_black = "#333333"; // 文本黑色
