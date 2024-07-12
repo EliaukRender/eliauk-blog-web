@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const VolumeAdjusterStyles = styled.div`
+export const FeatListPopoverStyles = styled.div`
 	.iconfont:hover,
-	.sound-active {
+	.icon-shenglve-active {
 		color: #00cc65;
 	}
 

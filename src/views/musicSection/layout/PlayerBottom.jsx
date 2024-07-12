@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { PlayerBottomStyles } from '@/views/musicSection/styles/PlayerBottomStyles';
-import BottomMusicInfo from '@/views/musicSection/components/BottomArea/BottomMusicInfo';
-import BottomController from '@/views/musicSection/components/BottomArea/BottomController';
-import BottomOperation from '@/views/musicSection/components/BottomArea/BottomOperation';
+import BottomMusicInfo from '@/views/musicSection/components/BottomArea/LeftAreaCmps/BottomLeftArea';
+import BottomController from '@/views/musicSection/components/BottomArea/MiddleAreaCmps/BottomMiddleArea';
+import BottomOperation from '@/views/musicSection/components/BottomArea/RightArea/BottomRightArea';
 
 const PlayerBottom = () => {
 	return (

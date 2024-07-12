@@ -3,9 +3,11 @@ import {
 	setCurrentTime,
 	setDuration,
 	setIsEnded,
+	setIsMuted,
 	setIsPause,
 	setIsPlaying,
 	setMusicMode,
+	setPlaybackRate,
 	setSongId,
 	setSongUrl,
 	setVolume,
@@ -103,7 +105,7 @@ export const playPreSong = async () => {
  */
 export const playAudio = async () => {
 	console.log('playAudio');
-	let { songUrl, songList, volume, songId, isEnded, currentTime, duration, isPause } = store.getState().audio;
+	let { songUrl, songList, volume, songId, isEnded, currentTime, duration, isPause, playbackRate } = store.getState().audio;
 	/* 1、暂停后继续播放 */
 	if (isPause && !!songUrl && !isEnded && duration) {
 		audio.currentTime = currentTime;
@@ -134,6 +136,7 @@ export const playAudio = async () => {
 	// 从0开始播放
 	try {
 		audio.src = songUrl;
+		audio.playbackRate = playbackRate; // 切换歌曲时速率会重置为1
 		audio
 			.play()
 			.then(() => {
@@ -201,10 +204,14 @@ const resetAudioStatus = () => {
 export const changeVolume = (curVol) => {
 	if (curVol <= 0) {
 		dispatch(setVolume(0));
+		dispatch(setIsMuted(true));
+		audio.muted = true;
 		return;
 	}
+	dispatch(setIsMuted(false));
 	dispatch(setVolume(curVol)); // 保存最新音量
 	audio.volume = curVol / 100; // 调节音量
+	audio.muted = false;
 };
 
 /**
@@ -250,4 +257,12 @@ export const changeCurrentTime = (curTime) => {
  */
 export const changeMusicMode = (mode) => {
 	dispatch(setMusicMode(mode));
+};
+
+/**
+ * @description: 改变音频的播放速率
+ */
+export const changePlaybackRate = (playbackRate) => {
+	audio.playbackRate = playbackRate;
+	dispatch(setPlaybackRate(playbackRate));
 };

@@ -47,7 +47,7 @@ const TimeLine = () => {
 						},
 					},
 				}}>
-				<Slider defaultValue={0} value={currentTime} min={0} max={duration} tooltip={{ formatter: null }} step={2} onChange={onChange} />
+				<Slider defaultValue={0} value={currentTime} min={0} max={duration} tooltip={{ formatter: null }} onChange={onChange} />
 			</ConfigProvider>
 			<div className='time'>{formatTime(duration)}</div>
 		</TimeLineStyles>

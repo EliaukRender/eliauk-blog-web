@@ -5,4 +5,6 @@ export const MusicModeStyles = styled.div`
 	.icon-active {
 		color: #00cc65;
 	}
+
+	cursor: pointer;
 `;

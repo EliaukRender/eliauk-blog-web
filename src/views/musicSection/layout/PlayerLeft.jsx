@@ -22,9 +22,9 @@ const PlayerLeft = () => {
 				<img src={require('@/views/musicSection/images/music-logo.png')} alt='' />
 				<span className='logo-title'>Eliauk音乐</span>
 			</div>
-			{/* 在线音乐 */}
+			{/* 在线音乐列表 */}
 			<LeftMenuList menuListTitle='在线音乐' menuList={onlineMusicMenuList} changeCurMenu={changeCurMenu}></LeftMenuList>
-			{/* 我的音乐 */}
+			{/* 我的音乐列表 */}
 			<LeftMenuList menuListTitle='我的音乐' menuList={myMusicMenuList} changeCurMenu={changeCurMenu}></LeftMenuList>
 		</PlayerLeftStyles>
 	);

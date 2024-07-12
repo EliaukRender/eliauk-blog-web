@@ -22,7 +22,7 @@ export const LeftMenuListStyles = styled.div`
 			box-sizing: border-box;
 
 			.item-text {
-				margin-left: 8px;
+				margin-left: 10px;
 			}
 		}
 

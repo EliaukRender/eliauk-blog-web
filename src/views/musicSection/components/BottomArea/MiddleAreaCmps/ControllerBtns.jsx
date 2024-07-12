@@ -10,8 +10,8 @@ import {
 } from '@/views/musicSection/store/actions/audioAction';
 import { ControllerBtnsStyles } from '@/views/musicSection/styles/ControllerBtnsStyles';
 import { shallowEqual, useSelector } from 'react-redux';
-import VolumeAdjuster from '@/views/musicSection/components/BottomArea/VolumeAdjuster';
-import MusicMode from '@/views/musicSection/components/BottomArea/MusicMode';
+import VolumeAdjuster from '@/views/musicSection/components/BottomArea/MiddleAreaCmps/VolumeAdjuster';
+import MusicMode from '@/views/musicSection/components/BottomArea/MiddleAreaCmps/MusicMode';
 
 const ControllerBtns = () => {
 	const { isPlaying } = useSelector(

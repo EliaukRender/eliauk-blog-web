@@ -90,3 +90,119 @@
     }
   }
 }
+
+/**
+ * @description: 特色功能FeatListPopover的样式
+*/
+.music-feat-popover {
+  .ant-popover-inner {
+    padding: 0;
+  }
+
+  .ant-popover-inner-content {
+    width: 180px;
+    padding: 10px 0;
+    box-sizing: border-box;
+
+    .feat-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 32px;
+      padding-left: 15px;
+      cursor: pointer;
+      font-size: 12px;
+
+      &:hover {
+        background-color: #dddddd;
+      }
+
+      .iconfont {
+        font-size: 22px;
+        margin-right: 10px;
+      }
+    }
+
+    .feat-item-has-arrow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #dddddd;
+      }
+    }
+  }
+}
+
+/**
+ * @description: 倍速播放DoubleSpeed的popover的样式
+*/
+.double-speed-popover {
+  .ant-popover-inner {
+    padding: 0;
+  }
+
+  .ant-popover-inner-content {
+    width: 160px;
+    padding: 10px 0;
+    box-sizing: border-box;
+
+    .speed-item {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #dddddd;
+      }
+
+      .icon-duigou {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+/**
+ * @description: 添加音乐到某个列表的浮窗的样式   MoveMusic
+*/
+.move-music-popover {
+  .ant-popover-inner {
+    padding: 0;
+  }
+
+  .ant-popover-inner-content {
+    width: 160px;
+    padding: 10px 0;
+    box-sizing: border-box;
+
+    .move-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 30px;
+      line-height: 30px;
+      text-align: left;
+      position: relative;
+      padding: 0 15px;
+      box-sizing: border-box;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #dddddd;
+      }
+
+      .iconfont {
+        font-size: 22px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

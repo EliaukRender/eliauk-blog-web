@@ -4,8 +4,7 @@ export const PlayerBottomStyles = styled.div`
 	width: 100%;
 	height: 100%;
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
 	border-top: 1px solid #e6e6e6;

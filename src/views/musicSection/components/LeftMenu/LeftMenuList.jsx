@@ -1,12 +1,9 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { LeftMenuListStyles } from '@/views/musicSection/styles/LeftMenuListStyles';
 import classNames from 'classnames';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setCurMenuId } from '@/views/musicSection/store/modules/musicAppReducer';
-
-const icons = require.context('@/views/musicSection/images/icons/', true);
-const iconsPathList = icons.keys();
 
 /**
  * @description: 左侧菜单列表
@@ -25,7 +22,6 @@ const LeftMenuList = ({ menuListTitle, menuList, changeCurMenu }) => {
 			<div className='menu-list'>
 				<div className='title'>{menuListTitle}</div>
 				{menuList.map((item) => {
-					const path = iconsPathList.find((path) => path === `./${item.icon}.png`);
 					return (
 						<div
 							key={item.id}
@@ -34,7 +30,7 @@ const LeftMenuList = ({ menuListTitle, menuList, changeCurMenu }) => {
 								dispatch(setCurMenuId(item.id));
 								changeCurMenu(item.id);
 							}}>
-							<img src={require(`@/views/musicSection/images/icons/${path ? item.icon : 'like'}.png`)} alt='' />
+							<i className={classNames('iconfont', item.icon)}></i>
 							<span className='item-text'>{item.name}</span>
 						</div>
 					);

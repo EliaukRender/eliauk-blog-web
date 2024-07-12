@@ -6,6 +6,111 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "201559",
+      "name": "火热",
+      "font_class": "huore",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "577382",
+      "name": "喜欢",
+      "font_class": "xihuan",
+      "unicode": "e761",
+      "unicode_decimal": 59233
+    },
+    {
+      "icon_id": "1304951",
+      "name": "列表",
+      "font_class": "liebiao",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "1638517",
+      "name": "视频",
+      "font_class": "shipin",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "5810211",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e7ee",
+      "unicode_decimal": 59374
+    },
+    {
+      "icon_id": "11391498",
+      "name": "歌单",
+      "font_class": "gedan",
+      "unicode": "e636",
+      "unicode_decimal": 58934
+    },
+    {
+      "icon_id": "20784199",
+      "name": "歌单标签",
+      "font_class": "gedanbiaoqian",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "35262970",
+      "name": "音乐",
+      "font_class": "yinle",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "28287912",
+      "name": "对钩",
+      "font_class": "duigou",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "5037719",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "755560",
+      "name": "视频",
+      "font_class": "video",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "5647775",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "6303533",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "12235607",
+      "name": "倍速",
+      "font_class": "beisu",
+      "unicode": "e720",
+      "unicode_decimal": 59168
+    },
+    {
+      "icon_id": "3541148",
+      "name": "省略",
+      "font_class": "shenglve",
+      "unicode": "e7b5",
+      "unicode_decimal": 59317
+    },
+    {
       "icon_id": "16576819",
       "name": "volume-x",
       "font_class": "volume-x",

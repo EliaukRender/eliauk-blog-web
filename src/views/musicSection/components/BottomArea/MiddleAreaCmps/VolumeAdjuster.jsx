@@ -1,6 +1,5 @@
 import React, { Fragment, memo, useState } from 'react';
 import { ConfigProvider, Divider, Popover, Slider } from 'antd';
-import { SoundOutlined } from '@ant-design/icons';
 import { shallowEqual, useSelector } from 'react-redux';
 import { changeVolume } from '@/views/musicSection/store/actions/audioAction';
 import { VolumeAdjusterStyles } from '@/views/musicSection/styles/VolumeAdjusterStyles';
@@ -27,6 +26,7 @@ const VolumeAdjuster = () => {
 
 	// 改变音量
 	const onChange = (value) => {
+		console.log('音量', value);
 		changeVolume(value);
 	};
 
