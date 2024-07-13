@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef } from 'react';
-import analyser from '@/views/musicSection/store/actions/audioAction';
+import { getAnalyser } from '@/views/musicSection/store/actions/audioAction';
 import { shallowEqual, useSelector } from 'react-redux';
 import { getGradient } from '@/views/musicSection/store/actions/analyzeActions';
 import cloneDeep from 'lodash/cloneDeep';
@@ -9,8 +9,6 @@ import cloneDeep from 'lodash/cloneDeep';
  */
 const AudioSpectrumVisualizer = () => {
 	const canvasRef = useRef(null);
-	const bufferLength = analyser.frequencyBinCount; // 获取频率数据长度
-	const dataArray = new Uint8Array(bufferLength); // dataArray用于存储频率数据;
 	// canvas配置
 	const { canvasOptions, isPlaying } = useSelector(
 		(state) => ({
@@ -21,6 +19,10 @@ const AudioSpectrumVisualizer = () => {
 	);
 
 	useEffect(() => {
+		if (!isPlaying) return;
+		const analyser = getAnalyser();
+		const bufferLength = analyser.frequencyBinCount; // 获取频率数据长度
+		const dataArray = new Uint8Array(bufferLength); // dataArray用于存储频率数据;
 		// 配置canvas
 		const canvas = canvasRef.current;
 		const { width, height } = canvas;

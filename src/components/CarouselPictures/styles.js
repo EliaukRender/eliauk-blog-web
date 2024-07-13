@@ -22,7 +22,7 @@ export const CarouselPicturesStyles = styled.div`
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		z-index: 99;
+		z-index: 10;
 		padding: 10px;
 		background-color: ${hexToRgba(mld_blue_one, 0.5)};
 		font-size: 20px;

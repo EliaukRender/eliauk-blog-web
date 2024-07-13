@@ -16,6 +16,7 @@ import MessageToast from '@/components/MessageToast';
 
 const dispatch = store.dispatch;
 export const audio = new Audio(); // 初始化audio
+audio.autoplay = false;
 
 /**
  * @description: 下一首
@@ -101,10 +102,28 @@ export const playPreSong = async () => {
 };
 
 /**
+ * @description: 获取频谱分析器
+ */
+let audioContext = null;
+let analyser = null;
+export const getAnalyser = () => {
+	return analyser;
+};
+
+/**
  * @description: 播放歌曲
  */
 export const playAudio = async () => {
 	console.log('playAudio');
+	// 让用户点击时才创建audioContext，否则会被浏览器策略限制
+	if (!audioContext) {
+		audioContext = new (window.AudioContext || window.webkitAudioContext)(); // 创建处理音频的对象
+		analyser = audioContext.createAnalyser(); // 创建频谱分析对象
+		analyser.fftSize = store.getState().analyze.canvasOptions.fftSize; // 频谱分析的精度
+		const audioSrc = audioContext.createMediaElementSource(audio); // 指定音频源
+		audioSrc.connect(analyser); // 音频源连接到分析器
+		analyser.connect(audioContext.destination); // 分析器连接到音频输出设备
+	}
 	let { songUrl, songList, volume, songId, isEnded, currentTime, duration, isPause, playbackRate } = store.getState().audio;
 	/* 1、暂停后继续播放 */
 	if (isPause && !!songUrl && !isEnded && duration) {
@@ -263,15 +282,3 @@ export const changePlaybackRate = (playbackRate) => {
 	audio.playbackRate = playbackRate;
 	dispatch(setPlaybackRate(playbackRate));
 };
-
-/**
- * @description: 导出音频数据分析器
- */
-const audioContext = new (window.AudioContext || window.webkitAudioContext)(); // 处理音频的对象
-const analyser = audioContext.createAnalyser(); // 实时分析音频数据的对象
-analyser.fftSize = store.getState().analyze.canvasOptions.fftSize; // 频谱分析的精度
-const audioSrc = audioContext.createMediaElementSource(audio); // 指定音频源
-audioSrc.connect(analyser); // 音频源连接到分析器
-analyser.connect(audioContext.destination); // 分析器连接到音频输出设备
-
-export default analyser;
