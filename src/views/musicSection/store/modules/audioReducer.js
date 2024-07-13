@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getSongList } from '@/api/modules/musicService';
 
 const audioReducer = createSlice({
-	name: 'musicPlayer',
+	name: 'audio',
 	initialState: {
 		songList: [], // 当前歌曲播放列表
 
@@ -18,7 +18,7 @@ const audioReducer = createSlice({
 
 		musicMode: 1, // 1-顺序播放、2-随机播放、3-单曲循环
 		muted: false, // 是否静音
-		volume: 20, // 音量
+		volume: 10, // 音量
 		playbackRate: 1.0, // 播放速率
 	},
 	reducers: {

@@ -5,6 +5,7 @@ import globalReducer from '@/store/modules/globalReducer';
 import userReducer from '@/store/modules/userReducer';
 import audioReducer from '@/views/musicSection/store/modules/audioReducer';
 import musicAppReducer from '@/views/musicSection/store/modules/musicAppReducer';
+import analyzeReducer from '@/views/musicSection/store/modules/analyzeReducer';
 
 // userReducer持久化配置
 const userReducerPersisCfg = {
@@ -19,6 +20,7 @@ const store = configureStore({
 		user: persistReducer(userReducerPersisCfg, userReducer),
 		audio: audioReducer,
 		musicApp: musicAppReducer,
+		analyze: analyzeReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

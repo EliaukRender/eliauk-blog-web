@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "16323304",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "36471427",
+      "name": "向上展开",
+      "font_class": "zhankaidown",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
+      "icon_id": "41078379",
+      "name": "向上展开",
+      "font_class": "zhankaiup-copy",
+      "unicode": "e88b",
+      "unicode_decimal": 59531
+    },
+    {
+      "icon_id": "7708028",
+      "name": "下箭头",
+      "font_class": "xiajiantou",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "38028443",
+      "name": "撑开",
+      "font_class": "chengkai",
+      "unicode": "e7cf",
+      "unicode_decimal": 59343
+    },
+    {
+      "icon_id": "6717290",
+      "name": "歌词",
+      "font_class": "ci",
+      "unicode": "e88a",
+      "unicode_decimal": 59530
+    },
+    {
+      "icon_id": "37842892",
+      "name": "频谱",
+      "font_class": "pinpu",
+      "unicode": "e69c",
+      "unicode_decimal": 59036
+    },
+    {
       "icon_id": "201559",
       "name": "火热",
       "font_class": "huore",

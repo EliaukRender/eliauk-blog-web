@@ -15,7 +15,7 @@ import {
 import MessageToast from '@/components/MessageToast';
 
 const dispatch = store.dispatch;
-const audio = new Audio(); // 初始化audio
+export const audio = new Audio(); // 初始化audio
 
 /**
  * @description: 下一首
@@ -129,12 +129,9 @@ export const playAudio = async () => {
 		songUrl = songList[0].songUrl;
 		songId = songList[0].songId;
 	}
-	// 设置默认音量
-	if (volume === 20) {
-		audio.volume = 20 / 100;
-	}
 	// 从0开始播放
 	try {
+		audio.volume = volume / 100; // 设置音量
 		audio.src = songUrl;
 		audio.playbackRate = playbackRate; // 切换歌曲时速率会重置为1
 		audio
@@ -266,3 +263,15 @@ export const changePlaybackRate = (playbackRate) => {
 	audio.playbackRate = playbackRate;
 	dispatch(setPlaybackRate(playbackRate));
 };
+
+/**
+ * @description: 导出音频数据分析器
+ */
+const audioContext = new (window.AudioContext || window.webkitAudioContext)(); // 处理音频的对象
+const analyser = audioContext.createAnalyser(); // 实时分析音频数据的对象
+analyser.fftSize = store.getState().analyze.canvasOptions.fftSize; // 频谱分析的精度
+const audioSrc = audioContext.createMediaElementSource(audio); // 指定音频源
+audioSrc.connect(analyser); // 音频源连接到分析器
+analyser.connect(audioContext.destination); // 分析器连接到音频输出设备
+
+export default analyser;

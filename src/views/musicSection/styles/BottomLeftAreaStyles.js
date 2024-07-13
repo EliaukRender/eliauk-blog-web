@@ -7,12 +7,8 @@ export const BottomLeftAreaStyles = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-
-	.music-pic {
-		width: 50px;
-		height: 50px;
-		margin-right: 10px;
-	}
+	padding-left: 15px;
+	position: relative;
 
 	.info-text {
 		display: flex;

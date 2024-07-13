@@ -1,15 +1,29 @@
 import React, { memo } from 'react';
 import { PlayerBottomStyles } from '@/views/musicSection/styles/PlayerBottomStyles';
-import BottomMusicInfo from '@/views/musicSection/components/BottomArea/LeftAreaCmps/BottomLeftArea';
+import BottomLeftArea from '@/views/musicSection/components/BottomArea/LeftAreaCmps/BottomLeftArea';
 import BottomController from '@/views/musicSection/components/BottomArea/MiddleAreaCmps/BottomMiddleArea';
-import BottomOperation from '@/views/musicSection/components/BottomArea/RightArea/BottomRightArea';
+import BottomRightArea from '@/views/musicSection/components/BottomArea/RightArea/BottomRightArea';
+import { shallowEqual, useSelector } from 'react-redux';
 
+/**
+ * @description: 播放器底部区域
+ */
 const PlayerBottom = () => {
+	const { showFullScreenLyric } = useSelector(
+		(state) => ({
+			showFullScreenLyric: state.musicApp.showFullScreenLyric,
+		}),
+		shallowEqual,
+	);
+
 	return (
-		<PlayerBottomStyles>
-			<BottomMusicInfo></BottomMusicInfo>
+		<PlayerBottomStyles style={showFullScreenLyric ? { borderTop: 'none' } : {}}>
+			{/* 左侧---音乐信息区域 */}
+			<BottomLeftArea></BottomLeftArea>
+			{/* 中间---音乐主控制区域 */}
 			<BottomController></BottomController>
-			<BottomOperation></BottomOperation>
+			{/* 右侧---其他功能操作区域 */}
+			<BottomRightArea></BottomRightArea>
 		</PlayerBottomStyles>
 	);
 };

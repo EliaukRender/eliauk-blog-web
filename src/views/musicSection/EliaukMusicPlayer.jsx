@@ -3,6 +3,7 @@ import { EliaukMusicPlayerStyles } from '@/views/musicSection/styles/EliaukMusic
 import PlayerLeft from '@/views/musicSection/layout/PlayerLeft';
 import PlayerRight from '@/views/musicSection/layout/PlayerRight';
 import PlayerBottom from '@/views/musicSection/layout/PlayerBottom';
+import LyricFullScreen from '@/views/musicSection/views/LyricFullScreen/LyricFullScreen';
 
 const EliaukMusicPlayer = () => {
 	return (
@@ -17,6 +18,8 @@ const EliaukMusicPlayer = () => {
 			<div className='bottom-area'>
 				<PlayerBottom></PlayerBottom>
 			</div>
+			{/*	歌词全屏区域 */}
+			<LyricFullScreen></LyricFullScreen>
 		</EliaukMusicPlayerStyles>
 	);
 };

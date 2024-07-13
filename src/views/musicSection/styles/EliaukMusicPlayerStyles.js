@@ -10,6 +10,7 @@ export const EliaukMusicPlayerStyles = styled.div`
 	flex-direction: column;
 	font-size: 14px;
 	border-radius: 6px 6px 0 0;
+	position: relative;
 
 	/* 背景图 */
 	// background-image: url(${bg});

@@ -6,6 +6,7 @@ export const TimeLineStyles = styled.div`
 	align-items: center;
 	height: 20px;
 	line-height: 20px;
+	margin-top: 3px;
 
 	.time {
 		font-size: 12px;

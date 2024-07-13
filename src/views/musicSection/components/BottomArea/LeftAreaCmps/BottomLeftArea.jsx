@@ -2,10 +2,24 @@ import React, { memo } from 'react';
 import { BottomLeftAreaStyles } from '@/views/musicSection/styles/BottomLeftAreaStyles';
 import FeatListPopover from '@/views/musicSection/components/BottomArea/LeftAreaCmps/FeatListPopover';
 
+import MusicMiniPicture from '@/views/musicSection/components/BottomArea/LeftAreaCmps/MusicMiniPicture';
+import { shallowEqual, useSelector } from 'react-redux';
+
+/**
+ * @description: 播放器底部左侧区域
+ */
 const BottomLeftArea = () => {
+	const { showFullScreenLyric } = useSelector(
+		(state) => ({
+			showFullScreenLyric: state.musicApp.showFullScreenLyric,
+		}),
+		shallowEqual,
+	);
+
 	return (
-		<BottomLeftAreaStyles>
-			<img className='music-pic' src={require('@/views/musicSection/images/music-info.png')} alt='' />
+		<BottomLeftAreaStyles style={showFullScreenLyric ? { background: 'linear-gradient(to right, #404647 0%, #404647 100%)' } : {}}>
+			{/* 歌曲封面 */}
+			<MusicMiniPicture></MusicMiniPicture>
 			{/* 歌曲信息 */}
 			<div className='info-text'>
 				<div className='singer'>歌手名</div>
