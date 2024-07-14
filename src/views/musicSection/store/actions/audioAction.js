@@ -104,10 +104,21 @@ export const playPreSong = async () => {
 /**
  * @description: 获取频谱分析器
  */
-let audioContext = null;
 let analyser = null;
 export const getAnalyser = () => {
 	return analyser;
+};
+
+/**
+ * @description: 创建频谱分析器
+ */
+const createAnalyzer = () => {
+	const audioContext = new (window.AudioContext || window.webkitAudioContext)(); // 创建处理音频的对象
+	analyser = audioContext.createAnalyser(); // 创建频谱分析对象
+	analyser.fftSize = store.getState().analyze.canvasOptions.fftSize; // 频谱分析的精度
+	const audioSrc = audioContext.createMediaElementSource(audio); // 指定音频源
+	audioSrc.connect(analyser); // 音频源连接到分析器
+	analyser.connect(audioContext.destination); // 分析器连接到音频输出设备
 };
 
 /**
@@ -116,13 +127,8 @@ export const getAnalyser = () => {
 export const playAudio = async () => {
 	console.log('playAudio');
 	// 让用户点击时才创建audioContext，否则会被浏览器策略限制
-	if (!audioContext) {
-		audioContext = new (window.AudioContext || window.webkitAudioContext)(); // 创建处理音频的对象
-		analyser = audioContext.createAnalyser(); // 创建频谱分析对象
-		analyser.fftSize = store.getState().analyze.canvasOptions.fftSize; // 频谱分析的精度
-		const audioSrc = audioContext.createMediaElementSource(audio); // 指定音频源
-		audioSrc.connect(analyser); // 音频源连接到分析器
-		analyser.connect(audioContext.destination); // 分析器连接到音频输出设备
+	if (!analyser) {
+		createAnalyzer();
 	}
 	let { songUrl, songList, volume, songId, isEnded, currentTime, duration, isPause, playbackRate } = store.getState().audio;
 	/* 1、暂停后继续播放 */

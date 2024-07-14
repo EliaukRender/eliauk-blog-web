@@ -9,11 +9,11 @@ const analyzeReducer = createSlice({
 		// 绘制频谱图的默认配置
 		canvasOptions: {
 			fftSize: 256, // fft长度
-			count: 1024, // fft长度最大值
+			maxFFTSize: 1024, // fft长度最大值
 			mode: 'bars', // 频谱显示模式
 			colors: ['#00cc65', '#87f7a2', '#007c39', '#00cc65'], // 频谱默认颜色
 			stroke: 2, // 宽度
-			bgColor: '#000', // 背景颜色
+			bgColor: 'transparent', // 背景颜色
 			isGradient: true, // 是否渐变
 		},
 	},
