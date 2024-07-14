@@ -21,6 +21,9 @@ const analyzeReducer = createSlice({
 		// 保存频谱图形形状
 		setMode(state, { payload }) {
 			state.canvasOptions.mode = payload;
+			if (payload === 'lightBars') {
+				state.canvasOptions.colors = ['#5eff91', '#b8ffcf', '#49f66d', '#5eff91'];
+			}
 		},
 
 		// 保存频率数量

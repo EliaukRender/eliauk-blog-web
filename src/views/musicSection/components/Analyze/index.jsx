@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { audio, getAnalyser } from '@/views/musicSection/store/actions/audioAction';
 import { shallowEqual, useSelector } from 'react-redux';
 import AnalyzeClass from '@/views/musicSection/utils/analyze/AnalyzeClass';
@@ -17,11 +17,25 @@ const AudioSpectrumVisualizer = () => {
 		shallowEqual,
 	);
 
+	const id = useRef(0); // 帧动画id
+
 	useEffect(() => {
-		if (!isPlaying) return;
+		if (!isPlaying) {
+			cancelAnimationFrame(id.current);
+			// analyzeInstance.clearCanvas();
+			return;
+		}
 		const analyser = getAnalyser();
 		const analyzeInstance = new AnalyzeClass(audio, analyser, canvasRef.current, canvasOptions);
-		analyzeInstance.renderFrame();
+
+		const render = () => {
+			if (id.current) {
+				cancelAnimationFrame(id.current); // 清除上一次绘制
+			}
+			analyzeInstance.renderFrame(); // 调用方法绘制
+			id.current = requestAnimationFrame(render); // 绘制得到新id
+		};
+		render();
 	}, [canvasOptions, isPlaying]);
 
 	return <canvas ref={canvasRef} width={800} height={300} />;

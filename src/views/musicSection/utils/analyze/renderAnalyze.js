@@ -1,10 +1,12 @@
 import drawBars from '@/views/musicSection/utils/analyze/drawBars';
+import drawLightBars from '@/views/musicSection/utils/analyze/drawLightBars';
 
 /**
  * @description: 不同绘制模式的方法枚举
  */
 const modeMap = {
 	bars: drawBars,
+	lightBars: drawLightBars,
 };
 
 /**
@@ -12,23 +14,7 @@ const modeMap = {
  */
 const frameRateMap = {
 	bars: 2,
-	vertLines: 1,
-	lightning: 2,
-	doubleLine: 1,
-	doubleBars: 2,
-	waves: 2,
-};
-
-/**
- * @description: 频谱图显示模式
- */
-const MODES = {
-	BARS: 'bars',
-	VERT_LINES: 'vertLines',
-	LIGHTNING: 'lightning',
-	DOUBLE_LINE: 'doubleLine',
-	DOUBLE_BARS: 'doubleBars',
-	WAVES: 'waves',
+	lightBars: 2,
 };
 
 /**
@@ -55,6 +41,12 @@ const renderAnalyze = (dataArray, canvas, canvasOptions = {}, frameCount) => {
 		// 清除旧数据
 		canvasCtx.clearRect(0, 0, width, height);
 		canvasCtx.beginPath();
+
+		// mode===none时不绘制
+		if (canvasOptions.mode === 'none') {
+			return;
+		}
+
 		// 调用不同模式的绘制方法
 		modeMap[canvasOptions.mode]({
 			dataArray,

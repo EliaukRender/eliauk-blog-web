@@ -16,3 +16,12 @@ export const myMusicMenuList = [
 	{ id: '2-3', name: '林宥嘉', icon: 'icon-liebiao', routerPath: 'linyoujia' },
 	{ id: '2-4', name: '热歌', icon: 'icon-huore', routerPath: 'hot' },
 ];
+
+/**
+ * @description: 频谱图动效样式
+ */
+export const AnalyzeChartList = [
+	{ name: '关闭', mode: 'none' },
+	{ name: '经典', mode: 'bars' },
+	{ name: '荧光', mode: 'lightBars' },
+];

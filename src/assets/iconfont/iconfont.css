@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4619235 */
-  src: url('iconfont.woff2?t=1720893145242') format('woff2'),
-  url('iconfont.woff?t=1720893145242') format('woff'),
-  url('iconfont.ttf?t=1720893145242') format('truetype');
+  src: url('iconfont.woff2?t=1720966629895') format('woff2'),
+       url('iconfont.woff?t=1720966629895') format('woff'),
+       url('iconfont.ttf?t=1720966629895') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-duigou1:before {
+  content: "\e637";
 }
 
 .icon-zhankai:before {
