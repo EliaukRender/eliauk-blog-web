@@ -54,7 +54,7 @@ const SongItem = ({ song, index }) => {
 		songItemRef.current.addEventListener('dblclick', handlePlayPause);
 
 		return () => {
-			songItemRef.current.removeEventListener('dblclick', handlePlayPause);
+			songItemRef.current && songItemRef.current.removeEventListener('dblclick', handlePlayPause);
 		};
 	}, [songId, isPlaying]);
 
