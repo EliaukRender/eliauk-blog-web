@@ -4,11 +4,13 @@ import { shallowEqual, useSelector } from 'react-redux';
 import { changeVolume } from '@/views/musicSection/store/actions/audioAction';
 import { VolumeAdjusterStyles } from '@/views/musicSection/styles/VolumeAdjusterStyles';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 /**
  * @description: 音量调节器
  */
-const VolumeAdjuster = () => {
+const VolumeAdjuster = ({ hover }) => {
 	const [open, setOpen] = useState(false);
 
 	const { volume } = useSelector(
@@ -68,10 +70,17 @@ const VolumeAdjuster = () => {
 				trigger='click'
 				open={open}
 				onOpenChange={handleOpenChange}>
-				<i className={classNames('iconfont', 'icon-volume-1', open ? 'sound-active' : '')}></i>
+				<motion.i
+					className={classNames('iconfont', 'icon-volume-1', open ? 'sound-active' : '')}
+					initial={{ opacity: 0 }}
+					animate={hover || open ? { opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } } : {}}></motion.i>
 			</Popover>
 		</VolumeAdjusterStyles>
 	);
+};
+
+VolumeAdjuster.propTypes = {
+	hover: PropTypes.bool, // 鼠标进入到控制按钮区域
 };
 
 export default memo(VolumeAdjuster);

@@ -2,13 +2,14 @@ import React, { Fragment, memo, useState } from 'react';
 import { MusicModeStyles } from '@/views/musicSection/styles/MusicModeStyles';
 import { Popover } from 'antd';
 import classNames from 'classnames';
-import { useDispatch } from 'react-redux';
 import { changeMusicMode } from '@/views/musicSection/store/actions/audioAction';
+import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 /**
  * @description: 音乐播放模式：随机播放、顺序播放、单曲循环
  */
-const MusicMode = () => {
+const MusicMode = ({ hover }) => {
 	const [open, setOpen] = useState(false);
 	const [curModeIcon, setCurModeIcon] = useState('icon-shunxubofang');
 	const modeList = [
@@ -21,6 +22,14 @@ const MusicMode = () => {
 	const handleOpenChange = (newOpen) => {
 		setOpen(newOpen);
 	};
+
+	// 点击模式图标
+	const handleClick = (item) => {
+		setCurModeIcon(item.icon);
+		setOpen(false);
+		changeMusicMode(item.mode);
+	};
+
 	return (
 		<MusicModeStyles>
 			<Popover
@@ -33,9 +42,7 @@ const MusicMode = () => {
 									key={item.mode}
 									className='mode-item'
 									onClick={() => {
-										setCurModeIcon(item.icon);
-										setOpen(false);
-										changeMusicMode(item.mode);
+										handleClick(item);
 									}}>
 									<i className={classNames('iconfont', item.icon)}></i>
 									<div>{item.name}</div>
@@ -48,10 +55,17 @@ const MusicMode = () => {
 				trigger='click'
 				open={open}
 				onOpenChange={handleOpenChange}>
-				<i className={classNames('iconfont', curModeIcon, open ? 'icon-active' : '')}></i>
+				<motion.i
+					className={classNames('iconfont', curModeIcon, open ? 'icon-active' : '')}
+					initial={{ opacity: 0 }}
+					animate={hover || open ? { opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } } : {}}></motion.i>
 			</Popover>
 		</MusicModeStyles>
 	);
+};
+
+MusicMode.propTypes = {
+	hover: PropTypes.bool, // 鼠标进入到控制按钮区域
 };
 
 export default memo(MusicMode);

@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
 export const ControllerBtnsStyles = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 2;
+	width: 100%;
+
+	.btns {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 2;
+	}
 
 	.play-pause {
 		width: 40px;

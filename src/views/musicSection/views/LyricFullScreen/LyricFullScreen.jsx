@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { LyricFullScreenStyles } from '@/views/musicSection/views/LyricFullScreen/LyricFullScreenStyles';
-import AudioSpectrumVisualizer from '@/views/musicSection/components/Analyze';
+import AudioSpectrumVisualizer from 'src/views/musicSection/components/AnalyzeChart';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setShowFullScreenLyric } from '@/views/musicSection/store/modules/musicAppReducer';
 

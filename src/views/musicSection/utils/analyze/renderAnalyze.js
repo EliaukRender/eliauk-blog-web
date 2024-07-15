@@ -1,5 +1,6 @@
 import drawBars from '@/views/musicSection/utils/analyze/drawBars';
 import drawLightBars from '@/views/musicSection/utils/analyze/drawLightBars';
+import drawerDoubleBars from '@/views/musicSection/utils/analyze/drawerDoubleBars';
 
 /**
  * @description: 不同绘制模式的方法枚举
@@ -7,6 +8,7 @@ import drawLightBars from '@/views/musicSection/utils/analyze/drawLightBars';
 const modeMap = {
 	bars: drawBars,
 	lightBars: drawLightBars,
+	doubleBars: drawerDoubleBars,
 };
 
 /**
@@ -15,6 +17,7 @@ const modeMap = {
 const frameRateMap = {
 	bars: 2,
 	lightBars: 2,
+	doubleBars: 2,
 };
 
 /**
@@ -46,7 +49,6 @@ const renderAnalyze = (dataArray, canvas, canvasOptions = {}, frameCount) => {
 		if (canvasOptions.mode === 'none') {
 			return;
 		}
-
 		// 调用不同模式的绘制方法
 		modeMap[canvasOptions.mode]({
 			dataArray,

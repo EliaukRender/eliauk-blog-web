@@ -64,18 +64,6 @@ class AnalyzeClass {
 		this.options.mode === 'lightning' ? this.analyser.getByteTimeDomainData(this.dataArray) : this.analyser.getByteFrequencyData(this.dataArray);
 		renderAnalyze.call(this, this.dataArray, this.canvas, this.options, this.frameCount);
 	};
-
-	/**
-	 * @description:
-	 * @param
-	 * @return
-	 */
-
-	clearCanvas() {
-		// 清除旧数据
-		this.canvas.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		this.canvas.beginPath();
-	}
 }
 
 export default AnalyzeClass;
