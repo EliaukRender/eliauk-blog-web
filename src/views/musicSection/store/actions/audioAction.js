@@ -165,8 +165,8 @@ export const playAudio = async (id) => {
 		console.log('自动指定新歌播放');
 		songUrl = songList[0].songUrl;
 		songId = songList[0].songId;
-		PlayNewAudio({ songId, songUrl, volume, playbackRate });
 	}
+	PlayNewAudio({ songId, songUrl, volume, playbackRate });
 };
 
 /**
