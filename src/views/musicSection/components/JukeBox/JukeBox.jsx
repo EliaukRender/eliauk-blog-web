@@ -2,7 +2,6 @@ import React, { memo, useEffect, useRef, useState } from 'react';
 import { JukeBoxStyles } from '@/views/musicSection/components/JukeBox/JukeBoxStyles';
 import { shallowEqual, useSelector } from 'react-redux';
 import classNames from 'classnames';
-import { motion, useAnimationControls } from 'framer-motion';
 
 /**
  * @description: 唱片机

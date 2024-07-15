@@ -18,7 +18,6 @@ export const PlayerDrawerStyles = styled.div`
 	}
 
 	.ant-drawer-body {
-		background-color: #f6f6f6;
 		padding: 25px 15px;
 	}
 `;

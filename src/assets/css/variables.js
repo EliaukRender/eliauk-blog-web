@@ -30,4 +30,5 @@ export const light_green = '#82ba77'
 
 
 export const text_black = '#333333'; // 文本黑色
+export const text_gray = '#626262'; // 文本黑色
 export const music_green = '#00cc65';  // 音乐播放器主题绿色

@@ -122,39 +122,59 @@ const createAnalyzer = () => {
 };
 
 /**
- * @description: 播放歌曲
+ * @description: 准备播放
+ * @param id 歌曲的songId值
  */
-export const playAudio = async () => {
-	console.log('playAudio');
+export const playAudio = async (id) => {
+	console.log('playAudio', id);
 	// 让用户点击时才创建audioContext，否则会被浏览器策略限制
 	if (!analyser) {
 		createAnalyzer();
 	}
-	let { songUrl, songList, volume, songId, isEnded, currentTime, duration, isPause, playbackRate } = store.getState().audio;
-	/* 1、暂停后继续播放 */
-	if (isPause && !!songUrl && !isEnded && duration) {
-		audio.currentTime = currentTime;
-		audio
-			.play()
-			.then(() => {
-				dispatch(setIsPlaying(true));
-			})
-			.catch(() => {
-				MessageToast.warning('歌曲播放失败');
-			});
+	let { songId, songUrl, songList, volume, isEnded, currentTime, duration, isPause, playbackRate } = store.getState().audio;
+	/* 1、用户点击指定一首新歌从0开始播放 */
+	if (!!id && id !== songId) {
+		console.log('指定新歌播放');
+		songId = id;
+		const song = songList.find((item) => item.songId === id);
+		song && (songUrl = song.songUrl);
+		PlayNewAudio({ songId, songUrl, volume, playbackRate });
 		return;
 	}
-	/* 2、歌曲列表中没有任何歌曲信息，无法播放歌曲 */
+	/* 2、暂停后继续播放 */
+	if (isPause && !!songUrl && !isEnded && duration) {
+		console.log('暂停后播放');
+		audio.currentTime = currentTime;
+		try {
+			audio.play().then(() => {
+				dispatch(setIsPlaying(true));
+				dispatch(setIsPause(false));
+			});
+		} catch (e) {
+			console.log('e', e);
+		}
+		return;
+	}
+	/* 3、歌曲列表中没有任何歌曲信息，无法播放歌曲 */
 	if (!songUrl && !songList?.length) {
 		MessageToast.warning('暂无歌曲音频，请刷新页面后重试');
 		return;
 	}
-	/* 3、有歌曲列表，但是没有待播放的歌曲信息 */
+	/* 4、有歌曲列表，但是没有待播放的歌曲信息 */
 	if (!!songList?.length && !songUrl && !currentTime) {
+		console.log('自动指定新歌播放');
 		songUrl = songList[0].songUrl;
 		songId = songList[0].songId;
+		PlayNewAudio({ songId, songUrl, volume, playbackRate });
 	}
-	// 从0开始播放
+};
+
+/**
+ * @description: 正式播放 (基于一首新的歌曲)
+ * @param
+ */
+const PlayNewAudio = ({ songId, songUrl, volume, playbackRate }) => {
+	console.log('readyPlayAudio');
 	try {
 		audio.volume = volume / 100; // 设置音量
 		audio.src = songUrl;
