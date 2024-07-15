@@ -14,11 +14,11 @@ export const LyricFullScreenStyles = styled.div`
 	transition: opacity 0.3s ease;
 	pointer-events: none; /* 让鼠标事件穿透 */
 
-	/* 对于子集元素是flex */
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
+	.body {
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
 
 	.icon-xiajiantou {
 		position: absolute;
@@ -35,10 +35,17 @@ export const LyricFullScreenStyles = styled.div`
 
 	.main-body {
 		width: 100%;
-		height: 400px;
+		height: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		color: #eaeaea;
+	}
+
+	.analyze-canvas {
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+		transform: translateX(-50%);
 	}
 `;

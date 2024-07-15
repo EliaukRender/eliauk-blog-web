@@ -3,6 +3,7 @@ import { LyricFullScreenStyles } from '@/views/musicSection/views/LyricFullScree
 import AudioSpectrumVisualizer from 'src/views/musicSection/components/AnalyzeChart';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setShowFullScreenLyric } from '@/views/musicSection/store/modules/musicAppReducer';
+import Lyric from '@/views/musicSection/components/Lyric/Lyric';
 
 /**
  * @description: 歌词全屏
@@ -18,20 +19,21 @@ const LyricFullScreen = () => {
 
 	return (
 		<LyricFullScreenStyles style={showFullScreenLyric ? { opacity: 1, pointerEvents: 'auto' } : {}}>
-			{/* 关闭歌词全屏 */}
-			<i
-				className='iconfont icon-xiajiantou'
-				onClick={() => {
-					dispatch(setShowFullScreenLyric(false));
-				}}></i>
-			{/* 歌词区域 */}
-			<div className='main-body'>
-				歌词区域
-				<div></div>
-				<div></div>
+			<div className='body'>
+				{/* 关闭歌词全屏按钮 */}
+				<i
+					className='iconfont icon-xiajiantou'
+					onClick={() => {
+						dispatch(setShowFullScreenLyric(false));
+					}}></i>
+				{/* 歌词区域 */}
+				<div className='main-body'>
+					{/* 歌词 */}
+					<Lyric></Lyric>
+				</div>
+				{/* 频谱图 */}
+				<AudioSpectrumVisualizer></AudioSpectrumVisualizer>
 			</div>
-			{/* 频谱图 */}
-			<AudioSpectrumVisualizer></AudioSpectrumVisualizer>
 		</LyricFullScreenStyles>
 	);
 };

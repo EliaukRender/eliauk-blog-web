@@ -83,6 +83,7 @@ const audioReducer = createSlice({
 			.addCase(getSongListAction.fulfilled, (state, { payload }) => {
 				console.log('getSongListAction', payload);
 				state.songList = payload;
+				state.songId = payload[0]?.songId;
 			})
 			.addCase(getSongListAction.rejected, (state, action) => {
 				console.log('error-getSongListAction', action);
