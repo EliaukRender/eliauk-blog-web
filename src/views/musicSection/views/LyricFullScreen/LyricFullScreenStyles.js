@@ -35,11 +35,13 @@ export const LyricFullScreenStyles = styled.div`
 
 	.main-body {
 		width: 100%;
-		height: 100%;
+		height: calc(100% - 160px); // 160px是频谱图的高度
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		padding-top: 100px;
 		color: #eaeaea;
+		box-sizing: border-box;
 	}
 
 	.analyze-canvas {

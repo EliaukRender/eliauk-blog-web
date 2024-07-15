@@ -3,27 +3,28 @@ import styled from 'styled-components';
 export const LyricStyles = styled.div`
 	height: 100%;
 	box-sizing: border-box;
-	padding: 100px 30px;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
 	.lyric-box {
+		width: 400px;
 		height: 360px;
 		overflow: auto;
 		display: flex;
-		flex-direction: column;
-		justify-content: flex-start;
-		align-items: center;
-		font-size: 14px;
+		flex-wrap: wrap;
+		pointer-events: none; /* 禁止鼠标事件 */
 
 		.lyric-line {
 			width: 100%;
-			height: 30px;
-			line-height: 30px;
-			text-align: center;
-			position: relative;
+			height: 40px;
+			line-height: 40px;
+			text-align: left;
+			font-size: 18px;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 
 		.highlight {

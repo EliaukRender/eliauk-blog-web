@@ -1,20 +1,30 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { BottomLeftAreaStyles } from '@/views/musicSection/styles/BottomLeftAreaStyles';
 import FeatListPopover from '@/views/musicSection/components/BottomArea/LeftAreaCmps/FeatListPopover';
-
 import MusicMiniPicture from '@/views/musicSection/components/BottomArea/LeftAreaCmps/MusicMiniPicture';
 import { shallowEqual, useSelector } from 'react-redux';
+import { french_Cool_gray, french_Cool_light_gray } from '@/assets/css/variables';
 
 /**
  * @description: 播放器底部左侧区域
  */
 const BottomLeftArea = () => {
-	const { showFullScreenLyric } = useSelector(
+	const { showFullScreenLyric, songId, songList } = useSelector(
 		(state) => ({
 			showFullScreenLyric: state.musicApp.showFullScreenLyric,
+			songId: state.audio.songId,
+			songList: state.audio.songList,
 		}),
 		shallowEqual,
 	);
+	const [currentSong, setCurrentSong] = useState({});
+
+	useEffect(() => {
+		const curSong = songList.find((song) => song.songId === songId);
+		if (!!curSong) {
+			setCurrentSong(curSong);
+		}
+	}, [songId]);
 
 	return (
 		<BottomLeftAreaStyles style={showFullScreenLyric ? { background: 'linear-gradient(to right, #404647 0%, #404647 100%)' } : {}}>
@@ -22,8 +32,12 @@ const BottomLeftArea = () => {
 			<MusicMiniPicture></MusicMiniPicture>
 			{/* 歌曲信息 */}
 			<div className='info-text'>
-				<div className='singer'>歌手名</div>
-				<div className='song-name'>歌名</div>
+				<div className='singer' style={showFullScreenLyric ? { color: french_Cool_gray } : {}}>
+					{currentSong?.singer || '--'}
+				</div>
+				<div className='song-name' style={showFullScreenLyric ? { color: french_Cool_light_gray } : {}}>
+					{currentSong?.songName || '--'}
+				</div>
 			</div>
 			<div className='feat-area'>
 				{/* 喜欢这首歌 */}

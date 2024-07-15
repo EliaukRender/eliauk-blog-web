@@ -18,7 +18,7 @@ export const BottomLeftAreaStyles = styled.div`
 
 		.singer {
 			color: #000000;
-			margin-bottom: 2px;
+			margin-bottom: 5px;
 		}
 
 		.song-name {

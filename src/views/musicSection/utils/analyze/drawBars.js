@@ -6,7 +6,7 @@ import cloneDeep from 'lodash/cloneDeep';
 const drawBars = ({ dataArray, canvasOptions, canvasCtx, width, height }) => {
 	const list = Array.from(dataArray);
 	const reverseList = cloneDeep(list).reverse();
-	const doubleList = [...reverseList, ...list].filter((item, index) => index % 2 === 0);
+	const doubleList = [...reverseList, ...list].filter((item, index) => index % 2 === 0).map((item) => item * 0.5);
 	const count = doubleList.length > canvasOptions.maxFFTSize ? canvasOptions.count : doubleList.length;
 	const percent = parseInt((height / 300) * 2, 10);
 	canvasCtx.clearRect(0, 0, width, height); // 清除之前的绘制

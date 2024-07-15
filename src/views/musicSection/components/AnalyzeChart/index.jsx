@@ -38,7 +38,7 @@ const AudioSpectrumVisualizer = () => {
 		render();
 	}, [canvasOptions, isPlaying]);
 
-	return <canvas className='analyze-canvas' ref={canvasRef} width={800} height={300} />;
+	return <canvas className='analyze-canvas' ref={canvasRef} width={800} height={160} />;
 };
 
 export default memo(AudioSpectrumVisualizer);

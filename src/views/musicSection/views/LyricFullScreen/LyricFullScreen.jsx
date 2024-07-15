@@ -4,6 +4,7 @@ import AudioSpectrumVisualizer from 'src/views/musicSection/components/AnalyzeCh
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setShowFullScreenLyric } from '@/views/musicSection/store/modules/musicAppReducer';
 import Lyric from '@/views/musicSection/components/Lyric/Lyric';
+import JukeBox from '@/views/musicSection/components/JukeBox/JukeBox';
 
 /**
  * @description: 歌词全屏
@@ -28,6 +29,7 @@ const LyricFullScreen = () => {
 					}}></i>
 				{/* 歌词区域 */}
 				<div className='main-body'>
+					<JukeBox></JukeBox>
 					{/* 歌词 */}
 					<Lyric></Lyric>
 				</div>
