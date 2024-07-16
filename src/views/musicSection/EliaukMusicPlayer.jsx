@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { EliaukMusicPlayerStyles } from '@/views/musicSection/styles/EliaukMusicPlayerStyles';
 import PlayerLeft from '@/views/musicSection/layout/PlayerLeft';
 import PlayerRight from '@/views/musicSection/layout/PlayerRight';
@@ -11,12 +11,17 @@ import CurrentSongList from '@/views/musicSection/views/DrawerContent/CurrentSon
 import { getMenuListAction, getSongListAction } from '@/views/musicSection/store/modules/musicAppReducer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { setSongId, setSongList } from '@/views/musicSection/store/modules/audioReducer';
+import { useFullScreenPlayer } from '@/views/musicSection/hooks/useFullScreenPlayer';
 
+/**
+ * @description: 音乐播放器主体框架
+ */
 const EliaukMusicPlayer = () => {
-	const { drawerContentId, menuSongList, songList } = useSelector(
+	const { drawerContentId, menuSongList, songList, maxPlayer } = useSelector(
 		(state) => ({
 			drawerContentId: state.musicApp.drawerContentId,
 			menuSongList: state.musicApp.menuSongList,
+			maxPlayer: state.musicApp.maxPlayer,
 			songList: state.audio.songList,
 		}),
 		shallowEqual,
@@ -24,7 +29,10 @@ const EliaukMusicPlayer = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
+	const playerRef = useRef(null);
+	useFullScreenPlayer(playerRef); // 全屏操作
 
+	// 调用接口初始化数据
 	useEffect(() => {
 		navigate('/music/like'); // 默认定位在"喜欢"菜单
 		dispatch(getSongListAction()); // 获取歌曲列表
@@ -40,7 +48,17 @@ const EliaukMusicPlayer = () => {
 	}, [location, songList, menuSongList]);
 
 	return (
-		<EliaukMusicPlayerStyles>
+		<EliaukMusicPlayerStyles
+			ref={playerRef}
+			style={
+				maxPlayer
+					? { width: '100%', height: '100%', transition: 'width 0.5s ease, height 0.5s ease' }
+					: {
+							width: '1500px',
+							height: '900px',
+							transition: 'width 0.5s ease, height 0.5s ease',
+						}
+			}>
 			<div className='main-area'>
 				{/* 左侧菜单区域 */}
 				<PlayerLeft></PlayerLeft>

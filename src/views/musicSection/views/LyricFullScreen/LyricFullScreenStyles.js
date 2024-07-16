@@ -33,6 +33,25 @@ export const LyricFullScreenStyles = styled.div`
 		}
 	}
 
+	.max-full {
+		position: absolute;
+		right: 30px;
+		top: 30px;
+		cursor: pointer;
+		padding: 5px;
+		display: flex;
+		align-items: center;
+
+		.iconfont {
+			color: ${french_Cool_light_gray};
+			margin-left: 15px;
+
+			&:hover {
+				color: #00cc65;
+			}
+		}
+	}
+
 	.main-body {
 		width: 100%;
 		height: calc(100% - 160px); // 160px是频谱图的高度

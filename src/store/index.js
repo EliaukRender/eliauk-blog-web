@@ -14,12 +14,19 @@ const userReducerPersisCfg = {
 	whitelist: ['token'],
 };
 
+// musicApp
+const musicAppReducerPersisCfg = {
+	key: 'musicApp',
+	storage,
+	whitelist: ['maxPlayer', 'miniPlayer'],
+};
+
 const store = configureStore({
 	reducer: {
 		global: globalReducer, // persistReducer对reducer持久化
 		user: persistReducer(userReducerPersisCfg, userReducer),
 		audio: audioReducer,
-		musicApp: musicAppReducer,
+		musicApp: persistReducer(musicAppReducerPersisCfg, musicAppReducer),
 		analyze: analyzeReducer,
 	},
 	middleware: (getDefaultMiddleware) =>

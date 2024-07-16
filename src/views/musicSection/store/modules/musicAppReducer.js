@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getMenuList, getSongList } from '@/api/modules/musicService';
-import store from '@/store';
-import { setSongList } from '@/views/musicSection/store/modules/audioReducer';
 
 /**
  * @description: 音乐播放器---保存播放器全局数据
@@ -15,6 +13,9 @@ const musicAppReducer = createSlice({
 		drawerContentId: 1, // 1-频谱设置； 2-当前歌曲列表
 		menuList: [], // 菜单列表
 		menuSongList: [], // 当前菜单对应的歌曲列表
+		fullScreenPlayer: false, // 全屏
+		maxPlayer: false, // 最大化
+		miniPlayer: false, // 最小化
 	},
 	reducers: {
 		// 保存当前菜单id
@@ -35,6 +36,21 @@ const musicAppReducer = createSlice({
 		// 保存抽屉显示的内容ID
 		setDrawerContentId(state, { payload }) {
 			state.drawerContentId = payload;
+		},
+
+		// 全屏
+		setFullScreenPlayer(state, { payload }) {
+			state.fullScreenPlayer = payload;
+		},
+
+		// 最小化
+		setMiniPlayer(state, { payload }) {
+			state.miniPlayer = payload;
+		},
+
+		// 最大化
+		setMaxPlayer(state, { payload }) {
+			state.maxPlayer = payload;
 		},
 	},
 	// 异步reducers
@@ -61,7 +77,8 @@ const musicAppReducer = createSlice({
 	},
 });
 
-export const { setCurMenuId, setShowFullScreenLyric, setDrawerVisible, setDrawerContentId } = musicAppReducer.actions;
+export const { setMaxPlayer, setFullScreenPlayer, setMiniPlayer, setCurMenuId, setShowFullScreenLyric, setDrawerVisible, setDrawerContentId } =
+	musicAppReducer.actions;
 export default musicAppReducer.reducer;
 
 /**
