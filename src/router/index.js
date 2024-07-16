@@ -14,7 +14,7 @@ const routes = [
 		element: <Navigate to={'/home'}></Navigate>,
 	},
 	{
-		path: '/home',
+		path: '/index',
 		element: <Home></Home>,
 	},
 	{

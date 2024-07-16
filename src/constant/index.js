@@ -1,6 +1,6 @@
 // 菜单列表
 export const menuList = [
-	{ id: 1, name: '首页', path: '/home' },
+	{ id: 1, name: '首页', path: '/index' },
 	{ id: 2, name: '音乐角', path: '/music' },
 	{ id: 3, name: '学习项目', path: '/project' },
 	{ id: 4, name: '博主简介', path: '/personal' },
