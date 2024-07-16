@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ImageStyles } from '@/views/entrySection/css/ImageStyles';
+import { ImageStyles } from '@/views/home/styles/ImageStyles';
 import VideoDialog from '@/components/VideoDialog';
 
 /**

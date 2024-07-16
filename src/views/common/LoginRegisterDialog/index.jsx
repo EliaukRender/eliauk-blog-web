@@ -1,9 +1,9 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLoginRegisterDialogAnimation } from '@/hooks/animation/useLoginRegisterDialogAnimation';
-import LoginContent from '@/views/LoginRegisterDialog/components/LoginContent';
-import RegisterContent from '@/views/LoginRegisterDialog/components/RegisterContent';
-import { LoginRegisterDialogStyles } from '@/views/LoginRegisterDialog/styles';
+import LoginContent from '@/views/common/LoginRegisterDialog/components/LoginContent';
+import RegisterContent from '@/views/common/LoginRegisterDialog/components/RegisterContent';
+import { LoginRegisterDialogStyles } from '@/views/common/LoginRegisterDialog/styles';
 import Dialog from '@/components/DialogAnimation';
 import { loginRegisterAnimateEnum } from '@/constant';
 

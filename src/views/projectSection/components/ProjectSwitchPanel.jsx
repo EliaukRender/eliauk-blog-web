@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { SwitchPanelStyles } from '@/views/projectSection/css/SwitchPanelStyles';
+import { SwitchPanelStyles } from '@/views/projectSection/styles/SwitchPanelStyles';
 import PropTypes from 'prop-types';
 import FadeInViewAnimation from '@/components/Animation/FadeInViewAnimation';
 
@@ -11,7 +11,7 @@ const ProjectSwitchPanel = ({ onChangeProjectName }) => {
 	const projectList = [
 		{ id: 1, name: 'EliaukManage' },
 		{ id: 2, name: 'EliaukBlog' },
-		{ id: 3, name: 'EliaukMusic' }
+		{ id: 3, name: 'EliaukMusic' },
 	];
 	const [curProjectName, setCurProjectName] = useState('EliaukManage');
 
@@ -42,7 +42,7 @@ const ProjectSwitchPanel = ({ onChangeProjectName }) => {
 };
 
 ProjectSwitchPanel.propTypes = {
-	onChangeProjectName: PropTypes.func
+	onChangeProjectName: PropTypes.func,
 };
 
 export default memo(ProjectSwitchPanel);

@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ProjectIntroduceStyles } from '@/views/projectSection/css/ProjectIntroduceStyles';
+import { ProjectIntroduceStyles } from '@/views/projectSection/styles/ProjectIntroduceStyles';
 import { Divider, Descriptions } from 'antd';
 import SvgIcon from '@/components/SvgIcon';
 import { projectInfo } from '@/views/projectSection/constant';
@@ -26,7 +26,7 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 	const labelStyle = {
 		width: '100px',
 		fontWeight: 600,
-		fontSize: '16px'
+		fontSize: '16px',
 	};
 
 	// 打开官网
@@ -69,7 +69,7 @@ const ProjectIntroduce = ({ goToProject, projectName }) => {
 };
 ProjectIntroduce.propTypes = {
 	goToProject: PropTypes.func,
-	projectName: PropTypes.string
+	projectName: PropTypes.string,
 };
 
 export default memo(ProjectIntroduce);

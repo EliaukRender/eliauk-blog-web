@@ -1,26 +1,16 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { ProjectSectionStyles } from '@/views/projectSection/styles';
 import PropTypes from 'prop-types';
 import ProjectImages from '@/views/projectSection/components/ProjectImages';
 import ProjectIntroduce from '@/views/projectSection/components/ProjectIntroduce';
 import ProjectSwitchPanel from '@/views/projectSection/components/ProjectSwitchPanel';
 import MessageToast from '@/components/MessageToast';
-import { useInView } from 'react-intersection-observer';
-import { useDispatch } from 'react-redux';
-import { setCurSectionId } from '@/store/modules/globalReducer';
 
 /**
  * @description: 板块---介绍项目
  */
 const ProjectSection = () => {
 	const [curProjectName, setCurProjectName] = useState();
-	const { ref, inView } = useInView({ threshold: 0.4 });
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (!inView) return;
-		dispatch(setCurSectionId(1));
-	}, [inView]);
 
 	// 打开项目网址
 	const goToProject = (projectName) => {
@@ -40,7 +30,7 @@ const ProjectSection = () => {
 	};
 
 	return (
-		<ProjectSectionStyles ref={ref}>
+		<ProjectSectionStyles>
 			{/* 项目切换板 */}
 			<ProjectSwitchPanel onChangeProjectName={onChangeProjectName}></ProjectSwitchPanel>
 			{/* 项目信息 */}
@@ -57,7 +47,7 @@ const ProjectSection = () => {
 };
 
 ProjectSection.propTypes = {
-	goToProject: PropTypes.func
+	goToProject: PropTypes.func,
 };
 
 export default memo(ProjectSection);

@@ -4,6 +4,8 @@ export const ProjectSectionStyles = styled.div`
 	width: 100%;
 	height: 100vh;
 	position: relative;
+	padding-top: 70px;
+	box-sizing: border-box;
 
 	.project-box {
 		height: 100%;

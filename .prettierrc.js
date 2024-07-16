@@ -30,7 +30,7 @@ module.exports = {
 	insertPragma: false,
 	// 使用默认的折行标准 always\never\preserve
 	proseWrap: 'preserve',
-	// 指定HTML文件的全局空格敏感度 css\strict\ignore
+	// 指定HTML文件的全局空格敏感度 styles\strict\ignore
 	htmlWhitespaceSensitivity: 'css',
 	// Vue文件脚本和样式标签缩进
 	vueIndentScriptAndStyle: false,

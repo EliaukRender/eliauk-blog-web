@@ -1,19 +1,19 @@
 import React, { forwardRef, Fragment, memo, useState } from 'react';
-import { UserLoginRegisterStyles } from '@/views/home/css/UserLoginRegisterStyles';
 import { MenuOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { useLoginOptionsAnimation } from '@/hooks/animation/useLoginOptionsAnimation.js';
-import LoginRegisterDialog from '@/views/LoginRegisterDialog';
+import LoginRegisterDialog from '@/views/common/LoginRegisterDialog';
 import SvgIcon from '@/components/SvgIcon';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { loginRegisterAnimateEnum } from '@/constant';
 import { setToken } from '@/store/modules/userReducer';
 import MessageToast from '@/components/MessageToast';
+import { UserInfoAreaStyles } from '@/views/common/UserInfoArea/UserInfoAreaStyles';
 
 /**
  * @description: 用户登录、注册的入口
  */
-const UserLoginRegister = () => {
+const UserInfoArea = () => {
 	const [isOpen, setIsOpen] = useState(false); // popover显示隐藏
 	const [showDialog, setShowDialog] = useState(false); // 显示隐藏登录注册弹窗
 	const [mode, setMode] = useState(null); // 1-打开登录；3-打开注册
@@ -51,7 +51,7 @@ const UserLoginRegister = () => {
 	};
 
 	return (
-		<UserLoginRegisterStyles>
+		<UserInfoAreaStyles>
 			{/* 用户头像 */}
 			<motion.div
 				className='login-box'
@@ -97,8 +97,8 @@ const UserLoginRegister = () => {
 			</div>
 			{/* 登录注册弹窗 */}
 			{showDialog && <LoginRegisterDialog closeDialog={closeDialog} showDialog={showDialog} mode={mode}></LoginRegisterDialog>}
-		</UserLoginRegisterStyles>
+		</UserInfoAreaStyles>
 	);
 };
 
-export default memo(forwardRef(UserLoginRegister));
+export default memo(forwardRef(UserInfoArea));

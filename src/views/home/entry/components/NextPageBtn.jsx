@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { handleScrollTo } from '@/utils/handleScrollPage';
 import { ArrowDownOutlined } from '@ant-design/icons';
-import { NextPageBtnStyles } from '@/views/entrySection/css/NextPageBtnStyles.js';
+import { NextPageBtnStyles } from '@/views/home/styles/NextPageBtnStyles.js';
 import { motion } from 'framer-motion';
 
 /**

@@ -12,7 +12,7 @@ export const ProfileSectionStyles = styled.div`
 	background-image: url(${bg});
 	background-size: cover;
 	background-position: center;
-	padding: 4% 20% 4% 20%;
+	padding: 120px 20% 4% 20%;
 	box-sizing: border-box;
 
 	.card-box {

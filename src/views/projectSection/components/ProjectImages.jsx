@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ProjectImagesStyles } from '@/views/projectSection/css/ProjectImagesStyles';
+import { ProjectImagesStyles } from '@/views/projectSection/styles/ProjectImagesStyles';
 import FadeInViewAnimation from '@/components/Animation/FadeInViewAnimation';
 import CarouselPictures from '@/components/CarouselPictures';
 
@@ -26,7 +26,7 @@ const ProjectImages = ({ projectName }) => {
 
 ProjectImages.propTypes = {
 	projectName: PropTypes.string,
-	startPlayAnimation: PropTypes.bool
+	startPlayAnimation: PropTypes.bool,
 };
 
 export default memo(ProjectImages);

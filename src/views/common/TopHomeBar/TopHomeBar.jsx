@@ -1,24 +1,18 @@
 import React, { memo } from 'react';
-import { TopHomeBarStyles } from '@/views/home/css/TopHomeBarStyles';
+import { TopHomeBarStyles } from '@/views/common/TopHomeBar/TopHomeBarStyles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import { useTopBarAnimation } from '@/hooks/animation/useTopBarAnimation';
 import { shallowEqual, useSelector } from 'react-redux';
-import { handleScrollTo } from '@/utils/handleScrollPage';
-import UserLoginRegister from '@/views/home/components/UserLoginRegister';
+import UserLoginRegister from '@/views/common/UserInfoArea/UserInfoArea';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { menuList } from '@/constant';
 
 /**
- * @description: 首页菜单导航栏
+ * @description: 系统菜单导航栏
  */
 const TopHomeBar = () => {
-	const menuList = [
-		{ id: 0, name: '首页' },
-		{ id: 1, name: '学习项目' },
-		{ id: 2, name: '博主简介' },
-		{ id: 3, name: '音乐角' },
-		{ id: 4, name: '留言板' },
-	];
 	const { variants, controls } = useTopBarAnimation(); // 动态控制TopHomeBar的显示隐藏
 	const { currentSectionId } = useSelector(
 		(state) => ({
@@ -26,6 +20,13 @@ const TopHomeBar = () => {
 		}),
 		shallowEqual,
 	);
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	// 点击菜单
+	const handleClickMenu = (menu) => {
+		navigate(menu.path);
+	};
 
 	return (
 		<TopHomeBarStyles>
@@ -41,11 +42,11 @@ const TopHomeBar = () => {
 						return (
 							<div
 								key={item.id}
-								className={classNames('item', currentSectionId === item.id ? 'active' : '')}
+								className={classNames('item', location.pathname === item.path ? 'active' : '')}
 								onClick={() => {
-									handleScrollTo(window.innerHeight * item.id);
+									handleClickMenu(item);
 								}}>
-								<div className={currentSectionId === item.id ? 'active-bar' : ''}></div>
+								<div className={location.pathname === item.path ? 'active-bar' : ''}></div>
 								<span>{item.name}</span>
 							</div>
 						);

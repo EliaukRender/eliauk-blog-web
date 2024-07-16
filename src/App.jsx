@@ -4,6 +4,7 @@ import routes from '@/router';
 import { AppWrapper } from '@/AppStyles';
 import { useAppScrollDirection } from '@/hooks/useAppScrollDirection';
 import PageProgressIndicator from '@/components/ProgressIndicator';
+import TopHomeBar from '@/views/common/TopHomeBar/TopHomeBar';
 
 const App = () => {
 	useAppScrollDirection();
@@ -12,6 +13,8 @@ const App = () => {
 		<AppWrapper className='page'>
 			{/* 页面进度指示器 */}
 			<PageProgressIndicator></PageProgressIndicator>
+			{/* 菜单栏 */}
+			<TopHomeBar></TopHomeBar>
 			{/* 路由 */}
 			{useRoutes(routes)}
 		</AppWrapper>

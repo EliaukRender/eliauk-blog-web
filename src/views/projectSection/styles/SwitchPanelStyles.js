@@ -4,7 +4,7 @@ import { hexToRgba } from '@/utils/hexToRgba';
 
 export const SwitchPanelStyles = styled.div`
 	position: absolute;
-	top: 20px;
+	top: 100px;
 	left: 50%;
 	transform: translateX(-50%);
 

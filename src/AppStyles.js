@@ -1,3 +1,5 @@
 import styled from 'styled-components';
 
-export const AppWrapper = styled.div``;
+export const AppWrapper = styled.div`
+	position: relative;
+`;

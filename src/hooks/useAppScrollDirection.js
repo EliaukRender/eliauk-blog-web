@@ -25,13 +25,13 @@ export const useAppScrollDirection = () => {
 			oldScrollY = window.scrollY;
 			setTimeout(() => {
 				dispatch(setScrollDirection('up'));
-			}, 200);
+			}, 100);
 		}
 		dispatch(setScrollY(window.scrollY));
 	};
 
 	useEffect(() => {
-		const throttledScrollHandler = throttle(watchScrollDirection, 400); // 节流
+		const throttledScrollHandler = throttle(watchScrollDirection, 300); // 节流
 		window.addEventListener('scroll', throttledScrollHandler, true);
 
 		return () => {

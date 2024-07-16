@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { french_Cool_blue, mld_blue_one } from '@/assets/css/variables';
 import { hexToRgba } from '@/utils/hexToRgba';
 
-export const UserLoginRegisterStyles = styled.div`
+export const UserInfoAreaStyles = styled.div`
 	width: 260px;
 	display: flex;
 	justify-content: flex-end;

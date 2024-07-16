@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { RegisterContentStyles } from '@/views/LoginRegisterDialog/styles/RegisterContentStyles';
+import { RegisterContentStyles } from '@/views/common/LoginRegisterDialog/styles/RegisterContentStyles';
 import { Button, Form, Input, Select } from 'antd';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';

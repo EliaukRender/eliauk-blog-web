@@ -1,8 +1,8 @@
 import React, { memo, useCallback, useState } from 'react';
 import { GithubOutlined, QqOutlined, WechatOutlined } from '@ant-design/icons';
 import PropTypes from 'prop-types';
-import QrCodeModal from '@/views/entrySection/components/QrCodeModal';
-import { InfoBarStyles } from '@/views/entrySection/css/InfoBarStyles';
+import QrCodeModal from '@/views/home/entry/components/QrCodeModal';
+import { InfoBarStyles } from '@/views/home/styles/InfoBarStyles';
 import { motion } from 'framer-motion';
 
 /**
@@ -57,6 +57,6 @@ const InfoBar = () => {
 
 InfoBar.propTypes = {
 	goToGitHub: PropTypes.func,
-	showDialog: PropTypes.func
+	showDialog: PropTypes.func,
 };
 export default memo(InfoBar);

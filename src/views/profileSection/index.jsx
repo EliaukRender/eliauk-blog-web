@@ -1,8 +1,5 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { ProfileSectionStyles } from '@/views/profileSection/styles';
-import { useInView } from 'react-intersection-observer';
-import { useDispatch } from 'react-redux';
-import { setCurSectionId } from '@/store/modules/globalReducer';
 import Card from '@/views/profileSection/components/Card.jsx';
 import ProfileDialog from '@/views/profileSection/components/ProfileDialog';
 
@@ -18,18 +15,10 @@ const cardList = [
 	{ id: 6, title: '人生观' },
 	{ id: 7, title: '价值观' },
 	{ id: 8, title: '座右铭' },
-	{ id: 9, title: '九宫格' }
+	{ id: 9, title: '九宫格' },
 ];
 
 const ProfileSection = () => {
-	const { ref, inView } = useInView({ threshold: 0.4 });
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (!inView) return;
-		dispatch(setCurSectionId(2));
-	}, [inView]);
-
 	const [curCardId, setCurCardId] = useState(null);
 
 	const handleSelectCardId = useCallback((id) => {
@@ -37,7 +26,7 @@ const ProfileSection = () => {
 	}, []);
 
 	return (
-		<ProfileSectionStyles ref={ref}>
+		<ProfileSectionStyles>
 			<div className='card-box'>
 				{cardList.map((item) => {
 					return <Card key={item.id} cardInfo={item} handleSelectCardId={handleSelectCardId}></Card>;
