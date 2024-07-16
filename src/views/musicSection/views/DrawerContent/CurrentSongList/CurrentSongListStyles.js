@@ -13,6 +13,6 @@ export const CurrentSongListStyles = styled.div`
 	.title {
 		color: ${text_black};
 		font-weight: 600;
-		margin-bottom: 15px;
+		margin-bottom: 10px;
 	}
 `;

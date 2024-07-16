@@ -3,7 +3,7 @@ import { music_green } from '@/assets/css/variables';
 
 export const AnalyzeChartStyles = styled.div`
 	.title {
-		margin-bottom: 8px;
+		margin-bottom: 10px;
 		font-weight: 600;
 	}
 
