@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { text_black, text_gray } from '@/assets/css/variables';
 
 export const SongItemStyles = styled.div`
+	width: 100%;
+
 	.container {
 		width: 100%;
 		height: 60px;

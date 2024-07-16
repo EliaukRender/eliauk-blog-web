@@ -1,15 +1,21 @@
 import React, { Fragment, memo, useState } from 'react';
 import { Popover } from 'antd';
 import { MoveMusicStyles } from '@/views/musicSection/styles/MoveMusicStyles';
-import { myMusicMenuList } from '@/views/musicSection/constant';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { shallowEqual, useSelector } from 'react-redux';
 
 /**
  * @description: 移动歌曲到其他列表
  */
 const MoveMusicPopover = ({ showMode = true }) => {
 	const [open, setOpen] = useState(false);
+	const { menuList } = useSelector(
+		(state) => ({
+			menuList: state.musicApp.menuList,
+		}),
+		shallowEqual,
+	);
 
 	// 打开/隐藏弹窗
 	const handleOpenChange = (newOpen) => {
@@ -23,23 +29,25 @@ const MoveMusicPopover = ({ showMode = true }) => {
 				content={
 					<Fragment>
 						{/* 浮窗内容 */}
-						{myMusicMenuList.map((item) => {
-							return (
-								<div
-									key={item.id}
-									className='move-item'
-									onClick={() => {
-										setOpen(false);
-										console.log('添加到', item.id);
-									}}>
-									<i className={classNames('iconfont', item.icon)}></i>
-									<div>{item.name}</div>
-								</div>
-							);
-						})}
+						{menuList
+							?.filter((menu) => menu.menuType === 1)
+							?.map((item) => {
+								return (
+									<div
+										key={item.menuId}
+										className='move-item'
+										onClick={() => {
+											setOpen(false);
+											console.log('添加到', item.menuName);
+										}}>
+										<i className={classNames('iconfont', item.menuIcon)}></i>
+										<div>{item.menuName}</div>
+									</div>
+								);
+							})}
 					</Fragment>
 				}
-				placement='right'
+				placement={!showMode ? 'left' : 'right'}
 				trigger='click'
 				open={open}
 				onOpenChange={handleOpenChange}>

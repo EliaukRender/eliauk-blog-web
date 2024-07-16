@@ -47,12 +47,14 @@ const JukeBox = () => {
 		<JukeBoxStyles>
 			<div className='box'>
 				<div className='outer'>
-					<div className='inner' ref={innerRef}>
+					<div className='inner' ref={innerRef} style={{ transform: `rotate(${deg}deg)`, transition: 'transform 50ms linear' }}>
 						<img
 							ref={imageRef}
 							style={{ transform: `rotate(${deg}deg)`, transition: 'transform 50ms linear' }}
 							className={classNames('image', isPlaying ? '' : '')}
-							src={require('@/views/musicSection/images/changpianji.png')}></img>
+							src={require('@/views/musicSection/images/changpianji.png')}
+							alt=''
+						/>
 					</div>
 				</div>
 			</div>

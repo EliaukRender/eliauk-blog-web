@@ -7,6 +7,6 @@ export const PlayerBottomStyles = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
-	background-color: #fafafa;
+	background-color: #f6f6f6;
 	border-top: 1px solid #e6e6e6;
 `;

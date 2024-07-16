@@ -1,7 +1,8 @@
 import React, { memo } from 'react';
+import { MyLikeStyles } from '@/views/musicSection/styles/MyLikeStyles';
 
-const MyLike = (props) => {
-	return <div>我的喜欢</div>;
+const MyLike = () => {
+	return <MyLikeStyles>喜欢</MyLikeStyles>;
 };
 
 export default memo(MyLike);

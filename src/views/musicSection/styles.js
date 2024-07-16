@@ -8,4 +8,5 @@ export const MusicSectionStyles = styled.div`
 	align-items: center;
 	box-sizing: border-box;
 	padding-top: 70px;
+	overflow: hidden;
 `;

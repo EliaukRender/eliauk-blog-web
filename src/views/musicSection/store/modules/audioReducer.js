@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getSongList } from '@/api/modules/musicService';
+import { createSlice } from '@reduxjs/toolkit';
 
 const audioReducer = createSlice({
 	name: 'audio',
@@ -22,6 +21,11 @@ const audioReducer = createSlice({
 		playbackRate: 1.0, // 播放速率
 	},
 	reducers: {
+		// 保存当前歌曲播放列表
+		setSongList(state, { payload }) {
+			state.songList = payload;
+		},
+
 		// 保存音量值
 		setVolume(state, { payload }) {
 			state.volume = payload;
@@ -78,20 +82,11 @@ const audioReducer = createSlice({
 		},
 	},
 	// 异步reducers
-	extraReducers: (builder) => {
-		builder
-			.addCase(getSongListAction.fulfilled, (state, { payload }) => {
-				console.log('getSongListAction', payload);
-				state.songList = payload;
-				state.songId = payload[0]?.songId;
-			})
-			.addCase(getSongListAction.rejected, (state, action) => {
-				console.log('error-getSongListAction', action);
-			});
-	},
+	extraReducers: (builder) => {},
 });
 
 export const {
+	setSongList,
 	setPlaybackRate,
 	setMusicMode,
 	setVolume,
@@ -105,13 +100,3 @@ export const {
 	setIsMuted,
 } = audioReducer.actions;
 export default audioReducer.reducer;
-
-/**
- * @description: 获取歌曲列表
- */
-export const getSongListAction = createAsyncThunk('getSongList', async () => {
-	return new Promise(async (resolve, reject) => {
-		const { data } = await getSongList();
-		resolve(data);
-	});
-});

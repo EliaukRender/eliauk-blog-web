@@ -17,9 +17,11 @@ const CurrentSongList = () => {
 	return (
 		<CurrentSongListStyles>
 			<div className='title'>当前播放歌曲列表</div>
-			{songList.map((song, index) => {
-				return <SongItem song={song} index={index}></SongItem>;
-			})}
+			<div className='song-list'>
+				{songList.map((song, index) => {
+					return <SongItem song={song} index={index}></SongItem>;
+				})}
+			</div>
 		</CurrentSongListStyles>
 	);
 };

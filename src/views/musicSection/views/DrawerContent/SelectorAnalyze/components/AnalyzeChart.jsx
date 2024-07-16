@@ -6,7 +6,6 @@ import { setMode } from '@/views/musicSection/store/modules/analyzeReducer';
 
 const images = require.context('@/views/musicSection/images/analyzeImage');
 const imagePathList = images.keys();
-console.log('imagePathList', imagePathList);
 
 /**
  * @description: 频谱图动效样式

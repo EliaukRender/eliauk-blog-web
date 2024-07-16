@@ -4,3 +4,8 @@ import http from '@/api/index';
 export const getSongList = () => {
 	return http.post('/music/getSongList');
 };
+
+// 获取菜单列表
+export const getMenuList = () => {
+	return http.post('/music/getMenuList');
+};

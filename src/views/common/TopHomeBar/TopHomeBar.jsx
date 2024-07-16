@@ -26,6 +26,7 @@ const TopHomeBar = () => {
 	// 点击菜单
 	const handleClickMenu = (menu) => {
 		navigate(menu.path);
+		console.log('location', location);
 	};
 
 	return (
@@ -42,11 +43,11 @@ const TopHomeBar = () => {
 						return (
 							<div
 								key={item.id}
-								className={classNames('item', location.pathname === item.path ? 'active' : '')}
+								className={classNames('item', location.pathname.includes(item.path) ? 'active' : '')}
 								onClick={() => {
 									handleClickMenu(item);
 								}}>
-								<div className={location.pathname === item.path ? 'active-bar' : ''}></div>
+								<div className={location.pathname.includes(item.path) ? 'active-bar' : ''}></div>
 								<span>{item.name}</span>
 							</div>
 						);

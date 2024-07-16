@@ -1,11 +1,11 @@
 import { Navigate } from 'react-router-dom';
 import React from 'react';
-import musicAppRoutes from '@/views/musicSection/router';
 
 const Home = React.lazy(() => import('@/views/home/index')); // 路由懒加载
 const MusicPlayer = React.lazy(() => import('@/views/musicSection/index.jsx'));
 const ProjectSection = React.lazy(() => import('@/views/projectSection/index.jsx'));
 const ProfileSection = React.lazy(() => import('@/views/profileSection/index.jsx'));
+const MyLike = React.lazy(() => import('@/views/musicSection/views/RightViews/MyLike.jsx'));
 
 // 路由配置
 const routes = [
@@ -20,7 +20,12 @@ const routes = [
 	{
 		path: '/music/*',
 		element: <MusicPlayer></MusicPlayer>,
-		children: [...musicAppRoutes],
+		children: [
+			{
+				path: 'like',
+				element: <MyLike></MyLike>,
+			},
+		],
 	},
 	{
 		path: '/project',

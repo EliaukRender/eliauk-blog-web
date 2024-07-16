@@ -26,7 +26,7 @@ const AnalyzeColors = () => {
 							style={
 								item.colors[0] === canvasOptions.colors[0]
 									? {
-											boxShadow: `0 0 4px 8px ${hexToRgba(item.colors[0], 0.8)}`,
+											boxShadow: `0 0 2px 3px ${hexToRgba(item.colors[0], 0.6)}`,
 										}
 									: {}
 							}

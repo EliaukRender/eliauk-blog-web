@@ -15,4 +15,12 @@ export const CurrentSongListStyles = styled.div`
 		font-weight: 600;
 		margin-bottom: 10px;
 	}
+
+	.song-list {
+		flex: 1;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
 `;
