@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2019063",
+      "name": "添加",
+      "font_class": "tianjia1",
+      "unicode": "e7a9",
+      "unicode_decimal": 59305
+    },
+    {
       "icon_id": "34273143",
       "name": "暂停",
       "font_class": "zanting",

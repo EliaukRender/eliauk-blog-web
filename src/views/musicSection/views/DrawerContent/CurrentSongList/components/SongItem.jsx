@@ -5,6 +5,7 @@ import { shallowEqual, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { motion, useAnimationControls } from 'framer-motion';
 import { pauseAudio, playAudio } from '@/views/musicSection/store/actions/audioAction';
+import MoveMusicPopover from '@/views/musicSection/components/BottomArea/LeftAreaCmps/MoveMusicPopover';
 
 /**
  * @description: 歌曲item
@@ -69,19 +70,32 @@ const SongItem = ({ song, index }) => {
 				onMouseLeave={() => {
 					onMouseLeave();
 				}}>
-				<img className='img' src={require('@/views/musicSection/images/icons/music-pic.png')} alt='' />
-				<div className='song-info'>
-					<div>{song?.songName || '--'}</div>
-					<div className='singer'>{song?.singer || '--'}</div>
+				{/* 左侧区域 */}
+				<div className='left-info-area'>
+					{/* 歌曲缩略图 */}
+					<img className='img' src={require('@/views/musicSection/images/icons/music-pic.png')} alt='' />
+					{/* 歌手名、歌名 */}
+					<div className='song-info'>
+						<div>{song?.songName || '--'}</div>
+						<div className='singer'>{song?.singer || '--'}</div>
+					</div>
+					{/* 图片上的遮罩层 */}
+					<motion.div className='mask' initial={{ opacity: 0 }} animate={controls}>
+						<i
+							className={classNames('iconfont', isPlaying && song.songId === songId ? 'icon-zanting' : 'icon-bofang')}
+							style={{ color: '#ffffff' }}
+							onClick={() => {
+								handlePlayPause();
+							}}></i>
+					</motion.div>
 				</div>
-				{/* 图片上的遮罩层 */}
-				<motion.div className='mask' initial={{ opacity: 0 }} animate={controls}>
-					<i
-						className={classNames('iconfont', isPlaying && song.songId === songId ? 'icon-zanting' : 'icon-bofang')}
-						style={{ color: '#ffffff' }}
-						onClick={() => {
-							handlePlayPause();
-						}}></i>
+
+				{/*  操作按钮区域  */}
+				<motion.div className='operation' initial={{ opacity: 0 }} animate={controls}>
+					{/* 喜欢 */}
+					<img className='heart' src={require('@/views/musicSection/images/icons/heart.png')} alt='' />
+					{/* 移动歌曲 */}
+					<MoveMusicPopover showMode={false}></MoveMusicPopover>
 				</motion.div>
 			</motion.div>
 		</SongItemStyles>

@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4619235 */
-  src: url('iconfont.woff2?t=1721066399087') format('woff2'),
-       url('iconfont.woff?t=1721066399087') format('woff'),
-       url('iconfont.ttf?t=1721066399087') format('truetype');
+  src: url('iconfont.woff2?t=1721122214148') format('woff2'),
+       url('iconfont.woff?t=1721122214148') format('woff'),
+       url('iconfont.ttf?t=1721122214148') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tianjia1:before {
+  content: "\e7a9";
 }
 
 .icon-zanting:before {
