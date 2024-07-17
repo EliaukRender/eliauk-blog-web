@@ -15,6 +15,6 @@ export const PlayerRightStyles = styled.div`
 		background-color: #f6f6f6;
 		box-sizing: border-box;
 		padding-top: 50px;
-		border-radius: 8px;
+		border-radius: 8px 8px 0 0;
 	}
 `;

@@ -17,11 +17,13 @@ import { useFullScreenPlayer } from '@/views/musicSection/hooks/useFullScreenPla
  * @description: 音乐播放器主体框架
  */
 const EliaukMusicPlayer = () => {
-	const { drawerContentId, menuSongList, songList, maxPlayer } = useSelector(
+	const { drawerContentId, menuSongList, songList, maxPlayer, curMenuId, menuList } = useSelector(
 		(state) => ({
 			drawerContentId: state.musicApp.drawerContentId,
 			menuSongList: state.musicApp.menuSongList,
+			menuList: state.musicApp.menuList,
 			maxPlayer: state.musicApp.maxPlayer,
+			curMenuId: state.musicApp.curMenuId,
 			songList: state.audio.songList,
 		}),
 		shallowEqual,
@@ -34,10 +36,16 @@ const EliaukMusicPlayer = () => {
 
 	// 调用接口初始化数据
 	useEffect(() => {
-		navigate('/music/like'); // 默认定位在"喜欢"菜单
-		dispatch(getSongListAction()); // 获取歌曲列表
-		dispatch(getMenuListAction()); // 获取菜单列表
-	}, []);
+		// 第一次进入播放器页面，默认定位在'喜欢'菜单
+		if (!menuList.length) {
+			navigate('/music/like');
+			dispatch(getMenuListAction()); // 获取菜单列表
+		} else {
+			const menu = menuList.find((menu) => menu.menuId === curMenuId);
+			navigate(`/music${menu?.menuPath}`);
+		}
+		dispatch(getSongListAction(curMenuId)); // 获取当前菜单对应的歌曲列表
+	}, [curMenuId]);
 
 	useEffect(() => {
 		// 给songList/songId赋初始值
@@ -54,8 +62,8 @@ const EliaukMusicPlayer = () => {
 				maxPlayer
 					? { width: '100%', height: '100%', transition: 'width 0.5s ease, height 0.5s ease' }
 					: {
-							width: '1500px',
-							height: '900px',
+							width: '1100px',
+							height: '800px',
 							transition: 'width 0.5s ease, height 0.5s ease',
 						}
 			}>

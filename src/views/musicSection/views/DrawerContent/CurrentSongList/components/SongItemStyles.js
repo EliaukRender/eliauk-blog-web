@@ -49,6 +49,7 @@ export const SongItemStyles = styled.div`
 			}
 
 			.song-info {
+				width: 160px;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
@@ -66,11 +67,12 @@ export const SongItemStyles = styled.div`
 		/* 操作按钮区域 */
 
 		.operation {
-			width: 150px;
+			min-width: 150px;
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
 			cursor: pointer;
+			flex: 1;
 
 			.heart {
 				margin-right: 15px;
@@ -79,6 +81,14 @@ export const SongItemStyles = styled.div`
 			.iconfont {
 				margin-right: 15px;
 			}
+		}
+
+		.album {
+			min-width: 200px;
+		}
+
+		.duration {
+			min-width: 150px;
 		}
 	}
 

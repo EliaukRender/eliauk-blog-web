@@ -10,7 +10,7 @@ import MoveMusicPopover from '@/views/musicSection/components/BottomArea/LeftAre
 /**
  * @description: 歌曲item
  */
-const SongItem = ({ song, index }) => {
+const SongItem = ({ song, index, showAlbum = false, showDuration = false }) => {
 	const { songId, isPlaying } = useSelector(
 		(state) => ({
 			songId: state.audio.songId,
@@ -76,8 +76,8 @@ const SongItem = ({ song, index }) => {
 					<img className='img' src={require('@/views/musicSection/images/icons/music-pic.png')} alt='' />
 					{/* 歌手名、歌名 */}
 					<div className='song-info'>
-						<div>{song?.songName || '--'}</div>
-						<div className='singer'>{song?.singer || '--'}</div>
+						<div className='ellipsis'>{song?.songName || '--'}</div>
+						<div className='singer ellipsis'>{song?.singer || '--'}</div>
 					</div>
 					{/* 图片上的遮罩层 */}
 					<motion.div className='mask' initial={{ opacity: 0 }} animate={controls}>
@@ -91,12 +91,16 @@ const SongItem = ({ song, index }) => {
 				</div>
 
 				{/*  操作按钮区域  */}
-				<motion.div className='operation' initial={{ opacity: 0 }} animate={controls}>
+				<motion.div className='operation' initial={{ opacity: 0 }} animate={controls} style={showAlbum ? { justifyContent: 'flex-start' } : {}}>
 					{/* 喜欢 */}
 					<img className='heart' src={require('@/views/musicSection/images/icons/heart.png')} alt='' />
 					{/* 移动歌曲 */}
 					<MoveMusicPopover showMode={false}></MoveMusicPopover>
 				</motion.div>
+
+				{/* 歌曲时长、专辑信息 */}
+				{showAlbum && <div className='album ellipsis'>{song?.album || '无专辑'}</div>}
+				{showDuration && <div className='duration ellipsis'>{song?.duration || '无时长'}</div>}
 			</motion.div>
 		</SongItemStyles>
 	);
@@ -105,6 +109,8 @@ const SongItem = ({ song, index }) => {
 SongItem.propTypes = {
 	song: PropTypes.object,
 	index: PropTypes.number,
+	showAlbum: PropTypes.bool, // 是否显示专辑
+	showDuration: PropTypes.bool, // 是否显示时长
 };
 
 export default memo(SongItem);

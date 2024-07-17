@@ -1,17 +1,13 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { LeftMenuListStyles } from '@/views/musicSection/styles/LeftMenuListStyles';
+import { LeftMenuListStyles } from '@/views/musicSection/components/LeftMenu/LeftMenuListStyles';
 import classNames from 'classnames';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { setCurMenuId } from '@/views/musicSection/store/modules/musicAppReducer';
-import { useLocation } from 'react-router-dom';
+import { shallowEqual, useSelector } from 'react-redux';
 
 /**
  * @description: 左侧菜单列表
  */
 const LeftMenuList = ({ menuListTitle, menuList, changeCurMenu }) => {
-	const dispatch = useDispatch();
-	const location = useLocation();
 	const { curMenuId } = useSelector(
 		(state) => ({
 			curMenuId: state.musicApp.curMenuId,
@@ -27,9 +23,9 @@ const LeftMenuList = ({ menuListTitle, menuList, changeCurMenu }) => {
 					return (
 						<div
 							key={item.menuId}
-							className={classNames('item', location.pathname.includes(item.menuPath) ? 'active' : '')}
+							className={classNames('item', curMenuId === item.menuId ? 'active' : '')}
 							onClick={() => {
-								dispatch(setCurMenuId(item.menuId));
+								if (curMenuId === item.menuId) return;
 								changeCurMenu(item.menuId);
 							}}>
 							<i className={classNames('iconfont', item.menuIcon)}></i>

@@ -5,13 +5,13 @@ const Home = React.lazy(() => import('@/views/home/index')); // 路由懒加载
 const MusicPlayer = React.lazy(() => import('@/views/musicSection/index.jsx'));
 const ProjectSection = React.lazy(() => import('@/views/projectSection/index.jsx'));
 const ProfileSection = React.lazy(() => import('@/views/profileSection/index.jsx'));
-const MyLike = React.lazy(() => import('@/views/musicSection/views/RightViews/MyLike.jsx'));
+const MusicCommonPage = React.lazy(() => import('@/views/musicSection/views/RightViews/MusicCommonPage.jsx'));
 
 // 路由配置
 const routes = [
 	{
 		path: '/',
-		element: <Navigate to={'/home'}></Navigate>,
+		element: <Navigate to={'/index'}></Navigate>,
 	},
 	{
 		path: '/index',
@@ -23,7 +23,19 @@ const routes = [
 		children: [
 			{
 				path: 'like',
-				element: <MyLike></MyLike>,
+				element: <MusicCommonPage></MusicCommonPage>,
+			},
+			{
+				path: 'sleep',
+				element: <MusicCommonPage></MusicCommonPage>,
+			},
+			{
+				path: 'sport',
+				element: <MusicCommonPage></MusicCommonPage>,
+			},
+			{
+				path: 'hot',
+				element: <MusicCommonPage></MusicCommonPage>,
 			},
 		],
 	},

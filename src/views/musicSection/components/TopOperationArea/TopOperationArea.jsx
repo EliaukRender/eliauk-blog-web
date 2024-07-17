@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { TopOperationAreaStyles } from '@/views/musicSection/styles/TopOperationAreaStyles';
+import { TopOperationAreaStyles } from '@/views/musicSection/components/TopOperationArea/TopOperationAreaStyles';
 import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';

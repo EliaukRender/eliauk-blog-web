@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getMenuList, getSongList } from '@/api/modules/musicService';
+import { MENU_ID_ENUM } from '@/views/musicSection/constant';
 
 /**
  * @description: 音乐播放器---保存播放器全局数据
@@ -7,11 +8,11 @@ import { getMenuList, getSongList } from '@/api/modules/musicService';
 const musicAppReducer = createSlice({
 	name: 'musicApp',
 	initialState: {
-		curMenuId: '2-1', // 当前激活的左侧菜单id，默认是"喜欢"菜单
+		curMenuId: MENU_ID_ENUM.LIKE, // 当前激活的左侧菜单id，默认是"喜欢"菜单
+		menuList: [], // 菜单列表
 		showFullScreenLyric: false, // 是否显示全屏歌词
 		drawerVisible: false,
 		drawerContentId: 1, // 1-频谱设置； 2-当前歌曲列表
-		menuList: [], // 菜单列表
 		menuSongList: [], // 当前菜单对应的歌曲列表
 		fullScreenPlayer: false, // 全屏
 		maxPlayer: false, // 最大化
@@ -21,6 +22,11 @@ const musicAppReducer = createSlice({
 		// 保存当前菜单id
 		setCurMenuId(state, { payload }) {
 			state.curMenuId = payload;
+		},
+
+		// 保存当前菜单对应的歌单
+		setMenuSongList(state, { payload }) {
+			state.menuSongList = payload;
 		},
 
 		// 是否全屏歌词
@@ -77,16 +83,26 @@ const musicAppReducer = createSlice({
 	},
 });
 
-export const { setMaxPlayer, setFullScreenPlayer, setMiniPlayer, setCurMenuId, setShowFullScreenLyric, setDrawerVisible, setDrawerContentId } =
-	musicAppReducer.actions;
+export const {
+	setMenuSongList,
+	setMaxPlayer,
+	setFullScreenPlayer,
+	setMiniPlayer,
+	setCurMenuId,
+	setShowFullScreenLyric,
+	setDrawerVisible,
+	setDrawerContentId,
+} = musicAppReducer.actions;
 export default musicAppReducer.reducer;
 
 /**
  * @description: 获取歌曲列表
+ * @param menuId
  */
-export const getSongListAction = createAsyncThunk('getSongList', async () => {
+export const getSongListAction = createAsyncThunk('getSongList', async (menuId) => {
+	console.log('getSongListAction', menuId);
 	return new Promise(async (resolve, reject) => {
-		const { data } = await getSongList();
+		const { data } = await getSongList({ menuId });
 		resolve(data);
 	});
 });

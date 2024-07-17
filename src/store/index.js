@@ -18,7 +18,7 @@ const userReducerPersisCfg = {
 const musicAppReducerPersisCfg = {
 	key: 'musicApp',
 	storage,
-	whitelist: ['maxPlayer', 'miniPlayer'],
+	whitelist: ['maxPlayer', 'miniPlayer', 'curMenuId', 'menuList'],
 };
 
 const store = configureStore({
