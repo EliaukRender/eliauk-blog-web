@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "37939901",
+      "name": "icon_qq音乐-copy",
+      "font_class": "icon_qqyinyue",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
       "icon_id": "24891845",
       "name": "Arcade",
       "font_class": "yinyuehe",

@@ -1,11 +1,11 @@
 import React, { memo, useEffect, useState } from 'react';
-import { MenuMusicInfoAreaStyles } from '@/views/musicSection/views/RightViews/styles/MenuMusicInfoAreaStyles';
+import { MusicListInfoStyles } from '@/views/musicSection/views/RightViews/MyMusic/styles/MusicListInfoStyles';
 import { shallowEqual, useSelector } from 'react-redux';
 
 /**
  * @description: 菜单对应的歌单信息
  */
-const MenuMusicInfoArea = () => {
+const MusicListInfo = () => {
 	const { menuList, curMenuId } = useSelector(
 		(state) => ({
 			menuList: state.musicApp.menuList,
@@ -20,7 +20,7 @@ const MenuMusicInfoArea = () => {
 	}, [curMenuId, menuList]);
 
 	return (
-		<MenuMusicInfoAreaStyles>
+		<MusicListInfoStyles>
 			<div className='top-common-area'>
 				<img className='menu-image' src={require('@/views/musicSection/images/changpianji.png')} alt='' />
 				<div className='menu-info'>
@@ -45,8 +45,8 @@ const MenuMusicInfoArea = () => {
 					</div>
 				</div>
 			</div>
-		</MenuMusicInfoAreaStyles>
+		</MusicListInfoStyles>
 	);
 };
 
-export default memo(MenuMusicInfoArea);
+export default memo(MusicListInfo);

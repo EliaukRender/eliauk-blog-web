@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const LyricStyles = styled.div`
+	width: 50%;
 	height: 100%;
 	box-sizing: border-box;
 	overflow: hidden;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
+	padding-left: 50px;
 
 	.lyric-box {
 		width: 400px;

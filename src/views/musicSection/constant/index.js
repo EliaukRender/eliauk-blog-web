@@ -2,6 +2,9 @@
  * @description: 菜单Id枚举
  */
 export const MENU_ID_ENUM = {
+	MUSIC_HOME: 1,
+	VIDEO: 2,
+	WORLD: 3,
 	LIKE: 4,
 	SLEEP: 5,
 	SPORT: 5,
@@ -30,4 +33,23 @@ export const AnalyzeColorList = [
 	{ id: '6', colors: ['#EBE6A6', '#FFE5A7', '#FFDB6D', '#FDECCA'] },
 	{ id: '7', colors: ['#9ADCB5', '#AAE0DD', '#BCE6CA', '#CAECEA'] },
 	{ id: '8', colors: ['#f779ba', '#ffa5c3', '#ffdcd1', '#ffbfbe'] },
+];
+
+/**
+ * @description: 音乐馆页面标题列表
+ */
+export const MusicHomeTitleList = [
+	{ id: 1, name: '精选' },
+	{ id: 2, name: '排行' },
+	{ id: 3, name: '分类' },
+	{ id: 4, name: '歌手' },
+];
+
+/**
+ * @description: 视频页面标题列表
+ */
+export const VideoPageTitleList = [
+	{ id: 1, name: '推荐' },
+	{ id: 2, name: '排行榜' },
+	{ id: 3, name: '视频库' },
 ];

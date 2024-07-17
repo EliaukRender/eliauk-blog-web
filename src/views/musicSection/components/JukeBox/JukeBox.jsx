@@ -24,8 +24,8 @@ const JukeBox = () => {
 			for (let i = 1; i < 25; i++) {
 				const ring = document.createElement('div');
 				ring.classList.add('line');
-				ring.style.width = 350 - i * 4 + 'px';
-				ring.style.height = 350 - i * 4 + 'px';
+				ring.style.width = 330 - i * 4 + 'px';
+				ring.style.height = 330 - i * 4 + 'px';
 				innerRef.current.appendChild(ring);
 			}
 		}

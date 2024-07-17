@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MusicCommonPageStyles = styled.div`
+export const CommonPageStyles = styled.div`
 	width: 100%;
 	height: 100%;
 	padding: 10px 20px 0 20px;
@@ -8,6 +8,7 @@ export const MusicCommonPageStyles = styled.div`
 	color: #000000;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	animation: tran 0.3s ease;
 
 	@keyframes tran {
@@ -18,5 +19,10 @@ export const MusicCommonPageStyles = styled.div`
 		100% {
 			transform: translateX(0);
 		}
+	}
+
+	.song-container {
+		height: calc(100% - 90px);
+		overflow-y: auto;
 	}
 `;

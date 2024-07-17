@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-export const MenuMusicInfoAreaStyles = styled.div`
+export const MusicListInfoStyles = styled.div`
 	.top-common-area {
 		width: 100%;
 		height: 120px;
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
+		box-sizing: border-box;
 
 		.menu-image {
 			width: 120px;
@@ -21,6 +22,8 @@ export const MenuMusicInfoAreaStyles = styled.div`
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: flex-start;
+			padding: 2px;
+			box-sizing: border-box;
 
 			.menu-name {
 				width: 100%;

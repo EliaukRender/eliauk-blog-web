@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
-export const PlayerBottomStyles = styled.div`
-	min-width: 750px;
-	width: 100%;
+export const GoodSongListStyles = styled.div`
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
+	padding-top: 8px;
 	box-sizing: border-box;
-	background-color: #f6f6f6;
-	border-top: 1px solid #e6e6e6;
 `;

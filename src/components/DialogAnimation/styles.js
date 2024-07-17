@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { hexToRgba } from '@/utils/hexToRgba';
+import { french_Cool_blue } from '@/assets/css/variables';
 
 export const DialogStyles = styled.div`
 	.body {

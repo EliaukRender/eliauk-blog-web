@@ -2,10 +2,8 @@ import styled from 'styled-components';
 import bg from '@/views/musicSection/images/music-bg2.png';
 
 export const EliaukMusicPlayerStyles = styled.div`
-	width: 1100px;
-	height: 800px;
-	min-width: 1000px;
-	min-height: 700px;
+	min-width: 1150px;
+	min-height: 750px;
 	display: flex;
 	flex-direction: column;
 	font-size: 14px;

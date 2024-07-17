@@ -58,7 +58,7 @@ export const LyricFullScreenStyles = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding-top: 100px;
+		padding-top: 160px;
 		color: #eaeaea;
 		box-sizing: border-box;
 	}

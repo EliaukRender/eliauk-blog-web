@@ -14,6 +14,13 @@ const userReducerPersisCfg = {
 	whitelist: ['token'],
 };
 
+// audio
+const audioReducerPersisCfg = {
+	key: 'audio',
+	storage,
+	whitelist: ['songId', 'songList'],
+};
+
 // musicApp
 const musicAppReducerPersisCfg = {
 	key: 'musicApp',
@@ -25,7 +32,7 @@ const store = configureStore({
 	reducer: {
 		global: globalReducer, // persistReducer对reducer持久化
 		user: persistReducer(userReducerPersisCfg, userReducer),
-		audio: audioReducer,
+		audio: persistReducer(audioReducerPersisCfg, audioReducer),
 		musicApp: persistReducer(musicAppReducerPersisCfg, musicAppReducer),
 		analyze: analyzeReducer,
 	},

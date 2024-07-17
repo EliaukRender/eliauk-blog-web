@@ -62,8 +62,8 @@ const EliaukMusicPlayer = () => {
 				maxPlayer
 					? { width: '100%', height: '100%', transition: 'width 0.5s ease, height 0.5s ease' }
 					: {
-							width: '1100px',
-							height: '800px',
+							width: '50%',
+							height: '70%',
 							transition: 'width 0.5s ease, height 0.5s ease',
 						}
 			}>

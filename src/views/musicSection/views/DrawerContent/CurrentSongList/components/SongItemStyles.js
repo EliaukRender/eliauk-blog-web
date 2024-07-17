@@ -21,6 +21,7 @@ export const SongItemStyles = styled.div`
 			display: flex;
 			justify-content: flex-start;
 			align-items: center;
+			width: 220px;
 
 			.img {
 				width: 40px;
@@ -67,12 +68,11 @@ export const SongItemStyles = styled.div`
 		/* 操作按钮区域 */
 
 		.operation {
-			min-width: 150px;
+			flex: 1;
 			display: flex;
-			justify-content: flex-end;
+			justify-content: center;
 			align-items: center;
 			cursor: pointer;
-			flex: 1;
 
 			.heart {
 				margin-right: 15px;
@@ -84,11 +84,17 @@ export const SongItemStyles = styled.div`
 		}
 
 		.album {
-			min-width: 200px;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 		.duration {
-			min-width: 150px;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 

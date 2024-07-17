@@ -69,6 +69,7 @@ const UserInfoArea = () => {
 					className='popover'
 					style={{
 						clipPath: 'inset(10% 50% 90% 50% round 10px)',
+						boxShadow: '	0 2px 10px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.15)',
 					}}>
 					{!token && (
 						<Fragment>

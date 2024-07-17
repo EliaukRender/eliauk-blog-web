@@ -5,7 +5,8 @@ const Home = React.lazy(() => import('@/views/home/index')); // 路由懒加载
 const MusicPlayer = React.lazy(() => import('@/views/musicSection/index.jsx'));
 const ProjectSection = React.lazy(() => import('@/views/projectSection/index.jsx'));
 const ProfileSection = React.lazy(() => import('@/views/profileSection/index.jsx'));
-const MusicCommonPage = React.lazy(() => import('@/views/musicSection/views/RightViews/MusicCommonPage.jsx'));
+const MyMusic = React.lazy(() => import('@/views/musicSection/views/RightViews/MyMusic/CommonPage.jsx'));
+const OnlineMusic = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/CommonPage.jsx'));
 
 // 路由配置
 const routes = [
@@ -21,21 +22,32 @@ const routes = [
 		path: '/music/*',
 		element: <MusicPlayer></MusicPlayer>,
 		children: [
+			// 喜欢
 			{
 				path: 'like',
-				element: <MusicCommonPage></MusicCommonPage>,
+				element: <MyMusic></MyMusic>,
 			},
 			{
 				path: 'sleep',
-				element: <MusicCommonPage></MusicCommonPage>,
+				element: <MyMusic></MyMusic>,
 			},
 			{
 				path: 'sport',
-				element: <MusicCommonPage></MusicCommonPage>,
+				element: <MyMusic></MyMusic>,
 			},
 			{
 				path: 'hot',
-				element: <MusicCommonPage></MusicCommonPage>,
+				element: <MyMusic></MyMusic>,
+			},
+			// 音乐馆
+			{
+				path: 'home',
+				element: <OnlineMusic></OnlineMusic>,
+			},
+			// 视频
+			{
+				path: 'video',
+				element: <OnlineMusic></OnlineMusic>,
 			},
 		],
 	},

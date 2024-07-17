@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { french_Cool_blue, mld_blue_one } from '@/assets/css/variables';
+import { french_Cool_blue, french_Cool_light_gray, mld_blue_one } from '@/assets/css/variables';
 import { hexToRgba } from '@/utils/hexToRgba';
 
 export const UserInfoAreaStyles = styled.div`
@@ -39,10 +39,11 @@ export const UserInfoAreaStyles = styled.div`
 		right: 0;
 		padding: 10px;
 		border-radius: 8px;
-		background-color: #ffffff;
 		color: ${french_Cool_blue};
 		font-size: 16px;
 		z-index: 99;
+		box-sizing: border-box;
+		background-color: #fafafa;
 
 		.item {
 			width: 100px;
@@ -51,6 +52,7 @@ export const UserInfoAreaStyles = styled.div`
 			line-height: 35px;
 			text-align: left;
 			cursor: pointer;
+			border-radius: 8px;
 
 			&:hover {
 				background-color: ${hexToRgba(mld_blue_one, 0.6)};

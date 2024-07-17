@@ -1,16 +1,18 @@
 import styled from 'styled-components';
+import { music_green } from '@/assets/css/variables';
 
-export const MenuMusicListStyles = styled.div`
+export const MusicListStyles = styled.div`
 	width: 100%;
 	height: calc(100% - 120px);
 	box-sizing: border-box;
 	padding-top: 20px;
 
 	.top {
-		height: 40px;
+		height: 30px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		margin-bottom: 15px;
 
 		.left {
 			display: flex;
@@ -20,10 +22,23 @@ export const MenuMusicListStyles = styled.div`
 
 			.item {
 				margin-right: 20px;
+				cursor: pointer;
 			}
 
-			.active {
-				color: #00cc65;
+			.item-active {
+				display: inline-block;
+				position: relative;
+				color: ${music_green};
+
+				&::after {
+					content: '';
+					position: absolute;
+					left: 0;
+					bottom: -10px;
+					width: 100%;
+					height: 2px;
+					background-color: ${music_green};
+				}
 			}
 		}
 
@@ -37,8 +52,8 @@ export const MenuMusicListStyles = styled.div`
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				height: 40px;
-				line-height: 40px;
+				height: 30px;
+				line-height: 30px;
 				padding: 5px;
 				margin-left: 15px;
 				cursor: pointer;
@@ -48,7 +63,8 @@ export const MenuMusicListStyles = styled.div`
 				}
 
 				&:hover {
-					background-color: #f0f0f0;
+					background-color: #ebebeb;
+					border-right: 8px;
 				}
 			}
 		}

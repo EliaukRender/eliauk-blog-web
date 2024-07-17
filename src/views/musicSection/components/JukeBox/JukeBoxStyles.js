@@ -1,16 +1,17 @@
 import styled from 'styled-components';
 
 export const JukeBoxStyles = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 450px;
+	width: 50%;
 	height: 100%;
-	margin-right: 100px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	box-sizing: border-box;
+	padding-right: 50px;
 
 	.box {
-		width: 450px;
-		height: 420px;
+		width: 400px;
+		height: 400px;
 		background-color: #131313;
 		border-radius: 40px;
 		display: flex;
@@ -18,8 +19,8 @@ export const JukeBoxStyles = styled.div`
 		align-items: center;
 
 		.outer {
-			width: 400px;
-			height: 400px;
+			width: 380px;
+			height: 380px;
 			background-color: #1f1f1f;
 			border-radius: 50%;
 			display: flex;
@@ -27,8 +28,8 @@ export const JukeBoxStyles = styled.div`
 			align-items: center;
 
 			.inner {
-				width: 350px;
-				height: 350px;
+				width: 330px;
+				height: 330px;
 				border-radius: 50%;
 				display: flex;
 				justify-content: center;
@@ -45,8 +46,8 @@ export const JukeBoxStyles = styled.div`
 				}
 
 				.image {
-					width: 220px;
-					height: 220px;
+					width: 200px;
+					height: 200px;
 					border-radius: 50%;
 				}
 			}

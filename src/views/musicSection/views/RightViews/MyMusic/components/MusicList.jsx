@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { MenuMusicListStyles } from '@/views/musicSection/views/RightViews/styles/MenuMusicListStyle';
+import { MusicListStyles } from '@/views/musicSection/views/RightViews/MyMusic/styles/MusicListStyle';
 import { shallowEqual, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import SongItem from '@/views/musicSection/views/DrawerContent/CurrentSongList/components/SongItem';
@@ -8,7 +8,7 @@ import NoData from '@/views/musicSection/components/NoData/NoData';
 /**
  * @description: 歌单列表区域
  */
-const MenuMusicList = () => {
+const MusicList = () => {
 	const titleList = [
 		{ id: 1, title: '歌曲' },
 		{ id: 2, title: '评论' },
@@ -22,19 +22,19 @@ const MenuMusicList = () => {
 	);
 
 	return (
-		<MenuMusicListStyles>
+		<MusicListStyles>
 			<div className='top'>
 				<div className='left'>
 					{titleList.map((item) => {
 						return (
 							<div
-								className={classNames('item', item.id === curId ? 'active' : '')}
+								className={classNames('item', item.id === curId ? 'item-active' : '')}
 								key={item.id}
 								onClick={() => {
 									setCurId(item.id);
 								}}>
 								<span>{item.title}</span>
-								{item.id === 1 && <span>（{menuSongList.length}）</span>}
+								{item.id === 1 && <span>({menuSongList.length})</span>}
 							</div>
 						);
 					})}
@@ -58,8 +58,8 @@ const MenuMusicList = () => {
 				})}
 				{!menuSongList.length && <NoData></NoData>}
 			</div>
-		</MenuMusicListStyles>
+		</MusicListStyles>
 	);
 };
 
-export default memo(MenuMusicList);
+export default memo(MusicList);

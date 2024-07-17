@@ -91,7 +91,7 @@ const SongItem = ({ song, index, showAlbum = false, showDuration = false }) => {
 				</div>
 
 				{/*  操作按钮区域  */}
-				<motion.div className='operation' initial={{ opacity: 0 }} animate={controls} style={showAlbum ? { justifyContent: 'flex-start' } : {}}>
+				<motion.div className='operation' initial={{ opacity: 0 }} animate={controls}>
 					{/* 喜欢 */}
 					<img className='heart' src={require('@/views/musicSection/images/icons/heart.png')} alt='' />
 					{/* 移动歌曲 */}
