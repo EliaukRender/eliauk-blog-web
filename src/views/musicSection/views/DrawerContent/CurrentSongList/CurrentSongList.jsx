@@ -19,7 +19,7 @@ const CurrentSongList = () => {
 			<div className='title'>当前播放歌曲列表</div>
 			<div className='song-list'>
 				{songList.map((song, index) => {
-					return <SongItem song={song} index={index}></SongItem>;
+					return <SongItem curSong={song} index={index}></SongItem>;
 				})}
 			</div>
 		</CurrentSongListStyles>
