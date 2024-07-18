@@ -6,16 +6,17 @@ import { shallowEqual, useSelector } from 'react-redux';
  */
 export const usePageTransformAnimate = () => {
 	const [playAnimation, setPlayAnimation] = useState(1);
-	const { curSheet } = useSelector(
+	const { curSheet, curMenu } = useSelector(
 		(state) => ({
 			curSheet: state.musicApp.curSheet,
+			curMenu: state.musicApp.curMenu,
 		}),
 		shallowEqual,
 	);
 
 	useEffect(() => {
 		setPlayAnimation((pre) => pre + 1);
-	}, [curSheet]);
+	}, [curSheet, curMenu]);
 
 	return { playAnimation };
 };

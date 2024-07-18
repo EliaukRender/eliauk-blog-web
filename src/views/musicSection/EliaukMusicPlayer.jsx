@@ -42,6 +42,10 @@ const EliaukMusicPlayer = () => {
 			dispatch(queryCommonMenuListAction()); // 获取我的歌单列表
 			dispatch(querySongListBySheetIdActon(1)); // 获取音乐列表
 		}
+		// 后续切回到播放器界面
+		if (!!menuList.length && !!sheetList.length) {
+			navigate('/music/like');
+		}
 	}, [menuList, sheetList]);
 
 	// 第一次进入时，待播放列表songList没有歌曲，则将【喜欢】歌单的歌曲 作为 待播放歌曲列表
