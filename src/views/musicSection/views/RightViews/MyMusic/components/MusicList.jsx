@@ -13,10 +13,10 @@ const MusicList = () => {
 		{ id: 1, title: '歌曲' },
 		{ id: 2, title: '评论' },
 	];
-	const [curId, setCurId] = useState(1);
-	const { menuSongList } = useSelector(
+	const [curTitleId, setCurTitleId] = useState(1);
+	const { sheetSongList } = useSelector(
 		(state) => ({
-			menuSongList: state.musicApp.menuSongList,
+			sheetSongList: state.musicApp.sheetSongList,
 		}),
 		shallowEqual,
 	);
@@ -28,13 +28,13 @@ const MusicList = () => {
 					{titleList.map((item) => {
 						return (
 							<div
-								className={classNames('item', item.id === curId ? 'item-active' : '')}
+								className={classNames('item', item.id === curTitleId ? 'item-active' : '')}
 								key={item.id}
 								onClick={() => {
-									setCurId(item.id);
+									setCurTitleId(item.id);
 								}}>
 								<span>{item.title}</span>
-								{item.id === 1 && <span>({menuSongList.length})</span>}
+								{item.id === 1 && <span>({sheetSongList.length})</span>}
 							</div>
 						);
 					})}
@@ -52,11 +52,11 @@ const MusicList = () => {
 			</div>
 
 			{/*  歌曲列表 */}
-			<div className='song-list' style={!menuSongList.length ? { justifyContent: 'center', alignItems: 'center' } : {}}>
-				{menuSongList.map((song, index) => {
+			<div className='song-list' style={!sheetSongList.length ? { justifyContent: 'center', alignItems: 'center' } : {}}>
+				{sheetSongList.map((song, index) => {
 					return <SongItem song={song} index={index} showAlbum={true} showDuration={true}></SongItem>;
 				})}
-				{!menuSongList.length && <NoData></NoData>}
+				{!sheetSongList.length && <NoData></NoData>}
 			</div>
 		</MusicListStyles>
 	);

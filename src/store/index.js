@@ -18,14 +18,14 @@ const userReducerPersisCfg = {
 const audioReducerPersisCfg = {
 	key: 'audio',
 	storage,
-	whitelist: ['songId', 'songList'],
+	whitelist: [],
 };
 
 // musicApp
 const musicAppReducerPersisCfg = {
 	key: 'musicApp',
 	storage,
-	whitelist: ['maxPlayer', 'miniPlayer', 'curMenuId', 'menuList'],
+	whitelist: [],
 };
 
 const store = configureStore({

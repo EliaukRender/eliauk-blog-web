@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getMenuList, getSongList } from '@/api/modules/musicService';
-import { MENU_ID_ENUM } from '@/views/musicSection/constant';
+import { queryCommonMenuList, querySheetList, querySongListBySheetId } from '@/api/modules/musicService';
 
 /**
  * @description: 音乐播放器---保存播放器全局数据
@@ -8,25 +7,28 @@ import { MENU_ID_ENUM } from '@/views/musicSection/constant';
 const musicAppReducer = createSlice({
 	name: 'musicApp',
 	initialState: {
-		curMenuId: MENU_ID_ENUM.LIKE, // 当前激活的左侧菜单id，默认是"喜欢"菜单
+		curSheet: {}, // 当前激活的自建歌单
+		curMenu: {}, // 当前激活的菜单
+		sheetList: [], // 自建歌单列表
 		menuList: [], // 菜单列表
+		sheetSongList: [], // 当前歌单对应的音乐列表
+
 		showFullScreenLyric: false, // 是否显示全屏歌词
 		drawerVisible: false,
 		drawerContentId: 1, // 1-频谱设置； 2-当前歌曲列表
-		menuSongList: [], // 当前菜单对应的歌曲列表
 		fullScreenPlayer: false, // 全屏
 		maxPlayer: false, // 最大化
 		miniPlayer: false, // 最小化
 	},
 	reducers: {
-		// 保存当前菜单id
-		setCurMenuId(state, { payload }) {
-			state.curMenuId = payload;
+		// 保存当前激活的菜单
+		setCurMenu(state, { payload }) {
+			state.curMenu = payload;
 		},
 
-		// 保存当前菜单对应的歌单
-		setMenuSongList(state, { payload }) {
-			state.menuSongList = payload;
+		// 保存当前激活的歌单
+		setCurSheet(state, { payload }) {
+			state.curSheet = payload;
 		},
 
 		// 是否全屏歌词
@@ -61,34 +63,42 @@ const musicAppReducer = createSlice({
 	},
 	// 异步reducers
 	extraReducers: (builder) => {
-		/* 获取歌单列表 */
+		/* 获取自建歌单列表 */
 		builder
-			.addCase(getSongListAction.fulfilled, (state, { payload }) => {
-				console.log('getSongListAction', payload);
-				state.menuSongList = payload;
+			.addCase(querySheetListAction.fulfilled, (state, { payload }) => {
+				state.sheetList = payload;
+				state.curSheet = state.sheetList[0]; // 默认激活【喜欢歌单】
 			})
-			.addCase(getSongListAction.rejected, (state, action) => {
-				console.log('error-getSongListAction', action);
+			.addCase(querySheetListAction.rejected, (state, action) => {
+				console.log('error-querySheetListAction', action);
 			});
 
-		/* 获取菜单列表  */
+		/* 获取公共菜单列表  */
 		builder
-			.addCase(getMenuListAction.fulfilled, (state, { payload }) => {
-				console.log('getMenuListAction', payload);
+			.addCase(queryCommonMenuListAction.fulfilled, (state, { payload }) => {
 				state.menuList = payload;
 			})
-			.addCase(getMenuListAction.rejected, (state, action) => {
-				console.log('error-getMenuListAction', action);
+			.addCase(queryCommonMenuListAction.rejected, (state, action) => {
+				console.log('error-queryCommonMenuListAction', action);
+			});
+
+		/* 基于歌单ID获取音乐列表 */
+		builder
+			.addCase(querySongListBySheetIdActon.fulfilled, (state, { payload }) => {
+				state.sheetSongList = payload;
+			})
+			.addCase(querySongListBySheetIdActon.rejected, (state, action) => {
+				console.log('error-querySongListBySheetId', action);
 			});
 	},
 });
 
 export const {
-	setMenuSongList,
+	setCurMenu,
+	setCurSheet,
 	setMaxPlayer,
 	setFullScreenPlayer,
 	setMiniPlayer,
-	setCurMenuId,
 	setShowFullScreenLyric,
 	setDrawerVisible,
 	setDrawerContentId,
@@ -96,23 +106,32 @@ export const {
 export default musicAppReducer.reducer;
 
 /**
- * @description: 获取歌曲列表
- * @param menuId
+ * @description: 获取自建歌单列表
  */
-export const getSongListAction = createAsyncThunk('getSongList', async (menuId) => {
-	console.log('getSongListAction', menuId);
+export const querySheetListAction = createAsyncThunk('querySheetList', async () => {
 	return new Promise(async (resolve, reject) => {
-		const { data } = await getSongList({ menuId });
+		const { data } = await querySheetList();
 		resolve(data);
 	});
 });
 
 /**
- * @description: 获取菜单列表
+ * @description: 获取公共菜单列表
+ * @param menuId
  */
-export const getMenuListAction = createAsyncThunk('getMenuList', async () => {
+export const queryCommonMenuListAction = createAsyncThunk('queryCommonMenuList', async () => {
 	return new Promise(async (resolve, reject) => {
-		const { data } = await getMenuList();
+		const { data } = await queryCommonMenuList();
+		resolve(data);
+	});
+});
+
+/**
+ * @description: 基于歌单ID获取音乐列表
+ */
+export const querySongListBySheetIdActon = createAsyncThunk('querySongListBySheetId', async (sheetId) => {
+	return new Promise(async (resolve, reject) => {
+		const { data } = await querySongListBySheetId({ sheetId });
 		resolve(data);
 	});
 });

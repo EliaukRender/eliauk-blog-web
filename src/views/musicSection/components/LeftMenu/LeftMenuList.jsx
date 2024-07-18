@@ -1,32 +1,49 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import React, { memo, useEffect, useState } from 'react';
 import { LeftMenuListStyles } from '@/views/musicSection/components/LeftMenu/LeftMenuListStyles';
 import classNames from 'classnames';
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { setCurMenu } from '@/views/musicSection/store/modules/musicAppReducer';
 
 /**
- * @description: 左侧菜单列表
+ * @description: 在线音乐  菜单列表
  */
-const LeftMenuList = ({ menuListTitle, menuList, changeCurMenu }) => {
-	const { curMenuId } = useSelector(
+const LeftMenuList = () => {
+	const { menuList, curMenu } = useSelector(
 		(state) => ({
-			curMenuId: state.musicApp.curMenuId,
+			menuList: state.musicApp.menuList,
+			curMenu: state.musicApp.curMenu,
 		}),
 		shallowEqual,
 	);
+	const location = useLocation();
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const [activeMenu, setActiveMenu] = useState(false);
+
+	// 监听路由变化
+	useEffect(() => {
+		setActiveMenu(location.pathname !== '/music/like');
+	}, [location]);
+
+	// 切换菜单
+	const changeMenu = (menu) => {
+		navigate(`/music${menu.routePath}`); // 路由跳转
+		if (location.pathname === menu.routePath && menu.menuId === curMenu.menuId) return;
+		dispatch(setCurMenu(menu));
+	};
 
 	return (
 		<LeftMenuListStyles>
 			<div className='menu-list'>
-				<div className='title'>{menuListTitle}</div>
+				<div className='title'>在线音乐</div>
 				{menuList.map((item) => {
 					return (
 						<div
 							key={item.menuId}
-							className={classNames('item', curMenuId === item.menuId ? 'active' : '')}
+							className={classNames('item', curMenu.menuId === item.menuId && activeMenu ? 'active' : '')}
 							onClick={() => {
-								if (curMenuId === item.menuId) return;
-								changeCurMenu(item.menuId);
+								changeMenu(item);
 							}}>
 							<i className={classNames('iconfont', item.menuIcon)}></i>
 							<span className='item-text'>{item.menuName}</span>
@@ -38,10 +55,6 @@ const LeftMenuList = ({ menuListTitle, menuList, changeCurMenu }) => {
 	);
 };
 
-LeftMenuList.propTypes = {
-	menuList: PropTypes.array, // 菜单列表
-	menuListTitle: PropTypes.string, // 菜单列表标题
-	changeCurMenu: PropTypes.func, // 切换菜单
-};
+LeftMenuList.propTypes = {};
 
 export default memo(LeftMenuList);

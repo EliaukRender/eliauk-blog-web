@@ -1,17 +1,4 @@
 /**
- * @description: 菜单Id枚举
- */
-export const MENU_ID_ENUM = {
-	MUSIC_HOME: 1,
-	VIDEO: 2,
-	WORLD: 3,
-	LIKE: 4,
-	SLEEP: 5,
-	SPORT: 5,
-	HOT: 7,
-};
-
-/**
  * @description: 频谱图动效样式
  */
 export const AnalyzeChartList = [
@@ -36,20 +23,29 @@ export const AnalyzeColorList = [
 ];
 
 /**
+ * @description: 公共菜单id枚举
+ */
+export const MENU_ID_ENUM = {
+	MUSIC_HOME: 101,
+	VIDEO: 102,
+	WORLD: 103,
+};
+
+/**
  * @description: 音乐馆页面标题列表
  */
-export const MusicHomeTitleList = [
-	{ id: 1, name: '精选' },
-	{ id: 2, name: '排行' },
-	{ id: 3, name: '分类' },
-	{ id: 4, name: '歌手' },
+export const MusicHomeSortList = [
+	{ id: 1, name: '精选', routePath: '/musicRecommend' },
+	{ id: 2, name: '排行', routePath: '/musicRecommend' },
+	{ id: 3, name: '分类', routePath: '/musicRecommend' },
+	{ id: 4, name: '歌手', routePath: '/musicRecommend' },
 ];
 
 /**
  * @description: 视频页面标题列表
  */
-export const VideoPageTitleList = [
-	{ id: 1, name: '推荐' },
-	{ id: 2, name: '排行榜' },
-	{ id: 3, name: '视频库' },
+export const VideoPageSortList = [
+	{ id: 5, name: '推荐', routePath: '/videoRecommend' },
+	{ id: 6, name: '排行榜', routePath: '/videoRecommend' },
+	{ id: 7, name: '视频库', routePath: '/videoRecommend' },
 ];

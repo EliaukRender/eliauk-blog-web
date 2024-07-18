@@ -1,33 +1,31 @@
 import React, { memo, useEffect, useState } from 'react';
 import { ClassificationStyles } from '@/views/musicSection/views/RightViews/OnlineMusic/styles/ClassificationStyles';
 import { shallowEqual, useSelector } from 'react-redux';
-import { MENU_ID_ENUM, MusicHomeTitleList, VideoPageTitleList } from '@/views/musicSection/constant';
+import { MENU_ID_ENUM, MusicHomeSortList, VideoPageSortList } from '@/views/musicSection/constant';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Classification = ({ changeTitleId, curTitleId }) => {
-	const { menuList, curMenuId } = useSelector(
+const Classification = ({ changeSort, curSort }) => {
+	const { curMenu } = useSelector(
 		(state) => ({
-			menuList: state.musicApp.menuList,
-			curMenuId: state.musicApp.curMenuId,
+			curMenu: state.musicApp.curMenu,
 		}),
 		shallowEqual,
 	);
-	const [curMenu, setCurMenu] = useState(MENU_ID_ENUM.MUSIC_HOME); // 当前的菜单
-	const [curTitleList, setCurTitleList] = useState([]); //
+	const [curTitleList, setCurTitleList] = useState([]);
 
 	useEffect(() => {
 		// 音乐馆
-		if (curMenuId === MENU_ID_ENUM.MUSIC_HOME) {
-			setCurTitleList(MusicHomeTitleList);
+		if (curMenu.menuId === MENU_ID_ENUM.MUSIC_HOME) {
+			setCurTitleList(MusicHomeSortList);
+			changeSort(MusicHomeSortList[0]);
 		}
 		// 视频
-		if (curMenuId === MENU_ID_ENUM.VIDEO) {
-			setCurTitleList(VideoPageTitleList);
+		if (curMenu.menuId === MENU_ID_ENUM.VIDEO) {
+			setCurTitleList(VideoPageSortList);
+			changeSort(VideoPageSortList[0]);
 		}
-		const menu = menuList.find((menu) => menu.menuId === curMenuId);
-		menu && setCurMenu(menu);
-	}, [menuList, curMenuId]);
+	}, [curMenu]);
 
 	return (
 		<ClassificationStyles>
@@ -37,9 +35,9 @@ const Classification = ({ changeTitleId, curTitleId }) => {
 					return (
 						<div
 							key={item.id}
-							className={classNames('item', curTitleId === item.id ? 'item-selected' : '')}
+							className={classNames('item', curSort.id === item.id ? 'item-selected' : '')}
 							onClick={() => {
-								changeTitleId(item.id);
+								changeSort(item);
 							}}>
 							{item.name}
 						</div>
@@ -51,8 +49,8 @@ const Classification = ({ changeTitleId, curTitleId }) => {
 };
 
 Classification.propTypes = {
-	changeTitleId: PropTypes.func,
-	curTitleId: PropTypes.number,
+	changeSortId: PropTypes.func,
+	curSortId: PropTypes.number,
 };
 
 export default memo(Classification);

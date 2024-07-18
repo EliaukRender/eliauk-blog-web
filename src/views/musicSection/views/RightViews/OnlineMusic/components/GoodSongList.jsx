@@ -16,7 +16,7 @@ const GoodSongList = () => {
 
 	return (
 		<GoodSongListStyles>
-			{menuSongList.map((song) => {
+			{menuSongList?.map((song) => {
 				return <SongCard song={song} imageNum={2}></SongCard>;
 			})}
 		</GoodSongListStyles>

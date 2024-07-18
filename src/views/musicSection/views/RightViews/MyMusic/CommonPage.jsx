@@ -5,7 +5,7 @@ import MusicList from '@/views/musicSection/views/RightViews/MyMusic/components/
 import { usePageTransformAnimate } from '@/views/musicSection/hooks/usePageTransformAnimate';
 
 /**
- * @description: 我的音乐---公共页面
+ * @description: 我的所有歌单的---公共主页面
  */
 const CommonPage = () => {
 	const { playAnimation } = usePageTransformAnimate();

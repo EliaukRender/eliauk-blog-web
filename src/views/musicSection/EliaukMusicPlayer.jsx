@@ -8,52 +8,50 @@ import PlayerDrawer from '@/views/musicSection/components/PlayerDrawer/PlayerDra
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import SelectorAnalyze from '@/views/musicSection/views/DrawerContent/SelectorAnalyze/SelectorAnalyze';
 import CurrentSongList from '@/views/musicSection/views/DrawerContent/CurrentSongList/CurrentSongList';
-import { getMenuListAction, getSongListAction } from '@/views/musicSection/store/modules/musicAppReducer';
+import { queryCommonMenuListAction, querySheetListAction, querySongListBySheetIdActon } from '@/views/musicSection/store/modules/musicAppReducer';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { setSongId, setSongList } from '@/views/musicSection/store/modules/audioReducer';
 import { useFullScreenPlayer } from '@/views/musicSection/hooks/useFullScreenPlayer';
+import { setSongId, setSongList } from '@/views/musicSection/store/modules/audioReducer';
 
 /**
  * @description: 音乐播放器主体框架
  */
 const EliaukMusicPlayer = () => {
-	const { drawerContentId, menuSongList, songList, maxPlayer, curMenuId, menuList } = useSelector(
+	const { sheetList, menuList, sheetSongList, songList, drawerContentId, maxPlayer } = useSelector(
 		(state) => ({
 			drawerContentId: state.musicApp.drawerContentId,
-			menuSongList: state.musicApp.menuSongList,
+			sheetList: state.musicApp.sheetList,
 			menuList: state.musicApp.menuList,
 			maxPlayer: state.musicApp.maxPlayer,
-			curMenuId: state.musicApp.curMenuId,
+			sheetSongList: state.musicApp.sheetSongList,
 			songList: state.audio.songList,
 		}),
 		shallowEqual,
 	);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const location = useLocation();
 	const playerRef = useRef(null);
 	useFullScreenPlayer(playerRef); // 全屏操作
 
 	// 调用接口初始化数据
 	useEffect(() => {
 		// 第一次进入播放器页面，默认定位在'喜欢'菜单
-		if (!menuList.length) {
+		if (!menuList.length && !sheetList.length) {
 			navigate('/music/like');
-			dispatch(getMenuListAction()); // 获取菜单列表
-		} else {
-			const menu = menuList.find((menu) => menu.menuId === curMenuId);
-			navigate(`/music${menu?.menuPath}`);
+			dispatch(querySheetListAction()); // 获取菜单列表
+			dispatch(queryCommonMenuListAction()); // 获取我的歌单列表
+			dispatch(querySongListBySheetIdActon(1)); // 获取音乐列表
 		}
-		dispatch(getSongListAction(curMenuId)); // 获取当前菜单对应的歌曲列表
-	}, [curMenuId]);
+	}, [menuList, sheetList]);
 
+	// 第一次进入时，待播放列表songList没有歌曲，则将【喜欢】歌单的歌曲 作为 待播放歌曲列表
+	// 并默认将第一首歌作为待播放歌曲
 	useEffect(() => {
-		// 给songList/songId赋初始值
-		if (location.pathname === '/music/like' && !songList?.length && !!menuSongList?.length) {
-			dispatch(setSongList(menuSongList));
-			dispatch(setSongId(menuSongList[0].songId));
+		if (!!sheetSongList.length && !songList.length) {
+			dispatch(setSongList(sheetSongList));
+			dispatch(setSongId(sheetSongList[0].songId));
 		}
-	}, [location, songList, menuSongList]);
+	}, [sheetSongList, songList]);
 
 	return (
 		<EliaukMusicPlayerStyles

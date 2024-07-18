@@ -6,7 +6,9 @@ const MusicPlayer = React.lazy(() => import('@/views/musicSection/index.jsx'));
 const ProjectSection = React.lazy(() => import('@/views/projectSection/index.jsx'));
 const ProfileSection = React.lazy(() => import('@/views/profileSection/index.jsx'));
 const MyMusic = React.lazy(() => import('@/views/musicSection/views/RightViews/MyMusic/CommonPage.jsx'));
-const OnlineMusic = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/CommonPage.jsx'));
+const OnlineCommonPage = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/OnlineCommonPage.jsx'));
+const VideoRecommend = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/VideoRecommend.jsx'));
+const MusicRecommend = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/MusicRecommend.jsx'));
 
 // 路由配置
 const routes = [
@@ -41,13 +43,25 @@ const routes = [
 			},
 			// 音乐馆
 			{
-				path: 'home',
-				element: <OnlineMusic></OnlineMusic>,
+				path: 'home/*',
+				element: <OnlineCommonPage></OnlineCommonPage>,
+				children: [
+					{
+						path: 'musicRecommend',
+						element: <MusicRecommend></MusicRecommend>,
+					},
+				],
 			},
 			// 视频
 			{
-				path: 'video',
-				element: <OnlineMusic></OnlineMusic>,
+				path: 'video/*',
+				element: <OnlineCommonPage></OnlineCommonPage>,
+				children: [
+					{
+						path: 'videoRecommend',
+						element: <VideoRecommend></VideoRecommend>,
+					},
+				],
 			},
 		],
 	},
