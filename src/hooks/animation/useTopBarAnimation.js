@@ -8,17 +8,17 @@ const variants = {
 		translateY: 0,
 		transition: {
 			duration: 0.8,
-			ease: 'easeInOut'
-		}
+			ease: 'easeInOut',
+		},
 	},
 	hiddenBar: {
 		opacity: 0,
 		translateY: -80,
 		transition: {
 			duration: 0.8,
-			ease: 'easeInOut'
-		}
-	}
+			ease: 'easeInOut',
+		},
+	},
 };
 
 /**
@@ -27,14 +27,15 @@ const variants = {
 export const useTopBarAnimation = () => {
 	const { scrollDirection } = useSelector(
 		(state) => ({
-			scrollDirection: state.global.scrollDirection
+			scrollDirection: state.global.scrollDirection,
 		}),
-		shallowEqual
+		shallowEqual,
 	);
 
 	const controls = useAnimationControls();
 
 	useEffect(() => {
+		console.log('导航条动画执行');
 		// 页面刚渲染时
 		if (!scrollDirection) {
 			controls.start('showBar');
@@ -52,6 +53,6 @@ export const useTopBarAnimation = () => {
 
 	return {
 		variants,
-		controls
+		controls,
 	};
 };

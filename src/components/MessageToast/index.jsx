@@ -2,13 +2,13 @@ import { message } from 'antd';
 
 // 自定义配置项
 const defaultDuration = 2; // 持续时长
-const defaultTop = 50; // 距离顶部距离
+const defaultTop = 100; // 距离顶部距离
 const defaultMaxCount = 1; // 最大显示条数
 
 message.config({
 	top: defaultTop,
 	duration: defaultDuration,
-	maxCount: defaultMaxCount
+	maxCount: defaultMaxCount,
 });
 
 /**
@@ -29,7 +29,7 @@ const MessageToast = {
 	},
 	loading: (content) => {
 		message.loading(content);
-	}
+	},
 };
 
 export default MessageToast;

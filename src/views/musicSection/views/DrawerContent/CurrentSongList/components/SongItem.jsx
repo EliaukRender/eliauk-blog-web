@@ -7,7 +7,6 @@ import { motion, useAnimationControls } from 'framer-motion';
 import { deleteSongFromSongList, pauseAudio, playAudio } from '@/views/musicSection/store/actions/audioAction';
 import MoveMusicPopover from '@/views/musicSection/components/BottomArea/LeftAreaCmps/MoveMusicPopover';
 import { setSongList } from '@/views/musicSection/store/modules/audioReducer';
-import { deleteSongFromSheetActon } from '@/views/musicSection/store/modules/musicAppReducer';
 import { Popconfirm } from 'antd';
 import { handleDeleteSongFromSheet } from '@/views/musicSection/store/actions/musicAppAction';
 

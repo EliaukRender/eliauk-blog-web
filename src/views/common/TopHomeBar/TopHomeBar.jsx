@@ -1,10 +1,8 @@
 import React, { memo } from 'react';
 import { TopHomeBarStyles } from '@/views/common/TopHomeBar/TopHomeBarStyles';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 import { useTopBarAnimation } from '@/hooks/animation/useTopBarAnimation';
-import { shallowEqual, useSelector } from 'react-redux';
 import UserLoginRegister from '@/views/common/UserInfoArea/UserInfoArea';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { menuList } from '@/constant';
@@ -14,20 +12,15 @@ import { menuList } from '@/constant';
  */
 const TopHomeBar = () => {
 	const { variants, controls } = useTopBarAnimation(); // 动态控制TopHomeBar的显示隐藏
-	const { currentSectionId } = useSelector(
-		(state) => ({
-			currentSectionId: state.global.currentSectionId,
-		}),
-		shallowEqual,
-	);
 	const navigate = useNavigate();
 	const location = useLocation();
 
 	// 点击菜单
 	const handleClickMenu = (menu) => {
 		navigate(menu.path);
-		console.log('location', location);
 	};
+
+	console.log('渲染了吗');
 
 	return (
 		<TopHomeBarStyles>
@@ -58,10 +51,6 @@ const TopHomeBar = () => {
 			</motion.div>
 		</TopHomeBarStyles>
 	);
-};
-
-TopHomeBar.propTypes = {
-	abc: PropTypes.string,
 };
 
 export default memo(TopHomeBar);
