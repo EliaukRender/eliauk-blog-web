@@ -223,7 +223,7 @@
 
   .ant-popover-inner-content {
     width: 220px;
-    padding: 10px;
+    padding: 15px 10px;
     box-sizing: border-box;
 
     .name {
@@ -233,21 +233,26 @@
       margin-bottom: 15px;
 
       .text {
-        width: 60px;
+        flex: 1;
         font-size: 12px;
       }
 
       .input-sheet-name {
+        width: 150px;
         height: 32px;
-        background-color: #e3e3e3;
 
         .ant-input {
           font-size: 12px;
         }
 
-        &:hover,
-        &:focus {
-          border-color: #e3e3e3 !important;
+        &:hover {
+          border-color: #82ba77 !important;
+          box-shadow: none !important;
+        }
+
+        &-focused {
+          border-color: #82ba77 !important;
+          box-shadow: none !important;
         }
       }
     }
@@ -298,4 +303,28 @@
     }
 
   }
+}
+
+/**
+ * @description: ant-popover  所有气泡框中按钮的颜色变为绿色
+*/
+.ant-popover {
+  .ant-btn-primary {
+    background-color: #00cc65;
+  }
+
+  .ant-btn-primary:hover {
+    background-color: #217367 !important;
+  }
+
+
+  .ant-btn-default:hover {
+    color: #00cc65 !important;
+    border-color: #00cc65 !important;
+  }
+
+  .anticon-exclamation-circle {
+    font-size: 16px;
+  }
+
 }

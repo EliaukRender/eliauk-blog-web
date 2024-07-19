@@ -4,7 +4,7 @@ import { MoveMusicStyles } from '@/views/musicSection/styles/MoveMusicStyles';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { addSongToOtherSheetActon } from '@/views/musicSection/store/modules/musicAppReducer';
+import { handleMoveSongToSheet } from '@/views/musicSection/store/actions/musicAppAction';
 
 /**
  * @description: 移动歌曲到其他列表
@@ -27,14 +27,8 @@ const MoveMusicPopover = ({ isSongList = true, curSong }) => {
 	};
 
 	// 添加歌曲到其他歌单
-	const addSongToOtherSheet = (curSong, sheetId) => {
-		// 列表中移动，所以有curSong数据
-		if (curSong) {
-			dispatch(addSongToOtherSheetActon({ sheetId, songId: curSong.songId }));
-		} else {
-			// 底部功能操作浮窗中移动，没有curSong数据
-			dispatch(addSongToOtherSheetActon({ sheetId, songId }));
-		}
+	const addSongToOtherSheet = async (curSong, sheetId) => {
+		await handleMoveSongToSheet({ curSong, sheetId });
 	};
 
 	return (

@@ -5,15 +5,18 @@ export const PlayerLeftStyles = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	box-sizing: border-box;
-	padding: 20px 16px;
+	padding: 20px 0 0 16px;
 	background-color: #f0f0f0;
 	color: #515151;
 
 	.logo-area {
+		height: 60px;
 		display: flex;
 		align-items: center;
-		margin-bottom: 26px;
+		padding-bottom: 25px;
+		box-sizing: border-box;
 
 		.logo-title {
 			margin-left: 10px;

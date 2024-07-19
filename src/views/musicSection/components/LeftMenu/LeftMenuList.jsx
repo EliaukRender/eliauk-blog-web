@@ -35,22 +35,20 @@ const LeftMenuList = () => {
 
 	return (
 		<LeftMenuListStyles>
-			<div className='menu-list'>
-				<div className='title'>在线音乐</div>
-				{menuList.map((item) => {
-					return (
-						<div
-							key={item.menuId}
-							className={classNames('item', curMenu.menuId === item.menuId && activeMenu ? 'active' : '')}
-							onClick={() => {
-								changeMenu(item);
-							}}>
-							<i className={classNames('iconfont', item.menuIcon)}></i>
-							<span className='item-text'>{item.menuName}</span>
-						</div>
-					);
-				})}
-			</div>
+			<div className='title'>在线音乐</div>
+			{menuList.map((item) => {
+				return (
+					<div
+						key={item.menuId}
+						className={classNames('item', curMenu.menuId === item.menuId && activeMenu ? 'active' : '')}
+						onClick={() => {
+							changeMenu(item);
+						}}>
+						<i className={classNames('iconfont', item.menuIcon)}></i>
+						<span className='item-text'>{item.menuName}</span>
+					</div>
+				);
+			})}
 		</LeftMenuListStyles>
 	);
 };

@@ -8,10 +8,11 @@ import PlayerDrawer from '@/views/musicSection/components/PlayerDrawer/PlayerDra
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import SelectorAnalyze from '@/views/musicSection/views/DrawerContent/SelectorAnalyze/SelectorAnalyze';
 import CurrentSongList from '@/views/musicSection/views/DrawerContent/CurrentSongList/CurrentSongList';
-import { queryCommonMenuListAction, querySheetListAction, querySongListBySheetIdActon } from '@/views/musicSection/store/modules/musicAppReducer';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { querySongListBySheetIdActon } from '@/views/musicSection/store/modules/musicAppReducer';
+import { useNavigate } from 'react-router-dom';
 import { useFullScreenPlayer } from '@/views/musicSection/hooks/useFullScreenPlayer';
 import { setSongId, setSongList } from '@/views/musicSection/store/modules/audioReducer';
+import { getCommonMenuList, getSheetList } from '@/views/musicSection/store/actions/musicAppAction';
 
 /**
  * @description: 音乐播放器主体框架
@@ -38,8 +39,8 @@ const EliaukMusicPlayer = () => {
 		// 第一次进入播放器页面，默认定位在'喜欢'菜单
 		if (!menuList.length && !sheetList.length) {
 			navigate('/music/like');
-			dispatch(querySheetListAction()); // 获取菜单列表
-			dispatch(queryCommonMenuListAction()); // 获取我的歌单列表
+			getSheetList();
+			getCommonMenuList();
 			dispatch(querySongListBySheetIdActon(1)); // 获取音乐列表
 		}
 		// 后续切回到播放器界面

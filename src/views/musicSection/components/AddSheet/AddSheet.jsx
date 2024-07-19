@@ -1,9 +1,11 @@
-import React, { Fragment, memo, useEffect, useRef, useState } from 'react';
+import React, { Fragment, memo, useEffect, useState } from 'react';
 import { AddSheetStyles } from '@/views/musicSection/components/AddSheet/AddSheetStyles';
 import { Button, Input, Popover } from 'antd';
 import { addSheetIconList } from '@/views/musicSection/constant';
 import classNames from 'classnames';
 import MessageToast from '@/components/MessageToast';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { getSheetList, handleCreateSheet } from '@/views/musicSection/store/actions/musicAppAction';
 
 /**
  * @description: 新增歌单
@@ -12,6 +14,13 @@ const AddSheet = () => {
 	const [open, setOpen] = useState(false);
 	const [curIconName, setCurIconName] = useState();
 	const [inputValue, setInputValue] = useState();
+	const dispatch = useDispatch();
+	const { sheetList } = useSelector(
+		(state) => ({
+			sheetList: state.musicApp.sheetList,
+		}),
+		shallowEqual,
+	);
 
 	// 打开功能操作浮窗
 	const handleOpenChange = (newOpen) => {
@@ -27,7 +36,7 @@ const AddSheet = () => {
 	};
 
 	// 创建歌单
-	const confirm = () => {
+	const confirm = async () => {
 		if (!inputValue) {
 			MessageToast.warning('请输入歌单名');
 			return;
@@ -36,6 +45,8 @@ const AddSheet = () => {
 			MessageToast.warning('请选择歌单图标');
 			return;
 		}
+		const res = await handleCreateSheet({ sheetName: inputValue, sheetIcon: curIconName });
+		res && setOpen(false);
 	};
 
 	useEffect(() => {
@@ -49,7 +60,7 @@ const AddSheet = () => {
 				content={
 					<Fragment>
 						<div className='name'>
-							<div className='text'>歌单名:</div>
+							<div className='text'>歌单名：</div>
 							<Input value={inputValue} onChange={onChange} rootClassName={'input-sheet-name'} showCount maxlength={8}></Input>
 						</div>
 						<div className='list'>

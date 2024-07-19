@@ -1,16 +1,32 @@
 import styled from 'styled-components';
 
 export const LeftSheetListStyles = styled.div`
-	.menu-list {
-		margin-bottom: 30px;
+	height: calc(100% - 60px - 165px);
+	padding-bottom: 20px;
+	box-sizing: border-box;
 
-		.title {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			font-weight: 600;
-			margin-bottom: 10px;
+	.title {
+		height: 35px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-weight: 600;
+		padding-bottom: 10px;
+		box-sizing: border-box;
+
+		.iconfont {
+			font-size: 20px;
+			cursor: pointer;
 		}
+
+		.icon-jia {
+			margin-left: 8px;
+		}
+	}
+
+	.list {
+		height: calc(100% - 35px);
+		overflow-y: auto;
 
 		.item {
 			width: 100%;
@@ -23,9 +39,24 @@ export const LeftSheetListStyles = styled.div`
 			padding-left: 10px;
 			border-radius: 8px;
 			box-sizing: border-box;
+			position: relative;
+
+			&:hover {
+				background-color: #dddddd;
+			}
 
 			.item-text {
 				margin-left: 10px;
+			}
+
+			.icon-guanbi {
+				position: absolute;
+				top: 50%;
+				right: 0;
+				transform: translateY(-50%);
+				font-size: 20px;
+				cursor: pointer;
+				padding: 5px;
 			}
 		}
 

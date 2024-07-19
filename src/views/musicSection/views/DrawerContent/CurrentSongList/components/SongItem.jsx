@@ -8,7 +8,8 @@ import { deleteSongFromSongList, pauseAudio, playAudio } from '@/views/musicSect
 import MoveMusicPopover from '@/views/musicSection/components/BottomArea/LeftAreaCmps/MoveMusicPopover';
 import { setSongList } from '@/views/musicSection/store/modules/audioReducer';
 import { deleteSongFromSheetActon } from '@/views/musicSection/store/modules/musicAppReducer';
-import debounce from 'lodash/debounce';
+import { Popconfirm } from 'antd';
+import { handleDeleteSongFromSheet } from '@/views/musicSection/store/actions/musicAppAction';
 
 /**
  * @description: 歌曲item
@@ -59,7 +60,7 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 	const handleDeleteSong = async () => {
 		// 歌单中删除
 		if (isSheet) {
-			dispatch(deleteSongFromSheetActon({ songId: curSong.songId, sheetId: curSheet.sheetId }));
+			await handleDeleteSongFromSheet({ songId: curSong.songId, sheetId: curSheet.sheetId });
 			return;
 		}
 		// 播放列表中删除
@@ -69,6 +70,11 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 	// 喜欢歌曲
 	const handleLikeSong = () => {
 		//
+	};
+
+	// 确认删除
+	const confirm = () => {
+		handleDeleteSong();
 	};
 
 	// 当前播放歌曲变化时
@@ -126,12 +132,14 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 					{/* 移动歌曲 */}
 					<MoveMusicPopover isSongList={true} curSong={curSong}></MoveMusicPopover>
 					{/* 删除歌曲 */}
-					<i
-						className='iconfont icon-shanchu'
-						title={isSheet ? '从歌单中删除' : '从播放列表中删除'}
-						onClick={() => {
-							handleDeleteSong();
-						}}></i>
+					<Popconfirm
+						title='确认删除?'
+						description={isSheet ? '删除后，该歌单不再包含该歌曲信息。' : '删除后，当前播放列表不再播放该歌曲。'}
+						onConfirm={confirm}
+						okText='删除'
+						cancelText='取消'>
+						<i className='iconfont icon-shanchu' title={isSheet ? '从歌单中删除' : '从播放列表中删除'}></i>
+					</Popconfirm>
 				</motion.div>
 
 				{/* 歌曲时长、专辑信息 */}

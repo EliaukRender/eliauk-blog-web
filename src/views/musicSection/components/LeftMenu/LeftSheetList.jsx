@@ -5,6 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { LeftSheetListStyles } from '@/views/musicSection/components/LeftMenu/LeftSheetListStyles';
 import { querySongListBySheetIdActon, setCurSheet } from '@/views/musicSection/store/modules/musicAppReducer';
 import AddSheet from '@/views/musicSection/components/AddSheet/AddSheet';
+import { motion } from 'framer-motion';
+import { handleDeleteSheet } from '@/views/musicSection/store/actions/musicAppAction';
 
 /**
  * @description: 我的歌单  歌单列表
@@ -21,6 +23,8 @@ const LeftSheetList = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [activeSheet, setActiveSheet] = useState(false);
+	const [curDeleteSheetId, setCurDeleteSheetId] = useState(null);
+	const [timer, setTimer] = useState(null);
 
 	// 监听路由变化
 	useEffect(() => {
@@ -35,16 +39,44 @@ const LeftSheetList = () => {
 		dispatch(querySongListBySheetIdActon(sheet.sheetId));
 	};
 
+	// 显示删除按钮
+	const onMouseEnter = (sheetId) => {
+		const timer = setTimeout(() => {
+			setCurDeleteSheetId(sheetId);
+		}, 1000);
+		setTimer(timer);
+	};
+
+	// 隐藏删除按钮
+	const onMouseLeave = (sheetId) => {
+		clearTimeout(timer);
+		setCurDeleteSheetId(null);
+	};
+
+	// 点击删除歌单
+	const clickDeleteSheet = async (event, sheetId) => {
+		event.preventDefault();
+		event.stopPropagation();
+		await handleDeleteSheet({ sheetId });
+	};
+
 	return (
 		<LeftSheetListStyles>
-			<div className='menu-list'>
-				<div className='title'>
-					<span>我的歌单</span>
-					<AddSheet></AddSheet>
-				</div>
+			<div className='title'>
+				<span>我的歌单</span>
+				{/* 新增歌单 */}
+				<AddSheet></AddSheet>
+			</div>
+			<div className='list'>
 				{sheetList.map((item) => {
 					return (
-						<div
+						<motion.div
+							onMouseEnter={() => {
+								onMouseEnter(item.sheetId);
+							}}
+							onMouseLeave={() => {
+								onMouseLeave();
+							}}
 							key={item.sheetId}
 							className={classNames('item', curSheet.sheetId === item.sheetId && activeSheet ? 'active' : '')}
 							onClick={() => {
@@ -52,7 +84,14 @@ const LeftSheetList = () => {
 							}}>
 							<i className={classNames('iconfont', item.sheetIcon)}></i>
 							<span className='item-text'>{item.sheetName}</span>
-						</div>
+							{curDeleteSheetId === item.sheetId && (
+								<i
+									className='iconfont icon-guanbi'
+									onClick={(event) => {
+										clickDeleteSheet(event, item.sheetId);
+									}}></i>
+							)}
+						</motion.div>
 					);
 				})}
 			</div>

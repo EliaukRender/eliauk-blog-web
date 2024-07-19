@@ -24,3 +24,13 @@ export const moveSongToSheet = (params) => {
 export const deleteSongFromSheet = (params) => {
 	return http.post('/music/deleteSongFromSheet', params);
 };
+
+// 创建自建歌单
+export const createSheet = (params) => {
+	return http.post('/music/createSheet', params);
+};
+
+// 删除自建歌单
+export const deleteSheet = (params) => {
+	return http.post('/music/deleteSheet', params);
+};
