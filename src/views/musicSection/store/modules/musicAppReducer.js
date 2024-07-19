@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { queryCommonMenuList, querySheetList, querySongListBySheetId } from '@/api/modules/musicService';
+import { deleteSongFromSheet, moveSongToSheet, queryCommonMenuList, querySheetList, querySongListBySheetId } from '@/api/modules/musicService';
+import messageToast from '@/components/MessageToast';
 
 /**
  * @description: 音乐播放器---保存播放器全局数据
@@ -63,33 +64,33 @@ const musicAppReducer = createSlice({
 	},
 	// 异步reducers
 	extraReducers: (builder) => {
-		/* 获取自建歌单列表 */
 		builder
 			.addCase(querySheetListAction.fulfilled, (state, { payload }) => {
 				state.sheetList = payload;
-				state.curSheet = state.sheetList[0]; // 默认激活【喜欢歌单】
+				state.curSheet = payload.length > 0 ? payload[0] : {}; // 默认激活【喜欢歌单】
 			})
-			.addCase(querySheetListAction.rejected, (state, action) => {
-				console.log('error-querySheetListAction', action);
-			});
-
-		/* 获取公共菜单列表  */
-		builder
 			.addCase(queryCommonMenuListAction.fulfilled, (state, { payload }) => {
 				state.menuList = payload;
 			})
-			.addCase(queryCommonMenuListAction.rejected, (state, action) => {
-				console.log('error-queryCommonMenuListAction', action);
-			});
-
-		/* 基于歌单ID获取音乐列表 */
-		builder
 			.addCase(querySongListBySheetIdActon.fulfilled, (state, { payload }) => {
 				state.sheetSongList = payload;
 			})
-			.addCase(querySongListBySheetIdActon.rejected, (state, action) => {
-				console.log('error-querySongListBySheetId', action);
-			});
+			.addCase(addSongToOtherSheetActon.fulfilled, (state, { payload }) => {
+				messageToast.success('添加成功');
+			})
+			.addCase(deleteSongFromSheetActon.fulfilled, (state, { payload }) => {
+				messageToast.success('删除成功');
+				const { data, originalParams } = payload;
+				const index = state.sheetSongList.findIndex((item) => item.songId === originalParams.songId);
+				state.sheetSongList.splice(index, 1);
+			})
+			.addMatcher(
+				// 统一处理所有 rejected 状态的 action
+				(action) => action.type.endsWith('/rejected'),
+				(state, action) => {
+					console.log(`${action.type}请求错误:`, action.error);
+				},
+			);
 	},
 });
 
@@ -109,10 +110,8 @@ export default musicAppReducer.reducer;
  * @description: 获取自建歌单列表
  */
 export const querySheetListAction = createAsyncThunk('querySheetList', async () => {
-	return new Promise(async (resolve, reject) => {
-		const { data } = await querySheetList();
-		resolve(data);
-	});
+	const { data } = await querySheetList();
+	return data;
 });
 
 /**
@@ -120,18 +119,30 @@ export const querySheetListAction = createAsyncThunk('querySheetList', async () 
  * @param menuId
  */
 export const queryCommonMenuListAction = createAsyncThunk('queryCommonMenuList', async () => {
-	return new Promise(async (resolve, reject) => {
-		const { data } = await queryCommonMenuList();
-		resolve(data);
-	});
+	const { data } = await queryCommonMenuList();
+	return data;
 });
 
 /**
  * @description: 基于歌单ID获取音乐列表
  */
 export const querySongListBySheetIdActon = createAsyncThunk('querySongListBySheetId', async (sheetId) => {
-	return new Promise(async (resolve, reject) => {
-		const { data } = await querySongListBySheetId({ sheetId });
-		resolve(data);
-	});
+	const { data } = await querySongListBySheetId({ sheetId });
+	return data;
+});
+
+/**
+ * @description: 添加指定歌曲到指定歌单
+ */
+export const addSongToOtherSheetActon = createAsyncThunk('addSongToOtherSheet', async (params) => {
+	const { data } = await moveSongToSheet(params);
+	return data;
+});
+
+/**
+ * @description: 删除指定歌单的指定歌曲
+ */
+export const deleteSongFromSheetActon = createAsyncThunk('deleteSongFromSheet', async (params) => {
+	const { data } = await deleteSongFromSheet(params);
+	return { data, originalParams: params };
 });

@@ -5,6 +5,9 @@ export const LeftSheetListStyles = styled.div`
 		margin-bottom: 30px;
 
 		.title {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 			font-weight: 600;
 			margin-bottom: 10px;
 		}

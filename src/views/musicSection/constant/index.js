@@ -49,3 +49,18 @@ export const VideoPageSortList = [
 	{ id: 6, name: '排行榜', routePath: '/videoRecommend' },
 	{ id: 7, name: '视频库', routePath: '/videoRecommend' },
 ];
+
+/**
+ * @description: 创建歌单时可选的icon
+ */
+export const addSheetIconList = [
+	'icon-gedan',
+	'icon-yueliang',
+	'icon-xingxing',
+	'icon-kuaile',
+	'icon-biaoqing',
+	'icon-biaoqing1',
+	'icon-biaoqing2',
+	'icon-fangle',
+	'icon-biaoqing4',
+];

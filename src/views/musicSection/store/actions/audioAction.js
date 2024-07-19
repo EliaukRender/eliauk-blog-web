@@ -1,5 +1,6 @@
 import store from '@/store';
 import {
+	deleteSongById,
 	setCurrentTime,
 	setDuration,
 	setIsEnded,
@@ -9,6 +10,7 @@ import {
 	setMusicMode,
 	setPlaybackRate,
 	setSongId,
+	setSongList,
 	setSongUrl,
 	setVolume,
 } from '@/views/musicSection/store/modules/audioReducer';
@@ -307,4 +309,33 @@ export const changeMusicMode = (mode) => {
 export const changePlaybackRate = (playbackRate) => {
 	audio.playbackRate = playbackRate;
 	dispatch(setPlaybackRate(playbackRate));
+};
+
+/**
+ * @description: 从播放列表删除删除歌曲
+ */
+export const deleteSongFromSongList = async (songId) => {
+	const { songList, isPlaying } = store.getState().audio;
+	const index = songList.findIndex((item) => item.songId === songId);
+	if (index === -1) {
+		console.error('删除的歌曲index不存在：', index);
+		return;
+	}
+	// 只有一首歌时，不允许删除
+	if (songList.length === 1) {
+		MessageToast.warning('别删啦！播放列表仅剩一首歌！');
+		return;
+	}
+	// 找到下一首歌
+	const targetSong = songList[index === songList?.length - 1 ? 0 : index + 1];
+	if (!targetSong) {
+		console.error('targetSong不存在:', targetSong);
+		return;
+	}
+	dispatch(deleteSongById(index)); // 删除
+	dispatch(setSongId(targetSong.songId));
+	if (isPlaying) {
+		audio.pause();
+		await playAudio(targetSong.songId); // 播放下一首
+	}
 };

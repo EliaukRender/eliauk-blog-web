@@ -4,20 +4,23 @@ import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { motion, useAnimationControls } from 'framer-motion';
-import { pauseAudio, playAudio } from '@/views/musicSection/store/actions/audioAction';
+import { deleteSongFromSongList, pauseAudio, playAudio } from '@/views/musicSection/store/actions/audioAction';
 import MoveMusicPopover from '@/views/musicSection/components/BottomArea/LeftAreaCmps/MoveMusicPopover';
 import { setSongList } from '@/views/musicSection/store/modules/audioReducer';
+import { deleteSongFromSheetActon } from '@/views/musicSection/store/modules/musicAppReducer';
+import debounce from 'lodash/debounce';
 
 /**
  * @description: 歌曲item
  */
-const SongItem = ({ curSong, index, showAlbum = false, showDuration = false }) => {
-	const { songId, isPlaying, songList, sheetSongList } = useSelector(
+const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isSheet }) => {
+	const { songId, isPlaying, songList, sheetSongList, curSheet } = useSelector(
 		(state) => ({
 			songId: state.audio.songId,
 			isPlaying: state.audio.isPlaying,
 			songList: state.audio.songList,
 			sheetSongList: state.musicApp.sheetSongList,
+			curSheet: state.musicApp.curSheet,
 		}),
 		shallowEqual,
 	);
@@ -41,16 +44,32 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false }) =
 		// 正在播放，播放id===当前这首歌id，则是为了暂停
 		if (isPlaying && songId === curSong.songId) {
 			pauseAudio();
-		} else {
-			// 确认是否更换歌单
-			const index = songList.findIndex((item) => item.songId === curSong.songId);
-			if (index === -1) {
-				dispatch(setSongList(sheetSongList)); // 更新待播放列表
-			}
-			// 继续播放本歌曲或者播放新歌
-			playAudio(curSong.songId);
+			return;
 		}
+		// 确认是否更换歌单
+		const index = songList.findIndex((item) => item.songId === curSong.songId);
+		if (index === -1) {
+			dispatch(setSongList(sheetSongList)); // 更新待播放列表
+		}
+		// 继续播放本歌曲或者播放新歌
+		playAudio(curSong.songId);
 	}, [curSong, isPlaying, songId, songList, sheetSongList]);
+
+	// 删除歌曲
+	const handleDeleteSong = async () => {
+		// 歌单中删除
+		if (isSheet) {
+			dispatch(deleteSongFromSheetActon({ songId: curSong.songId, sheetId: curSheet.sheetId }));
+			return;
+		}
+		// 播放列表中删除
+		await deleteSongFromSongList(curSong.songId);
+	};
+
+	// 喜欢歌曲
+	const handleLikeSong = () => {
+		//
+	};
 
 	// 当前播放歌曲变化时
 	useEffect(() => {
@@ -60,12 +79,6 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false }) =
 		} else {
 			controls.start({ opacity: 0, transition: { duration: 0.3 } });
 		}
-
-		songItemRef.current.addEventListener('dblclick', handlePlayPause);
-
-		return () => {
-			songItemRef.current && songItemRef.current.removeEventListener('dblclick', handlePlayPause);
-		};
 	}, [songId, isPlaying, curSong]);
 
 	return (
@@ -102,9 +115,23 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false }) =
 				{/*  操作按钮区域  */}
 				<motion.div className='operation' initial={{ opacity: 0 }} animate={controls}>
 					{/* 喜欢 */}
-					<img className='heart' src={require('@/views/musicSection/images/icons/heart.png')} alt='' />
+					<img
+						className='heart'
+						src={require('@/views/musicSection/images/icons/heart.png')}
+						alt=''
+						onClick={() => {
+							handleLikeSong();
+						}}
+					/>
 					{/* 移动歌曲 */}
-					<MoveMusicPopover showMode={false}></MoveMusicPopover>
+					<MoveMusicPopover isSongList={true} curSong={curSong}></MoveMusicPopover>
+					{/* 删除歌曲 */}
+					<i
+						className='iconfont icon-shanchu'
+						title={isSheet ? '从歌单中删除' : '从播放列表中删除'}
+						onClick={() => {
+							handleDeleteSong();
+						}}></i>
 				</motion.div>
 
 				{/* 歌曲时长、专辑信息 */}

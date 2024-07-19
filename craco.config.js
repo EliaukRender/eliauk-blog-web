@@ -70,14 +70,14 @@ const cracoConfig = ({ env }) => {
 			proxy: {
 				// 接口请求代理
 				'/blog': {
-					target: 'http://47.113.177.51',
-					// target: 'http://localhost:50000',
+					// target: 'http://47.113.177.51',
+					target: 'http://localhost:50000',
 					pathRewrite: { '^/blog': '/blog' },
 				},
 				// 音、视频代理
 				'/media': {
-					target: 'http://47.113.177.51',
-					// target: 'http://localhost:50000',
+					// target: 'http://47.113.177.51',
+					target: 'http://localhost:50000',
 					pathRewrite: { '^/media': '/media' },
 				},
 			},

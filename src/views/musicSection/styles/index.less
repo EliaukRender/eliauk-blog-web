@@ -212,3 +212,90 @@
     }
   }
 }
+
+/**
+ * @description: 添加歌单浮窗  add-sheet-popover
+*/
+.add-sheet-popover {
+  .ant-popover-inner {
+    padding: 0;
+  }
+
+  .ant-popover-inner-content {
+    width: 220px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    .name {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 15px;
+
+      .text {
+        width: 60px;
+        font-size: 12px;
+      }
+
+      .input-sheet-name {
+        height: 32px;
+        background-color: #e3e3e3;
+
+        .ant-input {
+          font-size: 12px;
+        }
+
+        &:hover,
+        &:focus {
+          border-color: #e3e3e3 !important;
+        }
+      }
+    }
+
+    .list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+
+      .iconfont {
+        margin: 0 5px 5px 0;
+        cursor: pointer;
+        padding: 5px;
+        font-size: 30px;
+
+        &:hover {
+          background-color: #ebebeb;
+        }
+
+      }
+
+      .selected {
+        color: #00cc65;
+        background-color: #ebebeb;
+      }
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+
+      .ant-btn {
+        padding: 10px;
+        font-size: 12px;
+        height: 28px;
+        line-height: 28px;
+
+        &:first-child {
+          margin-right: 15px;
+        }
+      }
+
+      .ant-btn-primary {
+        background-color: #00cc65;
+      }
+    }
+
+  }
+}

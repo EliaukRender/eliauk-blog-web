@@ -3,16 +3,20 @@ import { Popover } from 'antd';
 import { MoveMusicStyles } from '@/views/musicSection/styles/MoveMusicStyles';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { shallowEqual, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { addSongToOtherSheetActon } from '@/views/musicSection/store/modules/musicAppReducer';
 
 /**
  * @description: 移动歌曲到其他列表
  */
-const MoveMusicPopover = ({ showMode = true }) => {
+const MoveMusicPopover = ({ isSongList = true, curSong }) => {
+	const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
-	const { menuList } = useSelector(
+	const { sheetList, curSheet, songId } = useSelector(
 		(state) => ({
-			menuList: state.musicApp.menuList,
+			sheetList: state.musicApp.sheetList,
+			songId: state.audio.songId,
+			curSheet: state.musicApp.curSheet,
 		}),
 		shallowEqual,
 	);
@@ -22,6 +26,17 @@ const MoveMusicPopover = ({ showMode = true }) => {
 		setOpen(newOpen);
 	};
 
+	// 添加歌曲到其他歌单
+	const addSongToOtherSheet = (curSong, sheetId) => {
+		// 列表中移动，所以有curSong数据
+		if (curSong) {
+			dispatch(addSongToOtherSheetActon({ sheetId, songId: curSong.songId }));
+		} else {
+			// 底部功能操作浮窗中移动，没有curSong数据
+			dispatch(addSongToOtherSheetActon({ sheetId, songId }));
+		}
+	};
+
 	return (
 		<MoveMusicStyles>
 			<Popover
@@ -29,30 +44,28 @@ const MoveMusicPopover = ({ showMode = true }) => {
 				content={
 					<Fragment>
 						{/* 浮窗内容 */}
-						{menuList
-							?.filter((menu) => menu.menuType === 1)
-							?.map((item) => {
-								return (
-									<div
-										key={item.menuId}
-										className='move-item'
-										onClick={() => {
-											setOpen(false);
-											console.log('添加到', item.menuName);
-										}}>
-										<i className={classNames('iconfont', item.menuIcon)}></i>
-										<div>{item.menuName}</div>
-									</div>
-								);
-							})}
+						{sheetList?.map((item) => {
+							return (
+								<div
+									key={item.sheetId}
+									className='move-item'
+									onClick={() => {
+										setOpen(false);
+										addSongToOtherSheet(curSong, item.sheetId);
+									}}>
+									<i className={classNames('iconfont', item.sheetIcon)}></i>
+									<div>{item.sheetName}</div>
+								</div>
+							);
+						})}
 					</Fragment>
 				}
-				placement={!showMode ? 'left' : 'right'}
+				placement={isSongList ? 'left' : 'right'}
 				trigger='click'
 				open={open}
 				onOpenChange={handleOpenChange}>
 				{/* 图标+文字组合时触发浮窗 */}
-				{showMode && (
+				{!isSongList && (
 					<div className='feat-item-has-arrow'>
 						<div className='feat-item'>
 							<i className='iconfont icon-tianjia'></i>
@@ -62,14 +75,15 @@ const MoveMusicPopover = ({ showMode = true }) => {
 					</div>
 				)}
 				{/* 图标触发浮窗 */}
-				{!showMode && <i className='iconfont icon-tianjia1'></i>}
+				{isSongList && <i className='iconfont icon-tianjia1' title='添加到'></i>}
 			</Popover>
 		</MoveMusicStyles>
 	);
 };
 
 MoveMusicPopover.propTypes = {
-	showMode: PropTypes.bool, // true--文字+图标组合触发； false--仅有图标时触发
+	isSongList: PropTypes.bool, // true--表示位于歌曲列表页面； false--表示位于底部FeatListOver操作浮窗中
+	curSong: PropTypes.object, // 在歌曲列表中的时候，外部传进来的当前歌曲
 };
 
 export default memo(MoveMusicPopover);

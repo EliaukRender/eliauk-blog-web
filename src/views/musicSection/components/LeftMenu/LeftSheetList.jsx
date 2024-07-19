@@ -4,6 +4,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LeftSheetListStyles } from '@/views/musicSection/components/LeftMenu/LeftSheetListStyles';
 import { querySongListBySheetIdActon, setCurSheet } from '@/views/musicSection/store/modules/musicAppReducer';
+import AddSheet from '@/views/musicSection/components/AddSheet/AddSheet';
 
 /**
  * @description: 我的歌单  歌单列表
@@ -37,7 +38,10 @@ const LeftSheetList = () => {
 	return (
 		<LeftSheetListStyles>
 			<div className='menu-list'>
-				<div className='title'>我的歌单</div>
+				<div className='title'>
+					<span>我的歌单</span>
+					<AddSheet></AddSheet>
+				</div>
 				{sheetList.map((item) => {
 					return (
 						<div

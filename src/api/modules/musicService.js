@@ -14,3 +14,13 @@ export const querySongListBySheetId = (params) => {
 export const queryCommonMenuList = () => {
 	return http.post('/music/queryCommonMenuList');
 };
+
+// 添加指定歌曲到指定歌单
+export const moveSongToSheet = (params) => {
+	return http.post('/music/moveSongToSheet', params);
+};
+
+// 删除指定歌单的指定歌曲
+export const deleteSongFromSheet = (params) => {
+	return http.post('/music/deleteSongFromSheet', params);
+};

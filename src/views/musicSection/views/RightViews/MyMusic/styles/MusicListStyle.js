@@ -6,6 +6,7 @@ export const MusicListStyles = styled.div`
 	height: calc(100% - 120px);
 	box-sizing: border-box;
 	padding-top: 20px;
+  overflow-y: auto;
 
 	.top {
 		height: 30px;

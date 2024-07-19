@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4619235 */
-  src: url('iconfont.woff2?t=1721227608392') format('woff2'),
-       url('iconfont.woff?t=1721227608392') format('woff'),
-       url('iconfont.ttf?t=1721227608392') format('truetype');
+  src: url('iconfont.woff2?t=1721383049799') format('woff2'),
+       url('iconfont.woff?t=1721383049799') format('woff'),
+       url('iconfont.ttf?t=1721383049799') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,50 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yueliang:before {
+  content: "\e63e";
+}
+
+.icon-xingxing:before {
+  content: "\e646";
+}
+
+.icon-kuaile:before {
+  content: "\e721";
+}
+
+.icon-biaoqing:before {
+  content: "\e606";
+}
+
+.icon-biaoqing1:before {
+  content: "\e61f";
+}
+
+.icon-biaoqing2:before {
+  content: "\e62f";
+}
+
+.icon-fangle:before {
+  content: "\e654";
+}
+
+.icon-biaoqing4:before {
+  content: "\e618";
+}
+
+.icon-jia:before {
+  content: "\e632";
+}
+
+.icon-wangqiu:before {
+  content: "\e62e";
+}
+
+.icon-shuijiao:before {
+  content: "\e614";
 }
 
 .icon-icon_qqyinyue:before {

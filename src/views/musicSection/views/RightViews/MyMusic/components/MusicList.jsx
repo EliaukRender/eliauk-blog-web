@@ -54,7 +54,7 @@ const MusicList = () => {
 			{/*  歌曲列表 */}
 			<div className='song-list' style={!sheetSongList.length ? { justifyContent: 'center', alignItems: 'center' } : {}}>
 				{sheetSongList.map((song, index) => {
-					return <SongItem curSong={song} index={index} showAlbum={true} showDuration={true}></SongItem>;
+					return <SongItem curSong={song} index={index} showAlbum={true} showDuration={true} isSheet={true}></SongItem>;
 				})}
 				{!sheetSongList.length && <NoData></NoData>}
 			</div>

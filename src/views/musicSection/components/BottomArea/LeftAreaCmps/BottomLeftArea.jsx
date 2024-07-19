@@ -43,7 +43,7 @@ const BottomLeftArea = () => {
 				{/* 喜欢这首歌 */}
 				<img className='heart' src={require('@/views/musicSection/images/icons/heart.png')} alt='' />
 				{/* 操作功能列表浮窗 */}
-				<FeatListPopover></FeatListPopover>
+				<FeatListPopover songId={songId}></FeatListPopover>
 			</div>
 		</BottomLeftAreaStyles>
 	);

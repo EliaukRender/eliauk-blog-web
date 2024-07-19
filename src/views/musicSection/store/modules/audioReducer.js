@@ -26,6 +26,11 @@ const audioReducer = createSlice({
 			state.songList = payload;
 		},
 
+		// 基于索引值删除列表中的某一首歌
+		deleteSongById(state, { payload }) {
+			state.songList.splice(payload, 1);
+		},
+
 		// 保存音量值
 		setVolume(state, { payload }) {
 			state.volume = payload;
@@ -86,6 +91,7 @@ const audioReducer = createSlice({
 });
 
 export const {
+	deleteSongById,
 	setSongList,
 	setPlaybackRate,
 	setMusicMode,
