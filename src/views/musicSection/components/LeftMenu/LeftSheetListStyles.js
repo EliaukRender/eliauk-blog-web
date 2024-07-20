@@ -41,10 +41,6 @@ export const LeftSheetListStyles = styled.div`
 			box-sizing: border-box;
 			position: relative;
 
-			&:hover {
-				background-color: #dddddd;
-			}
-
 			.item-text {
 				margin-left: 10px;
 			}
