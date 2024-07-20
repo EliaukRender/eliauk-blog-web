@@ -23,6 +23,6 @@ export const CommonPageStyles = styled.div`
 
 	.song-container {
 		height: calc(100% - 90px);
-		overflow-y: auto;
+		display: flex;
 	}
 `;

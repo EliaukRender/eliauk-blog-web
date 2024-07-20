@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { music_green, music_green_select } from '@/assets/css/variables';
+import { music_green_select } from '@/assets/css/variables';
 
 export const ClassificationStyles = styled.div`
 	width: 100%;
@@ -8,14 +8,14 @@ export const ClassificationStyles = styled.div`
 	.menu-title {
 		font-size: 22px;
 		font-weight: 600;
-		margin-bottom: 20px;
+		padding-bottom: 20px;
 	}
 
 	.title-list {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
-		margin-bottom: 15px;
+		padding-bottom: 15px;
 		height: 25px;
 
 		.item {

@@ -7,6 +7,7 @@ export const PlayerRightStyles = styled.div`
 	padding: 10px 10px 0 20px;
 	box-sizing: border-box;
 	color: #515151;
+	overflow-x: hidden;
 
 	.container {
 		position: relative;

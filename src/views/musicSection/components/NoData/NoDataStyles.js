@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { music_green, text_gray } from '@/assets/css/variables';
+import { music_green_select, text_gray } from '@/assets/css/variables';
 
 export const NoDataStyles = styled.div`
 	width: 100%;
@@ -18,7 +18,7 @@ export const NoDataStyles = styled.div`
 
 	.iconfont {
 		font-size: 120px;
-		color: ${music_green};
+		color: ${music_green_select};
 	}
 
 	.text {

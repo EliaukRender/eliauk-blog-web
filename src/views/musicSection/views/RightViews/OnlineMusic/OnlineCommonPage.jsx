@@ -26,7 +26,7 @@ const OnlineCommonPage = () => {
 	};
 
 	return (
-		<CommonPageStyles style={fullScreenPlayer || maxPlayer ? { padding: '10px 200px 0 200px' } : {}}>
+		<CommonPageStyles style={fullScreenPlayer || maxPlayer ? { padding: '10px 18% 0 18%' } : {}}>
 			{/* 分类选择、路由跳转 */}
 			<Classification changeSort={changeSort} curSort={curSort}></Classification>
 			{/* 页面路由占位 */}

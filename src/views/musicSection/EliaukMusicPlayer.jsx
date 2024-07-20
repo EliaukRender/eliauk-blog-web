@@ -42,11 +42,11 @@ const EliaukMusicPlayer = () => {
 			ref={playerRef}
 			style={
 				maxPlayer
-					? { width: '100%', height: '100%', transition: 'width 0.5s ease, height 0.5s ease' }
+					? { width: '100%', height: '100%', transition: 'width 0.3s ease, height 0.3s ease' }
 					: {
 							width: '50%',
 							height: '70%',
-							transition: 'width 0.5s ease, height 0.5s ease',
+							transition: 'width 0.3s ease, height 0.3s ease',
 						}
 			}>
 			<div className='main-area'>
