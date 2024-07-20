@@ -3,7 +3,10 @@
  * @return []
  * @param lyricStr  歌词字符串
  */
-export const transformLyric = (lyricStr) => {
+export const transformLyric = (lyricStr = '') => {
+	if (!lyricStr.trim().length) {
+		return [];
+	}
 	const list = lyricStr.split('\n'); // 分割歌词
 
 	const initList =
@@ -31,8 +34,8 @@ export const transformLyric = (lyricStr) => {
 	return initList.map((item, index) => {
 		return {
 			...item,
-			/* 额外减去0.3s是为了提前高亮歌词 */
-			duration: index !== length - 1 ? initList[index + 1].time - initList[index].time - 0.3 : 5,
+			/* 额外减去0.2s是为了提前高亮歌词 */
+			duration: index !== length - 1 ? initList[index + 1].time - initList[index].time - 0.2 : 5,
 		};
 	});
 };

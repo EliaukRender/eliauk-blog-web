@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useRef } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 import { SongItemStyles } from '@/views/musicSection/views/DrawerContent/CurrentSongList/components/SongItemStyles';
 import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { motion, useAnimationControls } from 'framer-motion';
 import { deleteSongFromSongList, pauseAudio, playAudio } from '@/views/musicSection/store/actions/audioAction';
 import MoveMusicPopover from '@/views/musicSection/components/BottomArea/LeftAreaCmps/MoveMusicPopover';
-import { setSongList } from '@/views/musicSection/store/modules/audioReducer';
+import { setCurSongListSheetId, setSongList } from '@/views/musicSection/store/modules/audioReducer';
 import { Popconfirm } from 'antd';
 import { handleDeleteSongFromSheet } from '@/views/musicSection/store/actions/musicAppAction';
 
@@ -14,11 +14,12 @@ import { handleDeleteSongFromSheet } from '@/views/musicSection/store/actions/mu
  * @description: 歌曲item
  */
 const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isSheet }) => {
-	const { songId, isPlaying, songList, sheetSongList, curSheet } = useSelector(
+	const { songId, curSongListSheetId, isPlaying, songList, sheetSongList, curSheet } = useSelector(
 		(state) => ({
 			songId: state.audio.songId,
 			isPlaying: state.audio.isPlaying,
 			songList: state.audio.songList,
+			curSongListSheetId: state.audio.curSongListSheetId,
 			sheetSongList: state.musicApp.sheetSongList,
 			curSheet: state.musicApp.curSheet,
 		}),
@@ -28,41 +29,49 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 	const controls = useAnimationControls();
 	const songItemRef = useRef(null);
 
+	/**
+	 * @description:  selectedActiveFlag
+	 *                当前歌曲id===当前播放列表中待播歌曲id； 当前播放歌曲列表 == 当前歌单的歌曲列表
+	 */
+	const selectedActiveFlag = useMemo(() => {
+		return curSong.songId === songId && curSheet.sheetId === curSongListSheetId;
+	}, [curSong, songId, curSheet, curSongListSheetId]);
+
 	// 鼠标进入时
-	const onMouseEnter = useCallback(() => {
+	const onMouseEnter = () => {
 		controls.start({ opacity: 1, transition: { duration: 0.3 } });
-	}, [songId, curSong]);
+	};
 
 	// 鼠标离开时
-	const onMouseLeave = useCallback(() => {
-		if (curSong.songId === songId) return;
+	const onMouseLeave = () => {
+		if (selectedActiveFlag) return; // 如果是当前激活的歌曲，则不隐藏
 		controls.start({ opacity: 0, transition: { duration: 0.3 } });
-	}, [songId, curSong]);
+	};
 
 	// 播放当前歌曲、暂停、播放新歌
-	const handlePlayPause = useCallback(() => {
-		// 正在播放，播放id===当前这首歌id，则是为了暂停
-		if (isPlaying && songId === curSong.songId) {
+	const handlePlayPause = () => {
+		// 正在播放、歌曲id相同、歌单相同，才是暂停这首歌
+		if (isPlaying && selectedActiveFlag) {
 			pauseAudio();
 			return;
 		}
-		// 确认是否更换歌单
-		const index = songList.findIndex((item) => item.songId === curSong.songId);
-		if (index === -1) {
-			dispatch(setSongList(sheetSongList)); // 更新待播放列表
+		// 更新播放列表的歌单、更新该歌单对应的歌单id
+		if (curSheet.sheetId !== curSongListSheetId) {
+			dispatch(setSongList(sheetSongList));
+			dispatch(setCurSongListSheetId(curSheet.sheetId));
 		}
-		// 继续播放本歌曲或者播放新歌
+		// 播放歌曲：继续播、或播新歌
 		playAudio(curSong.songId);
-	}, [curSong, isPlaying, songId, songList, sheetSongList]);
+	};
 
 	// 删除歌曲
 	const handleDeleteSong = async () => {
-		// 歌单中删除
+		// 从歌单中删除
 		if (isSheet) {
 			await handleDeleteSongFromSheet({ songId: curSong.songId, sheetId: curSheet.sheetId });
 			return;
 		}
-		// 播放列表中删除
+		// 从播放列表中删除
 		await deleteSongFromSongList(curSong.songId);
 	};
 
@@ -78,19 +87,18 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 
 	// 当前播放歌曲变化时
 	useEffect(() => {
-		// 当前播放歌曲id等于当前歌曲id
-		if (curSong.songId === songId) {
+		if (selectedActiveFlag) {
 			controls.start({ opacity: 1, transition: { duration: 0.3 } });
 		} else {
 			controls.start({ opacity: 0, transition: { duration: 0.3 } });
 		}
-	}, [songId, isPlaying, curSong]);
+	}, [selectedActiveFlag]);
 
 	return (
 		<SongItemStyles>
 			<motion.div
 				ref={songItemRef}
-				className={classNames('container', index % 2 === 0 ? 'odd' : '', curSong.songId === songId ? 'active' : '')}
+				className={classNames('container', index % 2 === 0 ? 'odd' : '', selectedActiveFlag ? 'active' : '')}
 				onMouseEnter={() => {
 					onMouseEnter();
 				}}
@@ -109,7 +117,7 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 					{/* 图片上的遮罩层 */}
 					<motion.div className='mask' initial={{ opacity: 0 }} animate={controls}>
 						<i
-							className={classNames('iconfont', isPlaying && curSong.songId === songId ? 'icon-zanting' : 'icon-bofang')}
+							className={classNames('iconfont', isPlaying && selectedActiveFlag ? 'icon-zanting' : 'icon-bofang')}
 							style={{ color: '#ffffff' }}
 							onClick={() => {
 								handlePlayPause();

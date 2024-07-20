@@ -5,7 +5,7 @@ const Home = React.lazy(() => import('@/views/home/index')); // 路由懒加载
 const MusicPlayer = React.lazy(() => import('@/views/musicSection/index.jsx'));
 const ProjectSection = React.lazy(() => import('@/views/projectSection/index.jsx'));
 const ProfileSection = React.lazy(() => import('@/views/profileSection/index.jsx'));
-const MyMusic = React.lazy(() => import('@/views/musicSection/views/RightViews/MyMusic/CommonPage.jsx'));
+const MyMusic = React.lazy(() => import('@/views/musicSection/views/RightViews/MySheet/SheetCommonPage.jsx'));
 const OnlineCommonPage = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/OnlineCommonPage.jsx'));
 const VideoRecommend = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/VideoRecommend.jsx'));
 const MusicRecommend = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/MusicRecommend.jsx'));

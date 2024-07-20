@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { MusicListStyles } from '@/views/musicSection/views/RightViews/MyMusic/styles/MusicListStyle';
+import { MusicListStyles } from '@/views/musicSection/views/RightViews/MySheet/styles/MusicListStyle';
 import { shallowEqual, useSelector } from 'react-redux';
 import classNames from 'classnames';
 import SongItem from '@/views/musicSection/views/DrawerContent/CurrentSongList/components/SongItem';

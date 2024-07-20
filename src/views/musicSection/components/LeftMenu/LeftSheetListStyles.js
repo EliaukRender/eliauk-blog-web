@@ -31,6 +31,7 @@ export const LeftSheetListStyles = styled.div`
 		.item {
 			width: 100%;
 			height: 38px;
+			margin: 3px 0;
 			line-height: 38px;
 			display: flex;
 			justify-content: flex-start;
@@ -54,10 +55,14 @@ export const LeftSheetListStyles = styled.div`
 				cursor: pointer;
 				padding: 5px;
 			}
+
+			&:hover {
+				background-color: #e4e4e4;
+			}
 		}
 
 		.active {
-			background-color: #dddddd;
+			background-color: #dddddd !important;
 		}
 	}
 `;

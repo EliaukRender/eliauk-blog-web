@@ -1,34 +1,63 @@
 /**
  * @description: 音乐播放器异步处理操作
  */
-import { createSheet, deleteSheet, deleteSongFromSheet, moveSongToSheet, queryCommonMenuList, querySheetList } from '@/api/modules/musicService';
-import store from '@/store';
 import {
-	querySongListBySheetIdActon,
-	setCurSheet,
-	setMenuList,
-	setSheetList,
-	setSheetSongList,
-} from '@/views/musicSection/store/modules/musicAppReducer';
+	createSheet,
+	deleteSheet,
+	deleteSongFromSheet,
+	moveSongToSheet,
+	queryCommonMenuList,
+	querySheetList,
+	querySongListBySheetId,
+} from '@/api/modules/musicService';
+import store from '@/store';
+import { setCurSheet, setMenuList, setSheetList, setSheetSongList } from '@/views/musicSection/store/modules/musicAppReducer';
 import MessageToast from '@/components/MessageToast';
 import messageToast from '@/components/MessageToast';
+import { setCurSongListSheetId, setSongId, setSongList } from '@/views/musicSection/store/modules/audioReducer';
 
 const dispatch = store.dispatch;
+
+/**
+ * @description: 初始化播放器基础数据
+ */
+export const initPlayerData = async () => {
+	await getSheetList();
+	await getCommonMenuList();
+	const { curSheet, sheetList } = store.getState().musicApp;
+	// 没有默认激活的歌单
+	if (!curSheet?.sheetId) {
+		dispatch(setCurSheet(sheetList.length ? sheetList[0] : {}));
+		const sheetId = sheetList.length ? sheetList[0].sheetId : null;
+		await getSongListBySheetId({ sheetId }); // 获取默认歌单的歌曲
+		const { sheetSongList } = store.getState().musicApp;
+		dispatch(setSongList(sheetSongList));
+		dispatch(setSongId(sheetSongList.length ? sheetSongList[0].songId : null));
+		dispatch(setCurSongListSheetId(store.getState().musicApp.curSheet.sheetId));
+	}
+};
 
 /**
  * @description: 获取自建歌单
  */
 export const getSheetList = async () => {
 	try {
-		// 获取自建歌单列表
 		const { data } = await querySheetList();
 		dispatch(setSheetList(data || []));
-		const { curSheet } = store.getState().musicApp;
-		if (!curSheet?.sheetId) {
-			dispatch(setCurSheet(data?.length ? data[0] : {}));
-		}
 	} catch (e) {
 		console.log('error-getSheetList', e);
+	}
+};
+
+/**
+ * @description: 基于歌单ID获取音乐列表
+ */
+export const getSongListBySheetId = async ({ sheetId }) => {
+	try {
+		const { data } = await querySongListBySheetId({ sheetId });
+		dispatch(setSheetSongList(data || []));
+	} catch (e) {
+		console.log('error-getSongListBySheetId', e);
 	}
 };
 
@@ -73,7 +102,7 @@ export const handleDeleteSheet = async ({ sheetId }) => {
 		if (curSheet.sheetId === sheetId) {
 			dispatch(setSheetSongList([]));
 			dispatch(setCurSheet(sheetList[0]));
-			dispatch(querySongListBySheetIdActon(sheetList[0].sheetId));
+			await getSongListBySheetId({ sheetId: sheetList[0].sheetId });
 		}
 	} catch (e) {
 		console.log('error-handleDeleteSheet', e);
@@ -96,7 +125,7 @@ export const handleMoveSongToSheet = async ({ curSong, sheetId }) => {
 		});
 		MessageToast.success('添加成功');
 		if (sheetId === curSheet.sheetId) {
-			dispatch(querySongListBySheetIdActon(sheetId));
+			await getSongListBySheetId({ sheetId });
 		}
 	} catch (e) {
 		console.log('error-handleMoveSongToSheet', e);

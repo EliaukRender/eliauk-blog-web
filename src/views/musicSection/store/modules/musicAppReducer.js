@@ -1,5 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { querySongListBySheetId } from '@/api/modules/musicService';
+import { createSlice } from '@reduxjs/toolkit';
 
 /**
  * @description: 音乐播放器---保存播放器全局数据
@@ -77,19 +76,7 @@ const musicAppReducer = createSlice({
 		},
 	},
 	// 异步reducers
-	extraReducers: (builder) => {
-		builder
-			.addCase(querySongListBySheetIdActon.fulfilled, (state, { payload }) => {
-				state.sheetSongList = payload;
-			})
-			.addMatcher(
-				// 统一处理所有 rejected 状态的 action
-				(action) => action.type.endsWith('/rejected'),
-				(state, action) => {
-					console.log(`${action.type}请求错误:`, action.error);
-				},
-			);
-	},
+	extraReducers: (builder) => {},
 });
 
 export const {
@@ -106,11 +93,3 @@ export const {
 	setDrawerContentId,
 } = musicAppReducer.actions;
 export default musicAppReducer.reducer;
-
-/**
- * @description: 基于歌单ID获取音乐列表
- */
-export const querySongListBySheetIdActon = createAsyncThunk('querySongListBySheetId', async (sheetId) => {
-	const { data } = await querySongListBySheetId({ sheetId });
-	return data;
-});

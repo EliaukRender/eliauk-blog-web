@@ -1,7 +1,6 @@
 import React, { memo, Suspense, useState } from 'react';
 import { CommonPageStyles } from '@/views/musicSection/views/RightViews/OnlineMusic/styles/CommonPageStyles';
 import Classification from '@/views/musicSection/views/RightViews/OnlineMusic/components/Classification';
-import { usePageTransformAnimate } from '@/views/musicSection/hooks/usePageTransformAnimate';
 import { shallowEqual, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 
@@ -17,7 +16,6 @@ const OnlineCommonPage = () => {
 		}),
 		shallowEqual,
 	);
-	const { playAnimation } = usePageTransformAnimate();
 	const [curSort, setCurSort] = useState({}); // 默认选中的标题分类
 	const navigate = useNavigate();
 
@@ -28,7 +26,7 @@ const OnlineCommonPage = () => {
 	};
 
 	return (
-		<CommonPageStyles key={playAnimation} style={fullScreenPlayer || maxPlayer ? { padding: '10px 200px 0 200px' } : {}}>
+		<CommonPageStyles style={fullScreenPlayer || maxPlayer ? { padding: '10px 200px 0 200px' } : {}}>
 			{/* 分类选择、路由跳转 */}
 			<Classification changeSort={changeSort} curSort={curSort}></Classification>
 			{/* 页面路由占位 */}

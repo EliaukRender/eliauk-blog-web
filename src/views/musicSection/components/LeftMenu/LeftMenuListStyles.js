@@ -13,6 +13,7 @@ export const LeftMenuListStyles = styled.div`
 	.item {
 		width: 100%;
 		height: 38px;
+		margin: 3px 0;
 		line-height: 38px;
 		display: flex;
 		justify-content: flex-start;
@@ -25,9 +26,13 @@ export const LeftMenuListStyles = styled.div`
 		.item-text {
 			margin-left: 10px;
 		}
+
+		&:hover {
+			background-color: #e4e4e4;
+		}
 	}
 
 	.active {
-		background-color: #dddddd;
+		background-color: #dddddd !important;
 	}
 `;

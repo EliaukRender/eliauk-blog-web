@@ -4,9 +4,10 @@ const audioReducer = createSlice({
 	name: 'audio',
 	initialState: {
 		songList: [], // 当前歌曲播放列表
+		curSongListSheetId: -1, // 当前播放列表属于哪一个歌单，与songList关联
 
 		/*  最重要的7个字段  */
-		songId: 0, // 歌曲id
+		songId: -1, // 歌曲id
 		songUrl: '', // 歌曲url
 		isPlaying: false, // 是否播放中
 		isPause: false, // 是否暂停
@@ -24,6 +25,11 @@ const audioReducer = createSlice({
 		// 保存当前歌曲播放列表
 		setSongList(state, { payload }) {
 			state.songList = payload;
+		},
+
+		// 保存当前歌曲列表对应的歌单id值 （更新songList的时候需要同步更新这个数据）
+		setCurSongListSheetId(state, { payload }) {
+			state.curSongListSheetId = payload;
 		},
 
 		// 基于索引值删除列表中的某一首歌
@@ -91,6 +97,7 @@ const audioReducer = createSlice({
 });
 
 export const {
+	setCurSongListSheetId,
 	deleteSongById,
 	setSongList,
 	setPlaybackRate,

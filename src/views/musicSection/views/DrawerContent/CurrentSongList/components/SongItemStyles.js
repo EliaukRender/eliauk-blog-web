@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { text_black, text_gray } from '@/assets/css/variables';
+import { music_green, text_black, text_gray } from '@/assets/css/variables';
+import { hexToRgba } from '@/utils/hexToRgba';
 
 export const SongItemStyles = styled.div`
 	width: 100%;
@@ -104,12 +105,12 @@ export const SongItemStyles = styled.div`
 	}
 
 	&:hover {
-		background-color: #f3f3f3;
+		background-color: #ebebeb;
 		border-radius: 8px;
 	}
 
 	.active {
 		border-radius: 8px;
-		background-color: #ebebeb;
+		background-color: ${hexToRgba(music_green, 0.08)};
 	}
 `;

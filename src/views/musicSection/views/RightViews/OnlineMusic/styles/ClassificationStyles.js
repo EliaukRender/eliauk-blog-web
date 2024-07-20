@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { music_green } from '@/assets/css/variables';
+import { music_green, music_green_select } from '@/assets/css/variables';
 
 export const ClassificationStyles = styled.div`
 	width: 100%;
@@ -35,7 +35,7 @@ export const ClassificationStyles = styled.div`
 		.item-selected {
 			display: inline-block;
 			position: relative;
-			color: ${music_green};
+			color: ${music_green_select};
 
 			&::after {
 				content: '';
@@ -44,7 +44,7 @@ export const ClassificationStyles = styled.div`
 				bottom: -10px;
 				width: 100%;
 				height: 2px;
-				background-color: ${music_green};
+				background-color: ${music_green_select};
 			}
 		}
 	}

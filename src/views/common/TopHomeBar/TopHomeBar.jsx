@@ -17,10 +17,12 @@ const TopHomeBar = () => {
 
 	// 点击菜单
 	const handleClickMenu = (menu) => {
+		if (menu.path === '/music') {
+			navigate('/music/like'); // 切换页面到播放器时默认进入到歌单路由
+			return;
+		}
 		navigate(menu.path);
 	};
-
-	console.log('渲染了吗');
 
 	return (
 		<TopHomeBarStyles>

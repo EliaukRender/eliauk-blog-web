@@ -26,11 +26,12 @@ const LeftMenuList = () => {
 		setActiveMenu(location.pathname !== '/music/like');
 	}, [location]);
 
-	// 切换菜单
-	const changeMenu = (menu) => {
+	// 点击菜单
+	const clickMenu = (menu) => {
 		navigate(`/music${menu.routePath}`); // 路由跳转
-		if (location.pathname === menu.routePath && menu.menuId === curMenu.menuId) return;
-		dispatch(setCurMenu(menu));
+		if (menu.menuId !== curMenu.menuId) {
+			dispatch(setCurMenu(menu));
+		}
 	};
 
 	return (
@@ -42,7 +43,7 @@ const LeftMenuList = () => {
 						key={item.menuId}
 						className={classNames('item', curMenu.menuId === item.menuId && activeMenu ? 'active' : '')}
 						onClick={() => {
-							changeMenu(item);
+							clickMenu(item);
 						}}>
 						<i className={classNames('iconfont', item.menuIcon)}></i>
 						<span className='item-text'>{item.menuName}</span>

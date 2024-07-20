@@ -35,7 +35,6 @@ export const useTopBarAnimation = () => {
 	const controls = useAnimationControls();
 
 	useEffect(() => {
-		console.log('导航条动画执行');
 		// 页面刚渲染时
 		if (!scrollDirection) {
 			controls.start('showBar');

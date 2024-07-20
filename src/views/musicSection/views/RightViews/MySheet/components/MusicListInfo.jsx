@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { MusicListInfoStyles } from '@/views/musicSection/views/RightViews/MyMusic/styles/MusicListInfoStyles';
+import { MusicListInfoStyles } from '@/views/musicSection/views/RightViews/MySheet/styles/MusicListInfoStyles';
 import { shallowEqual, useSelector } from 'react-redux';
 
 /**

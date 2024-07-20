@@ -1,13 +1,12 @@
-import React, { memo, Suspense, useEffect } from 'react';
+import React, { memo, Suspense } from 'react';
 import { PlayerRightStyles } from '@/views/musicSection/styles/PlayerRightStyles';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import TopOperationArea from '@/views/musicSection/components/TopOperationArea/TopOperationArea';
 
+/**
+ * @description: 播放器右侧整体区域
+ */
 const PlayerRight = () => {
-	const location = useLocation();
-
-	useEffect(() => {}, [location]);
-
 	return (
 		<PlayerRightStyles>
 			<div className='container'>
