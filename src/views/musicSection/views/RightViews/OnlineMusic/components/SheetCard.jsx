@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useRef } from 'react';
-import { SongCardStyles } from '@/views/musicSection/views/RightViews/OnlineMusic/styles/SongCardStyles';
+import { SheetCardStyles } from '@/views/musicSection/views/RightViews/OnlineMusic/styles/SheetCardStyles';
 import PropTypes from 'prop-types';
 import { motion, useAnimationControls } from 'framer-motion';
 import { shallowEqual, useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import { pauseAudio, playAudio } from '@/views/musicSection/store/actions/audioA
 /**
  * @description: 音乐馆歌曲卡片
  */
-const SongCard = ({ song, imageNum }) => {
+const SheetCard = ({ sheetInfo, imageNum, imageWidth }) => {
 	const songCardRef = useRef(null);
 	const { songId, isPlaying } = useSelector(
 		(state) => ({
@@ -50,11 +50,11 @@ const SongCard = ({ song, imageNum }) => {
 	// 播放当前歌曲、暂停、播放新歌
 	const handlePlayPause = useCallback(() => {
 		// 正在播放，播放id===当前这首歌id，则是为了暂停
-		if (isPlaying && songId === song.songId) {
+		if (isPlaying && songId === sheetInfo.songId) {
 			pauseAudio();
 		} else {
 			// 继续播放本歌曲或者播放新歌
-			playAudio(song.songId);
+			playAudio(sheetInfo.songId);
 		}
 	}, [isPlaying, songId]);
 
@@ -68,7 +68,7 @@ const SongCard = ({ song, imageNum }) => {
 	}, []);
 
 	return (
-		<SongCardStyles>
+		<SheetCardStyles className='sheet-card'>
 			<motion.div
 				ref={songCardRef}
 				animate={controls}
@@ -81,21 +81,21 @@ const SongCard = ({ song, imageNum }) => {
 				onMouseLeave={() => {
 					onMouseLeave();
 				}}
-				style={fullScreenPlayer || maxPlayer ? { width: '300px', height: '300px' } : {}}>
-				<img className='image' src={require(`@/views/musicSection/images/song-card-bg/card-bg${imageNum}.png`)} alt='' />
+				style={{ width: imageWidth }}>
+				<img className='image' src={require(`@/views/musicSection/images/online-sheet/sheet-card-bg/${imageNum}.png`)} alt='' />
 				<motion.div className='mask' initial={'hidden'} variants={showHidden} animate={controls}></motion.div>
 				<i className='iconfont icon-icon_qqyinyue'></i>
 				<motion.div className='play-btn' initial={'hidden'} variants={showHidden} animate={controls}>
 					<i className='iconfont icon-bofang'></i>
 				</motion.div>
 			</motion.div>
-			<div className='song-name'>{song.songName}</div>
-		</SongCardStyles>
+			<div className='sheetInfo-name'>{sheetInfo?.songName}</div>
+		</SheetCardStyles>
 	);
 };
 
-SongCard.propTypes = {
+SheetCard.propTypes = {
 	imageNum: PropTypes.number,
-	song: PropTypes.object,
+	sheetInfo: PropTypes.object,
 };
-export default memo(SongCard);
+export default memo(SheetCard);

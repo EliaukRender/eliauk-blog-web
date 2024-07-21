@@ -144,3 +144,5 @@ f
 6src/views/profileSection/components/ProfileOneInfo.jsx,0\d\0dab58e735f089d1968099c40e912bb932fd8f02
 g
 7src/views/profileSection/styles/ProfileOneInfoStyles.js,c\c\cc4d12ca2b62dceee91d31adec25ebf27acb090e
+‚
+Rsrc/views/musicSection/views/RightViews/OnlineMusic/components/NormalSongSheet.jsx,1\e\1e8b196ce776c9a3cdfa0138a812cd2a3167402e

@@ -10,7 +10,7 @@ export const TopOperationAreaStyles = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 15px;
+	padding: 0 20px;
 
 	.left {
 		display: flex;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { hexToRgba } from '@/utils/hexToRgba';
 import { music_green_select } from '@/assets/css/variables';
 
-export const SpecialSheetStyles = styled.div`
+export const SpecialSongSheetStyles = styled.div`
 	position: relative;
 	display: flex;
 	flex-direction: column;

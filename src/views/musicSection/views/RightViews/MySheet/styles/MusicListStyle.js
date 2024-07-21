@@ -12,7 +12,7 @@ export const MusicListStyles = styled.div`
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-bottom: 15px;
+		padding-bottom: 25px;
 		box-sizing: border-box;
 
 		.left {

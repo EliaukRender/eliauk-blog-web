@@ -11,7 +11,12 @@ import {
 	querySongListBySheetId,
 } from '@/api/modules/musicService';
 import store from '@/store';
-import { setCurSheet, setMenuList, setSheetList, setSheetSongList } from '@/views/musicSection/store/modules/musicAppReducer';
+import {
+	setCurSheet,
+	setMenuList,
+	setSheetList,
+	setSheetSongList,
+} from '@/views/musicSection/store/modules/musicAppReducer';
 import MessageToast from '@/components/MessageToast';
 import messageToast from '@/components/MessageToast';
 import { setCurSongListSheetId, setSongId, setSongList } from '@/views/musicSection/store/modules/audioReducer';

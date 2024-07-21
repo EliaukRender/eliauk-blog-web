@@ -6,9 +6,15 @@ const MusicPlayer = React.lazy(() => import('@/views/musicSection/index.jsx'));
 const ProjectSection = React.lazy(() => import('@/views/projectSection/index.jsx'));
 const ProfileSection = React.lazy(() => import('@/views/profileSection/index.jsx'));
 const MyMusic = React.lazy(() => import('@/views/musicSection/views/RightViews/MySheet/SheetCommonPage.jsx'));
-const OnlineCommonPage = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/OnlineCommonPage.jsx'));
-const VideoRecommend = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/VideoRecommend.jsx'));
-const MusicRecommend = React.lazy(() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/MusicRecommend.jsx'));
+const OnlineCommonPage = React.lazy(
+	() => import('@/views/musicSection/views/RightViews/OnlineMusic/OnlineCommonPage.jsx'),
+);
+const VideoRecommend = React.lazy(
+	() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/VideoRecommend.jsx'),
+);
+const MusicRecommend = React.lazy(
+	() => import('@/views/musicSection/views/RightViews/OnlineMusic/views/MusicRecommend.jsx'),
+);
 
 // 路由配置
 const routes = [
@@ -19,6 +25,14 @@ const routes = [
 	{
 		path: '/index',
 		element: <Home></Home>,
+	},
+	{
+		path: '/project',
+		element: <ProjectSection></ProjectSection>,
+	},
+	{
+		path: '/personal',
+		element: <ProfileSection></ProfileSection>,
 	},
 	{
 		path: '/music/*',
@@ -64,14 +78,6 @@ const routes = [
 				],
 			},
 		],
-	},
-	{
-		path: '/project',
-		element: <ProjectSection></ProjectSection>,
-	},
-	{
-		path: '/personal',
-		element: <ProfileSection></ProfileSection>,
 	},
 ];
 

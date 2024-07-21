@@ -1,22 +1,14 @@
 import styled from 'styled-components';
-import { music_green, text_gray } from '@/assets/css/variables';
+import { music_green_select } from '@/assets/css/variables';
 
-export const SongCardStyles = styled.div`
+export const SheetCardStyles = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;
-	margin-bottom: 25px;
-
-	.song-name {
-		font-size: 14px;
-		color: ${text_gray};
-		margin-top: 5px;
-	}
+	margin-right: 20px;
 
 	.card {
-		width: 180px;
-		height: 180px;
 		box-sizing: border-box;
 		display: flex;
 		justify-content: center;
@@ -46,24 +38,27 @@ export const SongCardStyles = styled.div`
 
 	.icon-icon_qqyinyue {
 		position: absolute;
-		top: 8px;
-		left: 8px;
+		top: 5px;
+		left: 5px;
+		color: #eaeaea;
+		font-size: 20px;
 	}
 
 	.play-btn {
-		width: 40px;
+		width: 35px;
 		height: 30px;
 		position: absolute;
-		bottom: 15px;
-		left: 15px;
+		bottom: 10px;
+		left: 10px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: ${music_green};
+		background-color: ${music_green_select};
 		border-radius: 15px;
 
 		.icon-bofang {
 			color: #ffffff;
+			font-size: 22px;
 		}
 	}
 `;
