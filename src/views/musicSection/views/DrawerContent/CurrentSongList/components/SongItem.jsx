@@ -10,6 +10,12 @@ import { setCurSongListSheetId, setSongList } from '@/views/musicSection/store/m
 import { Popconfirm } from 'antd';
 import { handleDeleteSongFromSheet } from '@/views/musicSection/store/actions/musicAppAction';
 
+const imageList = require
+	.context('@/views/musicSection/images/song-icon')
+	?.keys()
+	.map((item) => item.substring(2));
+console.log('imageList', imageList);
+
 /**
  * @description: 歌曲item
  */
@@ -107,8 +113,12 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 				}}>
 				{/* 左侧区域 */}
 				<div className='left-info-area'>
-					{/* 歌曲缩略图 */}
-					<img className='img' src={require('@/views/musicSection/images/icons/music-pic.png')} alt='' />
+					{/* 歌曲缩略图： 目前只有10张缩略图可以选择  */}
+					<img
+						className='img'
+						src={require(`@/views/musicSection/images/song-icon/${imageList[Math.floor(Math.random() * 15)]}`)}
+						alt=''
+					/>
 					{/* 歌手名、歌名 */}
 					<div className='curSong-info'>
 						<div className='ellipsis'>{curSong?.songName || '--'}</div>
