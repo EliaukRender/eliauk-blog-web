@@ -34,3 +34,8 @@ export const createSheet = (params) => {
 export const deleteSheet = (params) => {
 	return http.post('/music/deleteSheet', params);
 };
+
+// 获取音乐馆歌单
+export const queryMusicHomeSheet = () => {
+	return http.post('/music/queryMusicHomeSheet');
+};

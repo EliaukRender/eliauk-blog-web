@@ -7,6 +7,7 @@ import {
 	deleteSongFromSheet,
 	moveSongToSheet,
 	queryCommonMenuList,
+	queryMusicHomeSheet,
 	querySheetList,
 	querySongListBySheetId,
 } from '@/api/modules/musicService';
@@ -151,5 +152,17 @@ export const handleDeleteSongFromSheet = async ({ songId, sheetId }) => {
 	} catch (e) {
 		console.log('error-handleDeleteSongFromSheet', e);
 		messageToast.error(e.message || '删除歌曲失败');
+	}
+};
+
+/**
+ * @description: 获取音乐馆歌单
+ */
+export const handleQueryMusicHomeSheet = async () => {
+	try {
+		const { data } = await queryMusicHomeSheet();
+		return data;
+	} catch (e) {
+		console.log('error-handleQueryMusicHomeSheet', e);
 	}
 };

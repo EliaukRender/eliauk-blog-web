@@ -4,13 +4,12 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { music_green_select } from '@/assets/css/variables';
 import { useDynamicImagesList } from '@/views/musicSection/hooks/useDynamicImagesList';
-
-const imageList = require.context('@/views/musicSection/images/online-sheet/special-images')?.keys();
+import PropTypes from 'prop-types';
 
 /**
  * @description: 精选歌单--轮播图形式推荐
  */
-const SpecialSongSheet = () => {
+const SpecialSongSheet = ({ sheetList = [] }) => {
 	const SHOW_IMAGES_NUM = 3; // 可配置，可视区域展示图片的数量
 	const {
 		containerRef,
@@ -22,7 +21,12 @@ const SpecialSongSheet = () => {
 		handlePre,
 		controls,
 		activePointerList,
-	} = useDynamicImagesList(SHOW_IMAGES_NUM, true, imageList.length);
+	} = useDynamicImagesList({
+		showImagesNum: SHOW_IMAGES_NUM,
+		showActivePointer: true,
+		imagesLength: sheetList.length,
+		marginRightValue: 20,
+	});
 
 	return (
 		<SpecialSongSheetStyles
@@ -35,14 +39,8 @@ const SpecialSongSheet = () => {
 			}}>
 			{/* 轮播图 */}
 			<div className='images-box' ref={containerRef}>
-				{imageList.map((image) => {
-					return (
-						<img
-							className='img'
-							style={{ width: width }}
-							src={require(`@/views/musicSection/images/online-sheet/special-images${image.substring(1)}`)}
-						/>
-					);
+				{sheetList.map((sheet) => {
+					return <img className='img' style={{ width: width }} src={sheet.sheetImage} />;
 				})}
 			</div>
 			{/* 左、右切换按钮 */}
@@ -54,7 +52,7 @@ const SpecialSongSheet = () => {
 			</motion.div>
 			{/* 指示器 */}
 			<div className='pointer-list'>
-				{imageList.map((item, index) => {
+				{sheetList.map((item, index) => {
 					return (
 						<div
 							className='pointer'
@@ -64,6 +62,10 @@ const SpecialSongSheet = () => {
 			</div>
 		</SpecialSongSheetStyles>
 	);
+};
+
+SpecialSongSheet.propTypes = {
+	sheetList: PropTypes.array,
 };
 
 export default memo(SpecialSongSheet);

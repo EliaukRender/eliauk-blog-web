@@ -6,9 +6,9 @@ import { shallowEqual, useSelector } from 'react-redux';
 import { pauseAudio, playAudio } from '@/views/musicSection/store/actions/audioAction';
 
 /**
- * @description: 音乐馆歌曲卡片
+ * @description: 音乐馆 歌单卡片
  */
-const SheetCard = ({ sheetInfo, imageNum, imageWidth }) => {
+const SheetCard = ({ sheetInfo, sheetImage, imageWidth }) => {
 	const songCardRef = useRef(null);
 	const { songId, isPlaying } = useSelector(
 		(state) => ({
@@ -82,7 +82,7 @@ const SheetCard = ({ sheetInfo, imageNum, imageWidth }) => {
 					onMouseLeave();
 				}}
 				style={{ width: imageWidth }}>
-				<img className='image' src={require(`@/views/musicSection/images/online-sheet/sheet-card-bg/${imageNum}.png`)} alt='' />
+				<img className='image' src={sheetImage} alt='' />
 				<motion.div className='mask' initial={'hidden'} variants={showHidden} animate={controls}></motion.div>
 				<i className='iconfont icon-icon_qqyinyue'></i>
 				<motion.div className='play-btn' initial={'hidden'} variants={showHidden} animate={controls}>
@@ -95,7 +95,7 @@ const SheetCard = ({ sheetInfo, imageNum, imageWidth }) => {
 };
 
 SheetCard.propTypes = {
-	imageNum: PropTypes.number,
+	sheetImage: PropTypes.string,
 	sheetInfo: PropTypes.object,
 };
 export default memo(SheetCard);

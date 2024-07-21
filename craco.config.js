@@ -63,7 +63,12 @@ const cracoConfig = ({ env }) => {
 		// 	},
 		// },
 		babel: {
-			plugins: [['babel-plugin-transform-remove-console', { exclude: isEnvProduction ? ['error', 'warn'] : ['error', 'warn', 'log'] }]],
+			plugins: [
+				[
+					'babel-plugin-transform-remove-console',
+					{ exclude: isEnvProduction ? ['error', 'warn'] : ['error', 'warn', 'log'] },
+				],
+			],
 		},
 		devServer: {
 			hot: true,
@@ -79,6 +84,12 @@ const cracoConfig = ({ env }) => {
 					target: 'http://47.113.177.51',
 					// target: 'http://localhost:50000',
 					pathRewrite: { '^/media': '/media' },
+				},
+				// 图片代理
+				'/image': {
+					target: 'http://47.113.177.51',
+					// target: 'http://localhost:50000',
+					pathRewrite: { '^/image': '/image' },
 				},
 			},
 		},

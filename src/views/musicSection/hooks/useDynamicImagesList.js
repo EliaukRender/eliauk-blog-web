@@ -9,12 +9,12 @@ import PropTypes from 'prop-types';
  * @param imagesLength    图片列表数组总长度
  * @param marginRightValue    图片的右边距大小
  */
-export const useDynamicImagesList = (
+export const useDynamicImagesList = ({
 	showImagesNum = 3,
 	showActivePointer = false,
 	imagesLength = 0,
 	marginRightValue = 20,
-) => {
+}) => {
 	const containerRef = useRef();
 	const [width, setWidth] = useState(300); // 图片宽度
 	const [height, setHeight] = useState(220); // 图片高度

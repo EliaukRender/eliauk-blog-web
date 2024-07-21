@@ -4,24 +4,20 @@ import SheetCard from '@/views/musicSection/views/RightViews/OnlineMusic/compone
 import { useDynamicImagesList } from '@/views/musicSection/hooks/useDynamicImagesList';
 import { motion } from 'framer-motion';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types';
 
 /**
  * @description: 普通推荐歌单 列表显示组件
  */
-const NormalSongSheet = () => {
-	const sheetList = [
-		{ id: 1, imageNum: 1 },
-		{ id: 2, imageNum: 2 },
-		{ id: 3, imageNum: 3 },
-		{ id: 4, imageNum: 4 },
-		{ id: 5, imageNum: 5 },
-		{ id: 6, imageNum: 6 },
-		{ id: 7, imageNum: 7 },
-		{ id: 8, imageNum: 8 },
-	];
+const NormalSongSheet = ({ title = '', sheetList = [] }) => {
 	const SHOW_IMAGES_NUM = 6; // 可配置，可视区域展示图片的数量
 	const { containerRef, width, height, onMouseEnter, onMouseLeave, handleNext, handlePre, controls } =
-		useDynamicImagesList(SHOW_IMAGES_NUM, false, sheetList.length);
+		useDynamicImagesList({
+			showImagesNum: SHOW_IMAGES_NUM,
+			showActivePointer: false,
+			imagesLength: sheetList.length,
+			marginRightValue: 20,
+		});
 
 	return (
 		<NormalSongSheetStyles
@@ -33,11 +29,11 @@ const NormalSongSheet = () => {
 				onMouseLeave();
 			}}>
 			{/* 标题 */}
-			<div className='song-sheet-title'>精选歌单</div>
+			<div className='song-sheet-title'>{title}</div>
 			{/* 歌单列表 */}
 			<div className='sheet-list' ref={containerRef}>
 				{sheetList?.map((sheetInfo) => {
-					return <SheetCard sheetInfo={sheetInfo} imageNum={sheetInfo.imageNum} imageWidth={width}></SheetCard>;
+					return <SheetCard sheetInfo={sheetInfo} sheetImage={sheetInfo.sheetImage} imageWidth={width}></SheetCard>;
 				})}
 			</div>
 			{/* 左、右切换按钮 */}
@@ -49,6 +45,11 @@ const NormalSongSheet = () => {
 			</motion.div>
 		</NormalSongSheetStyles>
 	);
+};
+
+NormalSongSheet.propTypes = {
+	title: PropTypes.string,
+	sheetList: PropTypes.array,
 };
 
 export default memo(NormalSongSheet);
