@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { memo, useEffect, useMemo, useRef } from 'react';
 import { SongItemStyles } from '@/views/musicSection/views/DrawerContent/CurrentSongList/components/SongItemStyles';
 import PropTypes from 'prop-types';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -9,12 +9,6 @@ import MoveMusicPopover from '@/views/musicSection/components/BottomArea/LeftAre
 import { setCurSongListSheetId, setSongList } from '@/views/musicSection/store/modules/audioReducer';
 import { Popconfirm } from 'antd';
 import { handleDeleteSongFromSheet } from '@/views/musicSection/store/actions/musicAppAction';
-
-const imageList = require
-	.context('@/views/musicSection/images/song-icon')
-	?.keys()
-	.map((item) => item.substring(2));
-console.log('imageList', imageList);
 
 /**
  * @description: 歌曲item
@@ -114,11 +108,7 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 				{/* 左侧区域 */}
 				<div className='left-info-area'>
 					{/* 歌曲缩略图： 目前只有10张缩略图可以选择  */}
-					<img
-						className='img'
-						src={require(`@/views/musicSection/images/song-icon/${imageList[Math.floor(Math.random() * 15)]}`)}
-						alt=''
-					/>
+					<img className='img' src={curSong?.songPic} alt='' />
 					{/* 歌手名、歌名 */}
 					<div className='curSong-info'>
 						<div className='ellipsis'>{curSong?.songName || '--'}</div>

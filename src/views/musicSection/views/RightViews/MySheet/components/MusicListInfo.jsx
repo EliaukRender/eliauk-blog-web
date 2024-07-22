@@ -16,7 +16,11 @@ const MusicListInfo = () => {
 	return (
 		<MusicListInfoStyles>
 			<div className='top-common-area'>
-				<img className='menu-image' src={require('@/views/musicSection/images/changpianji.png')} alt='' />
+				<img
+					className='menu-image'
+					src={curSheet?.sheetCover || require('@/views/musicSection/images/changpianji.png')}
+					alt=''
+				/>
 				<div className='menu-info'>
 					<div className='menu-name'>
 						<div className='title'>{curSheet?.sheetName}</div>

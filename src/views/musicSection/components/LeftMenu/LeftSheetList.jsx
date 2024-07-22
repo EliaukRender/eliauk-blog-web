@@ -7,7 +7,6 @@ import { setCurSheet } from '@/views/musicSection/store/modules/musicAppReducer'
 import AddSheet from '@/views/musicSection/components/AddSheet/AddSheet';
 import { motion } from 'framer-motion';
 import { getSongListBySheetId, handleDeleteSheet } from '@/views/musicSection/store/actions/musicAppAction';
-import { setCurSongListSheetId } from '@/views/musicSection/store/modules/audioReducer';
 
 /**
  * @description: 我的歌单  歌单列表
