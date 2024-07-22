@@ -11,6 +11,7 @@ import CurrentSongList from '@/views/musicSection/views/DrawerContent/CurrentSon
 import { useNavigate } from 'react-router-dom';
 import { useFullScreenPlayer } from '@/views/musicSection/hooks/useFullScreenPlayer';
 import { initPlayerData } from '@/views/musicSection/store/actions/musicAppAction';
+import MiniPlayer from '@/views/musicSection/views/MiniPlayer/MiniPlayer';
 
 /**
  * @description: 音乐播放器主体框架

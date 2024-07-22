@@ -14,6 +14,7 @@ const TopOperationArea = () => {
 		(state) => ({
 			fullScreenPlayer: state.musicApp.fullScreenPlayer,
 			maxPlayer: state.musicApp.maxPlayer,
+			miniPlayer: state.musicApp.miniPlayer,
 		}),
 		shallowEqual,
 	);
@@ -32,13 +33,15 @@ const TopOperationArea = () => {
 				<i className='iconfont icon-shangchuan'></i>
 				<i
 					className='iconfont icon-zuixiaohua'
+					title='最小化'
 					onClick={() => {
-						dispatch(setMiniPlayer(true));
+						dispatch(setMiniPlayer(!miniPlayer));
 					}}></i>
 				{/* 最大化 */}
 				{!maxPlayer && (
 					<i
 						className='iconfont icon-zuidahua'
+						title='最大化'
 						onClick={() => {
 							if (fullScreenPlayer) {
 								return;
@@ -50,6 +53,7 @@ const TopOperationArea = () => {
 				{maxPlayer && (
 					<i
 						className='iconfont icon-exitfullscreen'
+						title='还原'
 						onClick={() => {
 							if (fullScreenPlayer) {
 								return;
@@ -60,6 +64,7 @@ const TopOperationArea = () => {
 				{/* 全屏 */}
 				{!fullScreenPlayer && (
 					<i
+						title='全屏'
 						className='iconfont icon-quanping'
 						onClick={() => {
 							dispatch(setFullScreenPlayer(true));
@@ -68,6 +73,7 @@ const TopOperationArea = () => {
 				{/* 退出全屏 */}
 				{fullScreenPlayer && (
 					<i
+						title='退出全屏'
 						className='iconfont icon-tuichuquanping'
 						onClick={() => {
 							dispatch(setFullScreenPlayer(false));

@@ -5,6 +5,7 @@ import { AppWrapper } from '@/AppStyles';
 import { useAppScrollDirection } from '@/hooks/useAppScrollDirection';
 import PageProgressIndicator from '@/components/ProgressIndicator';
 import TopHomeBar from '@/views/common/TopHomeBar/TopHomeBar';
+import MiniPlayer from '@/views/musicSection/views/MiniPlayer/MiniPlayer';
 
 const App = () => {
 	useAppScrollDirection();
@@ -17,6 +18,8 @@ const App = () => {
 			<TopHomeBar></TopHomeBar>
 			{/* 路由 */}
 			{useRoutes(routes)}
+			{/* mini-music音乐播放器 */}
+			<MiniPlayer></MiniPlayer>
 		</AppWrapper>
 	);
 };
