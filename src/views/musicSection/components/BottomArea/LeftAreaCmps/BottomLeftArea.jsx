@@ -27,16 +27,17 @@ const BottomLeftArea = () => {
 	}, [songId]);
 
 	return (
-		<BottomLeftAreaStyles style={showFullScreenLyric ? { background: 'linear-gradient(to right, #404647 0%, #404647 100%)' } : {}}>
+		<BottomLeftAreaStyles
+			style={showFullScreenLyric ? { background: 'linear-gradient(to right, #404647 0%, #404647 100%)' } : {}}>
 			{/* 歌曲封面 */}
 			<MusicMiniPicture></MusicMiniPicture>
 			{/* 歌曲信息 */}
 			<div className='info-text'>
 				<div className='singer' style={showFullScreenLyric ? { color: french_Cool_gray } : {}}>
-					{currentSong?.singer || '--'}
+					{currentSong?.singer || 'Eliauk'}
 				</div>
 				<div className='song-name' style={showFullScreenLyric ? { color: french_Cool_light_gray } : {}}>
-					{currentSong?.songName || '--'}
+					{currentSong?.songName || '音乐一下'}
 				</div>
 			</div>
 			<div className='feat-area'>

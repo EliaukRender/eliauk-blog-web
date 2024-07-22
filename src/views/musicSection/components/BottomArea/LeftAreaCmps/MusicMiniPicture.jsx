@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useMemo } from 'react';
 import { MusicMiniPictureStyles } from '@/views/musicSection/styles/MusicMiniPictureStyles';
 import { setShowFullScreenLyric } from '@/views/musicSection/store/modules/musicAppReducer';
 import { motion, useAnimationControls } from 'framer-motion';
@@ -12,9 +12,11 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 const MusicMiniPicture = () => {
 	const dispatch = useDispatch();
 	const controls = useAnimationControls();
-	const { showFullScreenLyric } = useSelector(
+	const { showFullScreenLyric, songId, songList } = useSelector(
 		(state) => ({
 			showFullScreenLyric: state.musicApp.showFullScreenLyric,
+			songId: state.audio.songId,
+			songList: state.audio.songList,
 		}),
 		shallowEqual,
 	);
@@ -43,6 +45,11 @@ const MusicMiniPicture = () => {
 		}
 	};
 
+	// 获取当前歌曲的缩略图
+	const getCurSongPic = useMemo(() => {
+		return songList.find((item) => item.songId === songId)?.songPic;
+	}, [songId, songList]);
+
 	return (
 		<MusicMiniPictureStyles>
 			<div
@@ -64,7 +71,11 @@ const MusicMiniPicture = () => {
 						className={classNames(`iconfont icon-${showFullScreenLyric ? 'zhankaidown' : 'zhankaiup-copy'}`)}
 						style={{ color: french_Cool_light_gray }}></i>
 				</motion.div>
-				<img className='music-pic' src={require('@/views/musicSection/images/music-info.png')} alt='' />
+				<img
+					className='music-pic'
+					src={getCurSongPic || require('@/views/musicSection/images/music-info.png')}
+					alt=''
+				/>
 			</div>
 		</MusicMiniPictureStyles>
 	);
