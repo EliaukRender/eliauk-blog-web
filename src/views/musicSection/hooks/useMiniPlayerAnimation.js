@@ -82,13 +82,6 @@ export const useMiniPlayerAnimation = () => {
 				controls.start('moveDownExpand');
 			}
 			controls.start('showList');
-			/* 更新边界值 */
-			console.log('gengxinbianjiezhi ', bounds);
-			setBounds((bounds) => ({
-				...bounds,
-				bottom: SONG_LIST_HEIGHT,
-			}));
-			console.log(bounds);
 		} else {
 			const { bottom } = playerRef.current?.getBoundingClientRect();
 			const bottomDistance = window.innerHeight - bottom;
@@ -106,6 +99,7 @@ export const useMiniPlayerAnimation = () => {
 	return {
 		playerRef,
 		bounds,
+		setBounds,
 		setOpen,
 		open,
 		controls,

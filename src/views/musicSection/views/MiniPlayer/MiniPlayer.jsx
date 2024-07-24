@@ -29,10 +29,12 @@ const MiniPlayer = () => {
 		playerRef,
 		bounds,
 		setOpen,
+		setBounds,
 		open,
 		controls,
 		INITIAL_WIDTH,
 		INITIAL_HEIGHT,
+		SONG_LIST_HEIGHT,
 		maskVariants,
 		showSongListVariants,
 		positionHeightVariants,
@@ -48,6 +50,10 @@ const MiniPlayer = () => {
 		console.log(window.innerWidth);
 		console.log(window.innerHeight);
 		console.log('结束', playerRef.current?.getBoundingClientRect());
+	};
+
+	const handleClickExpand = () => {
+		setOpen(!open);
 	};
 
 	return (
@@ -140,7 +146,7 @@ const MiniPlayer = () => {
 									className='iconfont icon-liebiao'
 									style={open ? { color: music_green_select } : {}}
 									onClick={() => {
-										setOpen(!open);
+										handleClickExpand();
 									}}></i>
 							</div>
 						)}
