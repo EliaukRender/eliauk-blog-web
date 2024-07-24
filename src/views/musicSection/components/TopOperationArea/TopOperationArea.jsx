@@ -4,6 +4,7 @@ import { Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setFullScreenPlayer, setMaxPlayer, setMiniPlayer } from '@/views/musicSection/store/modules/musicAppReducer';
+import { music_green_select } from '@/assets/css/variables';
 
 /**
  * @description:顶部操作栏
@@ -32,8 +33,9 @@ const TopOperationArea = () => {
 				<i className='iconfont icon-pifu'></i>
 				<i className='iconfont icon-shangchuan'></i>
 				<i
-					className='iconfont icon-zuixiaohua'
+					className='iconfont icon-zuixiaohua1'
 					title='最小化'
+					style={miniPlayer ? { color: music_green_select } : {}}
 					onClick={() => {
 						dispatch(setMiniPlayer(!miniPlayer));
 					}}></i>

@@ -1,11 +1,29 @@
-import React, { memo, useMemo, useState } from 'react';
-import { MiniPlayerStyles } from '@/views/musicSection/views/MiniPlayer/MiniPlayerStyles';
+import React, { memo, useEffect, useMemo, useState } from 'react';
+import { MiniPlayerStyles } from '@/views/musicSection/views/MiniPlayer/styles/MiniPlayerStyles';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { motion, useAnimationControls } from 'framer-motion';
 import { CaretRightOutlined, PauseOutlined, StepBackwardOutlined, StepForwardOutlined } from '@ant-design/icons';
 import { pauseAudio, playAudio, playNextSong, playPreSong } from '@/views/musicSection/store/actions/audioAction';
 import { setMiniPlayer } from '@/views/musicSection/store/modules/musicAppReducer';
-import { useDragMiniPlayer } from '@/views/musicSection/hooks/useDragMiniPlayer';
+import SongList from '@/views/musicSection/views/MiniPlayer/components/SongList';
+import { music_green_select } from '@/assets/css/variables';
+
+// 动画参数
+const maskVariants = {
+	showMask: { opacity: 1, transition: { duration: 0.3, ease: 'linear' } },
+	hiddenMask: { opacity: 0, transition: { duration: 0.3, ease: 'linear' } },
+};
+
+const showSongListVariants = {
+	/* 歌曲列表高度200px */
+	showList: { opacity: 1, height: 200, transition: { duration: 0.3, ease: 'linear' } },
+	hiddenList: { opacity: 0, height: 0, transition: { duration: 0.3, ease: 'linear' } },
+};
+
+const positionVariants = {
+	topPosition: { top: window.innerHeight - 70 - 200, height: 270, transition: { duration: 0.3, ease: 'linear' } },
+	downPosition: { top: window.innerHeight - 70, height: 70, transition: { duration: 0.3, ease: 'linear' } },
+};
 
 /**
  * @description: 最小化的播放器
@@ -20,36 +38,33 @@ const MiniPlayer = () => {
 		}),
 		shallowEqual,
 	);
+	const [open, setOpen] = useState(false);
 	const dispatch = useDispatch();
 	const controls = useAnimationControls();
 	const [showControlBtn, setShowControlBtn] = useState(false);
-	const { position, handleMouseDown, handleMouseMove, handleMouseUp } = useDragMiniPlayer();
 
 	// 当前歌曲信息
 	const curSong = useMemo(() => {
 		return songList.find((item) => item.songId === songId);
 	}, [songId, songList]);
 
-	const onMouseEnter = () => {
-		controls.start({ opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } });
-	};
-
-	const onMouseLeave = () => {
-		controls.start({ opacity: 0, transition: { duration: 0.3, ease: 'easeOut' } });
-	};
+	useEffect(() => {
+		// 打开关闭歌曲列表动画
+		controls.start(open ? 'topPosition' : 'downPosition');
+		controls.start(open ? 'showList' : 'hiddenList');
+	}, [open]);
 
 	return (
-		<MiniPlayerStyles
-			style={{
+		<motion.div
+			animate={controls}
+			variants={positionVariants}
+			initial={{
+				height: 70,
 				position: 'fixed',
-				top: position.y,
-				left: position.x,
-				cursor: 'move',
-			}}
-			onMouseDown={handleMouseDown}
-			onMouseMove={handleMouseMove}
-			onMouseUp={handleMouseUp}>
-			{miniPlayer && (
+				top: window.innerHeight - 70,
+				left: window.innerWidth - 330 - 100,
+			}}>
+			<MiniPlayerStyles style={{ opacity: miniPlayer ? 1 : 0 }}>
 				<div
 					className='body'
 					onMouseEnter={() => {
@@ -72,11 +87,12 @@ const MiniPlayer = () => {
 						className='image mask'
 						initial={{ opacity: 0 }}
 						animate={controls}
+						variants={maskVariants}
 						onMouseEnter={() => {
-							onMouseEnter();
+							controls.start('showMask');
 						}}
 						onMouseLeave={() => {
-							onMouseLeave();
+							controls.start('hiddenMask');
 						}}>
 						<i className='iconfont icon-icon_qqyinyue'></i>
 					</motion.div>
@@ -119,12 +135,24 @@ const MiniPlayer = () => {
 									playNextSong(true);
 								}}
 							/>
-							<i className='iconfont icon-liebiao'></i>
+							<i
+								className='iconfont icon-liebiao'
+								style={open ? { color: music_green_select } : {}}
+								onClick={() => {
+									setOpen(!open);
+								}}></i>
 						</div>
 					)}
 				</div>
-			)}
-		</MiniPlayerStyles>
+				<motion.div
+					className='song-list-box'
+					initial={{ opacity: 0, height: 0 }}
+					variants={showSongListVariants}
+					animate={controls}>
+					<SongList></SongList>
+				</motion.div>
+			</MiniPlayerStyles>
+		</motion.div>
 	);
 };
 

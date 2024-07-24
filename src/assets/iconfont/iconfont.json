@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4251780",
+      "name": "最小化",
+      "font_class": "zuixiaohua1",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
       "icon_id": "5203321",
       "name": "月亮",
       "font_class": "yueliang",
