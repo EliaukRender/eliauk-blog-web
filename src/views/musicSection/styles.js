@@ -13,4 +13,5 @@ export const MusicSectionStyles = styled.div`
 	background-image: url(${bg});
 	background-size: cover;
 	background-position: center;
+	position: relative;
 `;

@@ -5,15 +5,15 @@ export const MiniPlayerStyles = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #fff;
   border-radius: 8px 8px 0 0;
+  cursor: move;
 
   .body {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 330px;
+    width: 100%;
     height: 70px;
     background-color: #fff;
     border-radius: 8px;
@@ -130,7 +130,7 @@ export const MiniPlayerStyles = styled.div`
 }
 
 .song-list-box {
-  width: 330px;
+  width: 100%;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1);
 }
