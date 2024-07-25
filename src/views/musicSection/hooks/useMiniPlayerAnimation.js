@@ -53,28 +53,18 @@ export const useMiniPlayerAnimation = () => {
 	const [open, setOpen] = useState(null); // 是否打开播放列表
 	const controls = useAnimationControls(); // 动画控制实例
 
-	const updateBounds = () => {
-		const { width, height, top, bottom, left, right } = playerRef.current?.getBoundingClientRect();
-		console.log('innerWidth', window.innerWidth);
-		console.log('innerHeight', window.innerHeight);
-		console.log(' width, height, top, bottom, left, right', width, height, top, bottom, left, right);
-		/* 元素自身就是上下左右四个方位的原点 */
-		setBounds({
-			left: -left,
-			right: window.innerWidth - right,
-			top: -window.innerHeight + height,
-			bottom: window.innerHeight - bottom,
-		});
-	};
-
-	/* 初始化边界bounds */
+	// 初始化边界bounds */
 	useEffect(() => {
 		if (playerRef.current) {
-			updateBounds();
+			const { height, bottom, left, right } = playerRef.current?.getBoundingClientRect();
+			/* 元素自身就是上下左右四个方位的原点 */
+			setBounds({
+				left: -left,
+				right: window.innerWidth - right,
+				top: -window.innerHeight + height,
+				bottom: window.innerHeight - bottom,
+			});
 		}
-		setTimeout(() => {
-			// console.log('bounds', bounds);
-		}, 500);
 	}, []);
 
 	/* 基于open值播放动画 */
@@ -87,11 +77,11 @@ export const useMiniPlayerAnimation = () => {
 			// 朝上移动展开
 			if (bottomDistance <= SONG_LIST_HEIGHT) {
 				controls.start('moveUpExpand');
-				setBounds((prevState) => ({ ...prevState, top: prevState.top + SONG_LIST_HEIGHT }));
+				setBounds((prevState) => ({ ...prevState, top: prevState.top + SONG_LIST_HEIGHT })); // 更新边界值
 			} else {
 				// 朝下移动展开
 				controls.start('moveDownExpand');
-				setBounds((prevState) => ({ ...prevState, bottom: prevState.bottom - SONG_LIST_HEIGHT }));
+				setBounds((prevState) => ({ ...prevState, bottom: prevState.bottom - SONG_LIST_HEIGHT })); // 更新边界值
 			}
 			controls.start('showList');
 		} else {
@@ -101,11 +91,11 @@ export const useMiniPlayerAnimation = () => {
 			// 朝上移动折叠
 			if (bottomDistance >= SONG_LIST_HEIGHT) {
 				controls.start('upFold');
-				setBounds((prevState) => ({ ...prevState, bottom: prevState.bottom + SONG_LIST_HEIGHT }));
+				setBounds((prevState) => ({ ...prevState, bottom: prevState.bottom + SONG_LIST_HEIGHT })); // 更新边界值
 			} else {
 				// 朝下移动折叠
 				controls.start('downFold');
-				setBounds((prevState) => ({ ...prevState, top: prevState.top - SONG_LIST_HEIGHT }));
+				setBounds((prevState) => ({ ...prevState, top: prevState.top - SONG_LIST_HEIGHT })); // 更新边界值
 			}
 			controls.start('hiddenList');
 		}

@@ -43,11 +43,11 @@ const MiniPlayer = () => {
 		return songList.find((item) => item.songId === songId);
 	}, [songId, songList]);
 
+	// 停止拖拽
 	const stopDrag = (e) => {
-		// console.log('e', e);
+		console.log('拖拽结束', e);
 		console.log(window.innerWidth);
 		console.log(window.innerHeight);
-		// console.log('结束', playerRef.current?.getBoundingClientRect());
 	};
 
 	const handleClickExpand = () => {
