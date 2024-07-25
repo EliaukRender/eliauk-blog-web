@@ -9,7 +9,7 @@ import SongList from '@/views/musicSection/views/MiniPlayer/components/SongList'
 import { music_green_select } from '@/assets/css/variables';
 import Draggable from 'react-draggable';
 import { useMiniPlayerAnimation } from '@/views/musicSection/hooks/useMiniPlayerAnimation';
-import debounce from 'lodash/debounce';
+import throttle from 'lodash/throttle';
 
 /**
  * @description: 最小化的播放器
@@ -49,7 +49,7 @@ const MiniPlayer = () => {
 	}, [songId, songList]);
 
 	// 点击展开歌曲列表
-	const handleClickExpand = debounce(() => {
+	const handleClickExpand = throttle(() => {
 		if (open === null) {
 			setOpen(true);
 		} else {
@@ -67,8 +67,8 @@ const MiniPlayer = () => {
 					width: INITIAL_WIDTH,
 					height: INITIAL_HEIGHT,
 					position: 'fixed',
-					top: window.innerHeight / 2 - INITIAL_HEIGHT,
-					left: window.innerWidth - INITIAL_WIDTH,
+					top: window.innerHeight - INITIAL_HEIGHT - 100,
+					left: window.innerWidth - INITIAL_WIDTH - 100,
 					zIndex: 9999,
 				}}
 				onMouseEnter={() => {
