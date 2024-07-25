@@ -50,47 +50,62 @@ const positionHeightVariants = {
 export const useMiniPlayerAnimation = () => {
 	const playerRef = useRef(); // 播放器实例
 	const [bounds, setBounds] = useState({}); // 拖拽边界
-	const [open, setOpen] = useState(false); // 是否打开播放列表
+	const [open, setOpen] = useState(null); // 是否打开播放列表
 	const controls = useAnimationControls(); // 动画控制实例
+
+	const updateBounds = () => {
+		const { width, height, top, bottom, left, right } = playerRef.current?.getBoundingClientRect();
+		console.log('innerWidth', window.innerWidth);
+		console.log('innerHeight', window.innerHeight);
+		console.log(' width, height, top, bottom, left, right', width, height, top, bottom, left, right);
+		/* 元素自身就是上下左右四个方位的原点 */
+		setBounds({
+			left: -left,
+			right: window.innerWidth - right,
+			top: -window.innerHeight + height,
+			bottom: window.innerHeight - bottom,
+		});
+	};
 
 	/* 初始化边界bounds */
 	useEffect(() => {
 		if (playerRef.current) {
-			const { width, height, left, right, bottom, top } = playerRef.current?.getBoundingClientRect();
-			console.log(width, height, left, right, bottom, top);
-			/* 元素自身就是上下左右四个方位的原点 */
-			setBounds({
-				left: -left,
-				right: window.innerWidth - right,
-				top: -window.innerHeight + height,
-				bottom: 0,
-			});
+			updateBounds();
 		}
+		setTimeout(() => {
+			// console.log('bounds', bounds);
+		}, 500);
 	}, []);
 
 	/* 基于open值播放动画 */
 	useEffect(() => {
+		if (open === null) return;
 		// 打开歌曲列表
 		if (open) {
 			const { bottom } = playerRef.current?.getBoundingClientRect();
 			const bottomDistance = window.innerHeight - bottom;
 			// 朝上移动展开
-			if (bottomDistance < SONG_LIST_HEIGHT) {
+			if (bottomDistance <= SONG_LIST_HEIGHT) {
 				controls.start('moveUpExpand');
+				setBounds((prevState) => ({ ...prevState, top: prevState.top + SONG_LIST_HEIGHT }));
 			} else {
 				// 朝下移动展开
 				controls.start('moveDownExpand');
+				setBounds((prevState) => ({ ...prevState, bottom: prevState.bottom - SONG_LIST_HEIGHT }));
 			}
 			controls.start('showList');
 		} else {
+			// 关闭歌曲列表
 			const { bottom } = playerRef.current?.getBoundingClientRect();
 			const bottomDistance = window.innerHeight - bottom;
 			// 朝上移动折叠
-			if (bottomDistance > SONG_LIST_HEIGHT) {
+			if (bottomDistance >= SONG_LIST_HEIGHT) {
 				controls.start('upFold');
+				setBounds((prevState) => ({ ...prevState, bottom: prevState.bottom + SONG_LIST_HEIGHT }));
 			} else {
 				// 朝下移动折叠
 				controls.start('downFold');
+				setBounds((prevState) => ({ ...prevState, top: prevState.top - SONG_LIST_HEIGHT }));
 			}
 			controls.start('hiddenList');
 		}
@@ -99,13 +114,11 @@ export const useMiniPlayerAnimation = () => {
 	return {
 		playerRef,
 		bounds,
-		setBounds,
 		setOpen,
 		open,
 		controls,
 		INITIAL_WIDTH,
 		INITIAL_HEIGHT,
-		SONG_LIST_HEIGHT,
 		maskVariants,
 		showSongListVariants,
 		positionHeightVariants,

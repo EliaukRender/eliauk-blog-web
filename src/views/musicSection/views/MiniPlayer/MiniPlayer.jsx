@@ -29,12 +29,10 @@ const MiniPlayer = () => {
 		playerRef,
 		bounds,
 		setOpen,
-		setBounds,
 		open,
 		controls,
 		INITIAL_WIDTH,
 		INITIAL_HEIGHT,
-		SONG_LIST_HEIGHT,
 		maskVariants,
 		showSongListVariants,
 		positionHeightVariants,
@@ -46,14 +44,18 @@ const MiniPlayer = () => {
 	}, [songId, songList]);
 
 	const stopDrag = (e) => {
-		console.log('e', e);
+		// console.log('e', e);
 		console.log(window.innerWidth);
 		console.log(window.innerHeight);
-		console.log('结束', playerRef.current?.getBoundingClientRect());
+		// console.log('结束', playerRef.current?.getBoundingClientRect());
 	};
 
 	const handleClickExpand = () => {
-		setOpen(!open);
+		if (open === null) {
+			setOpen(true);
+		} else {
+			setOpen(!open);
+		}
 	};
 
 	return (
