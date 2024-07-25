@@ -9,6 +9,7 @@ import SongList from '@/views/musicSection/views/MiniPlayer/components/SongList'
 import { music_green_select } from '@/assets/css/variables';
 import Draggable from 'react-draggable';
 import { useMiniPlayerAnimation } from '@/views/musicSection/hooks/useMiniPlayerAnimation';
+import debounce from 'lodash/debounce';
 
 /**
  * @description: 最小化的播放器
@@ -36,6 +37,10 @@ const MiniPlayer = () => {
 		maskVariants,
 		showSongListVariants,
 		positionHeightVariants,
+		position,
+		stopDrag,
+		onMouseEnter,
+		onMouseLeave,
 	} = useMiniPlayerAnimation(); // 动画hook
 
 	// 当前歌曲信息
@@ -43,23 +48,17 @@ const MiniPlayer = () => {
 		return songList.find((item) => item.songId === songId);
 	}, [songId, songList]);
 
-	// 停止拖拽
-	const stopDrag = (e) => {
-		console.log('拖拽结束', e);
-		console.log(window.innerWidth);
-		console.log(window.innerHeight);
-	};
-
-	const handleClickExpand = () => {
+	// 点击展开歌曲列表
+	const handleClickExpand = debounce(() => {
 		if (open === null) {
 			setOpen(true);
 		} else {
 			setOpen(!open);
 		}
-	};
+	}, 500);
 
 	return (
-		<Draggable bounds={bounds} onStop={stopDrag}>
+		<Draggable bounds={bounds} onStop={stopDrag} position={position}>
 			<motion.div
 				ref={playerRef}
 				animate={controls}
@@ -68,9 +67,15 @@ const MiniPlayer = () => {
 					width: INITIAL_WIDTH,
 					height: INITIAL_HEIGHT,
 					position: 'fixed',
-					top: window.innerHeight - INITIAL_HEIGHT,
-					left: window.innerWidth - INITIAL_WIDTH - 100,
+					top: window.innerHeight / 2 - INITIAL_HEIGHT,
+					left: window.innerWidth - INITIAL_WIDTH,
 					zIndex: 9999,
+				}}
+				onMouseEnter={() => {
+					onMouseEnter();
+				}}
+				onMouseLeave={() => {
+					onMouseLeave();
 				}}>
 				<MiniPlayerStyles style={{ opacity: miniPlayer ? 1 : 0, backgroundColor: open ? '#ffffff' : 'transparent' }}>
 					<div
