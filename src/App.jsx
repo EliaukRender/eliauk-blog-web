@@ -5,7 +5,7 @@ import { AppWrapper } from '@/AppStyles';
 import { useAppScrollDirection } from '@/hooks/useAppScrollDirection';
 import PageProgressIndicator from '@/components/ProgressIndicator';
 import TopHomeBar from '@/views/common/TopHomeBar/TopHomeBar';
-import MiniPlayer from '@/views/musicSection/views/MiniPlayer/MiniPlayer';
+import MiniPlayer from '@/views/eliaukMusic/views/MiniPlayer/MiniPlayer';
 
 const App = () => {
 	useAppScrollDirection();

@@ -3,9 +3,9 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import globalReducer from '@/store/modules/globalReducer';
 import userReducer from '@/store/modules/userReducer';
-import audioReducer from '@/views/musicSection/store/modules/audioReducer';
-import musicAppReducer from '@/views/musicSection/store/modules/musicAppReducer';
-import analyzeReducer from '@/views/musicSection/store/modules/analyzeReducer';
+import audioReducer from '@/views/eliaukMusic/store/modules/audioReducer';
+import musicAppReducer from '@/views/eliaukMusic/store/modules/musicAppReducer';
+import analyzeReducer from '@/views/eliaukMusic/store/modules/analyzeReducer';
 
 // userReducer持久化配置
 const userReducerPersisCfg = {

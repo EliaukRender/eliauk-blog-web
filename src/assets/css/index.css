@@ -6,7 +6,7 @@
 @import "./reset.less";
 @import "./common.less";
 @import "./resetAntd.less";
-@import "src/views/musicSection/styles/index.less";
+@import "../../views/eliaukMusic/styles/index.less";
 @import "../iconfont/iconfont.css";
 
 /**

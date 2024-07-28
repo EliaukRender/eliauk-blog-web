@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLoginRegisterDialogAnimation } from '@/hooks/animation/useLoginRegisterDialogAnimation';
 import LoginContent from '@/views/common/LoginRegisterDialog/components/LoginContent';
@@ -19,7 +19,7 @@ const LoginRegisterDialog = ({ showDialog, closeDialog, mode }) => {
 	}, [mode]);
 
 	// 返回值：true-显示登录、false-显示注册
-	const showLoginFlag = useCallback(() => {
+	const showLoginFlag = memo(() => {
 		return [loginRegisterAnimateEnum.OPEN_LOGIN, loginRegisterAnimateEnum.REGISTER_TO_LOGIN].includes(animateMode);
 	}, [animateMode]);
 
@@ -27,11 +27,15 @@ const LoginRegisterDialog = ({ showDialog, closeDialog, mode }) => {
 
 	return (
 		<LoginRegisterDialogStyles>
-			<Dialog showDialog={showDialog} closeDialog={closeDialog} scope={scope} style={{ clipPath: 'inset(30% 50% 70% 50% round 10px)' }}>
+			<Dialog
+				showDialog={showDialog}
+				closeDialog={closeDialog}
+				scope={scope}
+				style={{ clipPath: 'inset(30% 50% 70% 50% round 10px)' }}>
 				{/* 登录时显示的内容 */}
-				{showLoginFlag() && <LoginContent setAnimateMode={setAnimateMode} closeDialog={closeDialog}></LoginContent>}
+				{showLoginFlag && <LoginContent setAnimateMode={setAnimateMode} closeDialog={closeDialog}></LoginContent>}
 				{/* 注册时显示的内容 */}
-				{!showLoginFlag() && <RegisterContent setAnimateMode={setAnimateMode}></RegisterContent>}
+				{!showLoginFlag && <RegisterContent setAnimateMode={setAnimateMode}></RegisterContent>}
 			</Dialog>
 		</LoginRegisterDialogStyles>
 	);
