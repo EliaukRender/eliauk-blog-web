@@ -1,5 +1,5 @@
-/* FirstSection组件 */
-.first-section-modal {
+/* 扫码弹窗 */
+.qr-code-modal {
   .qr-code {
     width: 100%;
   }

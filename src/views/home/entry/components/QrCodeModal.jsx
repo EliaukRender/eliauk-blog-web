@@ -9,14 +9,14 @@ const QrCodeModal = ({ qrCode, showModal, hiddenModal }) => {
 	return (
 		<BaseModal
 			showModal={showModal}
-			title={'联系方式'}
-			wrapClassName={'first-section-modal'}
+			width={400}
+			title={qrCode === 'weChat' ? '微信公众号' : 'QQ群'}
+			wrapClassName={'qr-code-modal'}
 			handleCancel={() => {
 				hiddenModal();
 			}}>
-			<div className='first-section-modal'>
+			<div>
 				<img className='qr-code' src={require(`@/assets/image/${qrCode}.jpg`)} alt='' />
-				<div className='tip'>请备注来源博客，否则不会通过~</div>
 			</div>
 		</BaseModal>
 	);
@@ -25,7 +25,7 @@ const QrCodeModal = ({ qrCode, showModal, hiddenModal }) => {
 QrCodeModal.propTypes = {
 	showModal: PropTypes.bool,
 	hiddenModal: PropTypes.func,
-	qrCode: PropTypes.string
+	qrCode: PropTypes.string,
 };
 
 export default memo(QrCodeModal);

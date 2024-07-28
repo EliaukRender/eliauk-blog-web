@@ -25,12 +25,15 @@ const InfoBar = () => {
 
 	// 打开github
 	const goToGitHub = useCallback(() => {
-		window.open('https://github.com/yang0007221123', '_blank');
+		window.open('https://github.com/EliaukRender', '_blank');
 	}, []);
 
 	return (
 		<InfoBarStyles>
-			<motion.div className='personal-info' initial={{ y: 25 }} animate={{ y: 0, transition: { duration: 1, ease: 'linear' } }}>
+			<motion.div
+				className='personal-info'
+				initial={{ y: 25 }}
+				animate={{ y: 0, transition: { duration: 1, ease: 'linear' } }}>
 				<span className='name'>EliaukRender</span>
 				<div className='divider'></div>
 				<GithubOutlined
