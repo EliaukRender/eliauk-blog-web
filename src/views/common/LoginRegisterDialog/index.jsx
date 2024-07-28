@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useLoginRegisterDialogAnimation } from '@/hooks/animation/useLoginRegisterDialogAnimation';
 import LoginContent from '@/views/common/LoginRegisterDialog/components/LoginContent';
@@ -12,18 +12,16 @@ import { loginRegisterAnimateEnum } from '@/constant';
  */
 const LoginRegisterDialog = ({ showDialog, closeDialog, mode }) => {
 	const [animateMode, setAnimateMode] = useState(null); // 1-打开登录；2-注册转登录；3-打开注册；3-登录转注册
+	const scope = useLoginRegisterDialogAnimation(animateMode); // 弹窗的动画（内容的宽度高度在动画中设置）
+	// 返回值：true-显示登录、false-显示注册
+	const showLoginFlag = useMemo(() => {
+		return [loginRegisterAnimateEnum.OPEN_LOGIN, loginRegisterAnimateEnum.REGISTER_TO_LOGIN].includes(animateMode);
+	}, [animateMode]);
 
 	// 父组件传过来的mode值(1或3)，即animateMode的值
 	useEffect(() => {
 		setAnimateMode(mode);
 	}, [mode]);
-
-	// 返回值：true-显示登录、false-显示注册
-	const showLoginFlag = memo(() => {
-		return [loginRegisterAnimateEnum.OPEN_LOGIN, loginRegisterAnimateEnum.REGISTER_TO_LOGIN].includes(animateMode);
-	}, [animateMode]);
-
-	const scope = useLoginRegisterDialogAnimation(animateMode); // 弹窗的动画（内容的宽度高度在动画中设置）
 
 	return (
 		<LoginRegisterDialogStyles>

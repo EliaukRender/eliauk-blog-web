@@ -8,10 +8,12 @@ import { genderOptions, loginRegisterAnimateEnum, occupationOptions } from '@/co
 import { register } from '@/api/modules/userService';
 import MessageToast from '@/components/MessageToast';
 
+/**
+ * @description: 注册弹窗的内容
+ */
 const RegisterContent = ({ setAnimateMode }) => {
 	// 提交注册
 	const onFinish = async (value) => {
-		console.log('value', value);
 		await handleRegister(value);
 	};
 

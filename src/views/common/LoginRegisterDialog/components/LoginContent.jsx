@@ -8,9 +8,11 @@ import { useDispatch } from 'react-redux';
 import { setToken } from '@/store/modules/userReducer';
 import { login } from '@/api/modules/userService';
 import MessageToast from '@/components/MessageToast';
-import { loginRegisterAnimateEnum } from '@/constant';
-// import { useMessage } from '@/components/MessageToast/Message.js';
+import { loginRegisterAnimateEnum } from '@/constant/index.js';
 
+/**
+ * @description: 登录弹窗的内容
+ */
 const LoginContent = ({ setAnimateMode, closeDialog }) => {
 	const dispatch = useDispatch();
 
@@ -20,7 +22,6 @@ const LoginContent = ({ setAnimateMode, closeDialog }) => {
 			const { data } = await login(value);
 			dispatch(setToken(data.token));
 			MessageToast.success('登录成功');
-			// useMessage('success', '登录成功');
 			closeDialog();
 		} catch (e) {
 			console.log('e', e);
