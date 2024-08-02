@@ -13,7 +13,7 @@ export const TopHomeBarStyles = styled.div`
 
 	.top-home-bar {
 		width: 100%;
-		height: 70px;
+		height: 55px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -37,12 +37,12 @@ export const TopHomeBarStyles = styled.div`
 			cursor: pointer;
 
 			.logo {
-				width: 55px;
+				width: 50px;
 				margin-right: 15px;
 			}
 
 			.name {
-				font-size: 30px;
+				font-size: 28px;
 				background: linear-gradient(90deg, ${mld_blue_five}, ${mld_blue_four});
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
@@ -53,7 +53,7 @@ export const TopHomeBarStyles = styled.div`
 		.bar-box {
 			display: flex;
 			align-items: center;
-			font-size: 20px;
+			font-size: 18px;
 			cursor: pointer;
 			height: 100%;
 
