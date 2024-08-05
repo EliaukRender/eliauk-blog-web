@@ -29,6 +29,7 @@ const MusicList = ({ onlineSheetInfo }) => {
 
 	return (
 		<MusicListStyles>
+			{/* 信息、操作区域 */}
 			<div className='top'>
 				<div className='left'>
 					{titleList.map((item) => {
@@ -64,7 +65,15 @@ const MusicList = ({ onlineSheetInfo }) => {
 				className='song-list'
 				style={!sheetSongList.length ? { justifyContent: 'center', alignItems: 'center' } : {}}>
 				{sheetSongList.map((song, index) => {
-					return <SongItem curSong={song} index={index} showAlbum={true} showDuration={true} isSheet={true}></SongItem>;
+					return (
+						<SongItem
+							curSong={song}
+							index={index}
+							showAlbum={true}
+							showDuration={true}
+							isSheet={true}
+							showDelete={!isOnlineSheet}></SongItem>
+					);
 				})}
 				{!sheetSongList.length && <NoData></NoData>}
 			</div>

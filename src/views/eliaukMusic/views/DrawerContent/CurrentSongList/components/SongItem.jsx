@@ -13,7 +13,7 @@ import { handleDeleteSongFromSheet } from '@/views/eliaukMusic/store/actions/mus
 /**
  * @description: 歌曲item
  */
-const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isSheet }) => {
+const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isSheet, showDelete = true }) => {
 	const { songId, curSongListSheetId, isPlaying, songList, sheetSongList, curSheet } = useSelector(
 		(state) => ({
 			songId: state.audio.songId,
@@ -139,14 +139,16 @@ const SongItem = ({ curSong, index, showAlbum = false, showDuration = false, isS
 					{/* 移动歌曲 */}
 					<MoveMusicPopover isSongList={true} curSong={curSong}></MoveMusicPopover>
 					{/* 删除歌曲 */}
-					<Popconfirm
-						title='确认删除?'
-						description={isSheet ? '删除后，该歌单不再包含该歌曲信息。' : '删除后，当前播放列表不再播放该歌曲。'}
-						onConfirm={confirm}
-						okText='删除'
-						cancelText='取消'>
-						<i className='iconfont icon-shanchu' title={isSheet ? '从歌单中删除' : '从播放列表中删除'}></i>
-					</Popconfirm>
+					{showDelete && (
+						<Popconfirm
+							title='确认删除?'
+							description={isSheet ? '删除后，该歌单不再包含该歌曲信息。' : '删除后，当前播放列表不再播放该歌曲。'}
+							onConfirm={confirm}
+							okText='删除'
+							cancelText='取消'>
+							<i className='iconfont icon-shanchu' title={isSheet ? '从歌单中删除' : '从播放列表中删除'}></i>
+						</Popconfirm>
+					)}
 				</motion.div>
 
 				{/* 歌曲时长、专辑信息 */}
@@ -162,6 +164,7 @@ SongItem.propTypes = {
 	index: PropTypes.number,
 	showAlbum: PropTypes.bool, // 是否显示专辑
 	showDuration: PropTypes.bool, // 是否显示时长
+	showDelete: PropTypes.bool, // 是否显示删除按钮
 };
 
 export default memo(SongItem);

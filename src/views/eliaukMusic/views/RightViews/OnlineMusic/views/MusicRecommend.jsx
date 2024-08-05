@@ -24,7 +24,6 @@ const MusicRecommend = () => {
 
 	// 前往 在线歌单 的 歌单详情 页面
 	const goToSheetDetail = (sheetInfo) => {
-		console.log('sheetInfo', sheetInfo);
 		navigate('/music/onlineSheetDetail', {
 			state: sheetInfo,
 		});

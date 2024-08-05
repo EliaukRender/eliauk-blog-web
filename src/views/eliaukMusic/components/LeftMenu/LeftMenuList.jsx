@@ -3,7 +3,7 @@ import { LeftMenuListStyles } from '@/views/eliaukMusic/components/LeftMenu/Left
 import classNames from 'classnames';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { setCurMenu } from '@/views/eliaukMusic/store/modules/musicAppReducer';
+import { setCurMenu, setCurSheet } from '@/views/eliaukMusic/store/modules/musicAppReducer';
 
 /**
  * @description: 在线音乐  菜单列表
@@ -29,6 +29,7 @@ const LeftMenuList = () => {
 	// 点击菜单
 	const clickMenu = (menu) => {
 		navigate(`/music${menu.routePath}`); // 路由跳转
+		dispatch(setCurSheet({})); // 清空歌单信息
 		if (menu.menuId !== curMenu.menuId) {
 			dispatch(setCurMenu(menu));
 		}
