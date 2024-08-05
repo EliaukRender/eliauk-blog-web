@@ -8,7 +8,7 @@ import { pauseAudio, playAudio } from '@/views/eliaukMusic/store/actions/audioAc
 /**
  * @description: 音乐馆 歌单卡片
  */
-const SheetCard = ({ sheetInfo, sheetImage, imageWidth }) => {
+const SheetCard = ({ sheetInfo, sheetImage, imageWidth, goToSheetDetail }) => {
 	const songCardRef = useRef(null);
 	const { songId, isPlaying } = useSelector(
 		(state) => ({
@@ -81,7 +81,10 @@ const SheetCard = ({ sheetInfo, sheetImage, imageWidth }) => {
 				onMouseLeave={() => {
 					onMouseLeave();
 				}}
-				style={{ width: imageWidth }}>
+				style={{ width: imageWidth }}
+				onClick={() => {
+					goToSheetDetail(sheetInfo);
+				}}>
 				<img className='image' src={sheetImage} alt='' />
 				<motion.div className='mask' initial={'hidden'} variants={showHidden} animate={controls}></motion.div>
 				<i className='iconfont icon-icon_qqyinyue'></i>
@@ -97,5 +100,7 @@ const SheetCard = ({ sheetInfo, sheetImage, imageWidth }) => {
 SheetCard.propTypes = {
 	sheetImage: PropTypes.string,
 	sheetInfo: PropTypes.object,
+	imageWidth: PropTypes.number,
+	goToSheetDetail: PropTypes.func,
 };
 export default memo(SheetCard);

@@ -58,9 +58,9 @@ export const getSheetList = async () => {
 /**
  * @description: 基于歌单ID获取音乐列表
  */
-export const getSongListBySheetId = async ({ sheetId }) => {
+export const getSongListBySheetId = async ({ sheetId, isOnline }) => {
 	try {
-		const { data } = await querySongListBySheetId({ sheetId });
+		const { data } = await querySongListBySheetId({ sheetId, isOnline });
 		dispatch(setSheetSongList(data || []));
 	} catch (e) {
 		console.log('error-getSongListBySheetId', e);
