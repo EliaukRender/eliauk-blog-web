@@ -23,7 +23,7 @@ const routes = [
 		element: <Navigate to={'/index.jsx'}></Navigate>,
 	},
 	{
-		path: '/index.jsx',
+		path: '/index',
 		element: <Home></Home>,
 	},
 	{
