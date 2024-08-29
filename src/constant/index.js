@@ -1,6 +1,6 @@
 // 菜单列表
 export const menuList = [
-	{ id: 1, name: '首页', path: '/index.jsx' },
+	{ id: 1, name: '首页', path: '/index' },
 	{ id: 2, name: '音乐角', path: '/music' },
 	{ id: 3, name: '管理系统', path: '/eliauk-manage' },
 	{ id: 4, name: '每日一练', path: '/demo-collection' },
