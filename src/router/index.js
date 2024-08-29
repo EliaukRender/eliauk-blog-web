@@ -14,20 +14,25 @@ const VideoRecommend = React.lazy(
 const MusicRecommend = React.lazy(
 	() => import('@/views/eliaukMusic/views/RightViews/OnlineMusic/views/MusicRecommend.jsx'),
 );
+const DemoCollection = React.lazy(() => import('@/views/demoCollection/index'));
 
 // 路由配置
 const routes = [
 	{
 		path: '/',
-		element: <Navigate to={'/index'}></Navigate>,
+		element: <Navigate to={'/index.jsx'}></Navigate>,
 	},
 	{
-		path: '/index',
+		path: '/index.jsx',
 		element: <Home></Home>,
 	},
 	{
 		path: '/eliauk-manage',
 		element: <EliaukManage></EliaukManage>,
+	},
+	{
+		path: '/demo-collection',
+		element: <DemoCollection></DemoCollection>,
 	},
 	{
 		path: '/music/*',
