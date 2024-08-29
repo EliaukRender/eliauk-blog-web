@@ -22,20 +22,23 @@ export const DynamicSuccessIconStyles = styled.div`
 		align-items: center;
 
 		.circle {
-			stroke-dasharray: 1194; // 圆的周长
-			stroke-dashoffset: 1194; // 虚线长度
+			/* 圆的周长 */
+			stroke-dasharray: 1194;
+			/* 虚线初始长度 */
+			stroke-dashoffset: 1194;
 			animation: dashOffsetAnimation_circle 1s forwards;
 		}
 
 		.tick {
-			stroke-dasharray: 350; // 勾的长度
-			stroke-dashoffset: 350; // 虚线长度
+			stroke-dasharray: 350;
+			stroke-dashoffset: 350;
 			animation: dashOffsetAnimation_tick 1s forwards;
 		}
 
 		@keyframes dashOffsetAnimation_circle {
 			from {
-				stroke-dashoffset: 1000; // 从1000变为0就会全部显示出来
+				/* 从1000变为0就会全部显示出来 */
+				stroke-dashoffset: 1000;
 			}
 			to {
 				stroke-dashoffset: 0;
