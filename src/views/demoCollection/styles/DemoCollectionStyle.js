@@ -7,7 +7,7 @@ export const DemoCollectionStyles = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	box-sizing: border-box;
-	padding-top: 70px;
+	padding-top: 55px;
 	overflow: hidden;
 	background-color: #f2f3f5;
 `;
