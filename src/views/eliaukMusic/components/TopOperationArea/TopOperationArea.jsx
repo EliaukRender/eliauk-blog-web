@@ -5,12 +5,14 @@ import { SearchOutlined } from '@ant-design/icons';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { setFullScreenPlayer, setMaxPlayer, setMiniPlayer } from '@/views/eliaukMusic/store/modules/musicAppReducer';
 import { music_green_select } from '@/assets/css/variables';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * @description:顶部操作栏
  */
 const TopOperationArea = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const { fullScreenPlayer, miniPlayer, maxPlayer } = useSelector(
 		(state) => ({
 			fullScreenPlayer: state.musicApp.fullScreenPlayer,
@@ -23,8 +25,16 @@ const TopOperationArea = () => {
 	return (
 		<TopOperationAreaStyles>
 			<div className='left'>
-				<i className='iconfont icon-zuojiantou'></i>
-				<i className='iconfont icon-youjiantou'></i>
+				<i
+					className='iconfont icon-zuojiantou'
+					onClick={() => {
+						navigate(-1);
+					}}></i>
+				<i
+					className='iconfont icon-youjiantou'
+					onClick={() => {
+						navigate(1);
+					}}></i>
 				<Input rootClassName={'input-search-music'} placeholder='搜索音乐' prefix={<SearchOutlined />} />
 			</div>
 			<div className='right'>

@@ -8,7 +8,7 @@ export const MusicSectionStyles = styled.div`
 	justify-content: center;
 	align-items: center;
 	box-sizing: border-box;
-	padding-top: 70px;
+	padding-top: 55px;
 	overflow: hidden;
 	background-image: url(${bg});
 	background-size: cover;

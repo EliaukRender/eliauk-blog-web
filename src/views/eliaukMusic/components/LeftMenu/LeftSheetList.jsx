@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LeftSheetListStyles } from '@/views/eliaukMusic/components/LeftMenu/LeftSheetListStyles';
-import { setCurSheet } from '@/views/eliaukMusic/store/modules/musicAppReducer';
+import { setCurSheet, setSheetSongList } from '@/views/eliaukMusic/store/modules/musicAppReducer';
 import AddSheet from '@/views/eliaukMusic/components/AddSheet/AddSheet';
 import { motion } from 'framer-motion';
 import { getSongListBySheetId, handleDeleteSheet } from '@/views/eliaukMusic/store/actions/musicAppAction';
@@ -31,11 +31,12 @@ const LeftSheetList = () => {
 		setActiveSheet(location.pathname === '/music/like');
 	}, [location]);
 
-	// 点击sheet
+	// 点击自建歌单
 	const clickSheet = async (sheet) => {
-		// 从菜单切换到歌单
+		// 从[菜单]切换到[菜单]
 		if (location.pathname !== '/music/like') {
 			navigate('/music/like');
+			dispatch(setSheetSongList([]));
 		}
 		// 切换显示的歌单
 		if (curSheet.sheetId !== sheet.sheetId) {

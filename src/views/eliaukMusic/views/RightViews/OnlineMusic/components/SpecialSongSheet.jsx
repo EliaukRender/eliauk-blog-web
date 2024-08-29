@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 /**
  * @description: 精选歌单--轮播图形式推荐
  */
-const SpecialSongSheet = ({ sheetList = [] }) => {
+const SpecialSongSheet = ({ sheetList = [], goToSheetDetail }) => {
 	const SHOW_IMAGES_NUM = 3; // 可配置，可视区域展示图片的数量
 	const {
 		containerRef,
@@ -40,7 +40,16 @@ const SpecialSongSheet = ({ sheetList = [] }) => {
 			{/* 轮播图 */}
 			<div className='images-box' ref={containerRef}>
 				{sheetList.map((sheet) => {
-					return <img className='img' style={{ width: width }} src={sheet.sheetImage} />;
+					return (
+						<img
+							className='img'
+							style={{ width: width }}
+							src={sheet.sheetImage}
+							onClick={() => {
+								goToSheetDetail(sheet);
+							}}
+						/>
+					);
 				})}
 			</div>
 			{/* 左、右切换按钮 */}
@@ -66,6 +75,7 @@ const SpecialSongSheet = ({ sheetList = [] }) => {
 
 SpecialSongSheet.propTypes = {
 	sheetList: PropTypes.array,
+	goToSheetDetail: PropTypes.func,
 };
 
 export default memo(SpecialSongSheet);

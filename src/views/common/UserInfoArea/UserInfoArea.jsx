@@ -97,7 +97,9 @@ const UserInfoArea = () => {
 				</motion.ul>
 			</div>
 			{/* 登录注册弹窗 */}
-			{showDialog && <LoginRegisterDialog closeDialog={closeDialog} showDialog={showDialog} mode={mode}></LoginRegisterDialog>}
+			{showDialog && (
+				<LoginRegisterDialog closeDialog={closeDialog} showDialog={showDialog} mode={mode}></LoginRegisterDialog>
+			)}
 		</UserInfoAreaStyles>
 	);
 };

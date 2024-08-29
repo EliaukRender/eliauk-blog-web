@@ -25,8 +25,6 @@ H
 src/assets/css/index.css,4\5\45e25c8e0371ded7ceab0e9984c90eb22123aca9
 H
 src/views/home/styles.js,d\1\d1dd0f6e3dbb8be370c2564cd0f9b8652ac278cf
-?
-public/icon.svg,8\4\849965ea25237ddd5cec8a95600812433f8a8ced
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

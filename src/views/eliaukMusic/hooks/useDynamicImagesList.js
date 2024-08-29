@@ -16,8 +16,8 @@ export const useDynamicImagesList = ({
 	marginRightValue = 20,
 }) => {
 	const containerRef = useRef();
-	const [width, setWidth] = useState(300); // 图片宽度
-	const [height, setHeight] = useState(220); // 图片高度
+	const [width, setWidth] = useState(280); // 图片宽度
+	const [height, setHeight] = useState(180); // 图片高度
 	const controls = useAnimationControls();
 	const [activePointerList, setActivePointerList] = useState([]); // 指示器激活的图片索引值
 

@@ -15,9 +15,9 @@ export const UserInfoAreaStyles = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		padding: 0 15px;
-		height: 54px;
-		border-radius: 27px;
+		padding: 0 10px;
+		height: 46px;
+		border-radius: 23px;
 		border: 1px solid ${mld_blue_one};
 		background-color: ${hexToRgba(mld_blue_one, 0.6)};
 		cursor: pointer;
@@ -35,7 +35,7 @@ export const UserInfoAreaStyles = styled.div`
 
 	.popover {
 		position: absolute;
-		top: 70px;
+		top: 55px;
 		right: 0;
 		padding: 10px;
 		border-radius: 8px;

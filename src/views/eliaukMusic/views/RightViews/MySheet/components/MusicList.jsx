@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { MusicListStyles } from '@/views/eliaukMusic/views/RightViews/MySheet/styles/MusicListStyle';
 import { shallowEqual, useSelector } from 'react-redux';
 import classNames from 'classnames';
@@ -8,7 +8,7 @@ import NoData from '@/views/eliaukMusic/components/NoData/NoData';
 /**
  * @description: 歌单列表区域
  */
-const MusicList = () => {
+const MusicList = ({ onlineSheetInfo }) => {
 	const titleList = [
 		{ id: 1, title: '歌曲' },
 		{ id: 2, title: '评论' },
@@ -21,8 +21,15 @@ const MusicList = () => {
 		shallowEqual,
 	);
 
+	// 是否是 在线歌单
+	const isOnlineSheet = useMemo(() => {
+		const list = Object.keys(onlineSheetInfo || {});
+		return !!list?.length;
+	}, [onlineSheetInfo]);
+
 	return (
 		<MusicListStyles>
+			{/* 信息、操作区域 */}
 			<div className='top'>
 				<div className='left'>
 					{titleList.map((item) => {
@@ -39,16 +46,18 @@ const MusicList = () => {
 						);
 					})}
 				</div>
-				<div className='right'>
-					<div className='item'>
-						<i className='iconfont icon-sousuo'></i>
-						<span>搜索</span>
+				{!isOnlineSheet && (
+					<div className='right'>
+						<div className='item'>
+							<i className='iconfont icon-sousuo'></i>
+							<span>搜索</span>
+						</div>
+						<div className='item'>
+							<i className='iconfont icon-paixu'></i>
+							<span>排序</span>
+						</div>
 					</div>
-					<div className='item'>
-						<i className='iconfont icon-paixu'></i>
-						<span>排序</span>
-					</div>
-				</div>
+				)}
 			</div>
 
 			{/*  歌曲列表 */}
@@ -56,7 +65,15 @@ const MusicList = () => {
 				className='song-list'
 				style={!sheetSongList.length ? { justifyContent: 'center', alignItems: 'center' } : {}}>
 				{sheetSongList.map((song, index) => {
-					return <SongItem curSong={song} index={index} showAlbum={true} showDuration={true} isSheet={true}></SongItem>;
+					return (
+						<SongItem
+							curSong={song}
+							index={index}
+							showAlbum={true}
+							showDuration={true}
+							isSheet={true}
+							showDelete={!isOnlineSheet}></SongItem>
+					);
 				})}
 				{!sheetSongList.length && <NoData></NoData>}
 			</div>
