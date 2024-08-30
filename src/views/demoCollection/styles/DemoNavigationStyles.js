@@ -6,7 +6,7 @@ export const DemoNavigationStyles = styled.div`
 	width: 300px;
 	height: 100%;
 	box-sizing: border-box;
-	font-size: 18px;
+	font-size: 16px;
 	padding: 20px;
 
 	.content {

@@ -10,7 +10,7 @@ const DynamicSuccessIcon = () => {
 	const { key, reRender } = forceUpdateRender();
 	return (
 		<DynamicSuccessIconStyles>
-			<div className='title'>动态成功图标：通过stroke-dasharray、stroke-dashoffset属性控制</div>
+			<div className='title'>实现动态成功图标：stroke-dasharray、stroke-dashoffset、动画</div>
 			<Button type='primary' onClick={reRender}>
 				重新播放
 			</Button>
