@@ -6,10 +6,9 @@ import { cutFile } from '@/views/demoCollection/demo/UploadBigFile/utils';
  * @description: 上传大文件
  */
 const UploadBigFile = () => {
-	// 选择文件
 	const handleOnChange = async (e) => {
-		console.log('change', e.target.files[0]);
-		await cutFile(e.target.files[0]);
+		const chunksFile = await cutFile(e.target.files[0]);
+		console.log('分片结束', chunksFile);
 	};
 
 	return (
